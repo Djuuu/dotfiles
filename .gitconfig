@@ -1,0 +1,91 @@
+[user]
+	email = julien@tardot.net
+	name = Djuuu
+
+[core]
+    fscache = true
+    whitespace = -trailing-space
+    autocrlf = input
+    eol = lf
+    ignorecase = false
+    filemode = false
+    excludesfile = ~/.gitignore.global
+    editor = vim
+
+[branch]
+    autosetuprebase = always
+
+[status]
+    submoduleSummary = true
+
+[diff]
+    submodule = log
+    mnemonicPrefix = true
+    renames = true
+    wordRegex = .
+
+[fetch]
+    prune = true
+
+[push]
+    default = upstream
+
+[log]
+    abbrevCommit = true
+
+[pretty]
+    graph = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
+
+[color]
+    diff = auto
+    interactive = auto
+    branch = auto
+    status = auto
+
+[rerere]
+    enabled = true
+
+[credential]
+	helper = cache --timeout 7201
+
+[alias]
+    st = "status"
+
+    ss = "stash save -u"
+    sp = "stash pop --index"
+
+    ri = "rebase -i"
+    rc = "rebase --continue"
+
+    rim = "rebase -i master"
+    pom = "push origin master"
+
+    gcp = "gc --prune=now"
+
+    lg = "log --color --graph --pretty=graph --abbrev-commit --"
+    lga = "log --color --graph --pretty=graph --abbrev-commit --all --"
+    ld = "!f() { echo -e `git show --pretty=format:'%Cgreen%ci %Cblue%cr%Creset' $1 | head -n 1`\\\\t$1; }; f"
+
+    ddt = "!git tag | grep delivered |xargs -i{} git tag -d {}"
+    djt = "!git tag | grep jenkins |xargs -i{} git tag -d {}"
+    dt = "!git ddt && git djt"
+
+    # branches
+    branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
+
+    # merged / non-merged branches
+    mb  = "!git branch -a --merged    master | grep -v '>\\|*' | perl -pe s/^..//"
+    nmb = "!git branch -a --no-merged master | grep -v '>\\|*' | perl -pe s/^..//"
+
+    # stale merged/non-merged branches
+    stmb  = "!for k in `git mb`;  do git ld $k; done | sort -r"
+    stnmb = "!for k in `git nmb`; do git ld $k; done | sort -r"
+
+    ### External commands
+
+    prb     = "prune-remote-branches"
+    deliver = "!bash ~/git-deliver/deliver.sh"
+    build   = "!bash ~/git-build/git-build.sh"
+
+[gui]
+	encoding = utf-8

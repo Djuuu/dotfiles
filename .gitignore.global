@@ -1,0 +1,64 @@
+
+# See https://github.com/github/gitignore/tree/master/Global
+# for other useful gitignores
+
+######################
+# OS generated files
+
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+.Trash-*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+######################
+# IDEs
+
+# JetBrains (PhpStorm, IntelliJ, ...)
+
+.idea/
+.idea_modules/
+
+# NetBeans
+
+nbproject/
+nbbuild/
+nbdist/
+
+# Eclipse
+.project
+.buildpath
+.classpath
+.settings/
+
+# SublimeText
+
+.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+
+######################
+# Versioning
+
+.svn/
+/.tgitconfig
+
+######################
+# Vagrant
+
+.vagrant/
+
+######################
+# Logs
+
+*.log
+
+######################
+# Local hidden dirs
+/__*
