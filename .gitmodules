@@ -1,3 +1,6 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/Djuuu/dotbot
+[submodule "git-deliver"]
+	path = git-deliver
+	url = git@github.com:Djuuu/git-deliver.git

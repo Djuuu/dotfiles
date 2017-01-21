@@ -10,6 +10,7 @@
     ~/.dotfiles: ''
 
     ~/.bash_prompt:         .bash_prompt
+    ~/git-deliver:           git-deliver
 
     ~/.bash_aliases:        .bash_aliases
     ~/.bash_profile:        .bash_profile
