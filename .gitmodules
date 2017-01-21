@@ -4,3 +4,6 @@
 [submodule "git-deliver"]
 	path = git-deliver
 	url = git@github.com:Djuuu/git-deliver.git
+[submodule "git-build"]
+	path = git-build
+	url = git@github.com:Djuuu/git-build.git
