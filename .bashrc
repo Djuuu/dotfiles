@@ -17,9 +17,6 @@ export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 # The '&' is a special pattern which suppresses duplicate entries.
 export HISTIGNORE=$'[ \t]*:&:[fb]g:exit'
 export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls' # Ignore the ls command as well
-#
-# Whenever displaying the prompt, write the previous line to disk
-export PROMPT_COMMAND="history -a"
 
 
 # Aliases

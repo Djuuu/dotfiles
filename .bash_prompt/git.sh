@@ -59,14 +59,11 @@ function git_dirty_flag {
 }
 
 function git_prompt_command {
-	case $promptStyle in 
-		"cygwin") 
-			prompt="${promptTitlebar}${userHostPromptColor}\u@\h ${dirPromptColor}\w${purpleTxt}$(parse_git_branch)${resetColor}${promptSign} "
-		;;
-		*) 
-			prompt="${userHostPromptColor}\u@\h${whiteTxt}:${dirPromptColor}\w${purpleTxt}$(parse_git_branch)${resetColor}${promptSign} " 
-		;;
-	esac
+	promptTitlebar="\[\e]0;\h - \w\a\]"
+	promptUserHost="${userHostPromptColor}\u@\h${whiteTxt}:"
+	promptCWD="${dirPromptColor}\w"
+	promptGitStatus="${purpleTxt}$(parse_git_branch)"
+	promptEnd="${resetColor}${promptSign} "
 
-	PS1=${prompt}
+	PS1="${promptTitlebar}${promptUserHost}${promptCWD}${promptGitStatus}${promptEnd}"
 }

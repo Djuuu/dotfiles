@@ -47,29 +47,16 @@ promptStyle="user"
 if [ "`id -u`" -eq 0 ]; then
 	promptStyle="root"
 fi
-if [[ `uname -o` == 'Cygwin' ]]; then
-	promptStyle="cygwin"
-fi
 
 case $promptStyle in 
 	"user") 
-		promptTitlebar=
         userHostPromptColor=${greenTxt}
         dirPromptColor=${blueBold}
         promptSign="\$"
 	;;
 	"root") 
-		promptTitlebar=
 		userHostPromptColor=${redTxt}
 		dirPromptColor=${cyanTxt}
 		promptSign="#"
 	;;
-	"cygwin") 
-		promptTitlebar='\[\e]0;\h - \w\a\]'
-        userHostPromptColor=${greenTxt}
-        dirPromptColor=${yellowTxt}
-        promptSign=" \n\$"
-	;;
 esac
-
-cmdPromptColor=${resetColor}${blackBBld}
