@@ -10,7 +10,7 @@ function parse_git_branch {
 	branch_rebase_pattern="You are currently rebasing branch '([^${IFS}]*)'"
 	remote_pattern="Your branch is (.*) '"
 	diverge_pattern="Your branch and (.*) have diverged"
-	clean_pattern="working directory clean"
+	clean_pattern="clean"
 	changes_pattern="Changes "
 
 	git_status="$(LANG=en git -c status.submoduleSummary=false status 2> /dev/null)"
