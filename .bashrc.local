@@ -1,0 +1,18 @@
+
+# Umask
+# /etc/profile sets 022, removing write perms to group + others.
+#umask 002
+
+# Environment
+#export SF_ENV='dev'
+#export COMPOSER_HOME=~/.composer
+
+# ssh-pageant (Cygwin)
+#eval $(/usr/bin/ssh-pageant -r -a "/tmp/.ssh-pageant-$USERNAME")
+
+# ssh-pageant (MinGW / Git Bash)
+#SSH_PAGEANT="$(command -v ssh-pageant)"
+#if [ -x "$SSH_PAGEANT" ]; then
+#	eval $("$SSH_PAGEANT" -qra "${SSH_AUTH_SOCK:-${TEMP:-/tmp}/.ssh-pageant-win-$USERNAME}")
+#fi
+#unset SSH_PAGEANT

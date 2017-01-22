@@ -1,6 +1,6 @@
-[user]
-	email = julien@tardot.net
-	name = Djuuu
+
+[include]
+	path = ~/.gitconfig.local
 
 [core]
     fscache = true

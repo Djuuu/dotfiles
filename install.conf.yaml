@@ -25,4 +25,5 @@
 
 
 - shell:
+  - [./install-local.sh, Installing local files]
   - [git submodule update --init --recursive, Installing submodules]
