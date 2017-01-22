@@ -49,12 +49,12 @@ if [ "`id -u`" -eq 0 ]; then
 fi
 
 case $promptStyle in 
-	"user") 
-        userHostPromptColor=${greenTxt}
-        dirPromptColor=${blueBold}
-        promptSign="\$"
+	"user")
+		userHostPromptColor=${greenTxt}
+		dirPromptColor=${blueBold}
+		promptSign="\$"
 	;;
-	"root") 
+	"root")
 		userHostPromptColor=${redTxt}
 		dirPromptColor=${cyanTxt}
 		promptSign="#"

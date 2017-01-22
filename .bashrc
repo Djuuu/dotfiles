@@ -21,13 +21,13 @@ export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls' # Ignore the ls command as well
 
 # Aliases
 if [ -f ~/.bash_aliases ]; then
-    source ~/.bash_aliases
+	source ~/.bash_aliases
 fi
 
 
 # Functions
 if [ -f "${HOME}/.bash_functions" ]; then
-  source "${HOME}/.bash_functions"
+	source "${HOME}/.bash_functions"
 fi
 
 
@@ -37,5 +37,5 @@ fi
 
 # local config
 if [ -f ~/.bashrc.local ]; then
-    source ~/.bashrc.local
+	source ~/.bashrc.local
 fi

@@ -60,5 +60,5 @@ alias art='php artisan'
 alias ggw='gulp && gulp watch'
 
 function homestead() {
-    ( cd ~/www/Homestead && vagrant $* )
+	( cd ~/www/Homestead && vagrant $* )
 }
