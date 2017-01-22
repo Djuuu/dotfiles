@@ -13,7 +13,7 @@ function parse_git_branch {
 	clean_pattern="working directory clean"
 	changes_pattern="Changes "
 
-	git_status="$(LANG=en git status 2> /dev/null)"
+	git_status="$(LANG=en git -c status.submoduleSummary=false status 2> /dev/null)"
 
 	if [[ ! ${git_status} =~ ${clean_pattern} ]]; then
 		if [[ ${git_status} =~ ${changes_pattern} ]]; then
