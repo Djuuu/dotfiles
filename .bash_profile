@@ -29,7 +29,7 @@ if [ -d "${HOME}/info" ]; then
 fi
 
 # Set user-defined locale
-export LANG=$(locale -uU)
+#export LANG=$(locale -uU)
 
 # editor
 export EDITOR="vim"
