@@ -4,6 +4,12 @@
 # alias cp='cp -i'
 # alias mv='mv -i'
 
+export LS_OPTIONS='--color=auto'
+eval "`dircolors`"
+alias ls='ls $LS_OPTIONS'
+alias ll='ls $LS_OPTIONS -l'
+alias  l='ls $LS_OPTIONS -lA'
+
 # Default to human readable figures
 alias df='df -h'
 alias du='du -h'
@@ -14,19 +20,12 @@ alias whence='type -a'                        # where, of a sort
 alias grep='grep --color'                     # show differences in colour
 alias egrep='egrep --color=auto'              # show differences in colour
 alias fgrep='fgrep --color=auto'              # show differences in colour
-
-
-export LS_OPTIONS='--color=auto'
-eval "`dircolors`"
-alias ls='ls $LS_OPTIONS'
-alias ll='ls $LS_OPTIONS -l'
-alias  l='ls $LS_OPTIONS -lA'
-
-alias sshagentstart='eval `ssh-agent -s` && ssh-add'
-
+alias rsynca='rsync -avzP'
 alias h='history'
 
 alias please='sudo $(fc -nl -1)'
+
+alias sshagentstart='eval `ssh-agent -s` && ssh-add'
 
 # Vagrant
 alias  vu='vagrant up'

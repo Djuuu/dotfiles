@@ -1,3 +1,8 @@
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
 ###################################################################################################
 # https://github.com/emilis/emilis-config/blob/master/.bash_ps1
 
@@ -8,7 +13,6 @@ if [ -z "$VIM" ];
 then status_style=$resetColor'\[\033[0;90m\]' # gray color; use 0;37m for lighter color
 else status_style=$resetColor'\[\033[0;90;107m\]'
 fi
-
 
 # Reset color for command output (this one is invoked every time before a command is executed):
 #trap 'echo -ne "\e[0m"' DEBUG

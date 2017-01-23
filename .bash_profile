@@ -30,3 +30,7 @@ fi
 
 # Set user-defined locale
 export LANG=$(locale -uU)
+
+# editor
+export EDITOR="vim"
+export VISUAL="vim"
