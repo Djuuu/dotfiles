@@ -7,3 +7,6 @@
 [submodule "git-build"]
 	path = git-build
 	url = git@github.com:Djuuu/git-build.git
+[submodule "git-compare-branches"]
+	path = git-compare-branches
+	url = git@github.com:Djuuu/git-compare-branches.git

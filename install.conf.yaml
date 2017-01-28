@@ -12,6 +12,7 @@
     ~/.bash_prompt:         .bash_prompt
     ~/git-build:             git-build
     ~/git-deliver:           git-deliver
+    ~/git-compare-branches:  git-compare-branches
 
     ~/.bash_aliases:        .bash_aliases
     ~/.bash_profile:        .bash_profile

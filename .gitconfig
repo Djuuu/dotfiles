@@ -83,9 +83,10 @@
 
 	### External commands
 
-	prb     = "prune-remote-branches"
-	deliver = "!bash ~/git-deliver/deliver.sh"
-	build   = "!bash ~/git-build/git-build.sh"
+	prb              = "prune-remote-branches"
+	deliver          = "!bash ~/git-deliver/deliver.sh"
+	build            = "!bash ~/git-build/git-build.sh"
+	compare-branches = "!bash ~/git-compare-branches/git-compare-branches.sh"
 
 [gui]
 	encoding = utf-8
