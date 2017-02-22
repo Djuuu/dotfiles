@@ -16,3 +16,6 @@
 #	eval $("$SSH_PAGEANT" -qra "${SSH_AUTH_SOCK:-${TEMP:-/tmp}/.ssh-pageant-win-$USERNAME}")
 #fi
 #unset SSH_PAGEANT
+
+# Force terminal colors
+#export FORCE_COLOR=true
