@@ -2,5 +2,6 @@ BoldAsFont=no
 RightClickAction=paste
 Locale=fr_FR
 Charset=UTF-8
+Term=xterm-256color
 Rows=48
 Columns=128
