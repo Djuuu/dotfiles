@@ -92,6 +92,9 @@
 	build            = "!bash ~/git-build/git-build.sh"
 	compare-branches = "!bash ~/git-compare-branches/git-compare-branches.sh"
 
+	# GUI tools
+	gk = "!git gui & gitk --all &"
+	
 [gui]
 	encoding = utf-8
 	tabsize = 4
