@@ -36,6 +36,11 @@ alias vsh='vagrant ssh'
 alias vsp='vagrant suspend'
 alias  vh='vagrant halt'
 
+# Homestead (Vagrant)
+alias hu='homestead up'
+alias hsh='homestead ssh'
+alias hush='hu && hsh'
+
 # PHP
 alias phpd="php -dxdebug.remote_enable=On -dxdebug.remote_autostart=On -dxdebug.idekey=php-xdebug -dxdebug.remote_host=`echo $SSH_CLIENT | cut -d "=" -f 2 | awk '{print $1}'`"
 
