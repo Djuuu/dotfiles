@@ -74,6 +74,12 @@
 	djt = "!git tag | grep jenkins |xargs -i{} git tag -d {}"
 	dt = "!git ddt && git djt"
 
+	# remote non-origin branches
+	rnob = "!git branch -a | grep remotes/ | grep -v remotes/origin | sed -e 's/remotes\\///'"
+
+	# remove remote non-origin branches
+	rrnob = "!git branch -r -d $(git rnob)"
+    
 	# branches
 	branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
 
