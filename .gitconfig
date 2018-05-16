@@ -91,6 +91,9 @@
 	stmb  = "!for k in `git mb`;  do git ld $k; done | sort -r"
 	stnmb = "!for k in `git nmb`; do git ld $k; done | sort -r"
 
+	# transfer all refs from one remote to another
+	transfer-remote = "!f() { [ ! -z \"$1\" ] && [ ! -z \"$2\" ] && git push $2 +refs/remotes/$1/*:refs/heads/* +refs/tags/*:refs/tags/* ; }; f"
+
 	### External commands
 
 	prb              = "prune-remote-branches"
