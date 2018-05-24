@@ -15,6 +15,7 @@
     ~/git-compare-branches:  git-compare-branches
 
     ~/.bash_aliases:        .bash_aliases
+    ~/.bash_functions:      .bash_functions
     ~/.bash_profile:        .bash_profile
     ~/.bashrc:              .bashrc
     ~/.bash_logout:         .bash_logout
