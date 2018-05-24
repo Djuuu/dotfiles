@@ -13,7 +13,7 @@ homestead () {
 
 
 
-if [ "$OSTYPE" == "msys" ]; then
+if [ "$OSTYPE" == "msys" ] || [ "$OSTYPE" == "cygwin" ]; then
     docker () {
         (winpty docker "$@")
     }
@@ -39,7 +39,7 @@ PHP_VERSION=7.2
 
 php () {
     tty=
-     tty -s && tty=--tty
+    tty -s && tty=--tty
     docker run \
         $tty \
         --interactive \
@@ -57,7 +57,7 @@ php () {
 
 composer () {
     tty=
-     tty -s && tty=--tty
+    tty -s && tty=--tty
     docker run \
         $tty \
         --interactive \
