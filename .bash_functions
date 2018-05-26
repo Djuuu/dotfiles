@@ -47,12 +47,12 @@ php () {
         --user $(id -u):$(id -g) \
         --volume $(dfixpath $(pwd)):/code \
         --workdir $(dfixpath '/code') \
-        --publish 8000:8000 \
-        --publish 8080:8080 \
         php:$PHP_VERSION-cli php "$@"
 
         # --volume /etc/passwd:/etc/passwd:ro \
         # --volume /etc/group:/etc/group:ro \
+        # --publish 8000:8000 \
+        # --publish 8080:8080 \
 }
 
 composer () {
@@ -72,8 +72,21 @@ composer () {
         # --volume /etc/group:/etc/group:ro \
 }
 
-phpunit () {
+pphpunit () {
     php vendor/bin/phpunit "$@"
+}
+
+phpunit () {
+    tty=
+    tty -s && tty=--tty
+    docker run \
+        $tty \
+        --interactive \
+        --rm \
+        --user $(id -u):$(id -g) \
+        --volume $(dfixpath $(pwd)):/code \
+        --workdir $(dfixpath '/code') \
+        php:$PHP_VERSION-cli vendor/bin/phpunit "$@"
 }
 
 
