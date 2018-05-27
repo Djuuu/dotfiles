@@ -13,6 +13,7 @@
     ~/git-build:             git-build
     ~/git-deliver:           git-deliver
     ~/git-compare-branches:  git-compare-branches
+    ~/dockerize-clis:        dockerize-clis
 
     ~/.bash_aliases:        .bash_aliases
     ~/.bash_functions:      .bash_functions
