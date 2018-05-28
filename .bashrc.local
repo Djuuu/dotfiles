@@ -44,4 +44,4 @@
 # NODE_USER_HOME=/home/node
 
 # # non-existant user workaround (Linux/Unices)
-# DOCKER_ETC_VOLUMES="--volume /etc/passwd:/etc/passwd:ro --volume /etc/group:/etc/group:ro"}
+# DOCKER_COMMON_VOLUMES="--volume /etc/passwd:/etc/passwd:ro --volume /etc/group:/etc/group:ro"}
