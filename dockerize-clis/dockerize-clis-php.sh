@@ -28,19 +28,7 @@ if [ "$DOCKERIZE_COMPOSER" = true ]; then
 fi
 
 if [ "$DOCKERIZE_PHPUNIT" = true ]; then
-
-    function pphpunit {
-        php vendor/bin/phpunit "$@"
-    }
-
     function phpunit {
-        tty=
-        tty -s && tty=--tty
-        docker run $tty --interactive --rm \
-            --user $PHP_USER \
-            $DOCKER_ETC_VOLUMES \
-            --volume $(abspath $(pwd)):/code \
-            --workdir $(abspath '/code') \
-            php:$PHP_VERSION-cli vendor/bin/phpunit "$@"
+        php vendor/phpunit/phpunit/phpunit "$@"
     }
 fi
