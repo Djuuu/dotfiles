@@ -10,3 +10,6 @@
 [submodule "git-compare-branches"]
 	path = git-compare-branches
 	url = git@github.com:Djuuu/git-compare-branches.git
+[submodule "dockerize-clis"]
+	path = dockerize-clis
+	url = git@github.com:Djuuu/dockerize-clis.git
