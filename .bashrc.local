@@ -19,3 +19,29 @@
 
 # Force terminal colors
 #export FORCE_COLOR=true
+
+#####################
+# Dockerize-CLIs
+
+# DOCKERIZE_PHP=true
+# DOCKERIZE_COMPOSER=true
+# DOCKERIZE_PHPUNIT=true
+# DOCKERIZE_NODE=true
+# DOCKERIZE_NPM=true
+# DOCKERIZE_YARN=true
+
+# PHP_VERSION=7.2
+# PHP_PUBLISH_PORTS=""
+# PHP_PUBLISH_PORTS="${PHP_PUBLISH_PORTS} --publish 8000:8000"
+# PHP_USER=$(id -u):$(id -g)
+
+# NODE_VERSION=8
+# NODE_PUBLISH_PORTS=""
+# NODE_PUBLISH_PORTS="$NODE_PUBLISH_PORTS --publish 3000:3000"
+# NODE_USER=$(id -u):$(id -g)
+# NODE_USER=node
+# NODE_USER_HOME=$HOME
+# NODE_USER_HOME=/home/node
+
+# # non-existant user workaround (Linux/Unices)
+# DOCKER_ETC_VOLUMES="--volume /etc/passwd:/etc/passwd:ro --volume /etc/group:/etc/group:ro"}

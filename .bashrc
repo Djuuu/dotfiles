@@ -25,6 +25,10 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+# local config
+if [ -f ~/.bashrc.local ]; then
+	source ~/.bashrc.local
+fi
 
 # Aliases
 if [ -f ~/.bash_aliases ]; then
@@ -39,9 +43,4 @@ fi
 # prompt
 if [ -f ~/.bash_prompt/prompt.sh ]; then
 	source ~/.bash_prompt/prompt.sh
-fi
-
-# local config
-if [ -f ~/.bashrc.local ]; then
-	source ~/.bashrc.local
 fi
