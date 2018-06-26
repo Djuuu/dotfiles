@@ -61,25 +61,10 @@
 	ri = "rebase -i"
 	rc = "rebase --continue"
 
-	rim = "rebase -i master"
-	pom = "push origin master"
-
-	gcp = "gc --prune=now"
-
 	lg = "log --color --graph --pretty=graph --abbrev-commit --"
 	lga = "log --color --graph --pretty=graph --abbrev-commit --all --"
 	ld = "!f() { echo -e `git show --pretty=format:'%Cgreen%ci %Cblue%cr%Creset' $1 | head -n 1`\\\\t$1; }; f"
 
-	ddt = "!git tag | grep delivered |xargs -i{} git tag -d {}"
-	djt = "!git tag | grep jenkins |xargs -i{} git tag -d {}"
-	dt = "!git ddt && git djt"
-
-	# remote non-origin branches
-	rnob = "!git branch -a | grep remotes/ | grep -v remotes/origin | sed -e 's/remotes\\///'"
-
-	# remove remote non-origin branches
-	rrnob = "!git branch -r -d $(git rnob)"
-    
 	# branches
 	branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
 
@@ -94,16 +79,22 @@
 	# transfer all refs from one remote to another
 	transfer-remote = "!f() { [ ! -z \"$1\" ] && [ ! -z \"$2\" ] && git push $2 +refs/remotes/$1/*:refs/heads/* +refs/tags/*:refs/tags/* ; }; f"
 
-	### External commands
+	# remote non-origin branches
+	rnob = "!git branch -a | grep remotes/ | grep -v remotes/origin | sed -e 's/remotes\\///'"
 
-	prb              = "prune-remote-branches"
+	# remove remote non-origin branches
+	rrnob = "!git branch -r -d $(git rnob)"
+
+	# tags cleanup
+	ddt = "!git tag | grep delivered |xargs -i{} git tag -d {}"
+	djt = "!git tag | grep jenkins |xargs -i{} git tag -d {}"
+	dt = "!git ddt && git djt"
+
+	# external commands
 	deliver          = "!bash ~/git-deliver/deliver.sh"
 	build            = "!bash ~/git-build/git-build.sh"
 	compare-branches = "!bash ~/git-compare-branches/git-compare-branches.sh"
 
-	# GUI tools
-	gk = "!git gui & gitk --all &"
-	
 [gui]
 	encoding = utf-8
 	tabsize = 4
