@@ -10,3 +10,6 @@
 	## Alternative editors on Windows :
 	# editor = 'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
 	# editor = 'C:/Program Files/Sublime text 2/sublime_text.exe' -n -w
+
+[include]
+	path = ~/.gitconfig.url.local
