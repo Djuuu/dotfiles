@@ -44,9 +44,6 @@
 [rerere]
 	enabled = true
 
-[credential]
-	helper = cache --timeout 7201
-
 [alias]
 	st = "status"
 
