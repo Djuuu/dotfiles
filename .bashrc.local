@@ -20,6 +20,9 @@
 # Force terminal colors
 #export FORCE_COLOR=true
 
+# A fix for Windows users, to ensure the application path works.
+#export COMPOSE_CONVERT_WINDOWS_PATHS=1
+
 #####################
 # Dockerize-CLIs
 

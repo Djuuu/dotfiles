@@ -41,6 +41,13 @@ alias hu='homestead up'
 alias hsh='homestead ssh'
 alias hush='hu && hsh'
 
+# Docker
+alias d='docker'
+alias dc='docker-compose'
+alias dcu='docker-compose up'
+alias dcud='docker-compose up -d'
+alias dcd='docker-compose down'
+
 # PHP
 alias phpd="php -dxdebug.remote_enable=On -dxdebug.remote_autostart=On -dxdebug.idekey=php-xdebug -dxdebug.remote_host=`echo $SSH_CLIENT | cut -d "=" -f 2 | awk '{print $1}'`"
 
@@ -60,5 +67,3 @@ alias phpd="php -dxdebug.remote_enable=On -dxdebug.remote_autostart=On -dxdebug.
 # Laravel
 alias artisan='php artisan'
 alias art='php artisan'
-
-alias ggw='gulp && gulp watch'
