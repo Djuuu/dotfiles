@@ -86,6 +86,7 @@
 	deliver          = "!bash ~/git-deliver/deliver.sh"
 	build            = "!bash ~/git-build/git-build.sh"
 	compare-branches = "!bash ~/git-compare-branches/git-compare-branches.sh"
+	mu               = "!python ~/mu-repo/mu"
 
 [gui]
 	encoding = utf-8

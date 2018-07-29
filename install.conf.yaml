@@ -14,6 +14,7 @@
     ~/git-deliver:           git-deliver
     ~/git-compare-branches:  git-compare-branches
     ~/dockerize-clis:        dockerize-clis
+    ~/mu-repo:               mu-repo
 
     ~/.bash_aliases:        .bash_aliases
     ~/.bash_functions:      .bash_functions
