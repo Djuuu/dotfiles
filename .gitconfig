@@ -83,6 +83,7 @@
 	dt = "!git ddt && git djt"
 
 	# external commands
+	k                = "!gitk --all"
 	deliver          = "!bash ~/git-deliver/deliver.sh"
 	build            = "!bash ~/git-build/git-build.sh"
 	compare-branches = "!bash ~/git-compare-branches/git-compare-branches.sh"
