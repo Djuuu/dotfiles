@@ -27,6 +27,13 @@ alias please='sudo $(fc -nl -1)'
 
 alias sshagentstart='eval `ssh-agent -s` && ssh-add'
 
+# Git - mu-repo
+alias gm='git mu'
+alias gmr='git mu register'
+alias gml='git mu list'
+alias gmg='git mu group'
+alias gmgs='git mu group switch'
+
 # Vagrant
 alias  vu='vagrant up'
 alias  vd='vagrant destroy'
