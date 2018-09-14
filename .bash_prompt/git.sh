@@ -59,11 +59,15 @@ function git_dirty_flag {
 }
 
 function git_prompt_command {
-	promptTitlebar="\[\e]0;\h - \w\a\]"
-	promptUserHost="${userHostPromptColor}\u@\h${whiteTxt}:"
-	promptCWD="${dirPromptColor}\w"
-	promptGitStatus="${purpleTxt}$(parse_git_branch)"
+
+	defaultWindowTitle="${DEFAULT_WINDOW_TITLE:-\h - \W}"
+	titlebar="\[\e]0;${FORCED_WINDOW_TITLE:-${defaultWindowTitle}}\a\]"
+
+	userHost="${userHostPromptColor}\u@\h${whiteTxt}:"
+	cwd="${dirPromptColor}\w"
+	gitStatus="${purpleTxt}$(parse_git_branch)"
+
 	promptEnd="${resetColor}${promptSign} "
 
-	PS1="${promptTitlebar}${promptUserHost}${promptCWD}${promptGitStatus}${promptEnd}"
+	PS1="${titlebar}${userHost}${cwd}${gitStatus}${promptEnd}"
 }
