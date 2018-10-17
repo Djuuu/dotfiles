@@ -33,6 +33,7 @@
 # DOCKERIZE_NODE=true
 # DOCKERIZE_NPM=true
 # DOCKERIZE_YARN=true
+# DOCKERIZE_SHELLCHECK=true
 
 # PHP_VERSION=7.2
 # PHP_PUBLISH_PORTS=""
@@ -48,6 +49,8 @@
 # NODE_USER=node
 # NODE_USER_HOME=$HOME
 # NODE_USER_HOME=/home/node
+
+# SHELLCHECK_VERSION=stable
 
 # # non-existant user workaround (Linux/Unices)
 # DOCKER_COMMON_VOLUMES="--volume /etc/passwd:/etc/passwd:ro --volume /etc/group:/etc/group:ro"}
