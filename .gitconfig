@@ -11,8 +11,8 @@
 [include]
 	path = ~/.gitconfig.local
 
-[branch]
-	autosetuprebase = always
+[pull]
+	rebase = true
 
 [status]
 	submoduleSummary = true
