@@ -4,8 +4,14 @@
 # alias cp='cp -i'
 # alias mv='mv -i'
 
-export LS_OPTIONS='--color=auto'
-eval "`dircolors`"
+if [ -x "$(command -v dircolors)" ]; then
+    export LS_OPTIONS='--color=auto'
+    eval "`dircolors`"
+else
+    export LS_OPTIONS=''
+    export CLICOLOR=1
+fi
+
 alias ls='ls $LS_OPTIONS'
 alias ll='ls $LS_OPTIONS -lh'
 alias  l='ls $LS_OPTIONS -lhA'
