@@ -4,8 +4,10 @@
 
 
 # Completion options
-[[ -f /etc/bash_completion ]] && . /etc/bash_completion
+[ -f /etc/bash_completion ]           && . /etc/bash_completion
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
+#/usr/local/etc
 
 # History Options
 
@@ -25,11 +27,6 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-# local config
-if [ -f ~/.bashrc.local ]; then
-	source ~/.bashrc.local
-fi
-
 # Aliases
 if [ -f ~/.bash_aliases ]; then
 	source ~/.bash_aliases
@@ -43,4 +40,9 @@ fi
 # prompt
 if [ -f ~/.bash_prompt/prompt.sh ]; then
 	source ~/.bash_prompt/prompt.sh
+fi
+
+# local config
+if [ -f ~/.bashrc.local ]; then
+	source ~/.bashrc.local
 fi
