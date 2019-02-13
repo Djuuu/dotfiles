@@ -1,0 +1,55 @@
+{
+  "title": "Djuuu custom caps lock shortcuts",
+  "rules": [
+    {
+      "description": "Caps Lock to Control+Command+Option+Shift",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {"key_code": "caps_lock", "modifiers": {"optional": ["any"]}},
+          "to": [{"key_code": "left_shift", "modifiers": ["left_command", "left_control", "left_option"]}]
+        }
+      ]
+    },
+
+    {"description": "Parentheses on [Caps Lock] + [)] / [-]", "manipulators": [
+      {
+        "type": "basic",
+        "from": {"key_code": "hyphen", "modifiers": {"mandatory": ["left_shift", "left_command", "left_control", "left_option"]}},
+        "to": [{"key_code": "5"}]
+      },
+      {
+        "type": "basic",
+        "from": {"key_code": "equal_sign", "modifiers": {"mandatory": ["left_shift", "left_command", "left_control", "left_option"]}},
+        "to": [{"key_code": "hyphen"}]
+      }
+    ]},
+
+    {"description": "Brackets on [Caps Lock] + [^] / [$]", "manipulators": [
+      {
+        "type": "basic",
+        "from": {"key_code": "open_bracket", "modifiers": {"mandatory": ["left_shift", "left_command", "left_control", "left_option"]}},
+        "to": [{"key_code": "5", "modifiers": ["left_option", "left_shift"]}]
+      },
+      {
+        "type": "basic",
+        "from": {"key_code": "close_bracket", "modifiers": {"mandatory": ["left_shift", "left_command", "left_control", "left_option"]}},
+        "to": [{"key_code": "hyphen", "modifiers": ["left_option", "left_shift"]}]
+      }
+    ]},
+
+    {"description": "Braces on [Caps Lock] + [ù] / []", "manipulators": [
+      {
+        "type": "basic",
+        "from": {"key_code": "quote", "modifiers": {"mandatory": ["left_shift", "left_command", "left_control", "left_option"]}},
+        "to": [{"key_code": "5", "modifiers": ["left_option"]}]
+      },
+      {
+        "type": "basic",
+        "from": {"key_code": "backslash", "modifiers": {"mandatory": ["left_shift", "left_command", "left_control", "left_option"]}},
+        "to": [{"key_code": "hyphen", "modifiers": ["left_option"]}]
+      }
+    ]}
+
+  ]
+}

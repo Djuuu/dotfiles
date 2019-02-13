@@ -28,6 +28,8 @@
     ~/.minttyrc:            .minttyrc
     ~/.vimrc:               .vimrc
 
+    ~/.config/karabiner/assets/complex_modifications/custom-caps-lock.json:  karabiner/custom-caps-lock.json
+
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
