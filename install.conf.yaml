@@ -29,6 +29,7 @@
     ~/.vimrc:               .vimrc
 
     ~/.config/karabiner/assets/complex_modifications/custom-caps-lock.json:  karabiner/custom-caps-lock.json
+    ~/.config/karabiner/assets/complex_modifications/custom-f13-f14-f15.json:  karabiner/custom-f13-f14-f15.json
 
 
 - shell:
