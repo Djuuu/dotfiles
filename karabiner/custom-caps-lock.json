@@ -1,55 +1,120 @@
 {
-  "title": "Djuuu custom caps lock shortcuts",
+  "title": "Djuuu custom caps lock shortcuts (inspired by https://github.com/Vonng/Capslock)",
   "rules": [
     {
-      "description": "Caps Lock to Control+Command+Option+Shift",
+      "description": "[Dju Hyper] Caps Lock to Hyper ([Control] + [Command] + [Option] + [Shift])",
       "manipulators": [
         {
           "type": "basic",
           "from": {"key_code": "caps_lock", "modifiers": {"optional": ["any"]}},
-          "to": [{"key_code": "left_shift", "modifiers": ["left_command", "left_control", "left_option"]}]
+          "to": [{"key_code": "right_shift", "modifiers": ["right_command", "right_control", "right_option"]}]
         }
       ]
     },
-
-    {"description": "Parentheses on [Caps Lock] + [)] / [-]", "manipulators": [
-      {
-        "type": "basic",
-        "from": {"key_code": "hyphen", "modifiers": {"mandatory": ["left_shift", "left_command", "left_control", "left_option"]}},
-        "to": [{"key_code": "5"}]
-      },
-      {
-        "type": "basic",
-        "from": {"key_code": "equal_sign", "modifiers": {"mandatory": ["left_shift", "left_command", "left_control", "left_option"]}},
-        "to": [{"key_code": "hyphen"}]
-      }
-    ]},
-
-    {"description": "Brackets on [Caps Lock] + [^] / [$]", "manipulators": [
-      {
-        "type": "basic",
-        "from": {"key_code": "open_bracket", "modifiers": {"mandatory": ["left_shift", "left_command", "left_control", "left_option"]}},
-        "to": [{"key_code": "5", "modifiers": ["left_option", "left_shift"]}]
-      },
-      {
-        "type": "basic",
-        "from": {"key_code": "close_bracket", "modifiers": {"mandatory": ["left_shift", "left_command", "left_control", "left_option"]}},
-        "to": [{"key_code": "hyphen", "modifiers": ["left_option", "left_shift"]}]
-      }
-    ]},
-
-    {"description": "Braces on [Caps Lock] + [ù] / []", "manipulators": [
-      {
-        "type": "basic",
-        "from": {"key_code": "quote", "modifiers": {"mandatory": ["left_shift", "left_command", "left_control", "left_option"]}},
-        "to": [{"key_code": "5", "modifiers": ["left_option"]}]
-      },
-      {
-        "type": "basic",
-        "from": {"key_code": "backslash", "modifiers": {"mandatory": ["left_shift", "left_command", "left_control", "left_option"]}},
-        "to": [{"key_code": "hyphen", "modifiers": ["left_option"]}]
-      }
-    ]}
-
+    {
+      "description": "[Dju Hyper] Parentheses, Brackets & Braces on [Hyper] + [)] [-] [^] [$] [ù] [`]",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {"key_code": "hyphen", "modifiers": {"mandatory": ["right_shift", "right_command", "right_control", "right_option"]}},
+          "to": [{"key_code": "5"}]
+        },
+        {
+          "type": "basic",
+          "from": {"key_code": "equal_sign", "modifiers": {"mandatory": ["right_shift", "right_command", "right_control", "right_option"]}},
+          "to": [{"key_code": "hyphen"}]
+        },
+        {
+          "type": "basic",
+          "from": {"key_code": "open_bracket", "modifiers": {"mandatory": ["right_shift", "right_command", "right_control", "right_option"]}},
+          "to": [{"key_code": "5", "modifiers": ["right_option", "right_shift"]}]
+        },
+        {
+          "type": "basic",
+          "from": {"key_code": "close_bracket", "modifiers": {"mandatory": ["right_shift", "right_command", "right_control", "right_option"]}},
+          "to": [{"key_code": "hyphen", "modifiers": ["right_option", "right_shift"]}]
+        },
+        {
+          "type": "basic",
+          "from": {"key_code": "quote", "modifiers": {"mandatory": ["right_shift", "right_command", "right_control", "right_option"]}},
+          "to": [{"key_code": "5", "modifiers": ["right_option"]}]
+        },
+        {
+          "type": "basic",
+          "from": {"key_code": "backslash", "modifiers": {"mandatory": ["right_shift", "right_command", "right_control", "right_option"]}},
+          "to": [{"key_code": "hyphen", "modifiers": ["right_option"]}]
+        }
+      ]
+    },
+    {
+      "description": "[Dju Hyper] Hyper Mousekey - move mouse with [Hyper] + [↑][↓][→][←]",
+      "manipulators": [
+        {
+          "from": {"key_code": "up_arrow", "modifiers": {"mandatory": ["right_command", "right_control", "right_shift", "right_option"]}},
+          "to": [{"mouse_key": {"y": -12288}}],
+          "type": "basic"
+        },
+        {
+          "from": {"key_code": "down_arrow", "modifiers": {"mandatory": ["right_command", "right_control", "right_shift", "right_option"]}},
+          "to": [{"mouse_key": {"y": 12288}}],
+          "type": "basic"
+        },
+        {
+          "from": {"key_code": "left_arrow", "modifiers": {"mandatory": ["right_command", "right_control", "right_shift", "right_option"]}},
+          "to": [{"mouse_key": {"x": -12288}}],
+          "type": "basic"
+        },
+        {
+          "from": {"key_code": "right_arrow", "modifiers": {"mandatory": ["right_command", "right_control", "right_shift", "right_option"]}},
+          "to": [{"mouse_key": {"x": 12288}}],
+          "type": "basic"
+        },
+        {
+          "from": {"key_code": "return_or_enter", "modifiers": {"mandatory": ["left_command", "right_command", "right_control", "right_shift", "right_option"]}},
+          "to": [{"pointing_button": "button2"}],
+          "type": "basic"
+        },
+        {
+          "from": {"key_code": "return_or_enter", "modifiers": {"mandatory": ["right_command", "right_control", "right_shift", "right_option"]}},
+          "to": [{"pointing_button": "button1"}],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "[Dju Hyper] Workspaces navigation on [Hyper] + [A] [Z] [E] [Q] [S] [D]",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {"key_code": "a", "modifiers": {"mandatory": ["right_shift", "right_command", "right_control", "right_option"]}},
+          "to": [{"key_code": "1", "modifiers": ["right_control"]}]
+        },
+        {
+          "type": "basic",
+          "from": {"key_code": "s", "modifiers": {"mandatory": ["right_shift", "right_command", "right_control", "right_option"]}},
+          "to": [{"key_code": "2", "modifiers": ["right_control"]}]
+        },
+        {
+          "type": "basic",
+          "from": {"key_code": "d", "modifiers": {"mandatory": ["right_shift", "right_command", "right_control", "right_option"]}},
+          "to": [{"key_code": "3", "modifiers": ["right_control"]}]
+        },
+        {
+          "type": "basic",
+          "from": {"key_code": "q", "modifiers": {"mandatory": ["right_shift", "right_command", "right_control", "right_option"]}},
+          "to": [{"key_code": "4", "modifiers": ["right_control"]}]
+        },
+        {
+          "type": "basic",
+          "from": {"key_code": "w", "modifiers": {"mandatory": ["right_shift", "right_command", "right_control", "right_option"]}},
+          "to": [{"key_code": "5", "modifiers": ["right_control"]}]
+        },
+        {
+          "type": "basic",
+          "from": {"key_code": "e", "modifiers": {"mandatory": ["right_shift", "right_command", "right_control", "right_option"]}},
+          "to": [{"key_code": "6", "modifiers": ["right_control"]}]
+        }
+      ]
+    }
   ]
 }

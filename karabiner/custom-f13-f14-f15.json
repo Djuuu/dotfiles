@@ -2,7 +2,7 @@
   "title": "Djuuu custom F13 - F14 - F15",
   "rules": [
     {
-      "description": "Print screen selection to file on Control + F13",
+      "description": "[Dju F13-F14-F15] Print screen selection to file on [Control] + [F13]",
       "manipulators": [
         {
           "type": "basic",
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "description": "Print screen selection to clipboard on F13",
+      "description": "[Dju F13-F14-F15] Print screen selection to clipboard on [F13]",
       "manipulators": [
         {
           "type": "basic",
@@ -22,7 +22,7 @@
       ]
     },
     {
-      "description": "Lock screen on F14",
+      "description": "[Dju F13-F14-F15] Lock screen on [F14]",
       "manipulators": [
         {
           "type": "basic",

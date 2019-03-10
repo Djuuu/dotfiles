@@ -1,0 +1,30 @@
+{
+  "title": "Djuuu custom nav keys",
+  "rules": [
+    {
+      "description": "[Dju PgUp/Dn] PC-style Page Up & Down",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {"key_code": "home", "modifiers": {"mandatory": ["shift"]}},
+          "to": [{"key_code": "left_arrow", "modifiers": ["right_shift" ,"right_command"]}]
+        },
+        {
+          "type": "basic",
+          "from": {"key_code": "home"},
+          "to": [{"key_code": "left_arrow", "modifiers": ["right_command"]}]
+        },
+        {
+          "type": "basic",
+          "from": {"key_code": "end", "modifiers": {"mandatory": ["shift"]}},
+          "to": [{"key_code": "right_arrow", "modifiers": ["right_shift" ,"right_command"]}]
+        },
+        {
+          "type": "basic",
+          "from": {"key_code": "end"},
+          "to": [{"key_code": "right_arrow", "modifiers": ["right_command"]}]
+        }
+      ]
+    }
+  ]
+}
