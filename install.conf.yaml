@@ -28,8 +28,11 @@
     ~/.minttyrc:            .minttyrc
     ~/.vimrc:               .vimrc
 
-    ~/.config/karabiner/assets/complex_modifications/custom-caps-lock.json:  karabiner/custom-caps-lock.json
-    ~/.config/karabiner/assets/complex_modifications/custom-f13-f14-f15.json:  karabiner/custom-f13-f14-f15.json
+    ~/.config/karabiner/assets/complex_modifications/:
+        if: "[ -d ~/.config/karabiner ]"
+        create: true
+        glob:   true
+        path:   karabiner/*
 
 
 - shell:
