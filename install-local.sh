@@ -3,6 +3,7 @@
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 for file_name in \
+	".bashrc.env.local" \
 	".bashrc.local" \
 	".gitconfig.local" \
 	".gitconfig.url.local"

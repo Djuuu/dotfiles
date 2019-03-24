@@ -27,6 +27,11 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+# local env
+if [ -f ~/.bashrc.env.local ]; then
+	source ~/.bashrc.env.local
+fi
+
 # Aliases
 if [ -f ~/.bash_aliases ]; then
 	source ~/.bash_aliases
