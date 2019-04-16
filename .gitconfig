@@ -23,6 +23,9 @@
 	renames = true
 	wordRegex = .
 
+[rebase]
+	autosquash = true
+
 [fetch]
 	prune = true
 
