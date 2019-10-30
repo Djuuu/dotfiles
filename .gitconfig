@@ -58,6 +58,7 @@
 
 	lg = "log --color --graph --pretty=graph --abbrev-commit --"
 	lga = "log --color --graph --pretty=graph --abbrev-commit --all --"
+	lgr = "log --oneline --reverse --no-decorate -n 25"
 	ld = "!f() { echo -e `git show --pretty=format:'%Cgreen%ci %Cblue%cr%Creset' $1 | head -n 1`\\\\t$1; }; f"
 
 	fpush = "push --force-with-lease"
