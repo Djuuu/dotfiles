@@ -28,6 +28,8 @@
     ~/.minttyrc:            .minttyrc
     ~/.vimrc:               .vimrc
 
+    ~/.Xmodmap:             .Xmodmap
+
     ~/.config/karabiner/assets/complex_modifications/:
         if: "[ -d ~/.config/karabiner ]"
         create: true
