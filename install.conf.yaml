@@ -30,6 +30,16 @@
 
     ~/.Xmodmap:             .Xmodmap
 
+    ~/.config/autokey/data/Phrases:
+        if: "[ -d ~/.config/autokey ]"
+        create: true
+        path:   autokey/Phrases
+
+    ~/.config/autokey/data/Scripts:
+        if: "[ -d ~/.config/autokey ]"
+        create: true
+        path:   autokey/Scripts
+
     ~/.config/karabiner/assets/complex_modifications/:
         if: "[ -d ~/.config/karabiner ]"
         create: true
