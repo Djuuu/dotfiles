@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
 
-button=$1
-modifiers=$2
-
-# https://askubuntu.com/questions/97213/application-specific-key-combination-remapping
-Wid=`xdotool getactivewindow`
-Wname=`xprop -id ${Wid} |awk '/WM_CLASS/{print $4}'`
-
 ########################################################################################################################
 # Logitech MX Master 3 wrapper script for use with xbindkeys
 #
@@ -29,8 +22,46 @@ Wname=`xprop -id ${Wid} |awk '/WM_CLASS/{print $4}'`
 #   "Shift+Control+Alt"
 #
 
+button=$1
+modifiers=$2
+
+# Horizontal scroll sensitivity reduction
+hScrollModulo=3
+hScrollIndexBuffer="/dev/shm/LogitechMXMaster3HScroll"
+
+# https://askubuntu.com/questions/97213/application-specific-key-combination-remapping
+Wid=`xdotool getactivewindow`
+Wname=`xprop -id ${Wid} |awk '/WM_CLASS/{print $4}'`
+
 ## Debug (for use with `xbindkeys -v`)
 # echo "modifiers Wname:$Wname ; button:$button ; modifiers:$modifiers"
+
+
+function temporizeHorizontalScroll {
+
+    local newDirection=$@;
+
+    # read buffer
+    local buffer=(`cat $hScrollIndexBuffer`)
+    local oldDirection=${buffer[0]}
+    local value=${buffer[1]}
+
+    if [ "$oldDirection" = "$newDirection" ]; then
+        # increment
+        ((value++))
+        ((value%=$hScrollModulo))
+    else
+        # reset on direction change
+        value=1
+    fi
+
+    # write buffer
+    echo "$newDirection $value" > $hScrollIndexBuffer || value=0
+
+    # temporize scroll
+    [ ${value} -ne 0 ] && exit;
+}
+
 
 case "$button" in
 
@@ -44,6 +75,9 @@ case "$button" in
         ;;
 
     "Scroll_L")
+
+        temporizeHorizontalScroll "L"
+
         case "$Wname" in
 
             '"jetbrains-phpstorm"')
@@ -65,6 +99,9 @@ case "$button" in
         ;;
 
     "Scroll_R")
+
+        temporizeHorizontalScroll "R"
+
         case "$Wname" in
 
             '"jetbrains-phpstorm"')
