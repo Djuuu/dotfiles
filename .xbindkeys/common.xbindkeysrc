@@ -1,0 +1,41 @@
+###########################
+# xbindkeys configuration #
+###########################
+#
+# Version: 1.8.6
+#
+# To specify a key, you can use 'xbindkeys --key' or
+# 'xbindkeys --multikey' and put one of the two lines in this file.
+#
+# The format of a command line is:
+#    "command to start"
+#       associated key
+#
+# List of modifiers:
+#   Release, Control, Shift, Mod1 (Alt), Mod2 (NumLock),
+#   Mod3 (CapsLock), Mod4, Mod5 (Scroll).
+#
+#
+# By defaults, xbindkeys does not pay attention with the modifiers
+# NumLock, CapsLock and ScrollLock.
+# Uncomment the lines above if you want to pay attention to them.
+#
+#keystate_numlock = enable
+#keystate_capslock = enable
+#keystate_scrolllock= enable
+#
+# Test configuration:
+#   xbindkeys -v
+#
+# Restart:
+#   pkill xbindkeys && xbindkeys
+#
+
+
+##################################
+# Misc. shortcuts
+
+## Shrug ¯\_(ツ)_/¯
+#"sleep 0.3 && xdotool key --delay 3 macron backslash underscore parenleft U30C4 parenright underscore slash key macron"
+#    Mod3 + y
+

@@ -18,19 +18,11 @@ Wname=`xprop -id ${Wid} |awk '/WM_CLASS/{print $4}'`
 #   Back
 #   Forward
 #
-# Window names:
-#
-#   '"Firefox"'
-#   '"Google-chrome"'
-#   '"jetbrains-phpstorm"'
-#   '"Gnome-terminal"'
-#   '"GitKraken"'
-#
 # Modifiers:
 #
 #   "Shift"
 #   "Control"
-#   "Alt"&
+#   "Alt"
 #   "Shift+Control"
 #   "Shift+Alt"
 #   "Control+Alt"
@@ -43,7 +35,6 @@ Wname=`xprop -id ${Wid} |awk '/WM_CLASS/{print $4}'`
 case "$button" in
 
     "Thumb")
-        # xdotool key --clearmodifiers --delay 6 super+s ; # Overview
 
         # Open Gnome overview programmatically (Thumb button sends Super_L on release, which might break any super-based shortcut depending on timing)
         # https://askubuntu.com/questions/1095553/invoking-gnome-activities-overview-from-command-line/1095614#1095614
@@ -54,6 +45,7 @@ case "$button" in
 
     "Scroll_L")
         case "$Wname" in
+
             '"jetbrains-phpstorm"')
                 case "$modifiers" in
                     "Alt") xdotool key Down; ;; # Shrink selection
@@ -67,12 +59,14 @@ case "$button" in
                     *) xdotool key --clearmodifiers alt+Left; ;; # Select previous tab
                 esac
                 ;;
+
             *) xdotool key --clearmodifiers ctrl+shift+Tab; ;; # Previous tab
         esac
         ;;
 
     "Scroll_R")
         case "$Wname" in
+
             '"jetbrains-phpstorm"')
                 case "$modifiers" in
                     "Alt") xdotool key Up; ;; # Extend selection
@@ -86,23 +80,20 @@ case "$button" in
                     *) xdotool key --clearmodifiers alt+Right; ;; # Select next tab
                 esac
                 ;;
+
             *) xdotool key --clearmodifiers ctrl+Tab; ;; # Next tab
         esac
         ;;
 
     "Back")
         case "$Wname" in
+
             '"Firefox"' | '"Google-chrome"')
                 xdotool key F12 # Developer tools
                 ;;
+
             '"jetbrains-phpstorm"')
                 case "$modifiers" in
-
-                    "Shift")             ;;
-                    "Control")           ;;
-                    "Shift+Control")     ;;
-                    "Shift+Alt")         ;;
-                    "Shift+Control+Alt") ;;
 
                     "Alt") xdotool key --clearmodifiers Left \
                                    key --clearmodifiers alt+l \
@@ -118,6 +109,7 @@ case "$button" in
 
     "Forward")
         case "$Wname" in
+
             '"Firefox"' | '"Google-chrome"')
                 case "$modifiers" in
                     "Control") xdotool key f;  ;; # Find
@@ -125,6 +117,7 @@ case "$button" in
                     *)         xdotool key F3; ;; # Find next
                 esac
                 ;;
+
             '"jetbrains-phpstorm"')
                 case "$modifiers" in
                     "Alt")               xdotool key j; ;; # Add selection for next occurrence

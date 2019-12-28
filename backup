@@ -19,6 +19,8 @@ function dotfiles_backup {
 		".minttyrc"         \
 		".vimrc"            \
 		".Xmodmap"          \
+		".xbindkeysrc"      \
+		".bashrc.env.local" \
 		".bashrc.local"     \
 		".gitconfig.local"  \
 		".gitconfig.url.local"
