@@ -28,7 +28,15 @@
     ~/.minttyrc:            .minttyrc
     ~/.vimrc:               .vimrc
 
-    ~/.Xmodmap:             .Xmodmap
+    ~/.Xmodmap:
+        if: "command -v xmodmap"
+        path:   .Xmodmap
+    ~/.xbindkeys:
+        if: "command -v xbindkeys"
+        path:   .xbindkeys
+    ~/.xbindkeysrc:
+        if: "command -v xbindkeys"
+        path:   .xbindkeysrc
 
     ~/.config/autokey/data/Phrases:
         if: "[ -d ~/.config/autokey ]"

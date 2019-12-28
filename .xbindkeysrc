@@ -1,0 +1,143 @@
+###########################
+# xbindkeys configuration #
+###########################
+#
+# Version: 1.8.6
+#
+# To specify a key, you can use 'xbindkeys --key' or
+# 'xbindkeys --multikey' and put one of the two lines in this file.
+#
+# The format of a command line is:
+#    "command to start"
+#       associated key
+#
+# List of modifiers:
+#   Release, Control, Shift, Mod1 (Alt), Mod2 (NumLock),
+#   Mod3 (CapsLock), Mod4, Mod5 (Scroll).
+#
+#
+# By defaults, xbindkeys does not pay attention with the modifiers
+# NumLock, CapsLock and ScrollLock.
+# Uncomment the lines above if you want to pay attention to them.
+#
+#keystate_numlock = enable
+#keystate_capslock = enable
+#keystate_scrolllock= enable
+#
+# Test configuration:
+#   xbindkeys -v
+#
+# Restart:
+#   pkill xbindkeys && xbindkeys
+#
+
+
+##################################
+# Misc. shortcuts
+
+## Shrug ¯\_(ツ)_/¯
+#"sleep 0.3 && xdotool key --delay 3 macron backslash underscore parenleft U30C4 parenright underscore slash key macron"
+#    Mod3 + y
+
+
+##################################
+# Logitech MX Master 3
+#
+#   Scroll wheel:         btn 4-5 (up/down)
+#   Thumb wheel:          btn 6-7 (right/left)
+#   Back/forward buttons: btn 8-9
+#   Thumb button sends:
+#     - on press:   Super_L(Mod4) press + Tab press + Tab release
+#     - on release: Super_L(Mod4) release
+#
+#   To be able to capture thumb button shortcut:
+#     Gnome settings -> Keyboard -> Navigation -> Swith applications -> 'Alt + Tab'
+#     Gnome tweaks   -> Overview shortcut                            -> 'Right Super'
+#
+# Prerequisites:
+#
+#   sudo apt install xdotool
+#
+#   Gnome settings -> Keyboard -> Navigation -> Swith applications -> Alt + Tab
+#   Gnome tweaks -> Overview shortcut -> 'Right Super'
+#
+# More info:
+#   cat /proc/bus/input/devices
+#   xinput  list
+#   xinput test 15
+#
+
+## Scrollwheel left
+#"xte 'keydown Control_L' 'keydown Shift_R' 'key Tab' 'keyup Shift_R' 'keyup Control_L'"
+"~/.xbindkeys/MX-Master-3-bindings.sh Scroll_L"
+  b:7 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Scroll_L Alt"
+  Alt + b:7 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Scroll_L Control"
+  Control + b:7 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Scroll_L Shift+Control"
+  Shift+Control + b:7 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Scroll_L Shift+Alt"
+  Shift+Alt + b:7 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Scroll_L Control+Alt"
+  Control+Alt + b:7 + release
+
+## Scrollwheel right
+#"xte 'keydown Control_L' 'key Tab' 'keyup Control_L'"
+"~/.xbindkeys/MX-Master-3-bindings.sh Scroll_R"
+  b:6 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Scroll_R Alt"
+  Alt + b:6 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Scroll_R Control"
+  Control + b:6 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Scroll_R Shift+Control"
+  Shift+Control + b:6 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Scroll_R Shift+Alt"
+  Shift+Alt + b:6 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Scroll_R Control+Alt"
+  Control+Alt + b:6 + release
+
+## Back button
+"~/.xbindkeys/MX-Master-3-bindings.sh Back"
+  b:8 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Back Shift"
+  Shift + b:8 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Back Control"
+  Control + b:8 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Back Alt"
+  Alt + b:8 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Back Shift+Control"
+  Shift+Control + b:8 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Back Shift+Alt"
+  Shift+Alt + b:8 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Back Control+Alt"
+  Control+Alt + b:8 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Back Shift+Control+Alt"
+  Shift+Control+Alt + b:8 + release
+
+## Forward button
+"~/.xbindkeys/MX-Master-3-bindings.sh Forward"
+  b:9 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Forward Shift"
+  Shift + b:9 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Forward Control"
+  Control + b:9 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Forward Alt"
+  Alt + b:9 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Forward Shift+Control"
+  Shift+Control + b:9 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Forward Shift+Alt"
+  Shift+Alt + b:9 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Forward Control+Alt"
+  Control+Alt + b:9 + release
+"~/.xbindkeys/MX-Master-3-bindings.sh Forward Shift+Control+Alt"
+  Shift+Control+Alt + b:9 + release
+
+## Thumb button
+"~/.xbindkeys/MX-Master-3-bindings.sh Thumb"
+  Mod4 + Tab + release
+
+## Thumb button -> Emulate button 10
+#"xdotool click --clearmodifiers 10"
+#"~/.xbindkeys/MX-Master-3-bindings.sh Thumb"
+#  b:10 + release
