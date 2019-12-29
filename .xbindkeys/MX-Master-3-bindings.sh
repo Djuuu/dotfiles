@@ -65,15 +65,6 @@ function temporizeHorizontalScroll {
 
 case "$button" in
 
-    "Thumb")
-
-        # Open Gnome overview programmatically (Thumb button sends Super_L on release, which might break any super-based shortcut depending on timing)
-        # https://askubuntu.com/questions/1095553/invoking-gnome-activities-overview-from-command-line/1095614#1095614
-        dbus-send --session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval string:'Main.overview.toggle();'
-
-        xdotool keyup --delay 100 shift+ctrl+alt+super; # ensure modifiers reset
-        ;;
-
     "Scroll_L")
 
         temporizeHorizontalScroll "L"

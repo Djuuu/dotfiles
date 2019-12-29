@@ -27,6 +27,27 @@
 #
 ########################################################################################################################
 
+
+### Global shortcuts ###
+
+## Thumb button
+# Open Gnome overview programmatically (Thumb button sends Super_L on release, which might break any super-based shortcut depending on timing)
+# https://askubuntu.com/questions/1095553/invoking-gnome-activities-overview-from-command-line/1095614#1095614
+# Also, since this shortcut is not intended to be application-specific, it is faster to call it directly here rather than from the external script
+"dbus-send --session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval string:'Main.overview.toggle();'"
+  Mod4 + Tab + release
+
+## Scrollwheel up
+"xdotool key Page_Up" # Move to workspace above
+  Mod4 + b:4 + release
+
+## Scrollwheel down
+"xdotool key Page_Down" # Move to workspace below
+  Mod4 + b:5 + release
+
+
+### Application-specific shortcuts ###
+
 ## Scrollwheel left
 #"xte 'keydown Control_L' 'keydown Shift_R' 'key Tab' 'keyup Shift_R' 'keyup Control_L'"
 "~/.xbindkeys/MX-Master-3-bindings.sh Scroll_L"
@@ -92,12 +113,3 @@
   Control+Alt + b:9 + release
 "~/.xbindkeys/MX-Master-3-bindings.sh Forward Shift+Control+Alt"
   Shift+Control+Alt + b:9 + release
-
-## Thumb button
-"~/.xbindkeys/MX-Master-3-bindings.sh Thumb"
-  Mod4 + Tab + release
-
-## Thumb button -> Emulate button 10
-#"xdotool click --clearmodifiers 10"
-#"~/.xbindkeys/MX-Master-3-bindings.sh Thumb"
-#  b:10 + release
