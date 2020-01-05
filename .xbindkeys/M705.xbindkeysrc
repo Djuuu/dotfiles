@@ -1,13 +1,11 @@
 ########################################################################################################################
-# Logitech MX Master 3 - xbindkeys configuration                                                                       #
+# Logitech M705 - xbindkeys configuration                                                                       #
 ########################################################################################################################
 #
 #   Scroll wheel:         btn 4-5 (up/down)
-#   Thumb wheel:          btn 6-7 (right/left)
+#   Scroll wheel tilt:    btn 6-7 (left/right)
 #   Back/forward buttons: btn 8-9
-#   Thumb button sends:
-#     - on press:   Super_L(Mod4) press + Tab press + Tab release
-#     - on release: Super_L(Mod4) release
+#   Thumb button:         btn 10
 #
 # Prerequisites:
 #
@@ -31,11 +29,11 @@
 ### Global shortcuts ###
 
 ## Thumb button
-# Open Gnome overview programmatically (Thumb button sends Super_L on release, which might break any super-based shortcut depending on timing)
+# Open Gnome overview programmatically
 # https://askubuntu.com/questions/1095553/invoking-gnome-activities-overview-from-command-line/1095614#1095614
 # Also, since this shortcut is not intended to be application-specific, it is faster to call it directly here rather than from the external script
 "dbus-send --session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval string:'Main.overview.toggle();'"
-  Mod4 + Tab + release
+  b:10 + release
 
 ## Scrollwheel up
 "xdotool key Page_Up" # Move to workspace above
@@ -50,33 +48,33 @@
 
 ## Scrollwheel left
 #"xte 'keydown Control_L' 'keydown Shift_R' 'key Tab' 'keyup Shift_R' 'keyup Control_L'"
-"~/.xbindkeys/mouse-bindings.sh WScroll_L"
-  b:7 + release
-"~/.xbindkeys/mouse-bindings.sh WScroll_L Alt"
-  Alt + b:7 + release
-"~/.xbindkeys/mouse-bindings.sh WScroll_L Control"
-  Control + b:7 + release
-"~/.xbindkeys/mouse-bindings.sh WScroll_L Shift+Control"
-  Shift+Control + b:7 + release
-"~/.xbindkeys/mouse-bindings.sh WScroll_L Shift+Alt"
-  Shift+Alt + b:7 + release
-"~/.xbindkeys/mouse-bindings.sh WScroll_L Control+Alt"
-  Control+Alt + b:7 + release
+"~/.xbindkeys/mouse-bindings.sh Scroll_L"
+  b:6 + release
+"~/.xbindkeys/mouse-bindings.sh Scroll_L Alt"
+  Alt + b:6 + release
+"~/.xbindkeys/mouse-bindings.sh Scroll_L Control"
+  Control + b:6 + release
+"~/.xbindkeys/mouse-bindings.sh Scroll_L Shift+Control"
+  Shift+Control + b:6 + release
+"~/.xbindkeys/mouse-bindings.sh Scroll_L Shift+Alt"
+  Shift+Alt + b:6 + release
+"~/.xbindkeys/mouse-bindings.sh Scroll_L Control+Alt"
+  Control+Alt + b:6 + release
 
 ## Scrollwheel right
 #"xte 'keydown Control_L' 'key Tab' 'keyup Control_L'"
-"~/.xbindkeys/mouse-bindings.sh WScroll_R"
-  b:6 + release
-"~/.xbindkeys/mouse-bindings.sh WScroll_R Alt"
-  Alt + b:6 + release
-"~/.xbindkeys/mouse-bindings.sh WScroll_R Control"
-  Control + b:6 + release
-"~/.xbindkeys/mouse-bindings.sh WScroll_R Shift+Control"
-  Shift+Control + b:6 + release
-"~/.xbindkeys/mouse-bindings.sh WScroll_R Shift+Alt"
-  Shift+Alt + b:6 + release
-"~/.xbindkeys/mouse-bindings.sh WScroll_R Control+Alt"
-  Control+Alt + b:6 + release
+"~/.xbindkeys/mouse-bindings.sh Scroll_R"
+  b:7 + release
+"~/.xbindkeys/mouse-bindings.sh Scroll_R Alt"
+  Alt + b:7 + release
+"~/.xbindkeys/mouse-bindings.sh Scroll_R Control"
+  Control + b:7 + release
+"~/.xbindkeys/mouse-bindings.sh Scroll_R Shift+Control"
+  Shift+Control + b:7 + release
+"~/.xbindkeys/mouse-bindings.sh Scroll_R Shift+Alt"
+  Shift+Alt + b:7 + release
+"~/.xbindkeys/mouse-bindings.sh Scroll_R Control+Alt"
+  Control+Alt + b:7 + release
 
 ## Back button
 "~/.xbindkeys/mouse-bindings.sh Back"

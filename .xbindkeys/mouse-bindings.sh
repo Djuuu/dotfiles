@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 
 ########################################################################################################################
-# Logitech MX Master 3 wrapper script for use with xbindkeys
+# Mouse buttons wrapper script for use with xbindkeys
 #
 # Available buttons:
 #
 #   Thumb
 #   Scroll_L
 #   Scroll_R
+#   WScroll_L (MX Master thumb wheel)
+#   WScroll_R (MX Master thumb wheel)
 #   Back
 #   Forward
 #
@@ -37,7 +39,8 @@ Wname=`xprop -id ${Wid} |awk '/WM_CLASS/{print $4}'`
 # echo "modifiers Wname:$Wname ; button:$button ; modifiers:$modifiers"
 
 
-function temporizeHorizontalScroll {
+# Logitech MX Master thumb wheel throttling
+function throttleHorizontalScroll {
 
     local newDirection=$@;
 
@@ -62,12 +65,15 @@ function temporizeHorizontalScroll {
     [ ${value} -ne 0 ] && exit;
 }
 
+case "$button" in
+    "WScroll_L") throttleHorizontalScroll "L"; ;;
+    "WScroll_R") throttleHorizontalScroll "R"; ;;
+esac
+
 
 case "$button" in
 
-    "Scroll_L")
-
-        temporizeHorizontalScroll "L"
+    "WScroll_L" | "Scroll_L")
 
         case "$Wname" in
 
@@ -89,9 +95,7 @@ case "$button" in
         esac
         ;;
 
-    "Scroll_R")
-
-        temporizeHorizontalScroll "R"
+    "WScroll_R" | "Scroll_R")
 
         case "$Wname" in
 
