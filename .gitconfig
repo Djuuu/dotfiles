@@ -30,7 +30,7 @@
 	prune = true
 
 [push]
-	default = upstream
+	default = current
 
 [log]
 	abbrevCommit = true
