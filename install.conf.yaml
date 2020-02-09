@@ -1,26 +1,17 @@
 - defaults:
-    link:
-      relink: true
-
+    link: {relink: true, relative: true}
+    shell: {stdout: true, stderr: true}
 
 - clean: ['~']
 
-
 - link:
-    ~/.dotfiles: ''
+    ~/.dotfiles:
+        if: "[ ! -d ~/.dotfiles ]"
+        path: ''
 
-    ~/.bash_prompt:         .bash_prompt
-    ~/git-build:             git-build
-    ~/git-deliver:           git-deliver
-    ~/git-compare-branches:  git-compare-branches
-    ~/dockerize-clis:        dockerize-clis
-    ~/mu-repo:               mu-repo
-
-    ~/.bash_aliases:        .bash_aliases
-    ~/.bash_functions:      .bash_functions
+    ~/.bash_logout:         .bash_logout
     ~/.bash_profile:        .bash_profile
     ~/.bashrc:              .bashrc
-    ~/.bash_logout:         .bash_logout
 
     ~/.gitconfig:           .gitconfig
     ~/.gitignore.global:    .gitignore.global
@@ -52,6 +43,7 @@
         glob:   true
         path:   karabiner/*
 
-
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+    - [git submodule update --init --recursive, Installing submodules]
+    - [bash ~/.dotfiles/install-local.sh,       Initializing local files]
+    - [bash ~/.dotfiles/install-devices.sh,     Configuring devices]

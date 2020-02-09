@@ -99,10 +99,10 @@
 
 	# external commands
 	k                = "!gitk --all"
-	deliver          = "!bash ~/git-deliver/deliver.sh"
-	build            = "!bash ~/git-build/git-build.sh"
-	compare-branches = "!bash ~/git-compare-branches/git-compare-branches.sh"
-	mu               = "!python ~/mu-repo/mu"
+	mu               = "!python ~/.dotfiles/mu-repo/mu"
+	deliver          = "!bash ~/.dotfiles/git-deliver/deliver.sh"
+	build            = "!bash ~/.dotfiles/git-build/git-build.sh"
+	compare-branches = "!bash ~/.dotfiles/git-compare-branches/git-compare-branches.sh"
 
 [gui]
 	encoding = utf-8

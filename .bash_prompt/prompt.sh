@@ -1,8 +1,8 @@
 
-. ~/.bash_prompt/colors.sh
-. ~/.bash_prompt/git.sh
-. ~/.bash_prompt/separator.sh
-. ~/.bash_prompt/newline-narrow-prompt.sh
+. ~/.dotfiles/.bash_prompt/colors.sh
+. ~/.dotfiles/.bash_prompt/git.sh
+. ~/.dotfiles/.bash_prompt/separator.sh
+. ~/.dotfiles/.bash_prompt/newline-narrow-prompt.sh
 
 function prompt_command {
 	git_prompt_command

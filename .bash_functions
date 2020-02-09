@@ -19,4 +19,4 @@ homestead () {
 ################################################################################
 # Docker
 
-source ~/dockerize-clis/dockerize-clis.sh
+source ~/.dotfiles/dockerize-clis/dockerize-clis.sh

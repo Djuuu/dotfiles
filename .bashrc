@@ -33,18 +33,18 @@ if [ -f ~/.bashrc.env.local ]; then
 fi
 
 # Aliases
-if [ -f ~/.bash_aliases ]; then
-	source ~/.bash_aliases
+if [ -f ~/.dotfiles/.bash_aliases ]; then
+	source ~/.dotfiles/.bash_aliases
 fi
 
 # Functions
-if [ -f ~/.bash_functions ]; then
-	source ~/.bash_functions
+if [ -f ~/.dotfiles/.bash_functions ]; then
+	source ~/.dotfiles/.bash_functions
 fi
 
 # prompt
-if [ -f ~/.bash_prompt/prompt.sh ]; then
-	source ~/.bash_prompt/prompt.sh
+if [ -f ~/.dotfiles/.bash_prompt/prompt.sh ]; then
+	source ~/.dotfiles/.bash_prompt/prompt.sh
 fi
 
 # local config
