@@ -1,36 +1,51 @@
 
 [core]
-	fscache = true
-	whitespace = -trailing-space
 	autocrlf = input
 	eol = lf
 	ignorecase = false
-	excludesfile = ~/.gitignore.global
+	whitespace = -trailing-space
+
+	fscache = true
 	editor = vim
+	excludesfile = ~/.gitignore.global
 
 [include]
 	path = ~/.gitconfig.local
 
-[pull]
-	rebase = true
-
-[status]
-	submoduleSummary = true
-
-[diff]
-	submodule = log
-	mnemonicPrefix = true
-	renames = true
-	wordRegex = .
-
-[rebase]
-	autosquash = true
+################################################################################
 
 [fetch]
 	prune = true
 
+[merge]
+	ff = false
+
+[pull]
+	#rebase = true
+	rebase = merges # 2.18+
+
 [push]
 	default = current
+
+[rebase]
+	autosquash = true
+
+[rerere]
+	enabled = true
+	#autoupdate = true
+
+[status]
+	submoduleSummary = true
+
+[tag]
+	sort = v:refname # sort tags as version numbers (ex: 1.2.0 before 1.10.2)
+
+################################################################################
+
+[diff]
+	mnemonicPrefix = true
+	submodule = log
+	wordRegex = .
 
 [log]
 	abbrevCommit = true
@@ -38,19 +53,16 @@
 [pretty]
 	graph = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
 
-[color]
-	diff = auto
-	interactive = auto
-	branch = auto
-	status = auto
-
-[rerere]
-	enabled = true
+################################################################################
 
 [alias]
+
+	# list available aliases
+	aliases = !git config --get-regexp alias | sed -re 's/alias\\.(\\S*)\\s(.*)$/\\1 = \\2/g'
+
 	st = "status"
 
-	ss = "stash save -u"
+	ss = "stash push -u"
 	sp = "stash pop --index"
 
 	ri = "rebase -i"
@@ -58,7 +70,7 @@
 
 	lg = "log --color --graph --pretty=graph --abbrev-commit --"
 	lga = "log --color --graph --pretty=graph --abbrev-commit --all --"
-	lgr = "log --oneline --reverse --no-decorate -n 25"
+	lgr = "!f() { git log --oneline --reverse --no-decorate -n ${1:-25}; }; f"
 	ld = "!f() { echo -e `git show --pretty=format:'%Cgreen%ci %Cblue%cr%Creset' $1 | head -n 1`\\\\t$1; }; f"
 
 	fpush = "push --force-with-lease"
@@ -69,12 +81,12 @@
 	branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
 
 	# merged / non-merged branches
-	mb  = "!git branch -a --merged    master | grep -v '>\\|*' | perl -pe s/^..//"
-	nmb = "!git branch -a --no-merged master | grep -v '>\\|*' | perl -pe s/^..//"
+	mb  = "!f() { git branch -a --merged    ${1:-master} | grep -v '>\\|*' | perl -pe s/^..//; }; f"
+	nmb = "!f() { git branch -a --no-merged ${1:-master} | grep -v '>\\|*' | perl -pe s/^..//; }; f"
 
 	# stale merged/non-merged branches
-	stmb  = "!for k in `git mb`;  do git ld $k; done | sort -r"
-	stnmb = "!for k in `git nmb`; do git ld $k; done | sort -r"
+	stmb  = "!f() { for k in `git mb $1`;  do git ld $k; done | sort -r; }; f"
+	stnmb = "!f() { for k in `git nmb $1`; do git ld $k; done | sort -r; }; f"
 
 	# transfer all refs from one remote to another
 	transfer-remote = "!f() { [ ! -z \"$1\" ] && [ ! -z \"$2\" ] && git push $2 +refs/remotes/$1/*:refs/heads/* +refs/tags/*:refs/tags/* ; }; f"
@@ -84,11 +96,6 @@
 
 	# remove remote non-origin branches
 	rrnob = "!git branch -r -d $(git rnob)"
-
-	# tags cleanup
-	ddt = "!git tag | grep delivered |xargs -i{} git tag -d {}"
-	djt = "!git tag | grep jenkins |xargs -i{} git tag -d {}"
-	dt = "!git ddt && git djt"
 
 	# external commands
 	k                = "!gitk --all"
