@@ -10,6 +10,9 @@
 [submodule "git-compare-branches"]
 	path = git-compare-branches
 	url = git@github.com:Djuuu/git-compare-branches.git
+[submodule "git-mr"]
+	path = git-mr
+	url = git@github.com:Djuuu/git-mr.git
 [submodule "mu-repo"]
 	path = mu-repo
 	url = git://github.com/fabioz/mu-repo.git

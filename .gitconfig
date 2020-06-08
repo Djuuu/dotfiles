@@ -112,6 +112,7 @@
 	deliver          = "!bash ~/.dotfiles/git-deliver/deliver.sh"
 	build            = "!bash ~/.dotfiles/git-build/git-build.sh"
 	compare-branches = "!bash ~/.dotfiles/git-compare-branches/git-compare-branches.sh"
+	mr               = "!bash ~/.dotfiles/git-mr/git-mr"
 
 [gui]
 	encoding = utf-8
