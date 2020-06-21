@@ -97,6 +97,10 @@
 	# remove remote non-origin branches
 	rrnob = "!git branch -r -d $(git rnob)"
 
+	# https://tomschlick.com/2017/03/20/git-forget
+	forgettable="! git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs echo 'forget candidate: '"
+	forget="! git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D"
+
 	# external commands
 	k                = "!gitk --all"
 	mu               = "!python ~/.dotfiles/mu-repo/mu"
