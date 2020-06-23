@@ -1,6 +1,9 @@
 
 [core]
-	autocrlf = input
+
+	# checkout as-is ; commit as-is
+	autocrlf = false
+
 	eol = lf
 	ignorecase = false
 	whitespace = -trailing-space
