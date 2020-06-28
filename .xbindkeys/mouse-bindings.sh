@@ -120,6 +120,10 @@ case "$button" in
     "Back")
         case "$Wname" in
 
+            '"Tilix"')
+                xdotool key ctrl+shift+X # Maximize terminal
+            ;;
+
             '"Firefox"' | '"Google-chrome"')
                 xdotool key F12 # Developer tools
                 ;;
@@ -141,6 +145,10 @@ case "$button" in
 
     "Forward")
         case "$Wname" in
+
+            '"Tilix"')
+                xdotool key ctrl+shift+C # Copy
+            ;;
 
             '"Firefox"' | '"Google-chrome"')
                 case "$modifiers" in
