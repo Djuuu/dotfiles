@@ -55,4 +55,13 @@ add mod3 = Hyper_L
 add mod4 = Super_L Super_R
 
 !#######################################################################################################################
+!# Convert grave/tilde back to normal
+!#
+!# Defaults (iso fr):
+!#      keycode  49 = oe OE grave asciitilde leftdoublequotemark rightdoublequotemark
+!#
+
+keycode  49 = grave asciitilde grave asciitilde leftdoublequotemark rightdoublequotemark
+
+!#######################################################################################################################
 
