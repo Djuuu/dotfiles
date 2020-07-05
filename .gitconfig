@@ -77,6 +77,8 @@
 	ld = "!f() { echo -e `git show --pretty=format:'%Cgreen%ci %Cblue%cr%Creset' $1 | head -n 1`\\\\t$1; }; f"
 
 	fpush = "push --force-with-lease"
+	pushall = "!f() { for remote in `git remote`; do git push $remote "$@"; done }; f"
+	fpushall = "!f() { for remote in `git remote`; do git push --force-with-lease $remote "$@"; done }; f"
 
 	gca = "gc --aggressive"
 
