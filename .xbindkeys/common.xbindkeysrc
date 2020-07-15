@@ -39,3 +39,6 @@
 #"sleep 0.3 && xdotool key --delay 3 macron backslash underscore parenleft U30C4 parenright underscore slash key macron"
 #    Mod3 + y
 
+# Lock screen
+"xdotool key super+l"
+    Scroll_Lock + release
