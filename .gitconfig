@@ -69,6 +69,8 @@
 	sp = "stash pop --index"
 
 	ri = "rebase -i"
+	rr = "rebase -r"
+	rir = "rebase -i -r"
 	rc = "rebase --continue"
 
 	lg = "log --color --graph --pretty=graph --abbrev-commit --"
