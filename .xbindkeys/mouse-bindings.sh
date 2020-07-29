@@ -125,7 +125,10 @@ case "$button" in
             ;;
 
             '"Firefox"' | '"Google-chrome"')
-                xdotool key F12 # Developer tools
+                case "$modifiers" in
+                    "Alt") xdotool key Left ;; # Back
+                    *)     xdotool key F12  ;; # Developer tools
+                esac
                 ;;
 
             '"jetbrains-phpstorm"')
@@ -152,9 +155,10 @@ case "$button" in
 
             '"Firefox"' | '"Google-chrome"')
                 case "$modifiers" in
-                    "Control") xdotool key f;  ;; # Find
-                    "Shift")   xdotool key F3; ;; # Find previous
-                    *)         xdotool key F3; ;; # Find next
+                    "Control") xdotool key f;     ;; # Find
+                    "Alt")     xdotool key Right; ;; # Next
+                    "Shift")   xdotool key F3;    ;; # Find previous
+                    *)         xdotool key F3;    ;; # Find next
                 esac
                 ;;
 
