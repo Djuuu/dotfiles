@@ -105,8 +105,8 @@
 	rrnob = "!git branch -r -d $(git rnob)"
 
 	# https://tomschlick.com/2017/03/20/git-forget
-	forgettable="! git fetch -p && git branch -vv | awk '/: gone]/{print $1}'"
-	forget="! git forgettable | xargs git branch -D"
+	gone="! git branch -vv | awk '/: gone]/{print $1}'"
+	forget="! git fetch -p && [ ! -z \"`git gone`\" ] && (git gone | xargs git branch -D) || echo 'No branch to forget'"
 
 	# external commands
 	k                = "!gitk --all"
