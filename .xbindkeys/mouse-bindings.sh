@@ -154,7 +154,7 @@ case "$button" in
         case "$Wname" in
 
             '"Tilix"')
-                xdotool key ctrl+shift+C # Copy
+                xdotool key ctrl+L # Clear
             ;;
 
             '"Firefox"' | '"Google-chrome"')
