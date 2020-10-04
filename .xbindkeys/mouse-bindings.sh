@@ -143,6 +143,10 @@ case "$button" in
                     *) xdotool key ctrl+shift+F12; ;; # Hide all tool windows
                 esac
                 ;;
+
+            '"GitKraken"')
+                xdotool key ctrl+shift+m; # Focus commit message
+                ;;
         esac
         ;;
 
