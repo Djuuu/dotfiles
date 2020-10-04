@@ -21,8 +21,8 @@ $RECYCLE.BIN/
 
 # JetBrains (PhpStorm, IntelliJ, ...)
 
-.idea/
-.idea_modules/
+.idea/*
+.idea_modules/*
 
 # NetBeans
 
