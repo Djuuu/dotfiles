@@ -1,5 +1,11 @@
 
-# If not running interactively, don't do anything
+# Load local environment variables
+if [ -f ~/.bashrc.env.local ]; then
+	source ~/.bashrc.env.local
+fi
+
+
+# If not running interactively, don't do anything more
 [[ "$-" != *i* ]] && return
 
 
@@ -26,11 +32,6 @@ shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
-
-# local env
-if [ -f ~/.bashrc.env.local ]; then
-	source ~/.bashrc.env.local
-fi
 
 # Aliases
 if [ -f ~/.dotfiles/.bash_aliases ]; then
