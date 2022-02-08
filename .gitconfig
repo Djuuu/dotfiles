@@ -18,43 +18,55 @@
 ################################################################################
 
 [fetch]
-	prune = true
+	prune = true # Before fetching, remove any remote-tracking references that no longer exist on the remote.
+	recurseSubmodules = true # Recursively fetch submodules
 
 [merge]
-	ff = false
+	ff = false # Always create a merge commit (never fast-forward)
 
 [pull]
-	#rebase = true
-	rebase = merges # 2.18+
+	#rebase = true # Pull with rebase instead of merge
+	rebase = merges # also apply --rebase-merges (2.18+)
 
 [push]
-	default = current
+	#default = current # Push the current branch to update a branch with the same name on the receiving end
+	default = upstream # Push the current branch back to the upstream (tracking) remote branch
 
 [rebase]
-	autosquash = true
+	autosquash = true # Automatically squash commits made with --fixup
 
 [rerere]
-	enabled = true
+	enabled = true # Activate recording of resolved conflicts, so that identical conflict hunks can be resolved automatically
 	#autoupdate = true
 
 [status]
-	submoduleSummary = true
+	#submoduleSummary = true # Shows a summary of commits for modified submodules
+	submoduleSummary = 3
+	#showUntrackedFiles = all # Show individual files in untracked directories
 
 [tag]
-	sort = v:refname # sort tags as version numbers (ex: 1.2.0 before 1.10.2)
+	sort = v:refname # Sort tags as version numbers (ex: 1.2.0 before 1.10.2)
 
 ################################################################################
 
 [diff]
+	# Prefixes : (i)ndex, (w)ork tree, (c)ommit, (o)bject, (1), (2)
 	mnemonicPrefix = true
+	# Lists the commits in the range like git-submodule[1] summary does
 	submodule = log
+	# Shows an inline diff of the changed contents of the submodule
+	#submodule = diff
+	# Show minimal diff when using --word-diff
 	wordRegex = .
 
 [log]
+	# Show short one-line commit names
 	abbrevCommit = true
+	# Continue listing the history of a file beyond renames
+	follow = true
 
 [pretty]
-	graph = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
+	graph = %Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
 
 ################################################################################
 
@@ -69,21 +81,25 @@
 	sp = "stash pop --index"
 
 	ri = "rebase -i"
-	rr = "rebase -r"
 	rir = "rebase -i -r"
 	rc = "rebase --continue"
+	ra = "rebase --abort"
 
 	lg = "log --color --graph --pretty=graph --abbrev-commit --"
 	lga = "log --color --graph --pretty=graph --abbrev-commit --all --"
 	lgr = "!f() { git log --oneline --reverse --no-decorate -n ${1:-25}; }; f"
 	ld = "!f() { echo -e `git show --pretty=format:'%Cgreen%ci %Cblue%cr%Creset' $1 | head -n 1`\\\\t$1; }; f"
 
-	uncommit = "reset --soft HEAD~1"
+	sup = "submodule update --init --recursive"
+
+	uncommit = "!f() { echo -n 'Uncommitting: '; git rev-parse --short HEAD; echo; git log -1 --pretty=%B; git reset --soft HEAD~1; }; f"
 	prev-commit = "!f() { git reflog | sed -n 2p | cut -d' ' -f1; }; f"
-	recommit = "!f() { git reset --soft $(git prev-commit); }; f"
+	recommit = "!f() { echo -n 'Resetting to previous commit: '; git prev-commit; git reset --soft $(git prev-commit); }; f"
 	amend = "!f() { git commit -m \"$(git log --format=%B -n 1 $(git prev-commit))\" ; }; f"
 
 	fpush = "push --force-with-lease"
+	fp = "push --force-with-lease"
+	fpu = "!f() { git push --force-with-lease && git mr update; }; f"
 	pushall = "!f() { for remote in `git remote`; do git push $remote "$@"; done }; f"
 	fpushall = "!f() { for remote in `git remote`; do git push --force-with-lease $remote "$@"; done }; f"
 
@@ -111,9 +127,11 @@
 	# remove remote non-origin branches
 	rrnob = "!git branch -r -d $(git rnob)"
 
-	# https://tomschlick.com/2017/03/20/git-forget
-	gone="! git branch -vv | awk '/: gone]/{print $1}'"
-	forget="! git fetch -p && [ ! -z \"`git gone`\" ] && (git gone | xargs git branch -D) || echo 'No branch to forget'"
+	# https://tomschlick.com/git-forget/
+	# Lists local branches whose corresponding remote branch has been deleted
+	gone = ! git branch -vv | awk '/: gone]/{print $1}'
+	# Deletes local branches whose corresponding remote branch has been deleted
+	forget = ! git fetch -p && [ ! -z \"`git gone`\" ] && (git gone | xargs git branch -D) || echo 'No branch to forget'
 
 	# external commands
 	k                = "!gitk --all"
