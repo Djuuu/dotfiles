@@ -16,3 +16,12 @@
 
 [include]
 	path = ~/.gitconfig.url.local
+
+[diff]
+#	# https://difftastic.wilfred.me.uk/
+#	external = difft
+#	tool = difftastic
+#[difftool "difftastic"]
+#	cmd = difft "$LOCAL" "$REMOTE"
+#[pager]
+#	difftool = true

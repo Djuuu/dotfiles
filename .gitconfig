@@ -6,7 +6,7 @@
 
 	eol = lf
 	ignorecase = false
-	whitespace = -trailing-space
+	whitespace = -trailing-space # Don't consider trailing space change as a cause for merge conflicts
 
 	fscache = true
 	editor = vim
@@ -50,7 +50,7 @@
 ################################################################################
 
 [diff]
-	# Prefixes : (i)ndex, (w)ork tree, (c)ommit, (o)bject, (1), (2)
+	# Use better, descriptive initials : (i)ndex, (w)ork tree, (c)ommit, (o)bject instead of a/b.
 	mnemonicPrefix = true
 	# Lists the commits in the range like git-submodule[1] summary does
 	submodule = log
@@ -60,7 +60,7 @@
 	wordRegex = .
 
 [log]
-	# Show short one-line commit names
+	# Use short SHAs when possible
 	abbrevCommit = true
 	# Continue listing the history of a file beyond renames
 	follow = true
@@ -96,6 +96,7 @@
 	prev-commit = "!f() { git reflog | sed -n 2p | cut -d' ' -f1; }; f"
 	recommit = "!f() { echo -n 'Resetting to previous commit: '; git prev-commit; git reset --soft $(git prev-commit); }; f"
 	amend = "!f() { git commit -m \"$(git log --format=%B -n 1 $(git prev-commit))\" ; }; f"
+	fixup = "commit --fixup"
 
 	fpush = "push --force-with-lease"
 	fp = "push --force-with-lease"
