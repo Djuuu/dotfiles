@@ -82,6 +82,7 @@
 
 	ri = "rebase -i"
 	rir = "rebase -i -r"
+	rib = "!f() { git rebase -i $(git mr base) $@; }; f"
 	rc = "rebase --continue"
 	ra = "rebase --abort"
 
