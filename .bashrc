@@ -34,21 +34,13 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 
 # Aliases
-if [ -f ~/.dotfiles/.bash_aliases ]; then
-	source ~/.dotfiles/.bash_aliases
-fi
+[[ -f ~/.dotfiles/.bash_aliases ]] && . ~/.dotfiles/.bash_aliases
 
 # Functions
-if [ -f ~/.dotfiles/.bash_functions ]; then
-	source ~/.dotfiles/.bash_functions
-fi
+[[ -f ~/.dotfiles/.bash_functions ]] && . ~/.dotfiles/.bash_functions
 
-# prompt
-if [ -f ~/.dotfiles/.bash_prompt/prompt.sh ]; then
-	source ~/.dotfiles/.bash_prompt/prompt.sh
-fi
+# Prompt
+[[ -f ~/.dotfiles/.bash_prompt/prompt.sh ]] && . ~/.dotfiles/.bash_prompt/prompt.sh
 
-# local config
-if [ -f ~/.bashrc.local ]; then
-	source ~/.bashrc.local
-fi
+# Local config
+[[ -f ~/.bashrc.local ]] && . ~/.bashrc.local

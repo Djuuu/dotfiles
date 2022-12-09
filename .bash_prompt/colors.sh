@@ -10,7 +10,6 @@
   whiteTxt="\[\e[0;37m\]"
 
 # Prompt colors - bold
- blackBBld="\[\e[1;29m\]"
  blackBold="\[\e[1;30m\]"
    redBold="\[\e[1;31m\]"
  greenBold="\[\e[1;32m\]"
@@ -39,24 +38,6 @@ purpleBold="\[\e[1;35m\]"
     purpleBg="\[\e[45m\]"
       cyanBg="\[\e[46m\]"
      whiteBg="\[\e[47m\]"
+
 # Prompt colors - reset
    resetColor="\[\e[0m\]"
-
-
-promptStyle="user"
-if [ "`id -u`" -eq 0 ]; then
-	promptStyle="root"
-fi
-
-case $promptStyle in 
-	"user")
-		userHostPromptColor=${greenTxt}
-		dirPromptColor=${blueBold}
-		promptSign="\$"
-	;;
-	"root")
-		userHostPromptColor=${redTxt}
-		dirPromptColor=${cyanTxt}
-		promptSign="#"
-	;;
-esac
