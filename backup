@@ -9,21 +9,21 @@ DOTFILES_BACKUP_DIR=".dotfiles.bak.$(date +'%Y%m%d-%H%M')"
 function dotfiles_backup {
 
 	for file_name in \
-		".bash_aliases"     \
-		".bash_functions"   \
-		".bash_profile"     \
-		".bashrc"           \
-		".bash_logout"      \
-		".gitconfig"        \
-		".gitignore.global" \
-		".minttyrc"         \
-		".vimrc"            \
-		".Xmodmap"          \
-		".xbindkeysrc"      \
-		".bashrc.env.local" \
-		".bashrc.local"     \
-		".gitconfig.local"  \
-		".gitconfig.url.local"
+		".bash_aliases"        \
+		".bash_functions"      \
+		".bash_logout"         \
+		".bash_profile"        \
+		".bashrc"              \
+		".bashrc.env.local"    \
+		".bashrc.local"        \
+		".gitconfig"           \
+		".gitconfig.local"     \
+		".gitconfig.url.local" \
+		".gitignore.global"    \
+		".minttyrc"            \
+		".vimrc"               \
+		".xbindkeysrc"         \
+		".Xmodmap"
 	do
 		if [ -f ~/${file_name} ] && [ ! -L ~/${file_name} ] ; then
 			dotfile_backup ${file_name}

@@ -19,13 +19,13 @@
     ~/.minttyrc:            .minttyrc
     ~/.vimrc:               .vimrc
 
-    ~/.Xmodmap:
-        if: "command -v xmodmap"
-        path:   .Xmodmap
-
     ~/.xbindkeys:
         if: "command -v xbindkeys"
         path:   .xbindkeys
+
+    ~/.Xmodmap:
+        if: "command -v xmodmap"
+        path:   .Xmodmap
 
     ~/.config/autokey/data/Phrases:
         if: "[ -d ~/.config/autokey ]"
