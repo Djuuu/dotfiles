@@ -9,15 +9,12 @@
         if: "[ ! -d ~/.dotfiles ]"
         path: ''
 
-    ~/.bash_logout:         .bash_logout
-    ~/.bash_profile:        .bash_profile
-    ~/.bashrc:              .bashrc
-
-    ~/.gitconfig:           .gitconfig
-    ~/.gitignore.global:    .gitignore.global
-
-    ~/.minttyrc:            .minttyrc
-    ~/.vimrc:               .vimrc
+    ~/.bash_logout:     .bash_logout
+    ~/.bash_profile:    .bash_profile
+    ~/.bashrc:          .bashrc
+    ~/.gitconfig:       .gitconfig
+    ~/.minttyrc:        .minttyrc
+    ~/.vimrc:           .vimrc
 
     ~/.xbindkeys:
         if: "command -v xbindkeys"

@@ -10,7 +10,7 @@
 
 	fscache = true
 	editor = vim
-	excludesfile = ~/.gitignore.global
+	excludesfile = ~/.dotfiles/.gitignore.global
 
 [include]
 	path = ~/.gitconfig.local
@@ -34,6 +34,7 @@
 
 [rebase]
 	autosquash = true # Automatically squash commits made with --fixup
+	autostash = true # Automatically stash and re-apply
 
 [rerere]
 	enabled = true # Activate recording of resolved conflicts, so that identical conflict hunks can be resolved automatically
@@ -64,6 +65,8 @@
 	abbrevCommit = true
 	# Continue listing the history of a file beyond renames
 	follow = true
+	# Exclude remote heads in log decorations
+	excludeDecoration = refs/remotes/*/HEAD
 
 [pretty]
 	graph = %Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
@@ -77,9 +80,18 @@
 
 	st = "status"
 
+	# stash
 	ss = "stash push -u"
 	sp = "stash pop --index"
 
+	# commit
+	uncommit = "!f() { echo -n 'Uncommitting: '; git rev-parse --short HEAD; echo; git log -1 --pretty=%B; git reset --soft HEAD~1; }; f"
+	prev-commit = "!f() { git reflog | sed -n 2p | cut -d' ' -f1; }; f"
+	recommit = "!f() { echo -n 'Resetting to previous commit: '; git prev-commit; git reset --soft $(git prev-commit); }; f"
+	amend = "!f() { git commit -m \"$(git log --format=%B -n 1 $(git prev-commit))\" ; }; f"
+	fixup = "commit --fixup"
+
+	# rebase
 	ri = "rebase -i"
 	rir = "rebase -i -r"
 	rib = "!f() { git rebase -i $(git mr base) $@; }; f"
@@ -93,12 +105,7 @@
 
 	sup = "submodule update --init --recursive"
 
-	uncommit = "!f() { echo -n 'Uncommitting: '; git rev-parse --short HEAD; echo; git log -1 --pretty=%B; git reset --soft HEAD~1; }; f"
-	prev-commit = "!f() { git reflog | sed -n 2p | cut -d' ' -f1; }; f"
-	recommit = "!f() { echo -n 'Resetting to previous commit: '; git prev-commit; git reset --soft $(git prev-commit); }; f"
-	amend = "!f() { git commit -m \"$(git log --format=%B -n 1 $(git prev-commit))\" ; }; f"
-	fixup = "commit --fixup"
-
+	# push
 	fpush = "push --force-with-lease"
 	fp = "push --force-with-lease"
 	fpu = "!f() { git push --force-with-lease && git mr update; }; f"
@@ -136,12 +143,9 @@
 	forget = ! git fetch -p && [ ! -z \"`git gone`\" ] && (git gone | xargs git branch -D) || echo 'No branch to forget'
 
 	# external commands
-	k                = "!gitk --all"
-	mu               = "!python ~/.dotfiles/mu-repo/mu"
-	deliver          = "!bash ~/.dotfiles/git-deliver/deliver.sh"
-	build            = "!bash ~/.dotfiles/git-build/git-build.sh"
-	compare-branches = "!bash ~/.dotfiles/git-compare-branches/git-compare-branches.sh"
-	mr               = "!bash ~/.dotfiles/git-mr/git-mr"
+	k  = "!gitk --all"
+	mu = "!python ~/.dotfiles/mu-repo/mu"
+	mr = "!bash ~/.dotfiles/git-mr/git-mr"
 
 [gui]
 	encoding = utf-8

@@ -1,28 +1,13 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot.git
- 	#url = git@github.com:Djuuu/dotbot.git
+ 	#url = https://github.com/Djuuu/dotbot.git
 [submodule "mu-repo"]
 	path = mu-repo
 	url = https://github.com/fabioz/mu-repo.git
- 	#url = git@github.comi:fabioz/mu-repo.git
 [submodule "dockerize-clis"]
 	path = dockerize-clis
 	url = https://github.com/Djuuu/dockerize-clis.git
- 	#url = git@github.com:Djuuu/dockerize-clis.git
-[submodule "git-build"]
-	path = git-build
-	url = https://github.com/Djuuu/git-build.git
- 	#url = git@github.com:Djuuu/git-build.git
-[submodule "git-compare-branches"]
-	path = git-compare-branches
-	url = https://github.com/Djuuu/git-compare-branches.git
- 	#url = git@github.com:Djuuu/git-compare-branches.git
-[submodule "git-deliver"]
-	path = git-deliver
-	url = https://github.com/Djuuu/git-deliver.git
- 	#url = git@github.com:Djuuu/git-deliver.git
 [submodule "git-mr"]
 	path = git-mr
 	url = https://github.com/Djuuu/git-mr.git
- 	#url = git@github.com:Djuuu/git-mr.git
