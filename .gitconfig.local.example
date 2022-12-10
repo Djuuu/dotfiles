@@ -4,18 +4,15 @@
 	name = User
 
 [core]
-	## Ignore file permissions (useful on Windows)
-	# filemode = false
+	# Ignore file permissions (useful on Windows)
+	#filemode = false
 
 	## Alternative editors on Windows :
 	# editor = 'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
 	# editor = 'C:/Program Files/Sublime text 2/sublime_text.exe' -n -w
 
-# [credential]
-# 	helper = cache --timeout 7201
-
-[include]
-	path = ~/.gitconfig.url.local
+#[credential]
+#	helper = cache --timeout 7201
 
 [diff]
 #	# https://difftastic.wilfred.me.uk/
@@ -25,3 +22,8 @@
 #	cmd = difft "$LOCAL" "$REMOTE"
 #[pager]
 #	difftool = true
+
+#[url "git@github.com:"]
+#	insteadOf = "github:"
+#[url "https://github.com/"]
+#	pushInsteadOf = "git@github.com:"
