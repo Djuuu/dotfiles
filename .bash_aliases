@@ -33,6 +33,11 @@ alias please='sudo $(fc -nl -1)'
 
 alias sshagentstart='eval `ssh-agent -s` && ssh-add'
 
+# Git
+alias gg='git context-graph --pretty=graph'
+alias ggo='git context-graph --pretty=oneline'
+alias ggp='git-context-graph-page'
+
 # Git - mu-repo
 alias gm='git mu'
 alias gmr='git mu register'

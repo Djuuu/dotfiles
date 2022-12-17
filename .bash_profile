@@ -22,6 +22,10 @@
 [ -d "${HOME}/.dotfiles/git-context-graph" ] && PATH="${PATH}:${HOME}/.dotfiles/git-context-graph"
 [ -d "${HOME}/.dotfiles/git-mr" ]            && PATH="${PATH}:${HOME}/.dotfiles/git-mr"
 
+[ -f "${HOME}/.dotfiles/git-context-graph/.git-completion.bash" ] &&
+   . "${HOME}/.dotfiles/git-context-graph/.git-completion.bash"
+
+
 # Set user-defined locale
 #export LANG=$(locale -uU)
 

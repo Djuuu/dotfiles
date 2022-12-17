@@ -1,12 +1,20 @@
+#!/usr/bin/env bash
 
-function set_window_title {
+
+
+set_window_title() {
 	export FORCED_WINDOW_TITLE="$@"
     printf '\e]2;%s\a' "$@"
 }
 
-function unset_window_title {
+unset_window_title() {
 	unset FORCED_WINDOW_TITLE
 	printf '\e]2;%s\a' "${DEFAULT_WINDOW_TITLE:-${USERNAME}@${HOSTNAME} - $(pwd)}"
+}
+
+git-context-graph-page() {
+    local lines=$(( LINES - 8 ))
+    gg "-n${lines}" "$@" | head -n $lines
 }
 
 ################################################################################

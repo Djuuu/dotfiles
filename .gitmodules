@@ -8,6 +8,9 @@
 [submodule "dockerize-clis"]
 	path = dockerize-clis
 	url = https://github.com/Djuuu/dockerize-clis.git
+[submodule "git-context-graph"]
+	path = git-context-graph
+	url = https://github.com/Djuuu/git-context-graph.git
 [submodule "git-mr"]
 	path = git-mr
 	url = https://github.com/Djuuu/git-mr.git
