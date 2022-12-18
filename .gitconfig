@@ -145,7 +145,6 @@
 	# external commands
 	k  = "!gitk --all"
 	mu = "!python ~/.dotfiles/mu-repo/mu"
-	mr = "!bash ~/.dotfiles/git-mr/git-mr"
 
 [gui]
 	encoding = utf-8

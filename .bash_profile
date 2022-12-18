@@ -3,30 +3,24 @@
 #
 
 # source the users profile if it exists
-if [ -f "${HOME}/.profile" ] ; then
-	source "${HOME}/.profile"
-fi
+[ -f "${HOME}/.profile" ] && . "${HOME}/.profile"
 
 # source the users bashrc if it exists
-if [ -f "${HOME}/.bashrc" ] ; then
-	source "${HOME}/.bashrc"
-fi
+[ -f "${HOME}/.bashrc" ] && . "${HOME}/.bashrc"
 
 
 # Set PATH so it includes user's private bin if it exists
-if [ -d "${HOME}/bin" ] ; then
-	PATH="${HOME}/bin:${PATH}"
-fi
+[ -d "${HOME}/bin" ] && PATH="${HOME}/bin:${PATH}"
 
 # Set MANPATH so it includes users' private man if it exists
-if [ -d "${HOME}/man" ]; then
-	MANPATH="${HOME}/man:${MANPATH}"
-fi
+[ -d "${HOME}/man" ] && MANPATH="${HOME}/man:${MANPATH}"
 
 # Set INFOPATH so it includes users' private info if it exists
-if [ -d "${HOME}/info" ]; then
-	INFOPATH="${HOME}/info:${INFOPATH}"
-fi
+[ -d "${HOME}/info" ] && INFOPATH="${HOME}/info:${INFOPATH}"
+
+# Git custom commands
+[ -d "${HOME}/.dotfiles/git-context-graph" ] && PATH="${PATH}:${HOME}/.dotfiles/git-context-graph"
+[ -d "${HOME}/.dotfiles/git-mr" ]            && PATH="${PATH}:${HOME}/.dotfiles/git-mr"
 
 # Set user-defined locale
 #export LANG=$(locale -uU)
