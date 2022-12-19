@@ -1,0 +1,20 @@
+
+gui:
+  scrollHeight: 16 # 2 # how many lines you scroll by
+  scrollPastBottom: false # true # enable scrolling past the bottom
+  expandFocusedSidePanel: true # false
+
+git:
+  paging:
+    useConfig: true # false
+
+  merging:
+    args: '--no-ff'
+
+  autoFetch: false # true
+
+#  branchLogCmd: 'git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --'
+  branchLogCmd: 'git context-graph --pretty=graph-dyn-lg {{branchName}} --'
+
+#  allBranchesLogCmd: 'git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium'
+  allBranchesLogCmd: 'git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=graph-dyn-lg'

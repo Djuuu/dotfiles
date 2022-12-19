@@ -12,3 +12,7 @@
 #	eval $("$SSH_PAGEANT" -qra "${SSH_AUTH_SOCK:-${TEMP:-/tmp}/.ssh-pageant-win-$USERNAME}")
 #fi
 #unset SSH_PAGEANT
+
+
+# Lazygit on Windows - MinGW
+#alias lazygit='winpty lazygit.exe'

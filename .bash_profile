@@ -25,6 +25,13 @@
 [ -f "${HOME}/.dotfiles/git-context-graph/.git-completion.bash" ] &&
    . "${HOME}/.dotfiles/git-context-graph/.git-completion.bash"
 
+# LazyGit - https://github.com/jesseduffield/lazygit
+LG_CONFIG_FILE="$(home_path ".dotfiles/.config/lazygit/config.yml")"
+LG_CONFIG_FILE="${LG_CONFIG_FILE},$(home_path ".dotfiles/.config/lazygit/config.keybinding.yml")"
+[ -f "$(home_path ".dotfiles/.config/lazygit/config.local.yml")" ] &&
+    LG_CONFIG_FILE="${LG_CONFIG_FILE},$(home_path ".dotfiles/.config/lazygit/config.local.yml")"
+export LG_CONFIG_FILE
+
 
 # Set user-defined locale
 #export LANG=$(locale -uU)

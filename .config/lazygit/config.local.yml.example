@@ -1,0 +1,17 @@
+# local LazyGit config file
+
+#gui:
+
+  ## Custom Author Color
+#  authorColors:
+#    'John Smith': 'red' # use red for John Smith
+#    'Alan Smithee': '#00ff00' # use green for Alan Smithee
+
+  ## Custom Branch Color
+#  branchColors:
+#    'docs': '#11aaff' # use a light blue for branches beginning with 'docs/'
+
+
+## Custom pull request URLs
+#services:
+#  '<gitDomain>': '<provider>:<webDomain>'

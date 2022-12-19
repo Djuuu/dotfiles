@@ -37,6 +37,7 @@ alias sshagentstart='eval `ssh-agent -s` && ssh-add'
 alias gg='git context-graph --pretty=graph-dyn'
 alias ggo='git context-graph --pretty=oneline'
 alias ggp='git-context-graph-page'
+alias lg='lazygit'
 
 # Git - mu-repo
 alias gm='git mu'
