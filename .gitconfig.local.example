@@ -27,3 +27,9 @@
 #	insteadOf = "github:"
 #[url "git@github.com:"]
 #	pushInsteadOf = "https://github.com/"
+
+[pretty]
+	# Dynamic graph width
+	graph-dyn = %C(auto)%h%d %<|(80)%s %C(green)(%<(13,trunc)%ar) %C(bold blue)<%aN>
+	graph-dyn-t = %C(auto)%h%d %<|(80,mtrunc)%s %C(green)(%<(13,trunc)%ar) %C(bold blue)<%aN>
+	graph-dyn-lg = %C(auto)%h%d %<|(80)%s %C(green)(%<(13,trunc)%ar) %C(bold blue)<%aN>

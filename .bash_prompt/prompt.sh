@@ -1,6 +1,7 @@
 
 . ~/.dotfiles/.bash_prompt/colors.sh
 . ~/.dotfiles/.bash_prompt/prompt_git.sh
+. ~/.dotfiles/.bash_prompt/prompt_git_pretty.sh
 . ~/.dotfiles/.bash_prompt/prompt_utils.sh
 
 # user@host:/current/path
@@ -14,12 +15,14 @@ promptEnd='\$ '
 # default
 PS1="${promptBase} ${promptEnd}"
 
+
 # Pre-prompt hooks
 PROMPT_COMMAND=(
   prompt_window_title
   prompt_separator
   prompt_git
   prompt_newline
+  prompt_git_dyn_graph_width
 
   'PS1="${promptTitle}${promptSeparator}${promptBase} ${promptGit}${promptNewline}${promptEnd}"'
 )

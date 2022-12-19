@@ -12,9 +12,6 @@
 	editor = vim
 	excludesfile = ~/.dotfiles/.gitignore.global
 
-[include]
-	path = ~/.gitconfig.local
-
 ################################################################################
 
 [fetch]
@@ -71,21 +68,15 @@
 [pretty]
 	mingraph = %C(auto)%h%d %s
 
-	graph4t = %C(auto)%h%d %<|(40,mtrunc)%s %C(green)(%<(10,trunc)%ar) %C(bold blue)<%aN>
-	graph5t = %C(auto)%h%d %<|(50,mtrunc)%s %C(green)(%<(10,trunc)%ar) %C(bold blue)<%aN>
-	graph6t = %C(auto)%h%d %<|(60,mtrunc)%s %C(green)(%<(10,trunc)%ar) %C(bold blue)<%aN>
-	graph7t = %C(auto)%h%d %<|(70,mtrunc)%s %C(green)(%<(10,trunc)%ar) %C(bold blue)<%aN>
-	graph8t = %C(auto)%h%d %<|(80,mtrunc)%s %C(green)(%<(10,trunc)%ar) %C(bold blue)<%aN>
-	graph9t = %C(auto)%h%d %<|(90,mtrunc)%s %C(green)(%<(10,trunc)%ar) %C(bold blue)<%aN>
+# 	graph = %C(auto)%h%d %<|(80)%s %C(green)%<(12)(%ar) %C(bold blue)<%aN>
+	graph = %C(auto)%h%d %<|(80)%s %C(bold blue) ✏ %<(12,trunc)%aN %Creset%C(green)⏱  %<(12,trunc)%ar
 
-	graph4 = %C(auto)%h%d %<|(40)%s %C(green)(%<(10)%ar) %C(bold blue)<%aN>
-	graph5 = %C(auto)%h%d %<|(50)%s %C(green)(%<(10)%ar) %C(bold blue)<%aN>
-	graph6 = %C(auto)%h%d %<|(60)%s %C(green)(%<(10)%ar) %C(bold blue)<%aN>
-	graph7 = %C(auto)%h%d %<|(70)%s %C(green)(%<(10)%ar) %C(bold blue)<%aN>
-	graph8 = %C(auto)%h%d %<|(80)%s %C(green)(%<(10)%ar) %C(bold blue)<%aN>
-	graph9 = %C(auto)%h%d %<|(90)%s %C(green)(%<(10)%ar) %C(bold blue)<%aN>
+# 	graph-t = %C(auto)%h%d %<|(80,mtrunc)%s %C(green)(%ar) %C(bold blue)<%aN>
+	graph-t = %C(auto)%h%d %<|(80,mtrunc)%s %C(bold blue) ✏ %<(12,trunc)%aN %Creset%C(green)⏱  %<(12,trunc)%ar
 
-	graph = graph8
+	graph-dyn = %C(auto)%h%d %<|(90)%s %C(green)(%<(13,trunc)%ar) %C(bold blue)<%aN>
+	graph-dyn-t = %C(auto)%h%d %<|(90,mtrunc)%s %C(green)(%<(13,trunc)%ar) %C(bold blue)<%aN>
+	graph-dyn-lg = %C(auto)%h%d %<|(70)%s %C(green)(%<(13,trunc)%ar) %C(bold blue)<%aN>
 
 ################################################################################
 
@@ -98,9 +89,9 @@
 
 	# log
 	graph = "log --color --graph --abbrev-commit --decorate --pretty=graph" # standard graph log
-	lg    = "context-graph --pretty=graph --no-default" # "log --graph"       (branch & remote)
-	lga   = "context-graph --pretty=graph --all"        # "log --graph --all" (all branches)
-	cg    = "context-graph --pretty=graph"              # "context-graph"     (branch, default & remote)
+	lg    = "context-graph --pretty=graph-dyn --no-default" # "log --graph"       (branch & remote)
+	lga   = "context-graph --pretty=graph-dyn --all"        # "log --graph --all" (all branches)
+	cg    = "context-graph --pretty=graph-dyn"              # "context-graph"     (branch, default & remote)
 
 	# stash
 	ss = "stash push -u"
@@ -162,6 +153,9 @@
 	# external commands
 	k  = "!gitk --all"
 	mu = "!python ~/.dotfiles/mu-repo/mu"
+
+[include]
+	path = ~/.gitconfig.local
 
 [gui]
 	encoding = utf-8
