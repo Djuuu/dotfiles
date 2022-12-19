@@ -69,7 +69,23 @@
 	excludeDecoration = refs/remotes/*/HEAD
 
 [pretty]
-	graph = %Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
+	mingraph = %C(auto)%h%d %s
+
+	graph4t = %C(auto)%h%d %<|(40,mtrunc)%s %C(green)(%<(10,trunc)%ar) %C(bold blue)<%aN>
+	graph5t = %C(auto)%h%d %<|(50,mtrunc)%s %C(green)(%<(10,trunc)%ar) %C(bold blue)<%aN>
+	graph6t = %C(auto)%h%d %<|(60,mtrunc)%s %C(green)(%<(10,trunc)%ar) %C(bold blue)<%aN>
+	graph7t = %C(auto)%h%d %<|(70,mtrunc)%s %C(green)(%<(10,trunc)%ar) %C(bold blue)<%aN>
+	graph8t = %C(auto)%h%d %<|(80,mtrunc)%s %C(green)(%<(10,trunc)%ar) %C(bold blue)<%aN>
+	graph9t = %C(auto)%h%d %<|(90,mtrunc)%s %C(green)(%<(10,trunc)%ar) %C(bold blue)<%aN>
+
+	graph4 = %C(auto)%h%d %<|(40)%s %C(green)(%<(10)%ar) %C(bold blue)<%aN>
+	graph5 = %C(auto)%h%d %<|(50)%s %C(green)(%<(10)%ar) %C(bold blue)<%aN>
+	graph6 = %C(auto)%h%d %<|(60)%s %C(green)(%<(10)%ar) %C(bold blue)<%aN>
+	graph7 = %C(auto)%h%d %<|(70)%s %C(green)(%<(10)%ar) %C(bold blue)<%aN>
+	graph8 = %C(auto)%h%d %<|(80)%s %C(green)(%<(10)%ar) %C(bold blue)<%aN>
+	graph9 = %C(auto)%h%d %<|(90)%s %C(green)(%<(10)%ar) %C(bold blue)<%aN>
+
+	graph = graph8
 
 ################################################################################
 
@@ -79,6 +95,12 @@
 	aliases = !git config --get-regexp alias | sed -re 's/alias\\.(\\S*)\\s(.*)$/\\1 = \\2/g'
 
 	st = "status"
+
+	# log
+	graph = "log --color --graph --abbrev-commit --decorate --pretty=graph" # standard graph log
+	lg    = "context-graph --pretty=graph --no-default" # "log --graph"       (branch & remote)
+	lga   = "context-graph --pretty=graph --all"        # "log --graph --all" (all branches)
+	cg    = "context-graph --pretty=graph"              # "context-graph"     (branch, default & remote)
 
 	# stash
 	ss = "stash push -u"
@@ -97,11 +119,6 @@
 	rib = "!f() { git rebase -i $(git mr base) $@; }; f"
 	rc = "rebase --continue"
 	ra = "rebase --abort"
-
-	lg = "log --color --graph --pretty=graph --abbrev-commit --"
-	lga = "log --color --graph --pretty=graph --abbrev-commit --all --"
-	lgr = "!f() { git log --oneline --reverse --no-decorate -n ${1:-25}; }; f"
-	ld = "!f() { echo -e `git show --pretty=format:'%Cgreen%ci %Cblue%cr%Creset' $1 | head -n 1`\\\\t$1; }; f"
 
 	sup = "submodule update --init --recursive"
 
