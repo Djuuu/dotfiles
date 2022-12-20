@@ -146,7 +146,7 @@
 
 	# https://tomschlick.com/git-forget/
 	# Lists local branches whose corresponding remote branch has been deleted
-	gone = ! git branch -vv | awk '/: gone]/{print $1}'
+	gone = ! git branch -vv | sed 's/^* /  /' | awk '/: gone]/{print $1}'
 	# Deletes local branches whose corresponding remote branch has been deleted
 	forget = ! git fetch -p && [ ! -z \"`git gone`\" ] && (git gone | xargs git branch -D) || echo 'No branch to forget'
 
