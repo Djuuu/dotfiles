@@ -1,13 +1,9 @@
 
 # Load local environment variables
-if [ -f ~/.bashrc.env.local ]; then
-	source ~/.bashrc.env.local
-fi
-
+[ -f ~/.dotfiles/.bashrc.env.local ] && . ~/.dotfiles/.bashrc.env.local
 
 # If not running interactively, don't do anything more
 [[ "$-" != *i* ]] && return
-
 
 # Completion options
 [ -f /etc/bash_completion ]           && . /etc/bash_completion
@@ -43,4 +39,4 @@ HISTFILESIZE=2000
 [[ -f ~/.dotfiles/.bash_prompt/prompt.sh ]] && . ~/.dotfiles/.bash_prompt/prompt.sh
 
 # Local config
-[[ -f ~/.bashrc.local ]] && . ~/.bashrc.local
+[[ -f ~/.dotfiles/.bashrc.local ]] && . ~/.dotfiles/.bashrc.local

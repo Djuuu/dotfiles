@@ -8,12 +8,13 @@ while IFS= read -r -d '' filePath
 do
   srcFileName=$(basename "$filePath")
   dstFileName="${srcFileName%.example}"
+  dstFilePath="${BASEDIR}/${srcFileName%.example}"
 
-  if [[ ! -f ~/"${dstFileName}" ]]; then
-    cp "$filePath" ~/"${dstFileName}"
-    echo "  Initialized ~/${dstFileName}"
+  if [[ ! -f "$dstFilePath" ]]; then
+    cp "$filePath" "$dstFilePath"
+    echo "  Initialized ${dstFilePath}"
   else
-    echo "  ~/${dstFileName} already exists"
+    echo "  ${dstFilePath} already exists"
   fi
 
-done < <(find "$BASEDIR" -iname "*.local.example" -print0)
+done < <(find "$BASEDIR/" -iname "*.local.example" -print0)

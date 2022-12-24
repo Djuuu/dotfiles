@@ -14,8 +14,8 @@ prompt_git_dyn_graph_width() {
     GIT_LG_COLUMNS=$(( GIT_MSG_COLUMNS * 2 / 3 - GIT_LG_COLUMN_MARGIN ))
 
     if [[ $GIT_MSG_COLUMNS -ne $GIT_MSG_COLUMNS_OLD ]]; then
-        local configFile; [[ -f "${HOME}/.gitconfig.local" ]] &&
-            configFile="${HOME}/.gitconfig.local" ||
+        local configFile; [[ -f "${HOME}/.dotfiles/.gitconfig.local" ]] &&
+            configFile="${HOME}/.dotfiles/.gitconfig.local" ||
             configFile="${HOME}/.gitconfig"
 
         git config -f "$configFile" pretty.graph-dyn "${GIT_DYN_GRAPH_TPL//__sw__/${GIT_MSG_COLUMNS}}"

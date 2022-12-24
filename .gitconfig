@@ -155,7 +155,7 @@
 	mu = "!python ~/.dotfiles/mu-repo/mu"
 
 [include]
-	path = ~/.gitconfig.local
+	path = ~/.dotfiles/.gitconfig.local
 
 [gui]
 	encoding = utf-8
