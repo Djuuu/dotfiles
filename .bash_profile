@@ -22,8 +22,8 @@
 [ -d "${HOME}/.dotfiles/git-context-graph" ] && PATH="${PATH}:${HOME}/.dotfiles/git-context-graph"
 [ -d "${HOME}/.dotfiles/git-mr" ]            && PATH="${PATH}:${HOME}/.dotfiles/git-mr"
 
-[ -f "${HOME}/.dotfiles/git-context-graph/.git-completion.bash" ] &&
-   . "${HOME}/.dotfiles/git-context-graph/.git-completion.bash"
+[ -f "${HOME}/.dotfiles/git-context-graph/git-context-graph-completion.bash" ] &&
+   . "${HOME}/.dotfiles/git-context-graph/git-context-graph-completion.bash"
 
 # LazyGit - https://github.com/jesseduffield/lazygit
 LG_CONFIG_FILE="$(home_path ".dotfiles/.config/lazygit/config.yml")"
