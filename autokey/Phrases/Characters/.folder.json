@@ -1,13 +1,8 @@
 {
-    "type": "phrase",
-    "description": "Parenthese_L",
-    "modes": [
-        3
-    ],
-    "usageCount": 1,
-    "prompt": false,
-    "omitTrigger": false,
-    "matchCase": false,
+    "type": "folder",
+    "title": "Characters",
+    "modes": [],
+    "usageCount": 0,
     "showInTrayMenu": false,
     "abbreviation": {
         "abbreviations": [],
@@ -18,14 +13,11 @@
         "wordChars": "[\\w]"
     },
     "hotkey": {
-        "modifiers": [
-            "<hyper>"
-        ],
-        "hotKey": ")"
+        "modifiers": [],
+        "hotKey": null
     },
     "filter": {
         "regex": null,
         "isRecursive": false
-    },
-    "sendMode": "kb"
+    }
 }

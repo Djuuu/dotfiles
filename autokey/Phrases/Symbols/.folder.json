@@ -1,13 +1,8 @@
 {
-    "type": "script",
-    "description": "Gnome_System_Monitor",
-    "store": {},
-    "modes": [
-        3
-    ],
+    "type": "folder",
+    "title": "Symbols",
+    "modes": [],
     "usageCount": 0,
-    "prompt": false,
-    "omitTrigger": false,
     "showInTrayMenu": false,
     "abbreviation": {
         "abbreviations": [],
@@ -18,11 +13,8 @@
         "wordChars": "[\\w]"
     },
     "hotkey": {
-        "modifiers": [
-            "<ctrl>",
-            "<shift>"
-        ],
-        "hotKey": "<escape>"
+        "modifiers": [],
+        "hotKey": null
     },
     "filter": {
         "regex": null,

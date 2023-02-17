@@ -1,10 +1,10 @@
 {
     "type": "phrase",
-    "description": "Brace_L",
+    "description": "Bracket_R",
     "modes": [
         3
     ],
-    "usageCount": 1,
+    "usageCount": 0,
     "prompt": false,
     "omitTrigger": false,
     "matchCase": false,
@@ -21,7 +21,7 @@
         "modifiers": [
             "<hyper>"
         ],
-        "hotKey": "\u00f9"
+        "hotKey": "$"
     },
     "filter": {
         "regex": null,

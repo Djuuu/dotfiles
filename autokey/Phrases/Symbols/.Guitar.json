@@ -1,13 +1,13 @@
 {
-    "type": "script",
-    "description": "Gnome_System_Monitor",
-    "store": {},
+    "type": "phrase",
+    "description": "Guitar",
     "modes": [
         3
     ],
     "usageCount": 0,
     "prompt": false,
     "omitTrigger": false,
+    "matchCase": false,
     "showInTrayMenu": false,
     "abbreviation": {
         "abbreviations": [],
@@ -19,13 +19,13 @@
     },
     "hotkey": {
         "modifiers": [
-            "<ctrl>",
-            "<shift>"
+            "<hyper>"
         ],
-        "hotKey": "<escape>"
+        "hotKey": "g"
     },
     "filter": {
         "regex": null,
         "isRecursive": false
-    }
+    },
+    "sendMode": "<shift>+<insert>"
 }
