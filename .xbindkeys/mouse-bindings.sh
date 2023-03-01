@@ -133,10 +133,11 @@ case "$button" in
 
             '"jetbrains-phpstorm"')
                 case "$modifiers" in
-
                     "Alt") xdotool key --clearmodifiers Left \
                                    key --clearmodifiers alt+l \
                                    keydown alt; ;; # (move left and) Align carets
+
+                    "Shift+Alt") xdotool key Left; ;; # Navigate back
 
                     "Control+Alt") xdotool key l; ;; # Reformat code
 
