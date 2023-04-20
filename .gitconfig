@@ -151,6 +151,9 @@
 	# Deletes local branches whose corresponding remote branch has been deleted
 	forget = ! git fetch -p && [ ! -z \"`git gone`\" ] && (git gone | xargs git branch -D) || echo 'No branch to forget'
 
+	# Run git cmmand in repo and submodules recursively
+	recurse = "!f() { git \"$@\"; git submodule foreach --recursive git \"$@\"; }; f"
+
 	# external commands
 	k  = "!gitk --all"
 	mu = "!python ~/.dotfiles/mu-repo/mu"
