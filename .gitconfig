@@ -33,6 +33,7 @@
 [rebase]
 	autosquash = true # Automatically squash commits made with --fixup
 	autostash = true # Automatically stash and re-apply
+	updateRefs = true # Automatically update branches that point to commits that are being rebased
 
 [rerere]
 	enabled = true # Activate recording of resolved conflicts, so that identical conflict hunks can be resolved automatically
