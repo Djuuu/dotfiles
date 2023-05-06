@@ -40,6 +40,11 @@
         glob:   true
         path:   karabiner/*
 
+    ~/AutoHotkey:
+        if: '[ -f /git-bash.exe ]'
+        create: true
+        path:   autohotkey
+
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
     - [bash ~/.dotfiles/install-local.sh,       Initializing local files]

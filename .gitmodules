@@ -2,15 +2,23 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot.git
  	#url = https://github.com/Djuuu/dotbot.git
-[submodule "mu-repo"]
-	path = mu-repo
-	url = https://github.com/fabioz/mu-repo.git
+
+[submodule "autohotkey"]
+	path = autohotkey
+	url = https://github.com/Djuuu/AutoHotkey.git
+
 [submodule "dockerize-clis"]
 	path = dockerize-clis
 	url = https://github.com/Djuuu/dockerize-clis.git
+
 [submodule "git-context-graph"]
 	path = git-context-graph
 	url = https://github.com/Djuuu/git-context-graph.git
+
 [submodule "git-mr"]
 	path = git-mr
 	url = https://github.com/Djuuu/git-mr.git
+
+[submodule "mu-repo"]
+	path = mu-repo
+	url = https://github.com/fabioz/mu-repo.git
