@@ -4,11 +4,11 @@
 # alias cp='cp -i'
 # alias mv='mv -i'
 
+export LS_OPTIONS='--color=auto'
 if [ -x "$(command -v dircolors)" ]; then
-    export LS_OPTIONS='--color=auto'
-    eval "`dircolors`"
+    eval "$(dircolors)"
 else
-    export LS_OPTIONS=''
+    #export LS_OPTIONS=''
     export CLICOLOR=1
 fi
 
