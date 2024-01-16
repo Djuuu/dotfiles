@@ -1,0 +1,28 @@
+
+# Colors
+
+EEFFFF	White
+FF0000	Red
+FF7F00	Orange
+FFFF00	Yellow
+00FF00	Green
+00FFFF	Cyan
+0E80FF	Blue
+A23AFF	Purple
+FF00FF	Pink
+8A5E00	dark orange
+205D64	dark blue
+5D1F96	dark purple
+000000	Black
+
+---------------------------------------------------------
+
+# Macros
+
+2	->
+3	=>
+4	() {}
+5	[]()
+6	$this->
+7	() {}
+
