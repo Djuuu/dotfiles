@@ -2,7 +2,7 @@
 " Version: 1
 " Author: Seth Mason
 " Created: 19 Nov 2003 10:20:19
-" Last-modified: 30 mai 2016 11:53:40
+" Last-modified: 05 Jan 2024 15:47:52
 " All my Vim commands for the taking
 " Works on cygwin but not very well on unix machines...still trying to figure
 " it out
@@ -300,7 +300,7 @@ endif
 " autocmd BufNewFile,BufRead git-rebase-todo setf gitrebase
 "
 
-
-
-
+" Avoid syntax highlighting on big files
+" https://stackoverflow.com/a/559052
+autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
 
