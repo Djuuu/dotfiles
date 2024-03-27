@@ -3,6 +3,7 @@ gui:
   scrollHeight: 16 # 2 # how many lines you scroll by
   scrollPastBottom: false # true # enable scrolling past the bottom
   expandFocusedSidePanel: true # false
+  nerdFontsVersion: "3" # nerd fonts version to use ("2" or "3"); empty means don't show nerd font icons
 
 git:
   paging:
@@ -14,7 +15,9 @@ git:
   autoFetch: false # true
 
 #  branchLogCmd: 'git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --'
-  branchLogCmd: 'git context-graph --pretty=graph-dyn-lg {{branchName}} --'
+  branchLogCmd: 'git context-graph --pretty=graph-dyn-lg --first-parent {{branchName}} --'
 
 #  allBranchesLogCmd: 'git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium'
-  allBranchesLogCmd: 'git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=graph-dyn-lg'
+#  allBranchesLogCmd: 'git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --first-parent  --pretty=graph-dyn-lg'
+
+  truncateCopiedCommitHashesTo: 40 # When copying commit hashes to the clipboard, truncate them to this length. Set to 40 to disable truncation.
