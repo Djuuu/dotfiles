@@ -1,4 +1,4 @@
 # Local files
 .bashrc.env.local
 .bashrc.local
-.gitconfig.local
+.gitconfig*.local
