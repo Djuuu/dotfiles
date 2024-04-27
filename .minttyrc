@@ -5,3 +5,6 @@ Charset=UTF-8
 Term=xterm-256color
 Rows=48
 Columns=128
+FontHeight=10
+EmojiPlacement=full
+Emojis=google
