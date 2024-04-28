@@ -91,9 +91,7 @@
 
 	# log
 	graph = "log --color --graph --abbrev-commit --decorate --pretty=graph" # standard graph log
-	lg    = "context-graph --pretty=graph-dyn --no-default" # "log --graph"       (branch & remote)
-	lga   = "context-graph --pretty=graph-dyn --all"        # "log --graph --all" (all branches)
-	cg    = "context-graph --pretty=graph-dyn"              # "context-graph"     (branch, default & remote)
+	cg    = "context-graph --pretty=graph-dyn"                              # "context-graph" (branch, default & remote)
 
 	# stash
 	ss = "stash push -u"

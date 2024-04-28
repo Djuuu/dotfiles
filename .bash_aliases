@@ -34,9 +34,8 @@ alias please='sudo $(fc -nl -1)'
 alias sshagentstart='eval `ssh-agent -s` && ssh-add'
 
 # Git
-alias gg='git context-graph --pretty=graph-dyn'
-alias gga='git context-graph --pretty=graph-dyn --all'
-alias ggo='git context-graph --pretty=oneline'
+alias gg='git context-graph --first-parent --pretty=graph-dyn'
+alias gga='git context-graph --first-parent --pretty=graph-dyn --all'
 alias ggp='git-context-graph-page'
 alias lg='lazygit'
 
