@@ -1,5 +1,5 @@
 - defaults:
-    link: {relink: true, relative: true}
+    link: {relink: true, relative: true, canonicalize: false}
     shell: {stdout: true, stderr: true}
 
 - clean: ['~']
