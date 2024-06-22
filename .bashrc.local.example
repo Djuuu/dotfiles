@@ -13,6 +13,12 @@
 #fi
 #unset SSH_PAGEANT
 
+# keychain - start or reuse agent
+#eval $(keychain --quiet --eval --agents ssh id_rsa)
+# keychain - reuse agent
+#alias sshagentstart='eval $(keychain --quiet --clear --eval --agents ssh id_rsa)'
+#eval $(keychain --quiet --eval --agents ssh)
+
 
 # Lazygit on Windows - MinGW
 #alias lazygit='winpty lazygit.exe'
