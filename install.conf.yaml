@@ -26,24 +26,38 @@
 
     ~/.config/autokey/data/Phrases:
         if: "[ -d ~/.config/autokey ]"
-        create: true
         path:   autokey/Phrases
-
-    ~/.config/autokey/data/Scripts:
-        if: "[ -d ~/.config/autokey ]"
         create: true
-        path:   autokey/Scripts
-
-    ~/.config/karabiner/assets/complex_modifications/:
-        if: "[ -d ~/.config/karabiner ]"
-        create: true
-        glob:   true
-        path:   karabiner/*
 
     ~/AutoHotkey:
         if: '[ -f /git-bash.exe ]'
-        create: true
         path:   autohotkey
+        create: true
+
+    ~/.local/bin/git-context-graph:
+        path:   git-context-graph/git-context-graph
+        create: true
+    ~/.local/share/bash-completion/completions/git-context-graph.bash:
+        path:   git-context-graph/git-context-graph-completion.bash
+        create: true
+
+    ~/.local/bin/git-mr:
+        path:   git-mr/git-mr
+        create: true
+    ~/.local/share/bash-completion/completions/git-mr.bash:
+        path:   git-mr/git-mr-completion.bash
+        create: true
+
+    ~/.config/autokey/data/Scripts:
+        if: "[ -d ~/.config/autokey ]"
+        path:   autokey/Scripts
+        create: true
+
+    ~/.config/karabiner/assets/complex_modifications/:
+        if: "[ -d ~/.config/karabiner ]"
+        path:   karabiner/*
+        glob:   true
+        create: true
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
