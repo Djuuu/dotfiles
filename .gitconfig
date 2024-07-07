@@ -101,8 +101,8 @@
 	uncommit = "!f() { echo -n 'Uncommitting: '; git rev-parse --short HEAD; echo; git log -1 --pretty=%B; git reset --soft HEAD~1; }; f"
 	prev-commit = "!f() { git reflog | sed -n 2p | cut -d' ' -f1; }; f"
 	recommit = "!f() { echo -n 'Resetting to previous commit: '; git prev-commit; git reset --soft $(git prev-commit); }; f"
-	amend = "!f() { git commit -m \"$(git log --format=%B -n 1 $(git prev-commit))\" ; }; f"
-	fixup = "commit --fixup"
+	amend = "!f() { git commit -C $(git prev-commit); }; f"
+	fixup = "!f() { git commit --fixup ${1:-HEAD}; }; f"
 
 	# rebase
 	ri = "rebase -i"
