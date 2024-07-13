@@ -1,17 +1,40 @@
 # local LazyGit config file
 
+## Config relating to the Lazygit UI
 #gui:
-
-  ## Custom Author Color
-#  authorColors:
-#    'John Smith': 'red' # use red for John Smith
-#    'Alan Smithee': '#00ff00' # use green for Alan Smithee
-
-  ## Custom Branch Color
-#  branchColors:
-#    'docs': '#11aaff' # use a light blue for branches beginning with 'docs/'
+#
+#  ## Custom Author Color
+#  #authorColors:
+#  #  'John Smith':   'red'
+#  #  'Alan Smithee': '#00ff00'
+#  #  'Djuuu':        '#00FFBE'
+#
+#  ## Custom Branch Color
+#  #branchColors:
+#  #  'docs': '#11aaff' # use a light blue for branches beginning with 'docs/'
 
 
 ## Custom pull request URLs
 #services:
-#  '<gitDomain>': '<provider>:<webDomain>'
+#  #'<gitDomain>': '<provider>:<webDomain>'
+#  #'gitlab.com':  'gitlab:gitlab.com'
+#  #'github.com':  'github:github.com'
+
+
+# Config relating to things outside of Lazygit like how files are opened, copying to clipboard, etc
+#os:
+#  # CopyToClipboardCmd is the command for copying to clipboard.
+#  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#custom-command-for-copying-to-and-pasting-from-clipboard
+#  #copyToClipboardCmd: printf "\033]52;c;$(printf {{text}} | base64)\a" > /dev/tty
+#
+#  # Command for opening a file, as if the file is double-clicked. Should
+#  # contain "{{filename}}", but doesn't support "{{line}}".
+#  #open: "powershell.exe start explorer.exe {{filename}} >/dev/null"
+#  #open: "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe start explorer.exe {{filename}} >/dev/null"
+#  #open: "/mnt/c/Windows/explorer.exe {{filename}} || true"
+#  #open: "xdg-open {{filename}} >/dev/null"
+#
+#  # Command for opening a link. Should contain "{{link}}".
+#  #openLink: "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe start {{link}} >/dev/null"
+#  #openLink: "/mnt/c/Windows/explorer.exe {{link}} || true"
+#  #openLink: "xdg-open {{link}} >/dev/null"

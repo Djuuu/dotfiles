@@ -1,23 +1,65 @@
 
 gui:
-  scrollHeight: 16 # 2 # how many lines you scroll by
-  scrollPastBottom: false # true # enable scrolling past the bottom
-  expandFocusedSidePanel: true # false
-  nerdFontsVersion: "3" # nerd fonts version to use ("2" or "3"); empty means don't show nerd font icons
+  # The number of lines you scroll by when scrolling the main window
+  scrollHeight: 16 # default: 2
+
+  # If true, allow scrolling past the bottom of the content in the main window
+  scrollPastBottom: false # default: true
+
+  # If true, increase the height of the focused side window; creating an accordion effect.
+  expandFocusedSidePanel: true # default: false
+
+  # One of 'auto' (default) | 'en' | 'zh-CN' | 'zh-TW' | 'pl' | 'nl' | 'ja' | 'ko' | 'ru'
+  language: en
+
+  # Format used when displaying time e.g. commit time.
+  # Uses Go's time format syntax: https://pkg.go.dev/time#Time.Format
+  timeFormat: 02 Jan 06
+
+  # Format used when displaying time if the time is less than 24 hours ago.
+  # Uses Go's time format syntax: https://pkg.go.dev/time#Time.Format
+  shortTimeFormat: 15:04 # default: '3:04PM'
+
+  # Nerd fonts version to use.
+  # One of: '2' | '3' | empty string (default)
+  # If empty, do not show icons.
+  nerdFontsVersion: "3"
+
+  # Whether to show the divergence from the base branch in the branches view.
+  # One of: 'none' | 'onlyArrow'  | 'arrowAndNumber'
+  showDivergenceFromBaseBranch: arrowAndNumber # default: none
+
+  # Status panel view.
+  # One of 'dashboard' (default) | 'allBranchesLog'
+  statusPanelView: allBranchesLog
 
 git:
+  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md
   paging:
-    useConfig: true # false
+    # If true, Lazygit will use whatever pager is specified in `$GIT_PAGER`, `$PAGER`, or your *git config*. If the pager ends with something like ` | less` we will strip that part out, because less doesn't play nice with our rendering approach. If the custom pager uses less under the hood, that will also break rendering (hence the `--paging=never` flag for the `delta` pager).
+    useConfig: true # default: false
 
+  # Config relating to merging
   merging:
+    # Extra args passed to `git merge`, e.g. --no-ff
     args: '--no-ff'
 
-  autoFetch: false # true
+  # If true, periodically fetch from remote
+  autoFetch: false # default: true
 
-#  branchLogCmd: 'git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --'
-  branchLogCmd: 'git context-graph --pretty=graph-dyn-lg --first-parent {{branchName}} --'
+  # Command used when displaying the current branch git log in the main window
+  #   default: git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --
+  branchLogCmd: git context-graph --pretty=graph-dyn-lg --first-parent {{branchName}} --
 
-#  allBranchesLogCmd: 'git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium'
-#  allBranchesLogCmd: 'git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --first-parent  --pretty=graph-dyn-lg'
+  # Command used to display git log of all branches in the main window.
+  # Deprecated: use `allBranchesLogCmds` instead.
+  #   default: git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium
+  allBranchesLogCmd: git context-graph --all --pretty=graph-dyn-lg --first-parent {{branchName}} --
+  allBranchesLogCmds: []
+    #- git context-graph --all --pretty=graph-dyn-lg --first-parent {{branchName}} --
+    #- git context-graph --all --pretty=graph-dyn-lg {{branchName}} --
+    #- git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium
 
-  truncateCopiedCommitHashesTo: 40 # When copying commit hashes to the clipboard, truncate them to this length. Set to 40 to disable truncation.
+  # When copying commit hashes to the clipboard, truncate them to this
+  # length. Set to 40 to disable truncation.
+  truncateCopiedCommitHashesTo: 40 # default: 12
