@@ -5,6 +5,9 @@
 # source the users bashrc if it exists
 [ -f "${HOME}/.bashrc" ] && . "${HOME}/.bashrc"
 
+# Add go/bin to PATH
+[ -d "/usr/local/go/bin" ] && PATH="$PATH:/usr/local/go/bin"
+
 # Set PATH so it includes user's bin/ directories
 [ -d "${HOME}/go/bin" ]     && PATH="${HOME}/go/bin:${PATH}"
 [ -d "${HOME}/bin" ]        && PATH="${HOME}/bin:${PATH}"
