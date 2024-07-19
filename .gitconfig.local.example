@@ -14,14 +14,41 @@
 #[credential]
 #	helper = cache --timeout 7201
 
+
+# https://difftastic.wilfred.me.uk/
 [diff]
-#	# https://difftastic.wilfred.me.uk/
 #	external = difft
 #	tool = difftastic
 #[difftool "difftastic"]
 #	cmd = difft "$LOCAL" "$REMOTE"
 #[pager]
 #	difftool = true
+
+
+# https://dandavison.github.io/delta/configuration.html
+#[core]
+#	pager = delta
+#[interactive]
+#	diffFilter = delta --color-only --features=interactive
+#[delta]
+#	features = common cli
+#[delta "interactive"]
+#	keep-plus-minus-markers = false
+#[delta "common"]
+#	commit-decoration-style = blue ol
+#	file-style = omit
+#	hunk-header-decoration-style = dimgray box
+#	hunk-header-file-style = silver
+#	hunk-header-line-number-style = skyblue
+#	hunk-header-style = file line-number syntax
+#[delta "cli"]
+#	true-color = always
+#	pager = less --mouse --wheel-lines=3
+#	#line-numbers = true
+#[delta "lazygit"]
+#	paging = never
+#	true-color = never
+
 
 #[url "git@github.com:"]
 #	insteadOf = "github:"
