@@ -6,7 +6,7 @@
 
 export LS_OPTIONS='--color=auto'
 if [ -x "$(command -v dircolors)" ]; then
-    eval "$(dircolors)"
+    eval "$(SHELL=${SHELL:-/bin/bash} dircolors)"
 else
     #export LS_OPTIONS=''
     export CLICOLOR=1
