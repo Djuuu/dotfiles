@@ -42,6 +42,7 @@ alias lg='lazygit'
 
 # Git - mu-repo
 alias gm='git mu'
+alias gmst='git mu status --short --branch'
 alias gmr='git mu register'
 alias gml='git mu list'
 alias gmg='git mu group'
