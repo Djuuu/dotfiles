@@ -111,6 +111,27 @@
 	rc = "rebase --continue"
 	ra = "rebase --abort"
 
+	# Fast-forward main branch
+	ff = "!f() { \
+	    remote=$(git remote | grep -q origin && echo 'origin' || git remote | head -n 1);     \
+	    main=$(git symbolic-ref refs/remotes/${remote}/HEAD --short) ||                       \
+	        { echo \"You might want to run 'git remote set-head ${remote} -a'\"; return 1; }; \
+	    main=${main#${remote}/};                                    \
+	    main_sha=$(git rev-parse refs/heads/${main});               \
+	    remote_sha=$(git rev-parse refs/remotes/${remote}/${main}); \
+	    [ \"$main_sha\" = \"$remote_sha\" ]                           && \
+	        echo \"'${main}' is up to date with '${remote}/${main}'\" && \
+	        return 0;                                                    \
+	    [ \"$main_sha\" != \"$(git merge-base ${main_sha} ${remote_sha})\" ] && \
+	        echo \"'${main}' and '${remote}/${main}' have diverged\"         && \
+	        return 0;                                                           \
+	    [ \"$(git branch --show-current 2>/dev/null)\" = \"$main\" ] && \
+	        git merge --ff-only refs/remotes/${remote}/${main}       && \
+	        return 0;                                                   \
+	    echo \"Fast-forwarding '${main}'\";                               \
+	    git update-ref refs/heads/${main} refs/remotes/${remote}/${main}; \
+	}; f"
+
 	sup = "submodule update --init --recursive"
 
 	# push
@@ -150,7 +171,7 @@
 	# Deletes local branches whose corresponding remote branch has been deleted
 	forget = ! git fetch -p && [ ! -z \"`git gone`\" ] && (git gone | xargs git branch -D) || echo 'No branch to forget'
 
-	# Run git cmmand in repo and submodules recursively
+	# Run git command in repo and submodules recursively
 	recurse = "!f() { git \"$@\"; git submodule foreach --recursive git \"$@\"; }; f"
 
 	# external commands
