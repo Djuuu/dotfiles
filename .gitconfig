@@ -132,6 +132,9 @@
 	    git update-ref refs/heads/${main} refs/remotes/${remote}/${main}; \
 	}; f"
 
+    # Update
+	update = "!f() { git fetch --all --prune; git ff; git sup; git status --short --branch; }; f"
+
 	sup = "submodule update --init --recursive"
 
 	# push
