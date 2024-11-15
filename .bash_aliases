@@ -31,6 +31,8 @@ alias h='history'
 
 alias please='sudo $(fc -nl -1)'
 
+alias bat="batcat"
+
 alias sshagentstart='eval `ssh-agent -s` && ssh-add'
 
 # Git
