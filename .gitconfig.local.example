@@ -37,14 +37,14 @@
 #[delta "common"]
 #	commit-decoration-style = blue ol
 #	file-style = omit
-#	hunk-header-decoration-style = dimgray box
+#	hunk-header-decoration-style = dimgray box ul
 #	hunk-header-file-style = silver
 #	hunk-header-line-number-style = skyblue
 #	hunk-header-style = file line-number syntax
 #[delta "cli"]
 #	true-color = always
 #	pager = less --mouse --wheel-lines=3
-#	#line-numbers = true
+#	side-by-side = true
 #[delta "lazygit"]
 #	paging = never
 #	true-color = never
