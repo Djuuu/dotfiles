@@ -1,7 +1,23 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot.git
- 	#url = https://github.com/Djuuu/dotbot.git
+
+[submodule "dotbot-plugins/dotbot-apt"]
+	path = dotbot-plugins/dotbot-apt
+	url = https://github.com/bryant1410/dotbot-apt
+
+[submodule "dotbot-plugins/dotbot-go"]
+	path = dotbot-plugins/dotbot-go
+	url = https://github.com/TakashiAihara/dotbot-go
+
+[submodule "dotbot-plugins/dotbot-pip"]
+	path = dotbot-plugins/dotbot-pip
+	url = https://github.com/sobolevn/dotbot-pip
+
+[submodule "dotbot-plugins/dotbot-sudo"]
+	path = dotbot-plugins/dotbot-sudo
+	url = https://github.com/DrDynamic/dotbot-sudo
+
 
 [submodule "autohotkey"]
 	path = autohotkey
