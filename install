@@ -2,13 +2,41 @@
 
 set -e
 
-CONFIG="install.conf.yaml"
-DOTBOT_DIR="dotbot"
+# Determine configurations to apply
 
+DEFAULT_CONFIG="install.conf.yaml"
+
+CONFIGS=()
+ARGS=()
+for arg in "$@"; do
+    case $arg in
+        conf*)    CONFIGS+=("install.conf.yaml") ;;
+        package*) CONFIGS+=("packages.conf.yaml") ;;
+        all)      CONFIGS=("install.conf.yaml" "packages.conf.yaml") ;;
+        *)        ARGS+=("$arg") ;;
+    esac
+done
+set -- "${ARGS[@]}"
+
+[[ ${#CONFIGS[@]} -eq 0 ]] && CONFIGS+=("$DEFAULT_CONFIG")
+
+# Init
+
+DOTBOT_DIR="dotbot"
 DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 cd "${BASEDIR}"
-git submodule update --init --recursive "${DOTBOT_DIR}"
 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+# Update Git submodules
+git submodule sync --quiet --recursive
+git submodule update --init --recursive
+
+# Run dotbot
+for config in "${CONFIGS[@]}"; do
+    "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" \
+        --plugin-dir "dotbot-plugins/*" \
+        -d "${BASEDIR}" \
+        -c "${config}" \
+        "${@}"
+done

@@ -2,19 +2,20 @@
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-echo "Initializing local files"
+lightblue='\e[94m'
+reset='\e[0m'
 
 while IFS= read -r -d '' filePath
 do
   srcFileName=$(basename "$filePath")
-  dstFileName="${srcFileName%.example}"
   dstFilePath="${BASEDIR}/${srcFileName%.example}"
+  dstFilePathName="${dstFilePath/#${HOME}/'~'}"
 
   if [[ ! -f "$dstFilePath" ]]; then
+    echo -e "${lightblue}  Creating file ${dstFilePathName}${reset}"
     cp "$filePath" "$dstFilePath"
-    echo "  Initialized ${dstFilePath}"
   else
-    echo "  ${dstFilePath} already exists"
+    echo -e "${lightblue}  File exists ${dstFilePathName}${reset}"
   fi
 
 done < <(find "$BASEDIR/" -iname "*.local.example" -print0)
