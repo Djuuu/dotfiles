@@ -14,6 +14,14 @@
 #  #  'docs': '#11aaff' # use a light blue for branches beginning with 'docs/'
 
 
+## Config relating to git
+#git:
+#  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md
+#  paging:
+#    useConfig: false
+#    pager: "delta --features='common lazygit'"
+
+
 ## Custom pull request URLs
 #services:
 #  #'<gitDomain>': '<provider>:<webDomain>'
@@ -25,16 +33,22 @@
 #os:
 #  # CopyToClipboardCmd is the command for copying to clipboard.
 #  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#custom-command-for-copying-to-and-pasting-from-clipboard
-#  #copyToClipboardCmd: printf "\033]52;c;$(printf {{text}} | base64)\a" > /dev/tty
+#  copyToClipboardCmd: printf "\033]52;c;$(printf {{text}} | base64)\a" > /dev/tty
 #
 #  # Command for opening a file, as if the file is double-clicked. Should
 #  # contain "{{filename}}", but doesn't support "{{line}}".
 #  #open: "powershell.exe start explorer.exe {{filename}} >/dev/null"
 #  #open: "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe start explorer.exe {{filename}} >/dev/null"
-#  #open: "/mnt/c/Windows/explorer.exe {{filename}} || true"
+#  open: "/mnt/c/Windows/explorer.exe {{filename}} || true"
 #  #open: "xdg-open {{filename}} >/dev/null"
 #
 #  # Command for opening a link. Should contain "{{link}}".
 #  #openLink: "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe start {{link}} >/dev/null"
-#  #openLink: "/mnt/c/Windows/explorer.exe {{link}} || true"
+#  openLink: "/mnt/c/Windows/explorer.exe {{link}} || true"
 #  #openLink: "xdg-open {{link}} >/dev/null"
+
+#customCommands:
+#  - key: '<c-d>'
+#    context: 'files'
+#    command: 'git diff {{.SelectedFile.Name | quote}}'
+#    subprocess: true

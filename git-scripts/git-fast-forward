@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# Use origin if remote exists
+remote=$(git remote | grep -q "^origin$" && echo "origin")
+
+# Fallback to first remote
+[[ -n $remote ]] || remote=$(git remote | head -n 1)
+
+# Main remote branch
+main_remote_branch=$(git symbolic-ref "refs/remotes/${remote}/HEAD" --short) || {
+    >&2 echo "You might want to run 'git remote set-head ${remote} -a'"
+    exit 1
+}
+main_branch="${main_remote_branch#"${remote}/"}"
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+main_sha="$(git rev-parse "refs/heads/${main_branch}")"
+remote_sha="$(git rev-parse "refs/remotes/${remote}/${main_branch}")"
+
+[[ $main_sha = "$remote_sha" ]] && {
+    echo "'${main_branch}' is up to date with '${remote}/${main_branch}'"
+    exit 0
+}
+
+[[ $main_sha != "$(git merge-base "${main_sha}" "${remote_sha}")" ]] && {
+    echo "'${main_branch}' and '${remote}/${main_branch}' have diverged"
+    exit 0
+}
+
+[[ $current_branch = "$main_branch" ]] && {
+    git merge --ff-only "refs/remotes/${remote}/${main_branch}"
+    exit 0
+}
+
+echo "Fast-forwarding '${main_branch}'"
+
+git update-ref "refs/heads/${main_branch}" "refs/remotes/${remote}/${main_branch}"

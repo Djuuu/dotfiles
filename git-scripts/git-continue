@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# merge --continue, rebase --continue, whatever --continue
+# https://www.eficode.com/blog/10-levels-of-git-aliases-advanced-and-beyond
+
+repo_path=$(git rev-parse --git-dir) || exit 1
+
+[[ -d "${repo_path}/rebase-merge" ]] &&
+    git rebase --continue &&
+    exit 0
+
+[[ -d "${repo_path}/rebase-apply" ]] &&
+    git rebase --continue &&
+    exit 0
+
+[[ -f "${repo_path}/MERGE_HEAD" ]] &&
+    git merge --continue &&
+    exit 0
+
+[[ -f "${repo_path}/CHERRY_PICK_HEAD" ]] &&
+    git cherry-pick --continue &&
+    exit 0
+
+[[ -f "${repo_path}/REVERT_HEAD" ]] &&
+    git revert --continue &&
+    exit 0
+
+echo -e "\e[33mNothing to continue?\e[0m"
+exit 1

@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+git push --force-with-lease "$@" || {
+
+    remote_branch=$(git rev-parse --abbrev-ref '@{u}')
+    remote=$(echo "$remote_branch" | cut -d/ -f1)
+    current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+    git fetch "${remote}" "${current_branch}" 2>/dev/null
+
+    remote_commit=$(git rev-parse --short '@{u}')
+
+    gray='\e[090m'
+    lightgreen='\e[92m'
+    orange='\e[33m'
+    red='\e[31m'
+    reset='\e[0m'
+
+    echo
+    echo -e "${gray}-----------------------------------------${reset}"
+    git context-graph -25
+    echo -e "${gray}-----------------------------------------${reset}"
+    echo
+    echo -e "To acknowledge current ${red}${remote_branch}${reset} revision, use:"
+    echo
+    echo -e "  git push --force-with-lease=${lightgreen}${current_branch}${reset}:${orange}${remote_commit}${reset}"
+    echo
+    echo "or just:"
+    echo
+    echo "  git push --force"
+    echo
+}
