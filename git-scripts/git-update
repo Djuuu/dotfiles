@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+git fetch --all --prune
+
+# -> git-scripts/git-fast-forward
+git fast-forward
+
+git submodule update --init --recursive
+
+git status --short --branch

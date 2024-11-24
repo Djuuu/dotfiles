@@ -1,0 +1,52 @@
+# https://github.com/dandavison/delta
+# https://dandavison.github.io/delta/configuration.html
+
+[core]
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only --features=interactive
+
+
+[delta]
+	features = common cli
+
+[delta "common"]
+	commit-decoration-style = blue ol
+	file-style = omit
+	hunk-header-decoration-style = dimgray box ul
+	hunk-header-file-style = silver
+	hunk-header-line-number-style = skyblue
+	hunk-header-style = file line-number syntax
+
+[delta "cli"]
+	true-color = always
+	pager = less --mouse --wheel-lines=3
+	side-by-side = true
+
+	hyperlinks = true
+	hyperlinks-file-link-format = "phpstorm://open?file={path}&line={line}"
+
+[delta "interactive"]
+	true-color = always
+	keep-plus-minus-markers = false
+
+[delta "lazygit"]
+	paging = never
+	dark = true
+	# true-color = never
+	# syntax-theme = Nord
+	syntax-theme = Dracula
+	# zero-style = syntax
+	zero-style = dim syntax
+	keep-plus-minus-markers = true
+	plus-style                    =      "#33CC00"
+	plus-emph-style               = bold "#50FF00" "#005500"
+	plus-empty-line-marker-style  = bold "#50FF00" "#005500"
+	plus-non-emph-style           =      "#44AA00"
+	minus-style                   = bold "#CC0000"
+	minus-emph-style              = bold "#FF6666" "#440000"
+	minus-empty-line-marker-style = bold "#FF6666" "#440000"
+	minus-non-emph-style          =      "#BB0000"
+	whitespace-error-style        = bold "#660066" "#DD33DD"
+	hunk-header-style = file line-number purple

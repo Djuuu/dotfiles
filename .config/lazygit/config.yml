@@ -54,10 +54,10 @@ git:
   # Command used to display git log of all branches in the main window.
   # Deprecated: use `allBranchesLogCmds` instead.
   #   default: git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium
-  allBranchesLogCmd: git context-graph --all --pretty=graph-dyn-lg --first-parent {{branchName}} --
+  allBranchesLogCmd: git context-graph --pretty=graph-dyn-lg --all --first-parent --
   allBranchesLogCmds: []
-    #- git context-graph --all --pretty=graph-dyn-lg --first-parent {{branchName}} --
-    #- git context-graph --all --pretty=graph-dyn-lg {{branchName}} --
+    #- git context-graph --pretty=graph-dyn-lg --all --first-parent --
+    #- git context-graph --pretty=graph-dyn-lg --all --
     #- git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium
 
   # When copying commit hashes to the clipboard, truncate them to this
