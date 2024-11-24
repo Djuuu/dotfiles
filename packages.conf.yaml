@@ -1,0 +1,22 @@
+
+- sudo:
+
+  - apt:
+    - ansible
+    - bat
+    - git-delta
+    - htop
+    - jq
+    - keychain
+    - ncdu
+    - python-is-python3
+    - python3-pip
+    - vim
+
+  - pip:
+      file: pip-requirements.txt
+      stderr: true
+
+- go:
+  - github.com/jesseduffield/lazygit@latest
+  - github.com/jesseduffield/lazydocker@latest
