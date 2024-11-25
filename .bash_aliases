@@ -51,5 +51,5 @@ alias gmg='git mu group'
 alias gmgs='git mu group switch'
 
 # Docker
-alias d='docker'
 alias dc='docker compose'
+alias lzd='lazydocker'

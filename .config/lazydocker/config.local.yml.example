@@ -1,0 +1,35 @@
+# local LazyDocker config file
+
+#gui:
+#  returnImmediately: true
+
+#commandTemplates:
+#  dockerCompose: docker compose
+
+#oS:
+#  #openCommand: open {{filename}}
+#  #openCommand: "/mnt/c/Windows/explorer.exe {{filename}} || true"
+#  #openLinkCommand: open {{link}}
+#  openLinkCommand: "/mnt/c/Windows/explorer.exe {{link}} || true"
+
+#bulkCommands:
+#  services:
+#    - { name: up, attach: false, shell: false, command: '{{ .DockerCompose }} up -d', serviceNames: [] }
+#    #- { name: up (attached), attach: true, shell: false, command: '{{ .DockerCompose }} up', serviceNames: [] }
+#    - { name: stop, attach: false, shell: false, command: '{{ .DockerCompose }} stop', serviceNames: [] }
+#    - { name: pull, attach: true, shell: false, command: '{{ .DockerCompose }} pull', serviceNames: [] }
+#    - { name: build, attach: true, shell: false, command: '{{ .DockerCompose }} build --parallel --force-rm', serviceNames: [] }
+#    - { name: down, attach: false, shell: false, command: '{{ .DockerCompose }} down', serviceNames: [] }
+#    #- { name: down with volumes, attach: false, shell: false, command: '{{ .DockerCompose }} down --volumes', serviceNames: [] }
+#    #- { name: down with images, attach: false, shell: false, command: '{{ .DockerCompose }} down --rmi all', serviceNames: [] }
+#    #- { name: down with volumes and images, attach: false, shell: false, command: '{{ .DockerCompose }} down --volumes --rmi all', serviceNames: [] }
+
+#customCommands:
+#
+#  servies:
+#    - { name: bash, attach: true, command: '{{ .DockerCompose }} exec {{ .Service.Name }} bash', serviceNames: [] }
+#    - { name: sh, attach: true, command: '{{ .DockerCompose }} exec {{ .Service.Name }} sh', serviceNames: [] }
+#
+#  containers:
+#    - { name: bash, attach: true, command: 'docker exec -it {{ .Container.ID }} bash', serviceNames: [] }
+#    - { name: sh, attach: true, command: 'docker exec -it {{ .Container.ID }} sh', serviceNames: [] }
