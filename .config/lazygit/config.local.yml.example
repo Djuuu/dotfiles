@@ -39,13 +39,15 @@
 #  # contain "{{filename}}", but doesn't support "{{line}}".
 #  #open: "powershell.exe start explorer.exe {{filename}} >/dev/null"
 #  #open: "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe start explorer.exe {{filename}} >/dev/null"
-#  open: "/mnt/c/Windows/explorer.exe {{filename}} || true"
+#  #open: "/mnt/c/Windows/explorer.exe {{filename}} || true"
 #  #open: "xdg-open {{filename}} >/dev/null"
+#  open: cmd.exe /c start phpstorm://open?file=//wsl$/Ubuntu/$(echo {{filename}})
 #
 #  # Command for opening a link. Should contain "{{link}}".
 #  #openLink: "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe start {{link}} >/dev/null"
-#  openLink: "/mnt/c/Windows/explorer.exe {{link}} || true"
+#  #openLink: "/mnt/c/Windows/explorer.exe {{link}} || true"
 #  #openLink: "xdg-open {{link}} >/dev/null"
+#  openLink:  cmd.exe /c start {{link}}
 
 #customCommands:
 #  - key: '<c-d>'
