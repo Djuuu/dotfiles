@@ -3,8 +3,11 @@
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 lightblue='\e[94m'
+purple='\e[35m'
+lightpurple='\e[95m'
 reset='\e[0m'
 
+# Init .local files
 while IFS= read -r -d '' filePath
 do
   srcFileName=$(basename "$filePath")
@@ -19,3 +22,20 @@ do
   fi
 
 done < <(find "$BASEDIR/" -iname "*.local.example" -print0)
+
+# Init Git-Fork custom commands link (for easier editing comparing to .example)
+[[ -x $(command -v powershell.exe) ]] && {
+    winUser=$(powershell.exe '$env:UserName' | tr -d '\r\n')
+
+    src="/mnt/c/Users/${winUser}/AppData/Local/Fork/custom-commands.json"
+    dst="${HOME}/.dotfiles/.config/Fork/custom-commands.json"
+
+    srcName=${src/#"/mnt/c/Users/${winUser}/AppData/Local"/'%localappdata%'}
+    dstName=${dst/#${HOME}/'~'}
+
+    [[ -f "$src" ]] && {
+      echo -e "${lightblue}  Linking ${dstName} -> ${srcName}${reset}"
+      ln -sf "$src" "$dst"
+
+    } || echo -e "  ${lightpurple}${srcName} not found${reset}"
+} || echo -e "  ${lightpurple}powershell.exe not executable${reset}"
