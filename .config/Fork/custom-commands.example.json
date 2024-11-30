@@ -1,0 +1,265 @@
+[
+  { "version" : 1,
+      "_comment1": "https://github.com/fork-dev/TrackerWin/issues/961",
+      "_comment2": "https://gist.github.com/oktomus/e284923a7fce837615bb756a1060e5dc" },
+
+  {
+    "action" : {
+      "args" : "commit --fixup ${sha}",
+      "path" : "${git}",
+      "showOutput" : false,
+      "type" : "process",
+      "waitForExit" : true
+    },
+    "name" : "[commit] Fixup staged changes for '${sha:abbr}'",
+    "target" : "revision"
+  },
+  {
+    "action" : {
+      "args" : "checkout -m $sha -- $filepath",
+      "path" : "${git}",
+      "showOutput" : false,
+      "type" : "process",
+      "waitForExit" : true
+    },
+    "name" : "[file] Checkout file at revision",
+    "target" : "file"
+  },
+  {
+    "action" : {
+      "args" : "mr --no-color --no-links ${ref:short}",
+      "path" : "${git}",
+      "showOutput" : true,
+      "type" : "process",
+      "waitForExit" : true
+    },
+    "name" : "[ref] 1) git mr",
+    "refTargets" : [
+      "localbranch",
+      "remotebranch"
+    ],
+    "target" : "ref"
+  },
+  {
+    "action" : {
+      "args" : "mr open --no-color --no-links ${ref:short}",
+      "path" : "${git}",
+      "showOutput" : false,
+      "type" : "process",
+      "waitForExit" : true
+    },
+    "name" : "[ref] 1) git mr open",
+    "refTargets" : [
+      "localbranch",
+      "remotebranch"
+    ],
+    "target" : "ref"
+  },
+  {
+    "action" : {
+      "args" : "mr status --no-color --no-links ${ref:short}",
+      "path" : "${git}",
+      "showOutput" : true,
+      "type" : "process",
+      "waitForExit" : true
+    },
+    "name" : "[ref] 1) git mr status",
+    "refTargets" : [
+      "localbranch",
+      "remotebranch"
+    ],
+    "target" : "ref"
+  },
+  {
+          "action" : {
+      "script" : "git mr menu status --no-color --no-links $(git mr code ${ref:short})",
+            "showOutput" : true,
+      "type" : "sh",
+            "waitForExit" : true
+          },
+    "name" : "[ref] 2) git mr menu status",
+    "refTargets" : [
+      "localbranch",
+      "remotebranch"
+      ],
+    "target" : "ref"
+  },
+  {
+    "action" : {
+      "args" : "-v",
+      "path" : "${git}",
+      "showOutput" : false,
+      "type" : "process",
+      "waitForExit" : true
+    },
+    "name" : "[ref] 5) ----------------",
+    "refTargets" : [
+      "localbranch",
+      "tag"
+    ],
+    "target" : "ref"
+  },
+  {
+    "action" : {
+      "args" : "force-push ${ref:short}",
+      "path" : "${git}",
+      "showOutput" : false,
+      "type" : "process",
+      "waitForExit" : true
+    },
+    "name" : "[ref] 5) git force-push ${ref:short}",
+    "refTargets" : [
+      "localbranch",
+      "tag"
+    ],
+    "target" : "ref"
+  },
+  {
+    "name" : "[ref] 5) git mr update",
+    "refTargets" : [
+      "localbranch",
+      "remotebranch"
+    ],
+    "target" : "ref",
+    "ui" : {
+      "buttons" : [
+        {
+          "action" : {
+            "args" : "mr update --no-color --no-links $1{text} ${ref:short}",
+            "path" : "${git}",
+            "showOutput" : true,
+            "type" : "process",
+            "waitForExit" : true
+          },
+          "title" : "✔️ OK"
+        },
+        {
+          "action" : {
+            "type" : "cancel"
+          },
+          "title" : "❌ Cancel"
+        }
+      ],
+      "controls" : [
+        {
+          "placeholder" : "--new-section",
+          "text" : "",
+          "textBoxType" : "generic",
+          "title" : "Additional options",
+          "type" : "textBox"
+        }
+      ],
+      "description" : "Are you sure you want to update MR description?",
+      "title" : "git mr update"
+    }
+  },
+  {
+    "action" : {
+      "args" : "-v",
+      "path" : "${git}",
+      "showOutput" : false,
+      "type" : "process",
+      "waitForExit" : true
+    },
+    "name" : "[ref] 6) ----------------",
+    "refTargets" : [
+      "localbranch",
+      "tag"
+    ],
+    "target" : "ref"
+  },
+  {
+    "action" : {
+      "args" : "pushall ${ref:short}",
+      "path" : "${git}",
+      "showOutput" : false,
+      "type" : "process",
+      "waitForExit" : true
+    },
+    "name" : "[ref] 8) git pushall ${ref:short}",
+    "refTargets" : [
+      "localbranch",
+      "tag"
+    ],
+    "target" : "ref"
+  },
+  {
+    "action" : {
+      "args" : "fpushall ${ref:short}",
+      "path" : "${git}",
+      "showOutput" : false,
+      "type" : "process",
+      "waitForExit" : true
+    },
+    "name" : "[ref] 9) git fpushall ${ref:short}",
+    "refTargets" : [
+      "localbranch",
+      "tag"
+    ],
+    "target" : "ref"
+  },
+  {
+    "action" : {
+      "args" : "update",
+      "path" : "${git}",
+      "showOutput" : true,
+      "type" : "process",
+      "waitForExit" : true
+    },
+    "name" : "[repo] 1) git update",
+    "target" : "repository"
+  },
+  {
+    "action" : {
+      "args" : "gone",
+      "path" : "${git}",
+      "showOutput" : true,
+      "type" : "process",
+      "waitForExit" : true
+    },
+    "name" : "[repo] 2) git gone",
+    "target" : "repository"
+  },
+  {
+    "action" : {
+      "args" : "forget",
+      "path" : "${git}",
+      "showOutput" : true,
+      "type" : "process",
+      "waitForExit" : true
+    },
+    "name" : "[repo] 3) git forget",
+    "target" : "repository"
+  },
+  {
+    "action" : {
+      "args" : "gc",
+      "path" : "${git}",
+      "showOutput" : false,
+      "type" : "process",
+      "waitForExit" : true
+    },
+    "name" : "[repo] 4) git gc",
+    "target" : "repository"
+  },
+  {
+    "action" : {
+      "script" : "cd ..\ngit mu update",
+      "showOutput" : true,
+      "type" : "sh",
+      "waitForExit" : true
+    },
+    "name" : "[repo-all] 1) git mu update",
+    "target" : "repository"
+  },
+  {
+    "action" : {
+      "script" : "cd ..\ngit mu gc",
+      "showOutput" : true,
+      "type" : "sh",
+      "waitForExit" : true
+    },
+    "name" : "[repo-all] 2) git mu gc",
+    "target" : "repository"
+  }
+]
