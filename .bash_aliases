@@ -21,7 +21,7 @@ alias df='df -h'
 alias du='du -h'
 
 # Misc
-alias less='less -r'                          # raw control characters
+alias less='less -R'                          # RAW control characters
 alias whence='type -a'                        # where, of a sort
 alias grep='grep --color=auto'                # show differences in colour
 alias egrep='egrep --color=auto'              # show differences in colour
