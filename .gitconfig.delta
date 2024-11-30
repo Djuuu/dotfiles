@@ -21,7 +21,7 @@
 
 [delta "cli"]
 	true-color = always
-	pager = less --mouse --wheel-lines=3
+	pager = less -R --mouse --wheel-lines=3
 	side-by-side = true
 
 	hyperlinks = true
