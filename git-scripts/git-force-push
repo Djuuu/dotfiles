@@ -1,5 +1,41 @@
 #!/usr/bin/env bash
 
+
+if [[ $# -ge 2 ]]; then
+  remote="$1"
+  branch="$2"
+elif [[ $# -eq 1 ]]; then
+  if git remote | grep -q "^${1}$"; then
+    remote="$1"
+    branch=$(git rev-parse --abbrev-ref HEAD)
+  else
+    branch="$1"
+  fi
+else
+  branch=$(git rev-parse --abbrev-ref HEAD)
+fi
+
+if [[ -z $branch ]]; then
+  echo "No branch specified"
+  exit 1
+fi
+
+# Use remote branch is tracking, if any
+[[ -z $remote ]] && remote=$(git config --get "branch.${branch}.remote")
+# Otherwise, use origin if remote exists
+[[ -z $remote ]] && remote=$(git remote | grep -q "^origin$" && echo "origin")
+# Fallback to first remote
+[[ -z $remote ]] && remote=$(git remote | head -n 1)
+
+if [[ -z $remote ]]; then
+  echo "Unable to determine remote"
+  exit 1
+fi
+
+# Replace arguments
+set -- "$remote" "$branch" "${@:3}"
+
+# Try pushing
 git push --force-with-lease "$@" || {
 
     remote_branch=$(git rev-parse --abbrev-ref '@{u}')
