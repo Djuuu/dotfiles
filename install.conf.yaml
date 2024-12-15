@@ -16,8 +16,8 @@
     ~/.vimrc:        .vimrc
 
     ~/.config/lazydocker/config.yml:
-        path: .config/lazydocker/config.local.yml
-        if: "[ -f .config/lazydocker/config.local.yml ]"
+      path: .config/lazydocker/config.local.yml
+      if: "[ -f .config/lazydocker/config.local.yml ]"
 
     ~/.local/bin/git-context-graph: git-context-graph/git-context-graph
     ~/.local/bin/git-mr:            git-mr/git-mr
@@ -40,5 +40,5 @@
     ~/.config/karabiner/assets/complex_modifications/: { path: "karabiner/*", glob: true, if: "[ -d ~/.config/karabiner ]" }
 
 - shell:
-    - [bash ~/.dotfiles/install-local.sh,   Initializing local files]
-    - [bash ~/.dotfiles/install-devices.sh, Configuring devices]
+  - [bash ~/.dotfiles/install-local.sh,   Initializing local files]
+  - [bash ~/.dotfiles/install-devices.sh, Configuring devices]

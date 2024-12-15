@@ -32,8 +32,8 @@ hScrollModulo=3
 hScrollIndexBuffer="/dev/shm/LogitechMXMaster3HScroll"
 
 # https://askubuntu.com/questions/97213/application-specific-key-combination-remapping
-Wid=`xdotool getactivewindow`
-Wname=`xprop -id ${Wid} |awk '/WM_CLASS/{print $4}'`
+Wid=$(xdotool getactivewindow)
+Wname=$(xprop -id "${Wid}" | awk '/WM_CLASS/{print $4}')
 
 ## Debug (for use with `xbindkeys -v`)
 # echo "modifiers Wname:$Wname ; button:$button ; modifiers:$modifiers"
@@ -42,17 +42,17 @@ Wname=`xprop -id ${Wid} |awk '/WM_CLASS/{print $4}'`
 # Logitech MX Master thumb wheel throttling
 function throttleHorizontalScroll {
 
-    local newDirection=$@;
+    local newDirection=$*;
 
     # read buffer
-    local buffer=(`cat $hScrollIndexBuffer`)
+    local buffer=($(cat $hScrollIndexBuffer))
     local oldDirection=${buffer[0]}
     local value=${buffer[1]}
 
     if [ "$oldDirection" = "$newDirection" ]; then
         # increment
         ((value++))
-        ((value%=$hScrollModulo))
+        ((value%=hScrollModulo))
     else
         # reset on direction change
         value=1

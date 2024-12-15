@@ -9,7 +9,7 @@
 # ssh-pageant (MinGW / Git Bash)
 #SSH_PAGEANT="$(command -v ssh-pageant)"
 #if [ -x "$SSH_PAGEANT" ]; then
-#	eval $("$SSH_PAGEANT" -qra "${SSH_AUTH_SOCK:-${TEMP:-/tmp}/.ssh-pageant-win-$USERNAME}")
+#    eval $("$SSH_PAGEANT" -qra "${SSH_AUTH_SOCK:-${TEMP:-/tmp}/.ssh-pageant-win-$USERNAME}")
 #fi
 #unset SSH_PAGEANT
 

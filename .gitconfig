@@ -1,6 +1,5 @@
 
 [core]
-
 	# checkout as-is ; commit as-is
 	autocrlf = false
 
@@ -72,10 +71,10 @@
 [pretty]
 	mingraph = %C(auto)%h%d %s
 
-# 	graph = %C(auto)%h%d %<|(80)%s %C(green)%<(12)(%ar) %C(bold blue)<%aN>
+#	graph = %C(auto)%h%d %<|(80)%s %C(green)%<(12)(%ar) %C(bold blue)<%aN>
 	graph = %C(auto)%h%d %<|(80)%s %C(bold blue) ✏ %<(12,trunc)%aN %Creset%C(green)⏱  %<(12,trunc)%ar
 
-# 	graph-t = %C(auto)%h%d %<|(80,mtrunc)%s %C(green)(%ar) %C(bold blue)<%aN>
+#	graph-t = %C(auto)%h%d %<|(80,mtrunc)%s %C(green)(%ar) %C(bold blue)<%aN>
 	graph-t = %C(auto)%h%d %<|(80,mtrunc)%s %C(bold blue) ✏ %<(12,trunc)%aN %Creset%C(green)⏱  %<(12,trunc)%ar
 
 	graph-dyn = %C(auto)%h%d %<|(90)%s %C(green)(%<(13,trunc)%ar) %C(bold blue)<%aN>

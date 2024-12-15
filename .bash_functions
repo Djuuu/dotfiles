@@ -1,14 +1,12 @@
-#!/usr/bin/env bash
-
 
 set_window_title() {
-	export FORCED_WINDOW_TITLE="$@"
+    export FORCED_WINDOW_TITLE="$@"
     printf '\e]2;%s\a' "$@"
 }
 
 unset_window_title() {
-	unset FORCED_WINDOW_TITLE
-	printf '\e]2;%s\a' "${DEFAULT_WINDOW_TITLE:-${USERNAME}@${HOSTNAME} - $(pwd)}"
+    unset FORCED_WINDOW_TITLE
+    printf '\e]2;%s\a' "${DEFAULT_WINDOW_TITLE:-${USERNAME}@${HOSTNAME} - $(pwd)}"
 }
 
 function is_win() {
@@ -20,13 +18,13 @@ function is_win() {
 
 function home_path() {
     is_win &&
-     echo "$USERPROFILE\\${1//\//\\}" ||
-     echo "$HOME/$1"
+        echo "$USERPROFILE\\${1//\//\\}" ||
+        echo "$HOME/$1"
 }
 
 git-context-graph-page() {
     local margin=8
-    local lines=$(( LINES - margin ))
+    local lines=$((LINES - margin))
     git context-graph --first-parent --pretty=graph-dyn "-n${lines}" "$@" | head -n $lines
 }
 
@@ -42,8 +40,8 @@ git-graph-status-page() {
 
     local slines; slines=$(wc -l <<< "$status")
     local minlines=10
-    local lines=$(( LINES - slines - margin ))
-    lines=$(( lines < minlines ? minlines : lines ))
+    local lines=$((LINES - slines - margin))
+    lines=$((lines < minlines ? minlines : lines))
 
     local separator; separator="${grey}$(eval "printf -- '-%.s' {1..${COLUMNS}}")${reset}"
 
@@ -61,8 +59,8 @@ git-graph-status-page() {
 ################################################################################
 # Laravel Homestead
 
-homestead () {
-	( cd ~/www/Homestead && vagrant $* )
+homestead() {
+    (cd ~/www/Homestead && vagrant $*)
 }
 
 ################################################################################

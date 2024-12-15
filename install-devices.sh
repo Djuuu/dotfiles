@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Exit if xbindkeys does not exist
-[ ! `command -v xbindkeys` ] && exit 0;
+[ ! "$(command -v xbindkeys)" ] && exit 0;
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -15,7 +15,7 @@ DEVICE_BINDINGS["Logitech M705"]="M705.xbindkeysrc"
 echo "Building ~/.xbindkeysrc"
 
 # Common .xbindkeysrc
-cat ${BASEDIR}/.xbindkeys/common.xbindkeysrc > ~/.xbindkeysrc
+cat "${BASEDIR}/.xbindkeys/common.xbindkeysrc" > ~/.xbindkeysrc
 
 
 # Device-specific .xbindkeysrc
@@ -25,9 +25,9 @@ CURRENT_MOUSE=${CURRENT_MOUSE:-Logitech MX Master 3}
 bindingFileName=${DEVICE_BINDINGS[$CURRENT_MOUSE]}
 bindingFilePath=${BASEDIR}/.xbindkeys/${bindingFileName}
 
-if [ ! -z "$bindingFileName" -a -f "$bindingFilePath" ]; then
+if [ -n "$bindingFileName" ] && [ -f "$bindingFilePath" ]; then
     echo "  Adding $CURRENT_MOUSE bindings"
-    cat $bindingFilePath >> ~/.xbindkeysrc
+    cat "$bindingFilePath" >> ~/.xbindkeysrc
 fi
 
 

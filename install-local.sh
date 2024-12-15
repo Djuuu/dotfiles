@@ -3,23 +3,22 @@
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 lightblue='\e[94m'
-purple='\e[35m'
 lightpurple='\e[95m'
 reset='\e[0m'
 
 # Init .local files
 while IFS= read -r -d '' filePath
 do
-  srcFileName=$(basename "$filePath")
-  dstFilePath="${BASEDIR}/${srcFileName%.example}"
-  dstFilePathName="${dstFilePath/#${HOME}/'~'}"
+    srcFileName=$(basename "$filePath")
+    dstFilePath="${BASEDIR}/${srcFileName%.example}"
+    dstFilePathName="${dstFilePath/#${HOME}/'~'}"
 
-  if [[ ! -f "$dstFilePath" ]]; then
-    echo -e "${lightblue}  Creating file ${dstFilePathName}${reset}"
-    cp "$filePath" "$dstFilePath"
-  else
-    echo -e "${lightblue}  File exists ${dstFilePathName}${reset}"
-  fi
+    if [[ ! -f "$dstFilePath" ]]; then
+        echo -e "${lightblue}  Creating file ${dstFilePathName}${reset}"
+        cp "$filePath" "$dstFilePath"
+    else
+        echo -e "${lightblue}  File exists ${dstFilePathName}${reset}"
+    fi
 
 done < <(find "$BASEDIR/" -iname "*.local.example" -print0)
 
@@ -34,8 +33,8 @@ done < <(find "$BASEDIR/" -iname "*.local.example" -print0)
     dstName=${dst/#${HOME}/'~'}
 
     [[ -f "$src" ]] && {
-      echo -e "${lightblue}  Linking ${dstName} -> ${srcName}${reset}"
-      ln -sf "$src" "$dst"
+        echo -e "${lightblue}  Linking ${dstName} -> ${srcName}${reset}"
+        ln -sf "$src" "$dst"
 
     } || echo -e "  ${lightpurple}${srcName} not found${reset}"
 } || echo -e "  ${lightpurple}powershell.exe not executable${reset}"
