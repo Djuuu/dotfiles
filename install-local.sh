@@ -25,11 +25,15 @@ done < <(find "$BASEDIR/" -iname "*.local.example" -print0)
 # Init Git-Fork custom commands link (for easier editing comparing to .example)
 [[ -x $(command -v powershell.exe) ]] && {
     winUser=$(powershell.exe '$env:UserName' | tr -d '\r\n')
+    case "$(uname -s)" in
+        CYGWIN*|MINGW*) c="/c"     ;;
+        *)              c="/mnt/c" ;;
+    esac
 
-    src="/mnt/c/Users/${winUser}/AppData/Local/Fork/custom-commands.json"
+    src="${c}/Users/${winUser}/AppData/Local/Fork/custom-commands.json"
     dst="${HOME}/.dotfiles/.config/Fork/custom-commands.json"
 
-    srcName=${src/#"/mnt/c/Users/${winUser}/AppData/Local"/'%localappdata%'}
+    srcName=${src/#"${c}/Users/${winUser}/AppData/Local"/'%localappdata%'}
     dstName=${dst/#${HOME}/'~'}
 
     [[ -f "$src" ]] && {
