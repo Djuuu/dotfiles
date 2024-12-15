@@ -24,6 +24,7 @@
 
     ~/.local/share/bash-completion/completions/git-context-graph.bash: git-context-graph/git-context-graph-completion.bash
     ~/.local/share/bash-completion/completions/git-mr.bash:            git-mr/git-mr-completion.bash
+    ~/.local/share/bash-completion/completions/git-mu.bash:            git-mu-completion.bash
 
     ~/.local/bin: { path: "git-scripts/*", glob: true }
 
