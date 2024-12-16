@@ -25,8 +25,9 @@
 	rebase = merges # also apply --rebase-merges (2.18+)
 
 [push]
-	#default = current # Push the current branch to update a branch with the same name on the receiving end
-	default = upstream # Push the current branch back to the upstream (tracking) remote branch
+	default = current # Push the current branch to update a branch with the same name on the receiving end
+	#default = upstream # Push the current branch back to the upstream (tracking) remote branch
+	#default = simple # Push the current branch with the same name on the remote. Refuses to push if the upstream branch’s name differs.
 	autoSetupRemote = true
 
 	useForceIfIncludes = true # Equivalent to specifying --force-if-includes
