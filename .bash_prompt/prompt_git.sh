@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 prompt_git() {
   promptGit=
@@ -5,13 +6,14 @@ prompt_git() {
   promptGitBranch=$(_git_prompt_branch) >/dev/null 2>&1 ||
     return # exit if not in a Git repository
 
-  promptGitBranchInfo="${purpleTxt}(${promptGitBranch})"
+  #promptGitBranchInfo="${purpleTxt}( ${promptGitBranch})" # \ue0a0 nf-pl-branch (nerd font)
+  promptGitBranchInfo="${purpleTxt}( ${promptGitBranch})" # \ue725 nf-dev-git_branch (nerd font)
 
   local git_status; git_status=$(_git_prompt_get_status)
   promptGitRemote=$(_git_prompt_remote "$git_status")
   promptGitState=$(_git_prompt_state "$git_status")
 
-  promptGit="${promptGitBranchInfo} ${promptGitRemote} ${promptGitState}${resetColor} "
+  promptGit="${promptGitBranchInfo}${promptGitRemote}${promptGitState}${resetColor} "
 }
 
 _git_prompt_branch() {
@@ -30,20 +32,27 @@ _git_prompt_remote() {
 
   if [[ ${git_status} =~ ${remote_pattern} ]]; then
     if [[ ${BASH_REMATCH[1]} == "ahead of" ]]; then
-      echo "${greenBold}↑"
+      #echo " ${greenBold}↑"
+      echo " ${greenBold}" # \uf062 nf-fa-arrow_up (nerd font)
       return
     fi
     if [[ ${BASH_REMATCH[1]} == "behind" ]]; then
-      echo "${yellowBold}↓"
+      #echo " ${yellowBold}↓"
+      echo " ${yellowBold}" # \uf063 nf-fa-arrow_down (nerd font)
       return
     fi
 
-    echo "${greenBold}⇋"
+    #echo " ${greenBold}⇋"
+    #echo " ${greenBold}" # \uf0ec nf-fa-arrow_right_arrow_left (nerd font)
+    #echo " ${greenBold}" # \uf07e nf-fa-arrows_left_right (nerd font)
+    #echo " ${greenBold}" # \uf416 nf-oct-arrow_both (nerd font)
     return
   fi
 
   if [[ ${git_status} =~ ${diverge_pattern} ]]; then
-    echo "${yellowBold}⇅"
+    #echo " ${yellowBold}⇅"
+    #echo " ${yellowBold}󰹹" # \udb83\ude79 nf-md-arrow_up_down (nerd font)
+    echo " ${yellowBold}" # \uf07d nf-fa-arrows_up_down (nerd font)
   fi
 }
 
@@ -64,19 +73,25 @@ _git_prompt_state() {
 
   # Clean
   if [[ ${git_status} =~ "working tree clean" ]]; then
-    echo "${greenTxt}✔"
+    #echo " ${greenTxt}✔"
+    #echo " ${greenTxt}" # \uf42e nf-oct-check (nerd font)
+    #echo " ${greenTxt}" # \uf00c nf-fa-check (nerd font)
+    #echo " ${greenTxt}" # \uf522 nf-oct-sun (nerd font)
+    #echo " ${greenTxt}" # \uec10 nf-cod-sparkle (nerd font)
+    echo " ${userColor}" # \uec10 nf-cod-sparkle (nerd font)
     return
   fi
 
   # Merge
   if [[ ${git_status} =~ "You have unmerged paths" ]]; then
-    echo "${redTxt}M"
+    #echo " ${redTxt}M"
+    echo " ${redTxt}" # \uf419 nf-oct-git_merge (nerd font)
     return
   fi
 
   # Cherry-pick
   if [[ ${git_status} =~ "You are currently cherry-picking" ]]; then
-    echo "${redTxt}🍒"
+    echo " ${redTxt}🍒"
     return
   fi
 
@@ -112,10 +127,13 @@ _git_prompt_state() {
 
   # Changes
   if [[ ${git_status} =~ "Changes " ]]; then
-    echo "${redTxt}✘"
+    #echo " ${redTxt}✘"
+    echo " ${redTxt}" # \uf467 nf-oct-x (nerd font)
     return
   fi
 
   # Untracked files
-  echo "${yellowTxt}✔"
+  #echo " ${yellowTxt}✔"
+  #echo " ${yellowTxt}+"
+  echo " ${yellowTxt}" # \uf44d nf-oct-plus (nerd font)
 }

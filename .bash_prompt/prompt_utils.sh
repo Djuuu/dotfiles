@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 ###################################################################################################
 # https://github.com/emilis/emilis-config/blob/master/.bash_ps1
@@ -12,14 +13,19 @@ promptFill="--- "
 #trap 'echo -ne "\e[0m"' DEBUG
 prompt_separator() {
   # create a $promptFill of all screen width minus the time string and a space:
-  let promptFillSize=${COLUMNS}-9
-  promptFill=""
+  #local promptFillSize=$((COLUMNS - 9))
+  local promptFillSize=$((COLUMNS - 12))
+
+  local promptFill=""
   while [ "$promptFillSize" -gt "0" ]; do
     promptFill="-${promptFill}" # fill with underscores to work on
-    let promptFillSize=${promptFillSize}-1
+    ((promptFillSize -= 1))
   done
 
-  promptSeparator="$status_style"'$promptFill \t\n'"${resetColor}"
+  local exitIcon
+  [[ $EXIT -eq 0 ]] && exitIcon="✔️" || exitIcon="❌"
+
+  promptSeparator="${status_style}${promptFill} $exitIcon \t\n${resetColor}"
 }
 
 ###################################################################################################

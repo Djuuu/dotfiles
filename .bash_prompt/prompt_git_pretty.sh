@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 # Dynamic git log columns width
 GIT_DYN_GRAPH_TPL=${GIT_DYN_GRAPH_TPL:-'%C(auto)%h%d %<|(__sw__)%s %C(bold blue) ✏ %<(__uw__,trunc)%aN %C(green)⏱  %<(__tw__,trunc)%ar%C(reset)'}
