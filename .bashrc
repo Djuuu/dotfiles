@@ -13,10 +13,6 @@
 [ -f /etc/bash_completion ]           && . /etc/bash_completion
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
-[ -z "$BASH_COMPLETION_VERSINFO" ] && for f in ~/.local/share/bash-completion/completions/*; do
-  [[ -f "$f" ]] && . $f
-done; unset f
-
 # History Options
 
 # Don't put duplicate lines or lines starting with space in the history.
@@ -45,6 +41,11 @@ HISTFILESIZE=2000
 
 # Local config
 [[ -f ~/.dotfiles/.bashrc.local ]] && . ~/.dotfiles/.bashrc.local
+
+# Custom completions
+for f in ~/.local/share/bash-completion/completions/*; do
+  [[ -f "$f" ]] && . $f
+done; unset f
 
 # LazyGit - https://github.com/jesseduffield/lazygit
 LG_CONFIG_FILE="$(home_path ".dotfiles/.config/lazygit/config.yml")"
