@@ -1,6 +1,4 @@
-#
 # ~/.bash_profile: executed by bash(1) for login shells.
-#
 
 # source the users bashrc if it exists
 [ -f "${HOME}/.bashrc" ] && . "${HOME}/.bashrc"
@@ -18,9 +16,6 @@
 
 # Set INFOPATH so it includes users' private info if it exists
 [ -d "${HOME}/info" ] && INFOPATH="${HOME}/info:${INFOPATH}"
-
-# Set user-defined locale
-#export LANG=$(locale -uU)
 
 # editor
 export EDITOR="vim"

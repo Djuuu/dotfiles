@@ -9,14 +9,14 @@ unset_window_title() {
     printf '\e]2;%s\a' "${DEFAULT_WINDOW_TITLE:-${USERNAME}@${HOSTNAME} - $(pwd)}"
 }
 
-function is_win() {
+is_win() {
     case "$(uname -s)" in
         CYGWIN*|MINGW*) return 0 ;;
         *)              return 1 ;;
     esac
 }
 
-function home_path() {
+home_path() {
     is_win &&
         echo "$USERPROFILE\\${1//\//\\}" ||
         echo "$HOME/$1"
@@ -54,13 +54,6 @@ git-graph-status-page() {
     echo
     echo "$status"
     echo
-}
-
-################################################################################
-# Laravel Homestead
-
-homestead() {
-    (cd ~/www/Homestead && vagrant $*)
 }
 
 ################################################################################

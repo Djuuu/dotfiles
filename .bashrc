@@ -1,3 +1,4 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
 
 # Load local environment variables
 [ -f ~/.dotfiles/.bashrc.env.local ] && . ~/.dotfiles/.bashrc.env.local
@@ -18,8 +19,7 @@ done; unset f
 
 # History Options
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
+# Don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 
 # Ignore some controlling instructions
@@ -27,10 +27,10 @@ HISTCONTROL=ignoreboth
 # The '&' is a special pattern which suppresses duplicate entries.
 HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls'
 
-# append to the history file, don't overwrite it
+# Append to the history file, don't overwrite it
 shopt -s histappend
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+# For setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
 

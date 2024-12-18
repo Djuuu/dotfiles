@@ -40,7 +40,7 @@ Wname=$(xprop -id "${Wid}" | awk '/WM_CLASS/{print $4}')
 
 
 # Logitech MX Master thumb wheel throttling
-function throttleHorizontalScroll {
+throttleHorizontalScroll () {
 
     local newDirection=$*;
 

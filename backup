@@ -6,7 +6,7 @@ DOTFILES_BACKUP_DELETE_LOCAL=0
 
 DOTFILES_BACKUP_DIR=".dotfiles.bak.$(date +'%Y%m%d-%H%M')"
 
-function dotfiles_backup {
+dotfiles_backup () {
     for file_name in \
         ".bash_aliases"               \
         ".bash_functions"             \
@@ -29,7 +29,7 @@ function dotfiles_backup {
     done
 }
 
-function dotfile_backup {
+dotfile_backup () {
 
     if [ -z "$DOTFILES_BACKUP_DIR" ]; then
         echo "Undefined backup directory"
