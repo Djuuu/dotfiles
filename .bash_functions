@@ -57,13 +57,6 @@ git-graph-status-page() {
 }
 
 ################################################################################
-# Laravel Homestead
-
-homestead() {
-    (cd ~/www/Homestead && vagrant $*)
-}
-
-################################################################################
 # Docker
 
 source ~/.dotfiles/dockerize-clis/dockerize-clis.sh
