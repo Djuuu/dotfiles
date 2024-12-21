@@ -78,7 +78,7 @@ _git_prompt_state() {
     #echo " ${greenTxt}" # \uf00c nf-fa-check (nerd font)
     #echo " ${greenTxt}" # \uf522 nf-oct-sun (nerd font)
     #echo " ${greenTxt}" # \uec10 nf-cod-sparkle (nerd font)
-    echo " ${userColor}" # \uec10 nf-cod-sparkle (nerd font)
+    echo " ${promptUserColor}" # \uec10 nf-cod-sparkle (nerd font)
     return
   fi
 
