@@ -22,6 +22,40 @@ home_path() {
         echo "$HOME/$1"
 }
 
+
+dotfiles-update () {
+    (cd ~/.dotfiles && git update)
+    ~/.dotfiles/install
+}
+
+dotfiles-diff-local () {
+    BASEDIR=~/.dotfiles
+
+    while IFS= read -r -d '' srcFilePath
+    do
+        dstFilePath="${srcFilePath%.example}"
+        [[ -f "${dstFilePath}" ]] || dstFilePath=/dev/null
+
+        git diff --no-index "${srcFilePath}" "${dstFilePath}"
+
+        has_diff=$?
+        echo
+        [[ $has_diff -eq 0 ]] && {
+            local silver="\e[38;5;7m"
+            local grey="\e[38;5;8m"
+            local reset="\e[0m"
+            local dstSize=${#dstFilePath}
+
+            echo -en "${grey}"; for ((i=1; i<=((dstSize + 2)); i++)); do echo -n '─'; done; echo "┐"
+            echo -e "${silver}${dstFilePath}: ${grey}│"
+            for ((i=1; i<=((dstSize + 2)); i++)); do echo -n '─'; done
+            echo -n "┴"
+            for ((i=1; i<=((COLUMNS - dstSize - 3)); i++)); do echo -n '─'; done; echo
+            echo -e "\n      ${silver}\e[3munchanged${reset}\n"
+        }
+    done < <(find "$BASEDIR" -iname "*.local.example" -print0)
+}
+
 git-context-graph-page() {
     local margin=8
     local lines=$((LINES - margin))
