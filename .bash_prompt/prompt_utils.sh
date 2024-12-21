@@ -3,29 +3,28 @@
 ###################################################################################################
 # https://github.com/emilis/emilis-config/blob/master/.bash_ps1
 
-# Fill with minuses (this is recalculated every time the prompt is shown in function prompt_command)
-promptFill="--- "
+promptFillStart="─"
+promptFillBase="─"
+promptFillEnd="───┤"
+
 [[ -z "$VIM" ]] \
   && status_style=$resetColor'\[\033[0;90m\]' \
   || status_style=$resetColor'\[\033[0;90;107m\]'
 
-# Reset color for command output (this one is invoked every time before a command is executed):
-#trap 'echo -ne "\e[0m"' DEBUG
 prompt_separator() {
-  # create a $promptFill of all screen width minus the time string and a space:
-  #local promptFillSize=$((COLUMNS - 9))
-  local promptFillSize=$((COLUMNS - 12))
-
-  local promptFill=""
+  # create a $promptFill of all screen width minus the time and command exit indicator
+  local promptFillSize=$((COLUMNS - 16))
+  local promptFill="$promptFillEnd"
   while [ "$promptFillSize" -gt "0" ]; do
-    promptFill="-${promptFill}" # fill with underscores to work on
+    promptFill="${promptFillBase}${promptFill}"
     ((promptFillSize -= 1))
   done
+  promptFill="${promptFillStart}${promptFill}"
 
   local exitIcon
   [[ $EXIT -eq 0 ]] && exitIcon="✔️" || exitIcon="❌"
 
-  promptSeparator="${status_style}${promptFill} $exitIcon \t\n${resetColor}"
+  promptSeparator="${status_style}${promptFill}$exitIcon \t\n${resetColor}"
 }
 
 ###################################################################################################
