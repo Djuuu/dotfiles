@@ -6,9 +6,6 @@
 # If not running interactively, don't do anything more
 [[ "$-" != *i* ]] && return
 
-# Optional profile (ex: Entware-ng)
-[ -f /opt/etc/profile ] && . /opt/etc/profile
-
 # Completion options
 [ -f /etc/bash_completion ]           && . /etc/bash_completion
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
