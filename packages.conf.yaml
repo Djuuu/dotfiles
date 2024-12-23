@@ -2,12 +2,12 @@
 - sudo:
 
   - apt:
-    - ansible
     - bat
     - htop
     - jq
     - keychain
     - ncdu
+    - pipx
     - python-is-python3
     - python3-pip
     - vim
@@ -22,10 +22,20 @@
         }
       quiet: true
 
-  - pip:
-      file: pip-requirements.txt
-      stderr: true
-
 - go:
   - github.com/jesseduffield/lazygit@latest
   - github.com/jesseduffield/lazydocker@latest
+
+- shell:
+  - description: Install ansible # https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#pipx-install
+    command: |
+      [[ -x "$(command -v ansible)" ]] || {
+        pipx install --include-deps ansible
+        pipx inject ansible jmespath
+      }
+    quiet: true
+
+- pipx:
+    file: requirements-pipx.txt
+    stdout: false
+    stderr: true
