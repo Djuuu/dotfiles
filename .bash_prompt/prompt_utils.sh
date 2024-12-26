@@ -5,16 +5,29 @@
 
 promptFillStart="─"
 promptFillBase="─"
-promptFillEnd="───┤"
+promptFillEnd="─┤"
 
 [[ -z "$VIM" ]] \
   && status_style=$resetColor'\[\033[0;90m\]' \
   || status_style=$resetColor'\[\033[0;90;107m\]'
 
+prompt_ssh_tunnels() {
+  promptSshTunnels="${SSH_TUNNELS}"
+  [[ $promptCheckTunnels = true ]] && promptSshTunnels="${SSH_TUNNELS:-$(ssh-list-tunnel-ports)}"
+}
+
 prompt_separator() {
   # create a $promptFill of all screen width minus the time and command exit indicator
-  local promptFillSize=$((COLUMNS - 16))
+  local promptFillSize=$((COLUMNS - 14))
   local promptFill="$promptFillEnd"
+
+  [[ -n $promptSshTunnels ]] && {
+    [[ -n $SSH_TUNNELS ]] &&
+      promptFill="[🚇 ${promptSshTunnels}]${promptFill}" ||
+      promptFill="[🕳️ ${promptSshTunnels}]${promptFill}"
+    (( promptFillSize -= ${#promptSshTunnels} + 5 ))
+  }
+
   while [ "$promptFillSize" -gt "0" ]; do
     promptFill="${promptFillBase}${promptFill}"
     ((promptFillSize -= 1))

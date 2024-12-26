@@ -37,6 +37,7 @@ PS1="${promptBase} ${promptEnd}"
 PROMPT_COMMAND=(
   'EXIT=$?'
   prompt_window_title
+  prompt_ssh_tunnels
   prompt_separator
   prompt_git
   prompt_newline

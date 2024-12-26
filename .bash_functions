@@ -56,6 +56,33 @@ dotfiles-diff-local () {
     done < <(find "$BASEDIR" -iname "*.local.example" -print0)
 }
 
+ssh-list-tunnels() {
+    # -a       This option causes list selection options to be ANDed.
+    # -b       Causes lsof to avoid kernel functions that might block (lstat, readlink, stat).
+    # -l       This option inhibits the conversion of user ID numbers to login names.
+    # -n       This option inhibits the conversion of network numbers to host names for network files.
+    # -P       This option inhibits the conversion of port numbers to port names for network files.
+    # +|-w     Enables (+) or disables (-) the suppression of warning messages.
+    # -T [t]   This option controls the reporting of some TCP/TPI information
+    #          -T with no following key characters disables TCP/TPI information reporting.
+    # -i [i]   This option selects the listing of files any of whose Internet address matches the address specified in i.
+    # -c c     This option selects the listing of files for processes executing the command that begins with the characters of c.
+    #          If c begins and ends with a slash ('/'), the characters between the slashes are interpreted as a regular expression.
+    # -u s     This option selects the listing of files for the user whose login names or user ID numbers are in the comma-separated set s
+    # -s [p:s] The optional -s p:s form is available only for selected dialects, and only when the -h or -? help output lists it.
+    #          When the optional form is available, the s may be followed by a protocol name (p), either TCP or UDP, a colon (`:') and a
+    #          comma-separated protocol state name list, the option causes open TCP and UDP files to be excluded if their state name(s) are
+    #          in the list (s) preceded by a `^'; or included if their name(s) are not preceded by a `^'.
+    lsof -ablnPw -T -i4  -c '/^ssh$/' -u$USER -s TCP:LISTEN
+}
+
+ssh-list-tunnel-ports() {
+    local sshTunnels
+    sshTunnels="$(ssh-list-tunnels | tail -n +2 | cut -d: -f2 | tr '\n' ',')"
+    sshTunnels=${sshTunnels%,}
+    [[ -n $sshTunnels ]] && echo $sshTunnels
+}
+
 git-context-graph-page() {
     local margin=8
     local lines=$((LINES - margin))
