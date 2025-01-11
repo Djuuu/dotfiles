@@ -20,6 +20,9 @@ gui:
   # Uses Go's time format syntax: https://pkg.go.dev/time#Time.Format
   shortTimeFormat: 15:04 # default: '3:04PM'
 
+  # If true, show the number of lines changed per file in the Files view
+  showNumstatInFilesView: true # default: false
+
   # Nerd fonts version to use.
   # One of: '2' | '3' | empty string (default)
   # If empty, do not show icons.
@@ -32,6 +35,9 @@ gui:
   # Status panel view.
   # One of 'dashboard' (default) | 'allBranchesLog'
   statusPanelView: allBranchesLog
+
+  # If true, when using the panel jump keys (default 1 through 5) and target panel is already active, go to next tab instead
+  switchTabsWithPanelJumpKeys: true # default: false
 
 git:
   # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md

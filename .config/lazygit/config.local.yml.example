@@ -10,9 +10,9 @@
 #  #  'Djuuu':        '#00FFBE'
 #
 #  ## Custom Branch Color
-#  #branchColors:
-#  #  'docs': '#11aaff' # use a light blue for branches beginning with 'docs/'
-
+#  #branchColorPatterns:
+#  #  '^docs/': '#11aaff' # use a light blue for branches beginning with 'docs/'
+#  #  'ISSUE-\d+': '#ff5733' # use a bright orange for branches containing 'ISSUE-<some-number>'
 
 ## Config relating to git
 #git:

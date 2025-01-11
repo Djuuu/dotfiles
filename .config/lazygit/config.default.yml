@@ -56,6 +56,11 @@ gui:
   # - 'top': split the window vertically (side panel on top, main view below)
   enlargedSideViewLocation: left
 
+  # If true, wrap lines in the staging view to the width of the view. This
+  # makes it much easier to work with diffs that have long lines, e.g.
+  # paragraphs of markdown text.
+  wrapLinesInStagingView: true
+
   # One of 'auto' (default) | 'en' | 'zh-CN' | 'zh-TW' | 'pl' | 'nl' | 'ja' | 'ko' | 'ru'
   language: auto
 
@@ -133,6 +138,9 @@ gui:
   # This can be toggled from within Lazygit with the '~' key, but that will not change the default.
   showFileTree: true
 
+  # If true, show the number of lines changed per file in the Files view
+  showNumstatInFilesView: false
+
   # If true, show a random tip in the command log when Lazygit starts
   showRandomTip: true
 
@@ -180,9 +188,9 @@ gui:
   # If 'auto', only split the main window when a file has both staged and unstaged changes
   splitDiff: auto
 
-  # Default size for focused window. Window size can be changed from within Lazygit with '+' and '_' (but this won't change the default).
+  # Default size for focused window. Can be changed from within Lazygit with '+' and '_' (but this won't change the default).
   # One of: 'normal' (default) | 'half' | 'full'
-  windowSize: normal
+  screenMode: normal
 
   # Window border style.
   # One of 'rounded' (default) | 'single' | 'double' | 'hidden'
@@ -214,6 +222,15 @@ gui:
   # Status panel view.
   # One of 'dashboard' (default) | 'allBranchesLog'
   statusPanelView: dashboard
+
+  # If true, jump to the Files panel after popping a stash
+  switchToFilesAfterStashPop: true
+
+  # If true, jump to the Files panel after applying a stash
+  switchToFilesAfterStashApply: true
+
+  # If true, when using the panel jump keys (default 1 through 5) and target panel is already active, go to next tab instead
+  switchTabsWithPanelJumpKeys: false
 
 # Config relating to git
 git:
@@ -284,7 +301,7 @@ git:
   branchLogCmd: git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --
 
   # Command used to display git log of all branches in the main window.
-  # Deprecated: User `allBranchesLogCmds` instead.
+  # Deprecated: Use `allBranchesLogCmds` instead.
   allBranchesLogCmd: git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium
 
   # If true, do not spawn a separate process when using GPG
@@ -523,6 +540,8 @@ keybinding:
     openMergeTool: M
     openStatusFilter: <c-b>
     copyFileInfoToClipboard: "y"
+    collapseAll: '-'
+    expandAll: =
   branches:
     createPullRequest: o
     viewPullRequestOptions: O
