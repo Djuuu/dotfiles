@@ -6,13 +6,10 @@
 . ~/.dotfiles/.bash_prompt/prompt_utils.sh
 
 
-promptUserColor=${promptUserColor:-"\[\e[38;5;36m\]"} # x036_DarkCyan
-#promptUserColor="\[\e[38;5;42m\]" # x042_SpringGreen2
-#promptUserColor="\[\e[38;5;48m\]" # x048_SpringGreen1
-
-promptRootColor=${promptRootColor:-"\[\e[38;5;124m\]"} # x124_Red3
-#promptRootColor="\[\e[38;5;125m\]" # x125_DeepPink4
-#promptRootColor="\[\e[38;5;160m\]" # x160_Red3
+#promptUserColor=${promptUserColor:-$(pColor x036_DarkCyan)}     #00AF87
+promptUserColor=${promptUserColor:-"\[\e[38;2;0;190;135m\]"}     #00BE87
+#promptUserColor=${promptUserColor:-$(pColor x042_SpringGreen2)} #00D787
+promptRootColor=${promptRootColor:-$(pColor x124_Red3)}
 
 [[ "$(id -u)" -eq 0 ]] &&
     promptColor="$promptRootColor" ||
@@ -20,14 +17,13 @@ promptRootColor=${promptRootColor:-"\[\e[38;5;124m\]"} # x124_Red3
 
 # user@host:/current/path
 [[ "$(id -u)" -eq 0 ]] &&
-  promptBase="${promptColor}\u@${PROMPT_HOSTNAME:-\h}${whiteTxt}:${cyanTxt}\w${resetColor}" ||
-  promptBase="${promptColor}\u@${PROMPT_HOSTNAME:-\h}${whiteTxt}:${blueBold}\w${resetColor}"
+  promptBase="${promptColor}\u@${PROMPT_HOSTNAME:-\h}$(pColor white):$(pColor cyan)\w$(pResetColor)" ||
+  promptBase="${promptColor}\u@${PROMPT_HOSTNAME:-\h}$(pColor white):$(pColor blueBold)\w$(pResetColor)"
 
 
 #promptEnd='\$ ' # $ or # if root
-#promptEnd="${promptColor}❯${resetColor} " # heavy right-pointing angle quotation mark ornament
-#promptEnd="${promptColor}${resetColor} " # \ue0b1 nf-pl-left_soft_divider (nerd font)
-promptEnd="${promptColor}${resetColor} " # \uf054 nf-fa-chevron_circle_down (nerd font)
+#promptEnd="${promptColor}❯$(pResetColor) " # heavy right-pointing angle quotation mark ornament
+promptEnd="${promptColor}$(pResetColor) " # \uf054 nf-fa-chevron_circle_down (nerd font)
 
 # default
 PS1="${promptBase} ${promptEnd}"

@@ -7,13 +7,13 @@ prompt_git() {
     return # exit if not in a Git repository
 
   #promptGitBranchInfo="${purpleTxt}( ${promptGitBranch})" # \ue0a0 nf-pl-branch (nerd font)
-  promptGitBranchInfo="${purpleTxt}( ${promptGitBranch})" # \ue725 nf-dev-git_branch (nerd font)
+  promptGitBranchInfo="$(pColor purple)( ${promptGitBranch})" # \ue725 nf-dev-git_branch (nerd font)
 
   local git_status; git_status=$(_git_prompt_get_status)
   promptGitRemote=$(_git_prompt_remote "$git_status")
   promptGitState=$(_git_prompt_state "$git_status")
 
-  promptGit="${promptGitBranchInfo}${promptGitRemote}${promptGitState}${resetColor} "
+  promptGit="${promptGitBranchInfo}${promptGitRemote}${promptGitState}$(pResetColor) "
 }
 
 _git_prompt_branch() {
@@ -32,27 +32,27 @@ _git_prompt_remote() {
 
   if [[ ${git_status} =~ ${remote_pattern} ]]; then
     if [[ ${BASH_REMATCH[1]} == "ahead of" ]]; then
-      #echo " ${greenBold}↑"
-      echo " ${greenBold}" # \uf062 nf-fa-arrow_up (nerd font)
+      #echo " $(pColor greenBold)↑"
+      echo " $(pColor greenBold)" # \uf062 nf-fa-arrow_up (nerd font)
       return
     fi
     if [[ ${BASH_REMATCH[1]} == "behind" ]]; then
-      #echo " ${yellowBold}↓"
-      echo " ${yellowBold}" # \uf063 nf-fa-arrow_down (nerd font)
+      #echo " $(pColor yellowBold)↓"
+      echo " $(pColor yellowBold)" # \uf063 nf-fa-arrow_down (nerd font)
       return
     fi
 
-    #echo " ${greenBold}⇋"
-    #echo " ${greenBold}" # \uf0ec nf-fa-arrow_right_arrow_left (nerd font)
-    #echo " ${greenBold}" # \uf07e nf-fa-arrows_left_right (nerd font)
-    #echo " ${greenBold}" # \uf416 nf-oct-arrow_both (nerd font)
+    #echo " $(pColor greenBold)⇋"
+    #echo " $(pColor greenBold)" # \uf0ec nf-fa-arrow_right_arrow_left (nerd font)
+    #echo " $(pColor greenBold)" # \uf07e nf-fa-arrows_left_right (nerd font)
+    #echo " $(pColor greenBold)" # \uf416 nf-oct-arrow_both (nerd font)
     return
   fi
 
   if [[ ${git_status} =~ ${diverge_pattern} ]]; then
-    #echo " ${yellowBold}⇅"
-    #echo " ${yellowBold}󰹹" # \udb83\ude79 nf-md-arrow_up_down (nerd font)
-    echo " ${yellowBold}" # \uf07d nf-fa-arrows_up_down (nerd font)
+    #echo " $(pColor yellowBold)⇅"
+    #echo " $(pColor yellowBold)󰹹" # \udb83\ude79 nf-md-arrow_up_down (nerd font)
+    echo " $(pColor yellowBold)" # \uf07d nf-fa-arrows_up_down (nerd font)
   fi
 }
 
@@ -73,25 +73,25 @@ _git_prompt_state() {
 
   # Clean
   if [[ ${git_status} =~ "working tree clean" ]]; then
-    #echo " ${greenTxt}✔"
-    #echo " ${greenTxt}" # \uf42e nf-oct-check (nerd font)
-    #echo " ${greenTxt}" # \uf00c nf-fa-check (nerd font)
-    #echo " ${greenTxt}" # \uf522 nf-oct-sun (nerd font)
-    #echo " ${greenTxt}" # \uec10 nf-cod-sparkle (nerd font)
+    #echo " $(pColor green)✔"
+    #echo " $(pColor green)" # \uf42e nf-oct-check (nerd font)
+    #echo " $(pColor green)" # \uf00c nf-fa-check (nerd font)
+    #echo " $(pColor green)" # \uf522 nf-oct-sun (nerd font)
+    #echo " $(pColor green)" # \uec10 nf-cod-sparkle (nerd font)
     echo " ${promptUserColor}" # \uec10 nf-cod-sparkle (nerd font)
     return
   fi
 
   # Merge
   if [[ ${git_status} =~ "You have unmerged paths" ]]; then
-    #echo " ${redTxt}M"
-    echo " ${redTxt}" # \uf419 nf-oct-git_merge (nerd font)
+    #echo " $(pColor red)M"
+    echo " $(pColor red)" # \uf419 nf-oct-git_merge (nerd font)
     return
   fi
 
   # Cherry-pick
   if [[ ${git_status} =~ "You are currently cherry-picking" ]]; then
-    echo " ${redTxt}🍒"
+    echo " $(pColor red)🍒"
     return
   fi
 
@@ -105,7 +105,7 @@ _git_prompt_state() {
       branch="${BASH_REMATCH[2]}" &&
       targetc="${BASH_REMATCH[3]}"
 
-    local targetb; targetb=$(_git_prompt_get_commit_branch $targetc)
+    local targetb; targetb=$(_git_prompt_get_commit_branch "$targetc")
     local target; [[ -n "$targetb" ]] && target=$targetb || target=$targetc
 
     local doneCommandPattern="Last commands? done \(([0-9]*) commands? done\)"
@@ -114,26 +114,26 @@ _git_prompt_state() {
     local todoc; [[ ${git_status} =~ ${remainingCommandPattern} ]] && todoc=${BASH_REMATCH[1]}
     local totalc=$((donec + todoc))
 
-    local doneColor=${yellowTxt}
+    local doneColor; doneColor=$(pColor yellow)
     local conflictPattern='fix conflicts and then run "git rebase --continue"'
-    [[ ${git_status} =~ ${conflictPattern} ]] && doneColor=${redTxt}
+    [[ ${git_status} =~ ${conflictPattern} ]] && doneColor=$(pColor red)
 
-    local rebaseProgress="${whiteTxt}(${doneColor}${donec}${whiteTxt}/${totalc})"
-    local rebaseTarget="${blackBold}[${yellowTxt}${branch}${blackBold} ↷ ${cyanTxt}${target}${blackBold}]"
+    local rebaseProgress; rebaseProgress="$(pColor white)(${doneColor}${donec}$(pColor white)/${totalc})"
+    local rebaseTarget; rebaseTarget="$(pColor blackBold)[$(pColor yellow)${branch}$(pColor blackBold) ↷ $(pColor cyan)${target}$(pColor blackBold)]"
 
-    echo "\n${rebaseTarget}\n${redBold}☈  ${rebaseProgress}"
+    echo "\n${rebaseTarget}\n$(pColor redBold)☈  ${rebaseProgress}"
     return
   fi
 
   # Changes
   if [[ ${git_status} =~ "Changes " ]]; then
-    #echo " ${redTxt}✘"
-    echo " ${redTxt}" # \uf467 nf-oct-x (nerd font)
+    #echo " $(pColor red)✘"
+    echo " $(pColor red)" # \uf467 nf-oct-x (nerd font)
     return
   fi
 
   # Untracked files
-  #echo " ${yellowTxt}✔"
-  #echo " ${yellowTxt}+"
-  echo " ${yellowTxt}" # \uf44d nf-oct-plus (nerd font)
+  #echo " $(pColor yellow)✔"
+  #echo " $(pColor yellow)+"
+  echo " $(pColor yellow)" # \uf44d nf-oct-plus (nerd font)
 }
