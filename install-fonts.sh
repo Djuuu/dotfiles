@@ -18,5 +18,7 @@ tar xf JetBrainsMono.tar.xz
 rm JetBrainsMono.tar.xz
 rm JetBrainsMonoNerdFontPropo*
 rm JetBrainsMonoNerdFontMono*
+rm JetBrainsMonoNLNerdFontMono*
+rm JetBrainsMonoNLNerdFontPropo*
 
 cd -
