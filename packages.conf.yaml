@@ -32,7 +32,9 @@
     command: |
       [[ -x "$(command -v ansible)" ]] || {
         pipx install --include-deps ansible
-        pipx inject ansible jmespath
+        pipx inject ansible \
+          jmespath \
+          xmltodict
       }
     quiet: true
 
