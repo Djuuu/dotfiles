@@ -58,37 +58,37 @@
     {
       "keyCode": 4111,
       "label": "L",
-      "extraLabel": "O+"
+      "extraLabel": ""
     },
     {
-      "keyCode": 4131,
-      "label": "-",
-      "extraLabel": "O+"
+      "keyCode": 53864,
+      "label": "Win 6",
+      "extraLabel": "MACRO"
     },
     {
-      "keyCode": 4132,
-      "label": "è",
-      "extraLabel": "O+"
+      "keyCode": 53865,
+      "label": "Win 7",
+      "extraLabel": "MACRO"
     },
     {
-      "keyCode": 4133,
-      "label": "_",
-      "extraLabel": "O+"
+      "keyCode": 53866,
+      "label": "Win 8",
+      "extraLabel": "MACRO"
     },
     {
-      "keyCode": 4134,
-      "label": "ç",
-      "extraLabel": "O+"
+      "keyCode": 53867,
+      "label": "Win 9",
+      "extraLabel": "MACRO"
     },
     {
-      "keyCode": 4135,
-      "label": "à",
-      "extraLabel": "O+"
+      "keyCode": 53868,
+      "label": "Win 0",
+      "extraLabel": "MACRO"
     },
     {
       "keyCode": 573,
       "label": "F4",
-      "extraLabel": "A+"
+      "extraLabel": ""
     },
     {
       "keyCode": 0,
@@ -114,7 +114,7 @@
     },
     {
       "keyCode": 83,
-      "label": "NUMLOCK",
+      "label": "NUM LOCK",
       "verbose": "Num Lock"
     },
     {
@@ -128,7 +128,9 @@
       "label": {
         "key": null,
         "ref": null,
-        "props": {},
+        "props": {
+          "size": "sm"
+        },
         "_owner": null
       },
       "extraLabel": "",
@@ -139,7 +141,9 @@
       "label": {
         "key": null,
         "ref": null,
-        "props": {},
+        "props": {
+          "size": "sm"
+        },
         "_owner": null
       },
       "extraLabel": "",
@@ -150,7 +154,9 @@
       "label": {
         "key": null,
         "ref": null,
-        "props": {},
+        "props": {
+          "size": "sm"
+        },
         "_owner": null
       },
       "extraLabel": "",
@@ -162,29 +168,29 @@
       "extraLabel": "A+"
     },
     {
-      "keyCode": 4126,
-      "label": "&",
-      "extraLabel": "O+"
+      "keyCode": 53859,
+      "label": "Win 1",
+      "extraLabel": "MACRO"
     },
     {
-      "keyCode": 4127,
-      "label": "é",
-      "extraLabel": "O+"
+      "keyCode": 53860,
+      "label": "Win 2",
+      "extraLabel": "MACRO"
     },
     {
-      "keyCode": 4128,
-      "label": "\"",
-      "extraLabel": "O+"
+      "keyCode": 53861,
+      "label": "Win 3",
+      "extraLabel": "MACRO"
     },
     {
-      "keyCode": 4129,
-      "label": "'",
-      "extraLabel": "O+"
+      "keyCode": 53862,
+      "label": "Win 4",
+      "extraLabel": "MACRO"
     },
     {
-      "keyCode": 4130,
-      "label": "(",
-      "extraLabel": "O+"
+      "keyCode": 53863,
+      "label": "Win 5",
+      "extraLabel": "MACRO"
     },
     {
       "keyCode": 70,
@@ -233,7 +239,9 @@
       "label": {
         "key": null,
         "ref": null,
-        "props": {},
+        "props": {
+          "size": "sm"
+        },
         "_owner": null
       },
       "extraLabel": "Display",
@@ -244,7 +252,9 @@
       "label": {
         "key": null,
         "ref": null,
-        "props": {},
+        "props": {
+          "size": "sm"
+        },
         "_owner": null
       },
       "extraLabel": "Display",
@@ -252,8 +262,16 @@
     },
     {
       "keyCode": 17492,
-      "label": "1",
-      "extraLabel": "LOCK"
+      "label": "",
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "type": "lock",
+          "layerNumber": 1
+        },
+        "_owner": null
+      }
     },
     {
       "keyCode": 53855,
@@ -263,17 +281,17 @@
     {
       "keyCode": 2347,
       "label": "TAB",
-      "extraLabel": "C+S+"
+      "extraLabel": ""
     },
     {
       "keyCode": 4103,
       "label": "D",
-      "extraLabel": "O+"
+      "extraLabel": ""
     },
     {
       "keyCode": 299,
       "label": "TAB",
-      "extraLabel": "C+"
+      "extraLabel": ""
     },
     {
       "keyCode": 0,
@@ -327,7 +345,9 @@
       "label": {
         "key": null,
         "ref": null,
-        "props": {},
+        "props": {
+          "size": "sm"
+        },
         "_owner": null
       },
       "extraLabel": "",
@@ -338,7 +358,9 @@
       "label": {
         "key": null,
         "ref": null,
-        "props": {},
+        "props": {
+          "size": "sm"
+        },
         "_owner": null
       },
       "extraLabel": "",
@@ -433,6 +455,62 @@
       "verbose": "Transparent"
     },
     {
+      "keyCode": 49501,
+      "label": "DEL",
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "modifier": "shift",
+          "size": "sm"
+        },
+        "_owner": null
+      }
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "extraLabel": "TRANS",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "extraLabel": "TRANS",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 17493,
+      "label": "",
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "type": "lock",
+          "layerNumber": 2
+        },
+        "_owner": null
+      }
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "extraLabel": "TRANS",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "extraLabel": "TRANS",
+      "verbose": "Transparent"
+    },
+    {
+      "keyCode": 65535,
+      "label": "",
+      "extraLabel": "TRANS",
+      "verbose": "Transparent"
+    },
+    {
       "keyCode": 65535,
       "label": "",
       "extraLabel": "TRANS",
@@ -452,49 +530,16 @@
     },
     {
       "keyCode": 17493,
-      "label": "2",
-      "extraLabel": "LOCK"
-    },
-    {
-      "keyCode": 65535,
       "label": "",
-      "extraLabel": "TRANS",
-      "verbose": "Transparent"
-    },
-    {
-      "keyCode": 65535,
-      "label": "",
-      "extraLabel": "TRANS",
-      "verbose": "Transparent"
-    },
-    {
-      "keyCode": 65535,
-      "label": "",
-      "extraLabel": "TRANS",
-      "verbose": "Transparent"
-    },
-    {
-      "keyCode": 65535,
-      "label": "",
-      "extraLabel": "TRANS",
-      "verbose": "Transparent"
-    },
-    {
-      "keyCode": 65535,
-      "label": "",
-      "extraLabel": "TRANS",
-      "verbose": "Transparent"
-    },
-    {
-      "keyCode": 65535,
-      "label": "",
-      "extraLabel": "TRANS",
-      "verbose": "Transparent"
-    },
-    {
-      "keyCode": 17493,
-      "label": "2",
-      "extraLabel": "LOCK"
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "type": "lock",
+          "layerNumber": 2
+        },
+        "_owner": null
+      }
     },
     {
       "keyCode": 65535,
@@ -587,7 +632,7 @@
     7,
     5,
     13,
-    6,
+    13,
     6,
     7,
     12,
