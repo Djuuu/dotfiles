@@ -100,28 +100,44 @@
       "label": "INSERT"
     },
     {
-      "keyCode": 0,
-      "label": "KEY",
-      "extraLabel": "NO",
-      "verbose": "Disabled"
+      "keyCode": 17153,
+      "label": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "size": "sm"
+        },
+        "_owner": null
+      },
+      "extraLabel": "LED",
+      "verbose": "Previous"
     },
     {
       "keyCode": 83,
-      "label": "NUMLOCK",
+      "label": "NUM LOCK",
       "verbose": "Num Lock"
     },
     {
-      "keyCode": 0,
-      "label": "KEY",
-      "extraLabel": "NO",
-      "verbose": "Disabled"
+      "keyCode": 17152,
+      "label": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "size": "sm"
+        },
+        "_owner": null
+      },
+      "extraLabel": "LED",
+      "verbose": "Next"
     },
     {
       "keyCode": 19682,
       "label": {
         "key": null,
         "ref": null,
-        "props": {},
+        "props": {
+          "size": "sm"
+        },
         "_owner": null
       },
       "extraLabel": "",
@@ -132,7 +148,9 @@
       "label": {
         "key": null,
         "ref": null,
-        "props": {},
+        "props": {
+          "size": "sm"
+        },
         "_owner": null
       },
       "extraLabel": "",
@@ -143,7 +161,9 @@
       "label": {
         "key": null,
         "ref": null,
-        "props": {},
+        "props": {
+          "size": "sm"
+        },
         "_owner": null
       },
       "extraLabel": "",
@@ -169,7 +189,9 @@
       "label": {
         "key": null,
         "ref": null,
-        "props": {},
+        "props": {
+          "size": "sm"
+        },
         "_owner": null
       },
       "extraLabel": "",
@@ -233,7 +255,9 @@
       "label": {
         "key": null,
         "ref": null,
-        "props": {},
+        "props": {
+          "size": "sm"
+        },
         "_owner": null
       },
       "extraLabel": "Display",
@@ -244,7 +268,9 @@
       "label": {
         "key": null,
         "ref": null,
-        "props": {},
+        "props": {
+          "size": "sm"
+        },
         "_owner": null
       },
       "extraLabel": "Display",
@@ -330,7 +356,9 @@
       "label": {
         "key": null,
         "ref": null,
-        "props": {},
+        "props": {
+          "size": "sm"
+        },
         "_owner": null
       },
       "extraLabel": "",
@@ -341,7 +369,9 @@
       "label": {
         "key": null,
         "ref": null,
-        "props": {},
+        "props": {
+          "size": "sm"
+        },
         "_owner": null
       },
       "extraLabel": "",
@@ -364,7 +394,9 @@
       "label": {
         "key": null,
         "ref": null,
-        "props": {},
+        "props": {
+          "size": "sm"
+        },
         "_owner": null
       },
       "extraLabel": "",
@@ -427,7 +459,9 @@
       "label": {
         "key": null,
         "ref": null,
-        "props": {},
+        "props": {
+          "size": "sm"
+        },
         "_owner": null
       },
       "extraLabel": "LED",
@@ -444,10 +478,9 @@
       "verbose": "Transparent"
     },
     {
-      "keyCode": 65535,
-      "label": "",
-      "extraLabel": "TRANS",
-      "verbose": "Transparent"
+      "keyCode": 42,
+      "label": "BACKSPACE",
+      "verbose": "Backspace"
     },
     {
       "keyCode": 65535,
@@ -463,8 +496,16 @@
     },
     {
       "keyCode": 17493,
-      "label": "2",
-      "extraLabel": "LOCK"
+      "label": "",
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "type": "lock",
+          "layerNumber": 2
+        },
+        "_owner": null
+      }
     },
     {
       "keyCode": 65535,
@@ -503,8 +544,16 @@
     },
     {
       "keyCode": 17493,
-      "label": "2",
-      "extraLabel": "LOCK"
+      "label": "",
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "type": "lock",
+          "layerNumber": 2
+        },
+        "_owner": null
+      }
     },
     {
       "keyCode": 65535,
@@ -597,7 +646,7 @@
     7,
     5,
     13,
-    13,
+    6,
     13,
     14,
     12,

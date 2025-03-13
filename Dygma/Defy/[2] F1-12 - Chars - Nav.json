@@ -81,7 +81,8 @@
     },
     {
       "keyCode": 1057,
-      "label": "{"
+      "label": "{",
+      "alt": true
     },
     {
       "keyCode": 0,
@@ -97,7 +98,8 @@
     },
     {
       "keyCode": 1070,
-      "label": "}"
+      "label": "}",
+      "alt": true
     },
     {
       "keyCode": 63,
@@ -129,15 +131,18 @@
     },
     {
       "keyCode": 1063,
-      "label": "@"
+      "label": "@",
+      "alt": true
     },
     {
       "keyCode": 1055,
-      "label": "~"
+      "label": "~",
+      "alt": true
     },
     {
       "keyCode": 1056,
-      "label": "#"
+      "label": "#",
+      "alt": true
     },
     {
       "keyCode": 0,
@@ -147,11 +152,13 @@
     },
     {
       "keyCode": 1059,
-      "label": "|"
+      "label": "|",
+      "alt": true
     },
     {
       "keyCode": 1058,
-      "label": "["
+      "label": "[",
+      "alt": true
     },
     {
       "keyCode": 0,
@@ -167,7 +174,8 @@
     },
     {
       "keyCode": 1069,
-      "label": "]"
+      "label": "]",
+      "alt": true
     },
     {
       "keyCode": 0,
@@ -198,8 +206,16 @@
     },
     {
       "keyCode": 17496,
-      "label": "5",
-      "extraLabel": "LOCK"
+      "label": "",
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "type": "lock",
+          "layerNumber": 5
+        },
+        "_owner": null
+      }
     },
     {
       "keyCode": 0,
@@ -249,7 +265,8 @@
     },
     {
       "keyCode": 2148,
-      "label": ">"
+      "label": ">",
+      "alt": true
     },
     {
       "keyCode": 80,
@@ -332,7 +349,8 @@
     },
     {
       "keyCode": 1061,
-      "label": "\\"
+      "label": "\\",
+      "alt": true
     },
     {
       "keyCode": 0,
@@ -394,13 +412,29 @@
     },
     {
       "keyCode": 17494,
-      "label": "3",
-      "extraLabel": "LOCK"
+      "label": "",
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "type": "lock",
+          "layerNumber": 3
+        },
+        "_owner": null
+      }
     },
     {
       "keyCode": 17494,
-      "label": "3",
-      "extraLabel": "LOCK"
+      "label": "",
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "type": "lock",
+          "layerNumber": 3
+        },
+        "_owner": null
+      }
     },
     {
       "keyCode": 65535,
@@ -416,13 +450,29 @@
     },
     {
       "keyCode": 17494,
-      "label": "3",
-      "extraLabel": "LOCK"
+      "label": "",
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "type": "lock",
+          "layerNumber": 3
+        },
+        "_owner": null
+      }
     },
     {
       "keyCode": 17494,
-      "label": "3",
-      "extraLabel": "LOCK"
+      "label": "",
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "type": "lock",
+          "layerNumber": 3
+        },
+        "_owner": null
+      }
     },
     {
       "keyCode": 65535,

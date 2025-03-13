@@ -261,8 +261,9 @@
       "label": "ù"
     },
     {
-      "keyCode": 100,
-      "label": "<"
+      "keyCode": 49269,
+      "label": "<",
+      "extraLabel": "CTRL/"
     },
     {
       "keyCode": 29,
@@ -340,13 +341,28 @@
     {
       "keyCode": 49467,
       "label": "BACKSPACE",
-      "extraLabel": "SHIFT/"
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "modifier": "shift",
+          "size": "sm"
+        },
+        "_owner": null
+      }
     },
     {
-      "keyCode": 224,
-      "label": "CTRL",
-      "extraLabel": "LEFT",
-      "verbose": "Left Control"
+      "keyCode": 49209,
+      "label": "ENTER",
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "modifier": "control",
+          "size": "sm"
+        },
+        "_owner": null
+      }
     },
     {
       "keyCode": 40,
@@ -354,18 +370,42 @@
     },
     {
       "keyCode": 17451,
-      "label": "2",
-      "extraLabel": "SHIFT"
+      "label": "",
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "type": "shift",
+          "layerNumber": 2
+        },
+        "_owner": null
+      }
     },
     {
       "keyCode": 17452,
-      "label": "3",
-      "extraLabel": "SHIFT"
+      "label": "",
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "type": "shift",
+          "layerNumber": 3
+        },
+        "_owner": null
+      }
     },
     {
       "keyCode": 17452,
-      "label": "3",
-      "extraLabel": "SHIFT"
+      "label": "",
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "type": "shift",
+          "layerNumber": 3
+        },
+        "_owner": null
+      }
     },
     {
       "keyCode": 227,
@@ -378,18 +418,42 @@
     },
     {
       "keyCode": 17453,
-      "label": "4",
-      "extraLabel": "SHIFT"
+      "label": "",
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "type": "shift",
+          "layerNumber": 4
+        },
+        "_owner": null
+      }
     },
     {
-      "keyCode": 17453,
-      "label": "4",
-      "extraLabel": "SHIFT"
+      "keyCode": 17452,
+      "label": "",
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "type": "shift",
+          "layerNumber": 3
+        },
+        "_owner": null
+      }
     },
     {
       "keyCode": 17451,
-      "label": "2",
-      "extraLabel": "SHIFT"
+      "label": "",
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "type": "shift",
+          "layerNumber": 2
+        },
+        "_owner": null
+      }
     },
     {
       "keyCode": 44,
@@ -398,12 +462,28 @@
     {
       "keyCode": 49213,
       "label": "SPACE",
-      "extraLabel": "CTRL/"
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "modifier": "control",
+          "size": "sm"
+        },
+        "_owner": null
+      }
     },
     {
       "keyCode": 49501,
       "label": "DEL",
-      "extraLabel": "SHIFT/"
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "modifier": "shift",
+          "size": "sm"
+        },
+        "_owner": null
+      }
     },
     {
       "keyCode": 230,
