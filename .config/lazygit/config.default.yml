@@ -16,6 +16,10 @@ gui:
   # One of: 'margin' (default) | 'jump'
   scrollOffBehavior: margin
 
+  # The number of spaces per tab; used for everything that's shown in the main view, but probably mostly relevant for diffs.
+  # Note that when using a pager, the pager has its own tab width setting, so you need to pass it separately in the pager command.
+  tabWidth: 4
+
   # If true, capture mouse events.
   # When mouse events are captured, it's a little harder to select text: e.g. requiring you to hold the option key when on macOS.
   mouseEvents: true
@@ -135,7 +139,7 @@ gui:
   showListFooter: true
 
   # If true, display the files in the file views as a tree. If false, display the files as a flat list.
-  # This can be toggled from within Lazygit with the '~' key, but that will not change the default.
+  # This can be toggled from within Lazygit with the '`' key, but that will not change the default.
   showFileTree: true
 
   # If true, show the number of lines changed per file in the Files view
@@ -310,14 +314,6 @@ git:
   # If true, do not allow force pushes
   disableForcePushing: false
 
-  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#predefined-commit-message-prefix
-  commitPrefix:
-    # pattern to match on. E.g. for 'feature/AB-123' to match on the AB-123 use "^\\w+\\/(\\w+-\\w+).*"
-    pattern: ""
-
-    # Replace directive. E.g. for 'feature/AB-123' to start the commit message with 'AB-123 ' use "[$1] "
-    replace: ""
-
   # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#predefined-branch-name-prefix
   branchPrefix: ""
 
@@ -383,6 +379,9 @@ os:
   # Same as EditAtLine, except that the command needs to wait until the
   # window is closed.
   editAtLineAndWait: ""
+
+  # Whether lazygit suspends until an edit process returns
+  editInTerminal: false
 
   # For opening a directory in an editor
   openDirInEditor: ""
