@@ -17,6 +17,8 @@ keybinding:
 #    scrollRight: L
 #    gotoTop: <
 #    gotoBottom: '>'
+    gotoTop-alt: <disabled> # default: <home>
+    gotoBottom-alt: <disabled> # default: <end>
 #    toggleRangeSelect: v
 #    rangeSelectDown: <s-down>
 #    rangeSelectUp: <s-up>
@@ -104,6 +106,8 @@ keybinding:
 #    openMergeTool: M
 #    openStatusFilter: <c-b>
 #    copyFileInfoToClipboard: "y"
+#    collapseAll: '-'
+#    expandAll: =
 
 #  branches:
 #    createPullRequest: o
@@ -150,6 +154,7 @@ keybinding:
 #    openInBrowser: o
 #    viewBisectOptions: b
 #    startInteractiveRebase: i
+#    selectCommitsOfCurrentBranch: '*'
 
 #  amendAttribute:
 #    resetAuthor: a
