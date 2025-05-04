@@ -34,6 +34,7 @@ keybinding:
 #      - "3"
 #      - "4"
 #      - "5"
+#    focusMainView: "0"
 #    nextMatch: "n"
 #    prevMatch: "N"
 #    startSearch: /
@@ -118,6 +119,7 @@ keybinding:
 #    rebaseBranch: r
 #    renameBranch: R
 #    mergeIntoCurrentBranch: M
+#    moveCommitsToNewBranch: "N"
 #    viewGitFlowOptions: i
 #    fastForward: f
 #    createTag: T
