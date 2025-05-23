@@ -57,11 +57,6 @@ git:
   #   default: git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --
   branchLogCmd: git context-graph --pretty=graph-dyn-lg --first-parent {{branchName}} --
 
-  # Command used to display git log of all branches in the main window.
-  # Deprecated: use `allBranchesLogCmds` instead. (still seems to be used by default though)
-  #   default: git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium
-  allBranchesLogCmd: git context-graph --pretty=graph-dyn-lg --all --first-parent --
-
   # Commands used to display git log of all branches in the main window, they will be cycled in order of appearance (array of strings)
   allBranchesLogCmds: # []
     ## default

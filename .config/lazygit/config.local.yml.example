@@ -53,4 +53,4 @@
 #  - key: '<c-d>'
 #    context: 'files'
 #    command: 'git diff {{.SelectedFile.Name | quote}}'
-#    subprocess: true
+#    output: terminal # none | terminal | log | logWithPty | popup
