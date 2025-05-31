@@ -127,6 +127,9 @@
 	amend = "!f() { git commit -C $(git prev-commit); }; f"
 	fixup = "!f() { git commit --fixup ${1:-HEAD}; }; f"
 
+	is-clean = "!~/.local/bin/git-is-clean" # https://github.com/nvie/git-toolbelt/blob/main/git-is-clean
+	separator = "!~/.local/bin/git-separator" # https://github.com/nvie/git-toolbelt/blob/main/git-separator
+
 	# rebase
 	ri = "rebase -i"
 	rir = "rebase -i -r"
