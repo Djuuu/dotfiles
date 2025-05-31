@@ -36,9 +36,14 @@
           jmespath \
           xmltodict
       }
+      [[ -x "$(command -v ansible-lint)" ]] || {
+        pipx install ansible-lint
+        pipx inject ansible-lint \
+          jmespath
+      }
     quiet: true
 
-- pipx:
-    file: requirements-pipx.txt
-    stdout: false
-    stderr: true
+#- pipx:
+#    file: requirements-pipx.txt
+#    stdout: false
+#    stderr: true
