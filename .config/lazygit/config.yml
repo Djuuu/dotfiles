@@ -20,6 +20,9 @@ gui:
   # Uses Go's time format syntax: https://pkg.go.dev/time#Time.Format
   shortTimeFormat: 15:04 # default: '3:04PM'
 
+  # If true, add a "/" root item in the file tree representing the root of the repository. It is only added when necessary, i.e. when there is more than one item at top level.
+  showRootItemInFileTree: false
+
   # If true, show the number of lines changed per file in the Files view
   showNumstatInFilesView: true # default: false
 
