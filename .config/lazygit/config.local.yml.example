@@ -54,3 +54,17 @@
 #    context: 'files'
 #    command: 'git diff {{.SelectedFile.Name | quote}}'
 #    output: terminal # none | terminal | log | logWithPty | popup
+#
+#  - key: '<c-a>'
+#    context: 'localBranches'
+#    command: "git {{.Form.action}} {{ .SelectedLocalBranch.Name }}"
+#    description: "git [f]pushall"
+#    loadingText: "Pushing to all remotes..."
+#    output: popup
+#    prompts:
+#        - type: 'menu'
+#          title: 'Push to all remotes'
+#          key: 'action'
+#          options:
+#              - { value: 'pushall', name: 'push', description: 'Push {{ .SelectedLocalBranch.Name }} to all remotes' }
+#              - { value: 'fpushall', name: 'force', description: 'Force-push {{ .SelectedLocalBranch.Name }} to all remotes' }
