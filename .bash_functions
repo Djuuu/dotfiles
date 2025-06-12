@@ -362,7 +362,7 @@ ssh-list-tunnel-ports() {
 git-context-graph-page() {
     local margin=8
     local lines=$((LINES - margin))
-    git context-graph --first-parent --pretty=graph-dyn "-n${lines}" "$@" | head -n $lines
+    git context-graph --first-parent "-n${lines}" "$@" | head -n $lines
 }
 
 # shellcheck disable=SC2086
@@ -385,7 +385,7 @@ git-graph-status-page() {
     # clear -x
     #echo -e "$separator"
     echo
-    git context-graph --first-parent --pretty=graph-dyn "-n${lines}" "$@" | head -n ${lines}
+    git context-graph --first-parent "-n${lines}" "$@" | head -n ${lines}
     echo
     echo -e "$separator"
     echo
