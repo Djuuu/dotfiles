@@ -49,6 +49,10 @@
 #  #openLink: "xdg-open {{link}} >/dev/null"
 #  openLink:  cmd.exe /c start {{link}}
 
+########################################################################################################################
+# https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Command_Keybindings.md
+# https://github.com/jesseduffield/lazygit/blob/master/docs/keybindings/Custom_Keybindings.md
+
 #customCommands:
 #  - key: '<c-d>'
 #    context: 'files'
@@ -68,3 +72,32 @@
 #          options:
 #              - { value: 'pushall', name: 'push', description: 'Push {{ .SelectedLocalBranch.Name }} to all remotes' }
 #              - { value: 'fpushall', name: 'force', description: 'Force-push {{ .SelectedLocalBranch.Name }} to all remotes' }
+#
+#  - key: '<c-g>'
+#    description: "git-mr"
+#    commandMenu:
+#        - key: s
+#          context: 'localBranches'
+#          command: "git mr status {{.SelectedLocalBranch.Name}}"
+#          output: popup
+#
+#        - key: m
+#          context: 'localBranches'
+#          command: "git mr menu status $(git mr code {{.SelectedLocalBranch.Name}})"
+#          output: popup
+#
+#        - key: n
+#          context: 'localBranches'
+#          command: "git mr menu status --no-links $(git mr code {{.SelectedLocalBranch.Name}})"
+#          output: terminal
+#
+#        - key: o
+#          context: 'localBranches'
+#          command: "git mr open {{.SelectedLocalBranch.Name}}"
+#          output: none
+#          loadingText: 'Opening merge request'
+#
+#        - key: u
+#          context: 'localBranches'
+#          command: "git mr update {{.SelectedLocalBranch.Name}}"
+#          output: terminal
