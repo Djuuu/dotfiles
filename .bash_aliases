@@ -36,10 +36,14 @@ alias bat="batcat"
 alias sshagentstart='eval `ssh-agent -s` && ssh-add'
 
 # Git
-alias gg='git context-graph --first-parent --pretty=graph-dyn'
+alias gg='git-context-graph-page --pretty=graph-dyn'
+alias ggs='git-graph-status-page --pretty=graph-dyn'
+
+alias ggg='git context-graph --first-parent --pretty=graph-dyn'
 alias gga='git context-graph --first-parent --pretty=graph-dyn --all'
-alias ggp='git-context-graph-page'
-alias ggs='git-graph-status-page'
+alias ggv='git context-graph --pretty=graph-dyn'
+alias ggva='git context-graph --pretty=graph-dyn --all'
+
 alias lg='lazygit'
 
 # Git - mu-repo
