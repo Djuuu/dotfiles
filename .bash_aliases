@@ -45,6 +45,7 @@ alias ggv='git context-graph --pretty=graph-dyn'
 alias ggva='git context-graph --pretty=graph-dyn --all'
 
 alias lg='lazygit'
+alias zg='lazygit'
 
 # Git - mu-repo
 alias gm='git mu'
