@@ -1,4 +1,10 @@
 
+- plugins:
+  - dotbot-plugins/dotbot-sudo/
+  - dotbot-plugins/dotbot-apt/
+  - dotbot-plugins/dotbot-go/
+  - dotbot-plugins/dotbot-pip/
+
 - sudo:
 
   - apt:
