@@ -84,7 +84,7 @@ gui:
   wrapLinesInStagingView: true
 
   # If true, hunk selection mode will be enabled by default when entering the staging view.
-  useHunkModeInStagingView: false
+  useHunkModeInStagingView: true
 
   # One of 'auto' (default) | 'en' | 'zh-CN' | 'zh-TW' | 'pl' | 'nl' | 'ja' | 'ko' | 'ru'
   language: auto
@@ -270,11 +270,11 @@ git:
     # ydiff -p cat -s --wrap --width={{columnWidth}}
     pager: ""
 
-    # If true, Lazygit will use whatever pager is specified in `$GIT_PAGER`, `$PAGER`, or your *git config*. If the pager ends with something like ` | less` we will strip that part out, because less doesn't play nice with our rendering approach. If the custom pager uses less under the hood, that will also break rendering (hence the `--paging=never` flag for the `delta` pager).
-    useConfig: false
-
     # e.g. 'difft --color=always'
     externalDiffCommand: ""
+
+    # If true, Lazygit will use git's `diff.external` config for paging. The advantage over `externalDiffCommand` is that this can be configured per file type in .gitattributes; see https://git-scm.com/docs/gitattributes#_defining_an_external_diff_driver.
+    useExternalDiffGitConfig: false
 
   # Config relating to committing
   commit:
@@ -484,6 +484,7 @@ keybinding:
   universal:
     quit: q
     quit-alt1: <c-c>
+    suspendApp: <c-z>
     return: <esc>
     quitWithoutChangingDirectory: Q
     togglePanel: <tab>
@@ -550,7 +551,7 @@ keybinding:
     nextScreenMode: +
     prevScreenMode: _
     undo: z
-    redo: <c-z>
+    redo: Z
     filteringMenu: <c-s>
     diffingMenu: W
     diffingMenu-alt: <c-e>

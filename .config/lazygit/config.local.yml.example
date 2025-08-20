@@ -18,7 +18,7 @@
 #git:
 #  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md
 #  paging:
-#    useConfig: false
+#    useExternalDiffGitConfig: false
 #    pager: "delta --features='common lazygit'"
 
 
