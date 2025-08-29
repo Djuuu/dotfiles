@@ -38,7 +38,7 @@ prompt_git() {
 
     # __prompt_git_debug
 
-    promptGit="${promptGitBranchInfo}${promptGitAction}${promptGitState}$(pResetColor) "
+    promptGit="${promptGitBranchInfo}${promptGitAction}${promptGitState}${pt_reset} "
 }
 
 ##
@@ -150,18 +150,18 @@ __prompt_git_set_remote_icon() {
     promptGitRemote=""
 
     if [[ $ahead -gt 0 && $behind -eq 0 ]]; then
-        promptGitRemote="${promptGitRemote}$(pColor greenBold)" # nf-fa-arrow_up
+        promptGitRemote="${promptGitRemote}${pt_greenBold}" # nf-fa-arrow_up
 
     elif [[ $ahead -eq 0 && $behind -gt 0 ]]; then
-        promptGitRemote="${promptGitRemote}$(pColor yellowBold)" # nf-fa-arrow_down
+        promptGitRemote="${promptGitRemote}${pt_yellowBold}" # nf-fa-arrow_down
 
     elif [[ $ahead -gt 0 && $behind -gt 0 ]]; then
-        promptGitRemote="${promptGitRemote}$(pColor yellowBold)" # nf-fa-arrows_up_down
+        promptGitRemote="${promptGitRemote}${pt_yellowBold}" # nf-fa-arrows_up_down
 
     fi
 
     [[ -n $promptGitRemote ]] &&
-        promptGitRemote=" ${promptGitRemote}$(pResetColor)"
+        promptGitRemote=" ${promptGitRemote}${pt_reset}"
 }
 
 # Set the following variable:
@@ -176,7 +176,7 @@ __prompt_git_set_branch_info() {
     promptGitBranchInfo=
 
     if [[ $detached -eq 1 ]]; then
-        promptGitBranchInfo="$(pColor purple)(  ${branch})" # nf-fa-code_commit
+        promptGitBranchInfo="${pt_purple}(  ${branch})" # nf-fa-code_commit
         return
     fi
 
@@ -196,7 +196,7 @@ __prompt_git_set_branch_info() {
         branchIcon="" # nf-dev-git_branch
     fi
 
-    promptGitBranchInfo="$(pColor purple)(${branchIcon} ${branch}"
+    promptGitBranchInfo="${pt_purple}(${branchIcon} ${branch}"
 
     local remoteStatus remoteStatusA=()
 
@@ -206,8 +206,8 @@ __prompt_git_set_branch_info() {
         b=${behind}
     fi
 
-    [[ $ahead -gt 0  ]] && remoteStatusA+=("$(pColor green)↑${a}")
-    [[ $behind -gt 0 ]] && remoteStatusA+=("$(pColor red  )↓${b}")
+    [[ $ahead -gt 0  ]] && remoteStatusA+=("${pt_green}↑${a}")
+    [[ $behind -gt 0 ]] && remoteStatusA+=("${pt_red}↓${b}")
 
     if [[ $PROMPT_GIT_REMOTE_COUNTERS -eq 1 ]]; then
         remoteStatus=${remoteStatusA[*]} # Join with spaces
@@ -217,7 +217,7 @@ __prompt_git_set_branch_info() {
 
     [[ -n $remoteStatus ]] && remoteStatus=" $remoteStatus" # Add leading space
 
-    promptGitBranchInfo="${promptGitBranchInfo}${remoteStatus}$(pColor purple))"
+    promptGitBranchInfo="${promptGitBranchInfo}${remoteStatus}${pt_purple})"
 }
 
 # Extract the following variables:
@@ -283,18 +283,18 @@ __prompt_git_set_action() {
         rebase)
             local rebaseTarget rebaseProgress doneColor
 
-            doneColor=$(pColor yellow)
-            [[ $conflicts -gt 0 ]] && doneColor=$(pColor red)
+            doneColor=${pt_yellow}
+            [[ $conflicts -gt 0 ]] && doneColor=${pt_red}
 
-            rebaseProgress="$(pColor white)(${doneColor}${rebaseStep}$(pColor white)/${rebaseTotal})"
-            rebaseTarget="$(pColor blackBold)[$(pColor yellow)${rebaseHeadName}$(pColor blackBold) ↷ $(pColor cyan)${rebaseOntoBranch}$(pColor blackBold)]"
+            rebaseProgress="${pt_white}(${doneColor}${rebaseStep}${pt_white}/${rebaseTotal})"
+            rebaseTarget="${pt_blackBold}[${pt_yellow}${rebaseHeadName}${pt_blackBold} ↷ ${pt_cyan}${rebaseOntoBranch}${pt_blackBold}]"
 
-            promptGitAction="\n $(pColor redBold)☈ ${rebaseTarget} ${rebaseProgress}"
+            promptGitAction="\n ${pt_redBold}☈ ${rebaseTarget} ${rebaseProgress}"
             ;;
-        merge)       promptGitAction=" $(pColor red   )"  ;; # nf-oct-git_merge
-        cherry-pick) promptGitAction=" $(pColor red   )"  ;; # nf-fae-cherry
-        revert)      promptGitAction=" $(pColor red   ) " ;; # nf-fa-rotate_left
-        bisect)      promptGitAction=" $(pColor yellow)?" ;; # nf-fa-arrows_up_down
+        merge)       promptGitAction=" ${pt_red}"  ;; # nf-oct-git_merge
+        cherry-pick) promptGitAction=" ${pt_red}"  ;; # nf-fae-cherry
+        revert)      promptGitAction=" ${pt_red} " ;; # nf-fa-rotate_left
+        bisect)      promptGitAction=" ${pt_yellow}?" ;; # nf-fa-arrows_up_down
         *)           promptGitAction="" ;;
     esac
 }
@@ -323,21 +323,21 @@ __prompt_git_set_state() {
 
     case "${PROMPT_GIT_STATE_MODE}" in
         detail*)
-            [[ $changed   -gt 0 ]] && promptGitStateA+=("$(pColor yellow) ${ch}") # nf-cod-request_changes
-            [[ $deleted   -gt 0 ]] && promptGitStateA+=("$(pColor red   )󰍴${dl}") # nf-md-minus
-            [[ $untracked -gt 0 ]] && promptGitStateA+=("$(pColor green )${ut}") # nf-oct-plus
-            [[ $staged    -gt 0 ]] && promptGitStateA+=("$(pColor green ) ${st}") # nf-cod-request_changes
-            [[ $conflicts -gt 0 ]] && promptGitStateA+=("$(pColor red   ) ${cf}") # nf-fa-arrows_left_right
+            [[ $changed   -gt 0 ]] && promptGitStateA+=("${pt_yellow} ${ch}") # nf-cod-request_changes
+            [[ $deleted   -gt 0 ]] && promptGitStateA+=("${pt_red}󰍴${dl}") # nf-md-minus
+            [[ $untracked -gt 0 ]] && promptGitStateA+=("${pt_green}${ut}") # nf-oct-plus
+            [[ $staged    -gt 0 ]] && promptGitStateA+=("${pt_green} ${st}") # nf-cod-request_changes
+            [[ $conflicts -gt 0 ]] && promptGitStateA+=("${pt_red} ${cf}") # nf-fa-arrows_left_right
             ;;
         summary)
             if [[ $changed -gt 0 || $deleted -gt 0 ]]; then # Misc. changes
-                promptGitStateA+=("$(pColor yellow) ${md}") # nf-cod-request_changes
+                promptGitStateA+=("${pt_yellow} ${md}") # nf-cod-request_changes
             elif [[ $untracked -gt 0 ]] && [[ $changed -eq 0 || $deleted -eq 0 ]]; then # Only untracked
                 [[ -z $ut ]] && ut=" "
-                promptGitStateA+=("$(pColor green)${ut}") # nf-oct-plus
+                promptGitStateA+=("${pt_green}${ut}") # nf-oct-plus
             fi
-            [[ $staged    -gt 0 ]] && promptGitStateA+=("$(pColor green) ${st}") # nf-cod-request_changes
-            [[ $conflicts -gt 0 ]] && promptGitStateA+=("$(pColor red  ) ${cf}") # nf-fa-arrows_left_right
+            [[ $staged    -gt 0 ]] && promptGitStateA+=("${pt_green} ${st}") # nf-cod-request_changes
+            [[ $conflicts -gt 0 ]] && promptGitStateA+=("${pt_red} ${cf}") # nf-fa-arrows_left_right
             ;;
     esac
 

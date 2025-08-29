@@ -8,8 +8,8 @@ promptFillBase="─"
 promptFillEnd="─┤"
 
 [[ -z "$VIM" ]] \
-  && status_style=$resetColor'\[\033[0;90m\]' \
-  || status_style=$resetColor'\[\033[0;90;107m\]'
+  && status_style=${pt_reset}'\[\033[0;90m\]' \
+  || status_style=${pt_reset}'\[\033[0;90;107m\]'
 
 prompt_ssh_tunnels() {
   promptSshTunnels="${SSH_TUNNELS}"
@@ -37,7 +37,7 @@ prompt_separator() {
   local exitIcon
   [[ $EXIT -eq 0 ]] && exitIcon="✔️" || exitIcon="❌"
 
-  promptSeparator="${status_style}${promptFill}$exitIcon \t\n${resetColor}"
+  promptSeparator="${status_style}${promptFill}$exitIcon \t\n${pt_reset}"
 }
 
 ###################################################################################################
@@ -65,4 +65,37 @@ prompt_link() {
   local text=$2
 
   echo '\[\e]8;;'"${href}"'\e\\\]'"${text}"'\[\e]8;;\e\\\]'
+}
+
+###################################################################################################
+# Color setting
+
+prompt_color_index=${prompt_color_index:-0}
+
+prompt_cycle_color() {
+    local color_names=(
+        "$pt_userBlGr"      # (blue green - 00BE87)
+        "x038_DeepSkyBlue2" # (light blue)
+        "x032_DeepSkyBlue3" # (blue)
+        "x134_MediumOrchid" # (purple)
+        "x212_Orchid2"      # (pink)
+        "x160_Red3"         # (red)
+        "x215_SandyBrown"   # (orange)
+        "x220_Gold1"        # (yellow)
+        "x047_SpringGreen2" # (bright green)
+        "x040_Green3"       # (green)
+    )
+
+    prompt_color_index=$(((prompt_color_index + 1) % ${#color_names[@]}))
+    local _name; _name=${color_names[$prompt_color_index]}
+    local _value; _value=$(pColor "$_name")
+
+    echo "promptUserColor=\"$_value\" # $_name"
+
+    prompt_set_color "$_value"
+}
+
+prompt_set_color() {
+    promptUserColor=$(pColor "${1:-$pt_userBlGr}")
+    . ~/.dotfiles/.bash_prompt/prompt.sh
 }
