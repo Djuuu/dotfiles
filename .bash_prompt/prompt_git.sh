@@ -24,16 +24,16 @@ prompt_git() {
     local branch ahead=0 behind=0 detached=0
     __prompt_git_extract_branch_remote "$branchLine"
 
-    # local promptGitRemote=""
+    # promptGitRemote=""
     # __prompt_git_set_remote_icon $ahead $behind
 
-    local promptGitBranchInfo
+    promptGitBranchInfo=""
     __prompt_git_set_branch_info "$branch" $ahead $behind $detached
 
-    local promptGitAction
+    promptGitAction=""
     __prompt_git_set_action
 
-    local promptGitState
+    promptGitState=""
     __prompt_git_set_state
 
     # __prompt_git_debug
