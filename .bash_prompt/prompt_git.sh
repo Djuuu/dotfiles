@@ -11,8 +11,12 @@ PROMPT_GIT_STATE_MODE=${PROMPT_GIT_STATE_MODE:-summary}
 # Set the $promptGit variable
 # Call in PROMPT_COMMAND and use $promptGit in PS1
 prompt_git() {
-    # Global variable, usable in PS1
+    # Global variables, usable in PS1
     promptGit=""
+    promptGitRemote=""
+    promptGitBranchInfo=""
+    promptGitAction=""
+    promptGitState=""
 
     local gitDir
     gitDir="$(git rev-parse --git-dir 2>/dev/null)" || return # Not a git repository
@@ -24,16 +28,12 @@ prompt_git() {
     local branch ahead=0 behind=0 detached=0
     __prompt_git_extract_branch_remote "$branchLine"
 
-    # local promptGitRemote=""
     # __prompt_git_set_remote_icon $ahead $behind
 
-    local promptGitBranchInfo
     __prompt_git_set_branch_info "$branch" $ahead $behind $detached
 
-    local promptGitAction
     __prompt_git_set_action
 
-    local promptGitState
     __prompt_git_set_state
 
     # __prompt_git_debug
