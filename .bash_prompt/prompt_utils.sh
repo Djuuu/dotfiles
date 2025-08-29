@@ -8,8 +8,8 @@ promptFillBase="─"
 promptFillEnd="─┤"
 
 [[ -z "$VIM" ]] \
-  && status_style=$resetColor'\[\033[0;90m\]' \
-  || status_style=$resetColor'\[\033[0;90;107m\]'
+  && status_style=${pt_reset}'\[\033[0;90m\]' \
+  || status_style=${pt_reset}'\[\033[0;90;107m\]'
 
 prompt_ssh_tunnels() {
   promptSshTunnels="${SSH_TUNNELS}"
@@ -37,7 +37,7 @@ prompt_separator() {
   local exitIcon
   [[ $EXIT -eq 0 ]] && exitIcon="✔️" || exitIcon="❌"
 
-  promptSeparator="${status_style}${promptFill}$exitIcon \t\n${resetColor}"
+  promptSeparator="${status_style}${promptFill}$exitIcon \t\n${pt_reset}"
 }
 
 ###################################################################################################
