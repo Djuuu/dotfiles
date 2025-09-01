@@ -37,5 +37,6 @@ PROMPT_COMMAND=(
   prompt_newline
   prompt_git_dyn_graph_width
 
-  'PS1="${promptTitle}${promptSeparator}${promptBase} ${promptGit}${promptNewline}${promptEnd}"'
+  #'PS1="${promptTitle}${promptSeparator}${promptBase} ${promptGit}${promptNewline}${promptEnd}"'
+  'PS1="${promptTitle}${promptSeparator}${promptBase} ${promptGitBranchInfo}${promptNewline}${promptGitAction}${promptGitState}${pt_reset}${promptEnd}"'
 )

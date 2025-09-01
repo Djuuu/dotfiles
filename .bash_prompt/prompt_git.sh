@@ -38,7 +38,7 @@ prompt_git() {
 
     # __prompt_git_debug
 
-    promptGit="${promptGitBranchInfo}${promptGitAction}${promptGitState}${pt_reset} "
+    promptGit="${promptGitBranchInfo}${promptGitAction}${promptGitState}${pt_reset}"
 }
 
 ##
@@ -176,7 +176,7 @@ __prompt_git_set_branch_info() {
     promptGitBranchInfo=
 
     if [[ $detached -eq 1 ]]; then
-        promptGitBranchInfo="${pt_purple}(  ${branch})" # nf-fa-code_commit
+        promptGitBranchInfo="${pt_purple}(  ${branch}) " # nf-fa-code_commit
         return
     fi
 
@@ -217,7 +217,7 @@ __prompt_git_set_branch_info() {
 
     [[ -n $remoteStatus ]] && remoteStatus=" $remoteStatus" # Add leading space
 
-    promptGitBranchInfo="${promptGitBranchInfo}${remoteStatus}${pt_purple})"
+    promptGitBranchInfo="${promptGitBranchInfo}${remoteStatus}${pt_purple}) "
 }
 
 # Extract the following variables:
@@ -289,12 +289,12 @@ __prompt_git_set_action() {
             rebaseProgress="${pt_white}(${doneColor}${rebaseStep}${pt_white}/${rebaseTotal})"
             rebaseTarget="${pt_blackBold}[${pt_yellow}${rebaseHeadName}${pt_blackBold} ↷ ${pt_cyan}${rebaseOntoBranch}${pt_blackBold}]"
 
-            promptGitAction="\n ${pt_redBold}☈ ${rebaseTarget} ${rebaseProgress}"
+            promptGitAction="\n${pt_redBold}☈ ${rebaseTarget} ${rebaseProgress} "
             ;;
-        merge)       promptGitAction=" ${pt_red}"  ;; # nf-oct-git_merge
-        cherry-pick) promptGitAction=" ${pt_red}"  ;; # nf-fae-cherry
-        revert)      promptGitAction=" ${pt_red} " ;; # nf-fa-rotate_left
-        bisect)      promptGitAction=" ${pt_yellow}?" ;; # nf-fa-arrows_up_down
+        merge)       promptGitAction="${pt_red} "     ;; # nf-oct-git_merge
+        cherry-pick) promptGitAction="${pt_red} "     ;; # nf-fae-cherry
+        revert)      promptGitAction="${pt_red}  "    ;; # nf-fa-rotate_left
+        bisect)      promptGitAction="${pt_yellow}? " ;; # nf-fa-arrows_up_down
         *)           promptGitAction="" ;;
     esac
 }
@@ -307,7 +307,7 @@ __prompt_git_set_state() {
     local promptGitStateA=()
 
     if [[ $untracked -eq 0 && $changed -eq 0 && $deleted -eq 0 && $staged -eq 0 && $conflicts -eq 0 ]]; then
-        promptGitState=" ${promptUserColor:-}" # nf-cod-sparkle
+        promptGitState="${promptUserColor:-} " # nf-cod-sparkle
         return
     fi
 
@@ -347,7 +347,7 @@ __prompt_git_set_state() {
         promptGitState=$(IFS=; echo "${promptGitStateA[*]}") # Join without spaces
     fi
 
-    [[ -n $promptGitState ]] && promptGitState=" ${promptGitState% }"
+    [[ -n $promptGitState ]] && promptGitState="${promptGitState% } "
 }
 
 ##
