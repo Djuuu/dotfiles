@@ -7,6 +7,7 @@
 PROMPT_GIT_REMOTE_COUNTERS=${PROMPT_GIT_REMOTE_COUNTERS:-1}
 PROMPT_GIT_STATE_COUNTERS=${PROMPT_GIT_STATE_COUNTERS:-0}
 PROMPT_GIT_STATE_MODE=${PROMPT_GIT_STATE_MODE:-summary}
+PROMPT_GIT_DISABLE_IN_TMUX=${PROMPT_GIT_DISABLE_IN_TMUX:-0}
 
 # Set the $promptGit variable
 # Call in PROMPT_COMMAND and use $promptGit in PS1
@@ -17,6 +18,8 @@ prompt_git() {
     promptGitBranchInfo=""
     promptGitAction=""
     promptGitState=""
+
+    [[ -n $TMUX ]] && [[ $PROMPT_GIT_DISABLE_IN_TMUX -eq 1 ]] && return
 
     local gitDir
     gitDir="$(git rev-parse --git-dir 2>/dev/null)" || return # Not a git repository

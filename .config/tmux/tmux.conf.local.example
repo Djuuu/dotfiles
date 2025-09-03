@@ -1,0 +1,36 @@
+
+## Catppuccin - User Defined Status Line Modules
+# source -F "#{d:current_file}/local/example.catppuccin.conf"
+
+
+## Reset status-left
+# set -g status-left ""
+
+# set -ag status-left "#[fg=red,bg=black] Custom stuff..."
+
+# set -ag status-left "#[fg=#{@thm_crust},bg=#{@thm_sapphire}]#[reverse]#[noreverse]#[fg=#004ACC] "
+# set -ag status-left "#[fg=#{@thm_fg},bg=#{E:@catppuccin_status_module_text_bg}] "
+# set -ag status-left "Docker stuff..."
+
+## Catppuccin theme colors demo
+# set -ag status-left "#[fg=#{@thm_crust},bg=#{@thm_flamingo}]#[reverse]#[noreverse]#[fg=#0A4ECC]fm "
+# set -ag status-left "#[fg=#{@thm_crust},bg=#{@thm_rosewater}]#[reverse]#[noreverse]#[fg=#0A4ECC]rw "
+# set -ag status-left "#[fg=#{@thm_crust},bg=#{@thm_pink}]#[reverse]#[noreverse]#[fg=#0A4ECC]pk "
+# set -ag status-left "#[fg=#{@thm_crust},bg=#{@thm_mauve}]#[reverse]#[noreverse]#[fg=#0A4ECC]mv "
+# set -ag status-left "#[fg=#{@thm_crust},bg=#{@thm_red}]#[reverse]#[noreverse]#[fg=#0A4ECC]rd "
+# set -ag status-left "#[fg=#{@thm_crust},bg=#{@thm_maroon}]#[reverse]#[noreverse]#[fg=#0A4ECC]mn "
+# set -ag status-left "#[fg=#{@thm_crust},bg=#{@thm_peach}]#[reverse]#[noreverse]#[fg=#0A4ECC]pc "
+# set -ag status-left "#[fg=#{@thm_crust},bg=#{@thm_yellow}]#[reverse]#[noreverse]#[fg=#0A4ECC]yw "
+# set -ag status-left "#[fg=#{@thm_crust},bg=#{@thm_green}]#[reverse]#[noreverse]#[fg=#0A4ECC]gn "
+# set -ag status-left "#[fg=#{@thm_crust},bg=#{@thm_teal}]#[reverse]#[noreverse]#[fg=#0A4ECC]tl "
+# set -ag status-left "#[fg=#{@thm_crust},bg=#{@thm_sky}]#[reverse]#[noreverse]#[fg=#0A4ECC]sk "
+# set -ag status-left "#[fg=#{@thm_crust},bg=#{@thm_sapphire}]#[reverse]#[noreverse]#[fg=#0A4ECC]sp "
+# set -ag status-left "#[fg=#{@thm_crust},bg=#{@thm_blue}]#[reverse]#[noreverse]#[fg=#0A4ECC]bl "
+# set -ag status-left "#[fg=#{@thm_crust},bg=#{@thm_lavender}]#[reverse]#[noreverse]#[fg=#0A4ECC]lv "
+
+
+## Reset status-right
+# set -g status-right ""
+
+# set -ag status-right "#[fg=red,bg=black] Custom stuff..."
+# set -agF status-right "#{E:@catppuccin_status_battery}" # Only useful on laptops
