@@ -115,6 +115,10 @@
 	context-graph = "!~/.local/bin/git-context-graph"  # "context-graph" (branch, default & remote)
 	cg            = "context-graph --pretty=graph-dyn" # "context-graph" with dynamic columns
 
+	# diff
+	diff-base = "!f() { git diff $(git mr base); }; f"
+	db        = "diff-base"
+
 	# commit
 	uncommit = "!f() { count=${1:-1}; \
 			echo -n 'Uncommitting'; [ $count -gt 1 ] && echo -n \" ($count)\"; echo -n ': '; \
