@@ -6,7 +6,7 @@ if [ "$SHLVL" = 1 ]; then
 fi
 
 # Stops ssh-agent
-if [ "$SSH_AGENT_PID" != '' ]; then
+if [ "$SSH_AGENT_PID" != '' ] && [ -z "$TMUX" ]; then
     ssh-add -D
     ssh-agent -k > /dev/null 2>&1
     unset SSH_AGENT_PID

@@ -43,7 +43,7 @@ prompt_separator() {
 ###################################################################################################
 # Set window title
 prompt_window_title() {
-  local defaultTitle="${DEFAULT_WINDOW_TITLE:-\h - \W}"
+  local defaultTitle="${DEFAULT_WINDOW_TITLE:-\h · \W}"
   promptTitle="\[\e]0;${FORCED_WINDOW_TITLE:-${defaultTitle}}\a\]"
 }
 

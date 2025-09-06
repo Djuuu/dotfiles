@@ -404,10 +404,18 @@ git-graph-status-page() {
 
 tmac() {
     local name=${1:-default}
+    if [[ $name = '-' ]]; then
+        tmux attach 2>/dev/null || tmux new-session -s "default"
+        return
+    fi
+
     tmux has-session -t "$name" 2>/dev/null
-    [[ $? != 0 ]] &&
-        tmux new-session -s "$name" -d
-    tmux attach -t "$1"
+    if [[ $? -eq 0 ]]; then
+        tmux attach -t "$name"
+        return
+    fi
+
+    tmux new-session -s "$name"
 }
 
 _tmac_complete() {
