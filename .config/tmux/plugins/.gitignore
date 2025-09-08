@@ -7,3 +7,5 @@
 
 # Custom plugins
 !gitmux-opt.tmux
+!git-status
+!git-status/**
