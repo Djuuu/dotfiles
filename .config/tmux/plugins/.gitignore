@@ -1,4 +1,9 @@
 *
 !.gitignore
+
+# Manually installed plugins
 !catppuccin-tmux
 !tpm
+
+# Custom plugins
+!gitmux-opt.tmux
