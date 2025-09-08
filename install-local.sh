@@ -10,7 +10,7 @@ reset='\e[0m'
 while IFS= read -r -d '' filePath
 do
     srcFileName=$(basename "$filePath")
-    dstFilePath="${BASEDIR}/${srcFileName%.example}"
+    dstFilePath="$(dirname "$filePath")/${srcFileName%.example}"
     dstFilePathName="${dstFilePath/#${HOME}/'~'}"
 
     if [[ ! -f "$dstFilePath" ]]; then

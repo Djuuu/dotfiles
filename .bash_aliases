@@ -20,7 +20,7 @@ alias  l='ls $LS_OPTIONS -lhA'
 alias df='df -h'
 alias du='du -h'
 
-# Misc
+# Misc.
 alias less='less -R'                          # RAW control characters
 alias whence='type -a'                        # where, of a sort
 alias grep='grep --color=auto'                # show differences in colour
@@ -54,6 +54,10 @@ alias gmr='git mu register'
 alias gml='git mu list'
 alias gmg='git mu group'
 alias gmgs='git mu group switch'
+
+# Tmux
+alias t=tmac
+complete -F _tmac_complete t
 
 # Docker
 alias dc='docker compose'

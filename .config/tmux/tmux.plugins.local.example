@@ -1,0 +1,5 @@
+## Local tpm plugins
+# set -g @plugin 'example/plugin'
+
+## Local plugins
+# run "#{d:current_file}/local/example-plugin.tmux"

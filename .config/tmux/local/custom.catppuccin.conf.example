@@ -1,0 +1,9 @@
+%hidden MODULE_NAME="example"
+
+set -g "@catppuccin_${MODULE_NAME}_icon" "❓ "
+set -gF "@catppuccin_${MODULE_NAME}_color" "#{E:@thm_flamingo}"
+set -g "@catppuccin_${MODULE_NAME}_text" " example val"
+# or:
+# set -g "@catppuccin_${MODULE_NAME}_text" " #{l:#{plugin_example}}"
+
+source "${CATPPUCCIN_PATH}/utils/status_module.conf"

@@ -11,7 +11,9 @@
     ~/.bash_logout:  .bash_logout
     ~/.bash_profile: .bash_profile
     ~/.bashrc:       .bashrc
+    ~/.config/tmux:  .config/tmux
     ~/.gitconfig:    .gitconfig
+    ~/.gitmux.conf:  .gitmux.conf
     ~/.minttyrc:     .minttyrc
     ~/.vimrc:        .vimrc
 

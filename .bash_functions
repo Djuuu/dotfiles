@@ -398,6 +398,36 @@ git-graph-status-page() {
 }
 
 ################################################################################
+# tmux
+
+# https://morsecodist.io/blog/tmac
+
+tmac() {
+    local name=${1:-${TMUX_DEFAULT_SESSION:-"default"}}
+
+    if [[ $name = '-' ]]; then
+        tmux attach 2>/dev/null || tmux new-session -s ${TMUX_DEFAULT_SESSION:-"default"}
+        return
+    fi
+
+    tmux has-session -t "$name" 2>/dev/null
+    if [[ $? -eq 0 ]]; then
+        tmux attach -t "$name"
+        return
+    fi
+
+    tmux new-session -s "$name"
+}
+
+_tmac_complete() {
+    local word=${COMP_WORDS[COMP_CWORD]}
+    local sessions=$(tmux list-sessions -F "#{session_name}" 2>/dev/null)
+    COMPREPLY=( $(compgen -W "$sessions" -- "$word") )
+}
+
+complete -F _tmac_complete tmac
+
+################################################################################
 # Docker
 
 source ~/.dotfiles/dockerize-clis/dockerize-clis.sh

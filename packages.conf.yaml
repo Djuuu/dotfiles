@@ -32,6 +32,7 @@
 - go:
   - github.com/jesseduffield/lazygit@latest
   - github.com/jesseduffield/lazydocker@latest
+  - github.com/arl/gitmux@latest
 
 - shell:
   - description: Install ansible # https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#pipx-install

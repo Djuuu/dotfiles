@@ -1,0 +1,4 @@
+*
+!.gitignore
+!custom.catppuccin.conf.example
+!example-plugin.tmux
