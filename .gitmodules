@@ -27,6 +27,10 @@
 	path = .config/tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
 
+[submodule ".config/tmux/plugins/tmux-git-status"]
+	path = .config/tmux/plugins/tmux-git-status
+	url = https://github.com/Djuuu/tmux-git-status.git
+
 
 [submodule "autohotkey"]
 	path = autohotkey
