@@ -8,6 +8,8 @@ GIT_MSG_COLUMN_MARGIN=${GIT_MSG_COLUMN_MARGIN:-34}
 GIT_LG_COLUMN_MARGIN=${GIT_LG_COLUMN_MARGIN:-12}
 
 prompt_git_dyn_graph_width() {
+    local COLUMNS=${COLUMNS:-$(tput cols 2>/dev/null)}
+
     [ -z "$COLUMNS" ] && return
 
     GIT_MSG_COLUMNS_OLD=$GIT_MSG_COLUMNS
