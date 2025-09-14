@@ -8,9 +8,10 @@ GIT_MSG_COLUMN_MARGIN=${GIT_MSG_COLUMN_MARGIN:-34}
 GIT_LG_COLUMN_MARGIN=${GIT_LG_COLUMN_MARGIN:-12}
 
 prompt_git_dyn_graph_width() {
+    local COLUMNS=${COLUMNS:-$(tput cols 2>/dev/null)}
+
     [ -z "$COLUMNS" ] && return
 
-    GIT_MSG_COLUMNS_OLD=$GIT_MSG_COLUMNS
     GIT_MSG_COLUMNS=$((COLUMNS - GIT_MSG_COLUMN_MARGIN))
     GIT_LG_COLUMNS=$(( GIT_MSG_COLUMNS * 2 / 3 - GIT_LG_COLUMN_MARGIN ))
 
@@ -39,11 +40,12 @@ prompt_git_dyn_graph_width() {
     git_dyn_graph_t_value="${git_dyn_graph_t_value//__uw__/${user_columns}}"
     git_dyn_graph_t_value="${git_dyn_graph_t_value//__tw__/${time_columns}}"
 
-    if [[ $GIT_MSG_COLUMNS -ne $GIT_MSG_COLUMNS_OLD ]]; then
-        local configFile; [[ -f "${HOME}/.dotfiles/.gitconfig.local" ]] &&
-            configFile="${HOME}/.dotfiles/.gitconfig.local" ||
-            configFile="${HOME}/.gitconfig"
+    local configFile
+    if   [[ -f "${HOME}/.dotfiles/.gitconfig.local" ]]; then configFile="${HOME}/.dotfiles/.gitconfig.local"
+    elif [[ -f "${HOME}/.gitconfig.local"           ]]; then configFile="${HOME}/.gitconfig.local"
+    else                                                     configFile="${HOME}/.gitconfig"; fi
 
+    if [[ ${git_dyn_graph_value} != "$(git config -f "$configFile" pretty.graph-dyn)" ]]; then
         git config -f "$configFile" pretty.graph-dyn "${git_dyn_graph_value}"
         git config -f "$configFile" pretty.graph-dyn-t "${git_dyn_graph_t_value}"
         git config -f "$configFile" pretty.graph-dyn-lg "${git_dyn_graph_lg_value}"
