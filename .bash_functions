@@ -375,6 +375,9 @@ git-graph-status-page() {
     local reset="\e[0m"
     local grey="\033[0;90m"
 
+    local COLUMNS=${COLUMNS:-$(tput cols 2>/dev/null)}
+    local LINES=${LINES:-$(tput lines 2>/dev/null)}
+
     #local status_options=""
     local status_options="-s -b"
     local status; status=$(git -c color.status=always status ${status_options})

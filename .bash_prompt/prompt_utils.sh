@@ -35,7 +35,8 @@ prompt_separator() {
   promptFill="${promptFillStart}${promptFill}"
 
   local exitIcon
-  [[ $EXIT -eq 0 ]] && exitIcon="✔️" || exitIcon="❌"
+  #[[ $EXIT -eq 0 ]] && exitIcon="✔️" || exitIcon="❌"
+  [[ $EXIT -eq 0 ]] && exitIcon="✅" || exitIcon="❌"
 
   promptSeparator="${status_style}${promptFill}$exitIcon \t\n${pt_reset}"
 }
