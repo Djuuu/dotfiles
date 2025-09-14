@@ -406,10 +406,10 @@ git-graph-status-page() {
 # https://morsecodist.io/blog/tmac
 
 tmac() {
-    local name=${1:-${TMUX_DEFAULT_SESSION:-"default"}}
+    local name=${1:-${TMUX_DEFAULT_SESSION:-$(hostname)}}
 
     if [[ $name = '-' ]]; then
-        tmux attach 2>/dev/null || tmux new-session -s ${TMUX_DEFAULT_SESSION:-"default"}
+        tmux attach 2>/dev/null || tmux new-session -s ${TMUX_DEFAULT_SESSION:-$(hostname)}
         return
     fi
 
