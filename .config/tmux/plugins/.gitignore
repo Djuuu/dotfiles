@@ -8,3 +8,5 @@
 # Custom plugins
 !gitmux-opt.tmux
 !tmux-git-status
+!status-cache
+!status-cache/*
