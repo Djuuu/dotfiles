@@ -8,14 +8,15 @@
 - link:
     ~/.dotfiles: { path: '', if: "[ ! -d ~/.dotfiles ]" }
 
-    ~/.bash_logout:  .bash_logout
-    ~/.bash_profile: .bash_profile
-    ~/.bashrc:       .bashrc
-    ~/.config/tmux:  .config/tmux
-    ~/.gitconfig:    .gitconfig
-    ~/.gitmux.conf:  .gitmux.conf
-    ~/.minttyrc:     .minttyrc
-    ~/.vimrc:        .vimrc
+    ~/.bash_logout:      .bash_logout
+    ~/.bash_profile:     .bash_profile
+    ~/.bashrc:           .bashrc
+    ~/.config/fastfetch: .config/fastfetch
+    ~/.config/tmux:      .config/tmux
+    ~/.gitconfig:        .gitconfig
+    ~/.gitmux.conf:      .gitmux.conf
+    ~/.minttyrc:         .minttyrc
+    ~/.vimrc:            .vimrc
 
     ~/.config/lazydocker/config.yml:
       path: .config/lazydocker/config.local.yml
