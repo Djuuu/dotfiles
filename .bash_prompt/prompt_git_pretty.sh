@@ -10,7 +10,9 @@ GIT_LG_COLUMN_MARGIN=${GIT_LG_COLUMN_MARGIN:-12}
 prompt_git_dyn_graph_width() {
     local COLUMNS=${COLUMNS:-$(tput cols 2>/dev/null)}
 
-    [ -z "$COLUMNS" ] && return
+    [[ -z $COLUMNS ]] && return
+
+    [[ -n $TMUX ]] && [[ $(tmux display -p '#{pane_synchronized}') -eq 1 ]] && return
 
     GIT_MSG_COLUMNS=$((COLUMNS - GIT_MSG_COLUMN_MARGIN))
     GIT_LG_COLUMNS=$(( GIT_MSG_COLUMNS * 2 / 3 - GIT_LG_COLUMN_MARGIN ))
