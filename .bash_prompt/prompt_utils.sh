@@ -28,15 +28,19 @@ prompt_separator() {
     (( promptFillSize -= ${#promptSshTunnels} + 5 ))
   }
 
+  local exitIcon
+  if [[ $EXIT -eq 0 ]]
+    then exitIcon="✅"
+    else exitIcon="❌"
+    #else exitIcon="${EXIT}·❌"
+  fi
+  (( promptFillSize -= ${#exitIcon} - 1 ))
+
   while [ "$promptFillSize" -gt "0" ]; do
     promptFill="${promptFillBase}${promptFill}"
     ((promptFillSize -= 1))
   done
   promptFill="${promptFillStart}${promptFill}"
-
-  local exitIcon
-  #[[ $EXIT -eq 0 ]] && exitIcon="✔️" || exitIcon="❌"
-  [[ $EXIT -eq 0 ]] && exitIcon="✅" || exitIcon="❌"
 
   promptSeparator="${status_style}${promptFill}$exitIcon \t\n${pt_reset}"
 }
