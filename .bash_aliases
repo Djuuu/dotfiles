@@ -22,7 +22,6 @@ alias du='du -h'
 
 # Misc.
 alias less='less -R'                          # RAW control characters
-alias whence='type -a'                        # where, of a sort
 alias grep='grep --color=auto'                # show differences in colour
 alias egrep='egrep --color=auto'              # show differences in colour
 alias fgrep='fgrep --color=auto'              # show differences in colour
@@ -36,13 +35,13 @@ alias bat="batcat"
 alias sshagentstart='eval `ssh-agent -s` && ssh-add'
 
 # Git
-alias gg='git-context-graph-page --pretty=graph-dyn'
-alias ggs='git-graph-status-page --pretty=graph-dyn'
+alias gg='git-context-graph-page --pretty=graph-dyn-t'
+alias ggs='git-graph-status-page --pretty=graph-dyn-t'
 
-alias ggg='git context-graph --first-parent --pretty=graph-dyn'
-alias gga='git context-graph --first-parent --pretty=graph-dyn --all'
-alias ggv='git context-graph --pretty=graph-dyn'
-alias ggva='git context-graph --pretty=graph-dyn --all'
+alias ggg='git context-graph --first-parent --pretty=graph-dyn-t'
+alias gga='git context-graph --first-parent --pretty=graph-dyn-t --all'
+alias ggv='git context-graph --pretty=graph-dyn-t'
+alias ggva='git context-graph --pretty=graph-dyn-t --all'
 
 alias lg='lazygit'
 alias zg='lazygit'
