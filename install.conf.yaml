@@ -25,11 +25,19 @@
     ~/.local/bin/git-context-graph: git-context-graph/git-context-graph
     ~/.local/bin/git-mr:            git-mr/git-mr
 
+    ~/.local/bin/git-aliases:       git-scripts/git-aliases
+    ~/.local/bin/git-continue:      git-scripts/git-continue
+    ~/.local/bin/git-fast-forward:  git-scripts/git-fast-forward
+    ~/.local/bin/git-force-push:    git-scripts/git-force-push
+    ~/.local/bin/git-is-clean:      git-scripts/git-is-clean
+    ~/.local/bin/git-separator:     git-scripts/git-separator
+    ~/.local/bin/git-update:        git-scripts/git-update
+
+    ~/.local/bin/termcolors: scripts/print256colours.sh
+
     ~/.local/share/bash-completion/completions/git-context-graph.bash: git-context-graph/git-context-graph-completion.bash
     ~/.local/share/bash-completion/completions/git-mr.bash:            git-mr/git-mr-completion.bash
     ~/.local/share/bash-completion/completions/git-mu.bash:            git-mu-completion.bash
-
-    ~/.local/bin: { path: "git-scripts/*", glob: true }
 
     # Windows desktop
     ~/AutoHotkey: { path: autohotkey, if: '[ -f /git-bash.exe ]' }
