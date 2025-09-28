@@ -4,27 +4,20 @@
 # alias cp='cp -i'
 # alias mv='mv -i'
 
-export LS_OPTIONS='--color=auto'
-if [ -x "$(command -v dircolors)" ]; then
-    eval "$(SHELL=${SHELL:-/bin/bash} dircolors)"
-else
-    #export LS_OPTIONS=''
-    export CLICOLOR=1
-fi
-
-alias ls='ls $LS_OPTIONS'
-alias ll='ls $LS_OPTIONS -lh'
-alias  l='ls $LS_OPTIONS -lhA'
+# ls aliases
+alias ls='ls --color=auto'
+alias  l='ls -lhA'
+alias ll='ls -lh'
 
 # Default to human-readable figures
 alias df='df -h'
 alias du='du -h'
 
 # Misc.
-alias less='less -R'                          # RAW control characters
-alias grep='grep --color=auto'                # show differences in colour
-alias egrep='egrep --color=auto'              # show differences in colour
-alias fgrep='fgrep --color=auto'              # show differences in colour
+alias less='less -R'              # RAW control characters
+alias grep='grep --color=auto'    # show differences in colour
+alias egrep='egrep --color=auto'  # show differences in colour
+alias fgrep='fgrep --color=auto'  # show differences in colour
 alias rsynca='rsync -avzP'
 alias h='history'
 

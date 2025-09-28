@@ -27,6 +27,19 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+# Check the window size after each command and, if necessary, update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# Enable color support of ls
+if command -v dircolors > /dev/null 2>&1; then
+    if [[ -r ~/.dircolors ]]
+        then eval "$(dircolors -b ~/.dircolors)"
+        else eval "$(dircolors -b)"
+    fi
+fi
+
+export CLICOLOR=1 # Mac
+
 # Aliases
 [[ -f ~/.dotfiles/.bash_aliases ]] && . ~/.dotfiles/.bash_aliases
 
