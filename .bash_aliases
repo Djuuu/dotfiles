@@ -24,6 +24,7 @@ alias h='history'
 alias please='sudo $(fc -nl -1)'
 
 alias bat="batcat"
+alias rat="batcat --paging=never"
 
 alias sshagentstart='eval `ssh-agent -s` && ssh-add'
 
