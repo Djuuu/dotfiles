@@ -70,8 +70,8 @@ keybinding:
 #    createPatchOptionsMenu: <c-p>
     nextTab: '<end>' # default: ']'
     prevTab: '<home>' # default: '['
-    nextScreenMode: '=' # default: '+'
-    prevScreenMode: '-' # default: '_'
+    nextScreenMode: ']' # default: '+'  alternative: '='
+    prevScreenMode: '[' # default: '_'  alternative: '-'
 #    undo: z
 #    redo: Z
 #    filteringMenu: <c-s>
