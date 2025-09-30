@@ -3,46 +3,51 @@
 ###################################################################################################
 # https://github.com/emilis/emilis-config/blob/master/.bash_ps1
 
-promptFillStart="─"
-promptFillBase="─"
-promptFillEnd="─┤"
-
-[[ -z "$VIM" ]] \
-  && status_style=${pt_reset}'\[\033[0;90m\]' \
-  || status_style=${pt_reset}'\[\033[0;90;107m\]'
-
 prompt_ssh_tunnels() {
   promptSshTunnels="${SSH_TUNNELS}"
   [[ $promptCheckTunnels = true ]] && promptSshTunnels="${SSH_TUNNELS:-$(ssh-list-tunnel-ports)}"
 }
 
+# Prompt separator
+# Ex:
+# ──────────────────────────────────┤✅ 01:23:45
+# ────────────────────────[🕳️ 3128]─┤❌ 01:23:45
 prompt_separator() {
-  # create a $promptFill of all screen width minus the time and command exit indicator
-  local promptFillSize=$((COLUMNS - 14))
-  local promptFill="$promptFillEnd"
+    local reset='\[\e[0m\]'
+    local style="${reset}\[\e[0;90m\]"
+    local sep="────────────────────────────────────────────────────────────────────────────────────────────────────" # 100 chars
+    local fillStock="${sep}${sep}${sep}${sep}" # 400 chars
+    local end="─┤"
 
-  [[ -n $promptSshTunnels ]] && {
-    [[ -n $SSH_TUNNELS ]] &&
-      promptFill="[🚇 ${promptSshTunnels}]${promptFill}" ||
-      promptFill="[🕳️ ${promptSshTunnels}]${promptFill}"
-    (( promptFillSize -= ${#promptSshTunnels} + 5 ))
-  }
+    local promptFillSize=$COLUMNS
 
-  local exitIcon
-  if [[ $EXIT -eq 0 ]]
-    then exitIcon="✅"
-    else exitIcon="❌"
-    #else exitIcon="${EXIT}·❌"
-  fi
-  (( promptFillSize -= ${#exitIcon} - 1 ))
+    # Ensure new line
+    local start; start="$(printf "%$((COLUMNS - 1))s\r")"
 
-  while [ "$promptFillSize" -gt "0" ]; do
-    promptFill="${promptFillBase}${promptFill}"
-    ((promptFillSize -= 1))
-  done
-  promptFill="${promptFillStart}${promptFill}"
+    local tunnel
+    if [[ -n $promptSshTunnels ]]; then
+        if [[ -n $SSH_TUNNELS ]]; then
+            tunnel="[🚇 ${promptSshTunnels}]"
+            (( promptFillSize -= 1 ))
+        else
+            tunnel="[🕳️ ${promptSshTunnels}]"
+        fi
+        (( promptFillSize -= ${#tunnel} ))
+    fi
 
-  promptSeparator="${status_style}${promptFill}$exitIcon \t\n${pt_reset}"
+    local exitIcon
+    if [[ $EXIT -eq 0 ]]
+        then exitIcon="✅"
+        else exitIcon="❌"
+        # else exitIcon="${EXIT}·❌"
+    fi
+    (( promptFillSize -= ${#exitIcon} + 1 ))
+
+    local fill="${fillStock:0:$((promptFillSize - 11))}"
+
+    # bashsupport disable=BP2001
+    # shellcheck disable=SC2154,SC2034
+    promptSeparator="${start}${style}${fill}${tunnel}${end}${exitIcon} \t\n${reset}"
 }
 
 ###################################################################################################
