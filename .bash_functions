@@ -430,10 +430,12 @@ topp() (
 # https://morsecodist.io/blog/tmac
 
 tmac() {
-    local name=${1:-${TMUX_DEFAULT_SESSION:-$(hostname)}}
+    local name=${1:-${TMUX_DEFAULT_SESSION:-$(hostname -s)}}
+    name=${name//./\_}
+    name=${name//:/\_}
 
     if [[ $name = '-' ]]; then
-        tmux attach 2>/dev/null || tmux new-session -s ${TMUX_DEFAULT_SESSION:-$(hostname)}
+        tmux attach 2>/dev/null || tmux new-session -s ${TMUX_DEFAULT_SESSION:-$(hostname -s)}
         return
     fi
 
