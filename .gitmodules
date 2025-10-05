@@ -16,7 +16,7 @@
 
 [submodule "dotbot-plugins/dotbot-sudo"]
 	path = dotbot-plugins/dotbot-sudo
-	url = https://github.com/DrDynamic/dotbot-sudo
+	url = https://github.com/mskyaxl/dotbot-sudo.git
 
 
 [submodule ".config/tmux/plugins/catppuccin-tmux"]
