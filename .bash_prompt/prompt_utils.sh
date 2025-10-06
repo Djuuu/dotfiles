@@ -52,6 +52,8 @@ prompt_separator() {
 
 ###################################################################################################
 # Set window title
+# bashsupport disable=BP2001
+# shellcheck disable=SC2034
 prompt_window_title() {
   local defaultTitle="${DEFAULT_WINDOW_TITLE:-\h · \W}"
   promptTitle="\[\e]0;${FORCED_WINDOW_TITLE:-${defaultTitle}}\a\]"
@@ -59,6 +61,8 @@ prompt_window_title() {
 
 ###################################################################################################
 # Send prompt sign to new line when available columns are below $PROMPT_COLUMN_LIMIT
+# bashsupport disable=BP2001
+# shellcheck disable=SC2034
 prompt_newline() {
   promptNewline=
 
@@ -74,6 +78,7 @@ prompt_link() {
   local href=$1
   local text=$2
 
+  # shellcheck disable=SC2028
   echo '\[\e]8;;'"${href}"'\e\\\]'"${text}"'\[\e]8;;\e\\\]'
 }
 
@@ -107,5 +112,7 @@ prompt_cycle_color() {
 
 prompt_set_color() {
     promptUserColor=$(pColor "${1:-$pt_userBlGr}")
+
+    # shellcheck source=prompt.sh
     . ~/.dotfiles/.bash_prompt/prompt.sh
 }

@@ -3,7 +3,7 @@
 echo "Installing fonts"
 
 mkdir -p ~/.local/share/fonts
-cd ~/.local/share/fonts
+cd ~/.local/share/fonts || exit
 
 echo "CascadiaMono NerdFont"
 curl -fLO https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CascadiaMono.tar.xz
@@ -21,4 +21,4 @@ rm JetBrainsMonoNerdFontMono*
 rm JetBrainsMonoNLNerdFontMono*
 rm JetBrainsMonoNLNerdFontPropo*
 
-cd -
+cd - || exit

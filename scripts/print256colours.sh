@@ -14,7 +14,7 @@ printable_colours=256
 # Bash only does integer division, so keep it integral
 function contrast_colour {
     local r g b luminance
-    colour="$1"
+    local colour="$1"
 
     if (( colour < 16 )); then # Initial 16 ANSI colours
         (( colour == 0 )) && printf "15" || printf "0"
@@ -47,7 +47,7 @@ function contrast_colour {
     # and http://www.itu.int/rec/R-REC-BT.601
     # Luminance is in range 0..5000 as each value is 0..5
     luminance=$(( (r * 299) + (g * 587) + (b * 114) ))
-    (( $luminance > 2500 )) && printf "0" || printf "15"
+    (( luminance > 2500 )) && printf "0" || printf "15"
 }
 
 # Print a coloured block with the number of that colour
@@ -84,6 +84,7 @@ function print_blocks {
     local blocks_per_line="$5"
     local block_length=$((block_cols * block_rows))
 
+    local row block
     # Print sets of blocks
     for (( i = start; i <= end; i += (blocks_per_line-1) * block_length )) do
         printf "\n" # Space before each set of blocks

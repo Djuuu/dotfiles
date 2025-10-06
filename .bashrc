@@ -1,6 +1,7 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
 # Load local environment variables
+# shellcheck source=.bashrc.env.local
 [ -f ~/.dotfiles/.bashrc.env.local ] && . ~/.dotfiles/.bashrc.env.local
 
 # If not running interactively, don't do anything more
@@ -41,20 +42,25 @@ fi
 export CLICOLOR=1 # Mac
 
 # Aliases
+# shellcheck source=.bash_aliases
 [[ -f ~/.dotfiles/.bash_aliases ]] && . ~/.dotfiles/.bash_aliases
 
 # Functions
+# shellcheck source=.bash_functions
 [[ -f ~/.dotfiles/.bash_functions ]] && . ~/.dotfiles/.bash_functions
 
 # Prompt
+# shellcheck source=.bash_prompt/prompt.sh
 [[ -f ~/.dotfiles/.bash_prompt/prompt.sh ]] && . ~/.dotfiles/.bash_prompt/prompt.sh
 
 # Local config
+# shellcheck source=.bashrc.local
 [[ -f ~/.dotfiles/.bashrc.local ]] && . ~/.dotfiles/.bashrc.local
 
 # Custom completions
 for f in ~/.local/share/bash-completion/completions/*; do
-  [[ -f "$f" ]] && . $f
+    # shellcheck disable=SC1090
+    [[ -f "$f" ]] && . "$f"
 done; unset f
 
 # LazyGit - https://github.com/jesseduffield/lazygit

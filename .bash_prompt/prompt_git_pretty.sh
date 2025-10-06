@@ -14,8 +14,8 @@ prompt_git_dyn_graph_width() {
 
     [[ -n $TMUX ]] && [[ $(tmux display -p '#{pane_synchronized}') -eq 1 ]] && return
 
-    GIT_MSG_COLUMNS=$((COLUMNS - GIT_MSG_COLUMN_MARGIN))
-    GIT_LG_COLUMNS=$(( GIT_MSG_COLUMNS * 2 / 3 - GIT_LG_COLUMN_MARGIN ))
+    local GIT_MSG_COLUMNS=$((COLUMNS - GIT_MSG_COLUMN_MARGIN))
+    local GIT_LG_COLUMNS=$(( GIT_MSG_COLUMNS * 2 / 3 - GIT_LG_COLUMN_MARGIN ))
 
     local user_columns=12
     local time_columns=12

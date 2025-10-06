@@ -7,6 +7,7 @@ DOTFILES_BACKUP_DELETE_LOCAL=0
 DOTFILES_BACKUP_DIR=".dotfiles.bak.$(date +'%Y%m%d-%H%M')"
 
 dotfiles_backup () {
+    local file_name
     for file_name in \
         ".bash_aliases"               \
         ".bash_functions"             \
@@ -23,8 +24,8 @@ dotfiles_backup () {
         ".xbindkeysrc"                \
         ".Xmodmap"
     do
-        if [ -f ~/${file_name} ] && [ ! -L ~/${file_name} ]; then
-            dotfile_backup ${file_name}
+        if [ -f "${HOME}/${file_name}" ] && [ ! -L "${HOME}/${file_name}" ]; then
+            dotfile_backup "${file_name}"
         fi
     done
 }
@@ -36,21 +37,21 @@ dotfile_backup () {
         exit 1
     fi
 
-    if [ ! -d ~/"${DOTFILES_BACKUP_DIR}" ]; then
-        mkdir -p ~/"${DOTFILES_BACKUP_DIR}"
+    if [ ! -d "${HOME}/${DOTFILES_BACKUP_DIR}" ]; then
+        mkdir -p "${HOME}/${DOTFILES_BACKUP_DIR}"
     fi
 
     local file_name=$*
 
-    if [ -f ~/"${file_name}" ] && [ ! -L ~/"${file_name}" ]; then
+    if [ -f "${HOME}/${file_name}" ] && [ ! -L "${HOME}/${file_name}" ]; then
         local dest_file_name
         dest_file_name=$(basename "$file_name")
         echo "Backing up ~/${DOTFILES_BACKUP_DIR}/${file_name}"
-        cp ~/"${file_name}" ~/"${DOTFILES_BACKUP_DIR}/${dest_file_name}"
+        cp "${HOME}/${file_name}" "${HOME}/${DOTFILES_BACKUP_DIR}/${dest_file_name}"
     fi
 
-    if [ -f ~/"${DOTFILES_BACKUP_DIR}/${file_name}" ] && [ "$DOTFILES_BACKUP_DELETE_LOCAL" = "1" ]; then
-        rm ~/"${file_name}"
+    if [ -f "${HOME}/${DOTFILES_BACKUP_DIR}/${file_name}" ] && [ "$DOTFILES_BACKUP_DELETE_LOCAL" = "1" ]; then
+        rm "${HOME}/${file_name}"
     fi
 }
 

@@ -20,7 +20,7 @@ apt_install_github_release() {
         jq -r ".assets[] | select(.name? | match(\"${match}\")) | .browser_download_url")
 
     [[ -n $pkg_url ]] || {
-        echo "No package found for '${repo}' on arch '${arch}'"
+        echo "No package found for '${repo}' on arch '${syst_arch}' ('${dpkg_arch}')"
         return 1
     }
 
