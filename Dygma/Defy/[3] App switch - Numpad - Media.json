@@ -61,27 +61,27 @@
       "extraLabel": ""
     },
     {
-      "keyCode": 53864,
+      "keyCode": 53867,
       "label": "Win 6",
       "extraLabel": "MACRO"
     },
     {
-      "keyCode": 53865,
+      "keyCode": 53868,
       "label": "Win 7",
       "extraLabel": "MACRO"
     },
     {
-      "keyCode": 53866,
+      "keyCode": 53869,
       "label": "Win 8",
       "extraLabel": "MACRO"
     },
     {
-      "keyCode": 53867,
+      "keyCode": 53870,
       "label": "Win 9",
       "extraLabel": "MACRO"
     },
     {
-      "keyCode": 53868,
+      "keyCode": 53861,
       "label": "Win 0",
       "extraLabel": "MACRO"
     },
@@ -168,27 +168,27 @@
       "extraLabel": "A+"
     },
     {
-      "keyCode": 53859,
+      "keyCode": 53862,
       "label": "Win 1",
       "extraLabel": "MACRO"
     },
     {
-      "keyCode": 53860,
+      "keyCode": 53863,
       "label": "Win 2",
       "extraLabel": "MACRO"
     },
     {
-      "keyCode": 53861,
+      "keyCode": 53864,
       "label": "Win 3",
       "extraLabel": "MACRO"
     },
     {
-      "keyCode": 53862,
+      "keyCode": 53865,
       "label": "Win 4",
       "extraLabel": "MACRO"
     },
     {
-      "keyCode": 53863,
+      "keyCode": 53866,
       "label": "Win 5",
       "extraLabel": "MACRO"
     },
@@ -274,7 +274,7 @@
       }
     },
     {
-      "keyCode": 53855,
+      "keyCode": 53860,
       "label": ":x",
       "extraLabel": "MACRO"
     },
@@ -806,10 +806,10 @@
       "rgb": "rgb(138, 94, 0)"
     },
     {
-      "r": 32,
-      "g": 93,
-      "b": 100,
-      "rgb": "rgb(32, 93, 100)"
+      "r": 48,
+      "g": 146,
+      "b": 153,
+      "rgb": "rgb(48, 146, 153)"
     },
     {
       "r": 93,
@@ -836,10 +836,10 @@
       "rgb": "rgb(0, 102, 0)"
     },
     {
-      "r": 128,
+      "r": 140,
       "g": 0,
       "b": 0,
-      "rgb": "rgb(128, 0, 0)"
+      "rgb": "rgb(140, 0, 0)"
     }
   ]
 }
