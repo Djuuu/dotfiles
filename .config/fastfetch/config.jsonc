@@ -17,8 +17,8 @@
     "width": null,
     "height": null,
     "padding": {
-      "top": 0,
-      "left": 0,
+      "top": 1,
+      "left": 1,
       "right": 4
     },
     "printRemaining": true,

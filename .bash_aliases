@@ -28,6 +28,9 @@ alias rat="batcat --paging=never"
 
 alias sshagentstart='eval `ssh-agent -s` && ssh-add'
 
+alias fastfetch='echo; fastfetch; echo'
+alias ff='fastfetch'
+
 # Git
 alias gg='git-context-graph-page --pretty=graph-dyn-t'
 alias ggs='git-graph-status-page --pretty=graph-dyn-t'
