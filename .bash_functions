@@ -58,7 +58,7 @@ topp() (
 # Dotfiles
 
 dotfiles-update() {
-    (cd ~/.dotfiles && git update)
+    (cd ~/.dotfiles && git-update)
     ~/.dotfiles/install
 }
 
