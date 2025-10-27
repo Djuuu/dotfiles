@@ -47,11 +47,11 @@
     },
     {
       "id": 8,
-      "name": "-"
+      "name": "[99] - transparent"
     },
     {
       "id": 9,
-      "name": "[10] mods"
+      "name": "[99] - no key"
     }
   ],
   "keymap": [
@@ -218,26 +218,26 @@
       }
     },
     {
-      "keyCode": 0,
-      "label": "KEY",
-      "extraLabel": "NO",
-      "verbose": "Disabled"
+      "keyCode": 227,
+      "label": "LEFT WIN",
+      "verbose": "Left Windows"
     },
     {
-      "keyCode": 48,
-      "label": "$"
+      "keyCode": 49729,
+      "label": "$",
+      "extraLabel": "ALT/"
     },
     {
-      "keyCode": 0,
-      "label": "KEY",
-      "extraLabel": "NO",
-      "verbose": "Disabled"
+      "keyCode": 225,
+      "label": "SHIFT",
+      "extraLabel": "LEFT",
+      "verbose": "Left Shift"
     },
     {
-      "keyCode": 0,
-      "label": "KEY",
-      "extraLabel": "NO",
-      "verbose": "Disabled"
+      "keyCode": 224,
+      "label": "CTRL",
+      "extraLabel": "LEFT",
+      "verbose": "Left Control"
     },
     {
       "keyCode": 100,

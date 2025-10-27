@@ -47,11 +47,11 @@
     },
     {
       "id": 8,
-      "name": "-"
+      "name": "[99] - transparent"
     },
     {
       "id": 9,
-      "name": "[10] mods"
+      "name": "[99] - no key"
     }
   ],
   "keymap": [
@@ -197,20 +197,48 @@
       "verbose": "Caps Lock"
     },
     {
-      "keyCode": 4,
-      "label": "Q"
+      "keyCode": 49941,
+      "label": "Q",
+      "extraLabel": "OS/"
     },
     {
-      "keyCode": 22,
-      "label": "S"
+      "keyCode": 49703,
+      "label": "S",
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "modifier": "alt",
+          "size": "sm"
+        },
+        "_owner": null
+      }
     },
     {
-      "keyCode": 7,
-      "label": "D"
+      "keyCode": 49432,
+      "label": "D",
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "modifier": "shift",
+          "size": "sm"
+        },
+        "_owner": null
+      }
     },
     {
-      "keyCode": 9,
-      "label": "F"
+      "keyCode": 49178,
+      "label": "F",
+      "extraLabel": {
+        "key": null,
+        "ref": null,
+        "props": {
+          "modifier": "control",
+          "size": "sm"
+        },
+        "_owner": null
+      }
     },
     {
       "keyCode": 10,
