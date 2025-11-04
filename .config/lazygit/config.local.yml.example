@@ -16,11 +16,11 @@
 
 ## Config relating to git
 #git:
-#  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md
-#  paging:
-#    useExternalDiffGitConfig: false
-#    pager: "delta --features='common lazygit'"
-
+#  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md for more information.
+#  pagers:
+#    - useExternalDiffGitConfig: true
+#    - pager: delta --dark --paging=never
+#    - pager: delta --features='common lazygit'
 
 ## Custom pull request URLs
 #services:

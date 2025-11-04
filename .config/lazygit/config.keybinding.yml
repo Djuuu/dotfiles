@@ -72,6 +72,7 @@ keybinding:
     prevTab: '<home>' # default: '['
     nextScreenMode: ']' # default: '+'  alternative: '='
     prevScreenMode: '[' # default: '_'  alternative: '-'
+#    cyclePagers: '|'
 #    undo: z
 #    redo: Z
 #    filteringMenu: <c-s>
@@ -108,7 +109,7 @@ keybinding:
 #    viewResetOptions: D
 #    fetch: f
     toggleTreeView: 't' # default: '`'
-#    openMergeTool: M
+#    openMergeOptions: M
 #    openStatusFilter: <c-b>
 #    copyFileInfoToClipboard: "y"
 #    collapseAll: '-'
