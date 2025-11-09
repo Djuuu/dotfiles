@@ -1,0 +1,115 @@
+########################################################################################################################
+# Logitech MX Master 3 - xbindkeys configuration                                                                       #
+########################################################################################################################
+#
+#   Scroll wheel:         btn 4-5 (up/down)
+#   Thumb wheel:          btn 6-7 (right/left)
+#   Back/forward buttons: btn 8-9
+#   Thumb button sends:
+#     - on press:   Super_L(Mod4) press + Tab press + Tab release
+#     - on release: Super_L(Mod4) release
+#
+# Prerequisites:
+#
+#   - xdotool
+#
+#       sudo apt install xdotool
+#
+#   - Gnome shortcut tweaks:
+#
+#       Gnome settings -> Keyboard -> Navigation -> Swith applications -> 'Alt + Tab'
+#       Gnome tweaks   -> Overview shortcut                            -> 'Right Super'
+#
+# More info:
+#   cat /proc/bus/input/devices
+#   xinput  list
+#   xinput test 15
+#
+########################################################################################################################
+
+
+### Global shortcuts ###
+
+## Thumb button
+# Open Gnome overview programmatically (Thumb button sends Super_L on release, which might break any super-based shortcut depending on timing)
+# https://askubuntu.com/questions/1095553/invoking-gnome-activities-overview-from-command-line/1095614#1095614
+# Also, since this shortcut is not intended to be application-specific, it is faster to call it directly here rather than from the external script
+"dbus-send --session --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval string:'Main.overview.toggle();'"
+  Mod4 + Tab + release
+
+## Scrollwheel up
+"xdotool key Page_Up" # Move to workspace above
+  Mod4 + b:4 + release
+
+## Scrollwheel down
+"xdotool key Page_Down" # Move to workspace below
+  Mod4 + b:5 + release
+
+
+### Application-specific shortcuts ###
+
+## Scrollwheel left
+#"xte 'keydown Control_L' 'keydown Shift_R' 'key Tab' 'keyup Shift_R' 'keyup Control_L'"
+"~/.config/xbindkeys/mouse-bindings.sh WScroll_L"
+  b:7 + release
+"~/.config/xbindkeys/mouse-bindings.sh WScroll_L Alt"
+  Alt + b:7 + release
+"~/.config/xbindkeys/mouse-bindings.sh WScroll_L Control"
+  Control + b:7 + release
+"~/.config/xbindkeys/mouse-bindings.sh WScroll_L Shift+Control"
+  Shift+Control + b:7 + release
+"~/.config/xbindkeys/mouse-bindings.sh WScroll_L Shift+Alt"
+  Shift+Alt + b:7 + release
+"~/.config/xbindkeys/mouse-bindings.sh WScroll_L Control+Alt"
+  Control+Alt + b:7 + release
+
+## Scrollwheel right
+#"xte 'keydown Control_L' 'key Tab' 'keyup Control_L'"
+"~/.config/xbindkeys/mouse-bindings.sh WScroll_R"
+  b:6 + release
+"~/.config/xbindkeys/mouse-bindings.sh WScroll_R Alt"
+  Alt + b:6 + release
+"~/.config/xbindkeys/mouse-bindings.sh WScroll_R Control"
+  Control + b:6 + release
+"~/.config/xbindkeys/mouse-bindings.sh WScroll_R Shift+Control"
+  Shift+Control + b:6 + release
+"~/.config/xbindkeys/mouse-bindings.sh WScroll_R Shift+Alt"
+  Shift+Alt + b:6 + release
+"~/.config/xbindkeys/mouse-bindings.sh WScroll_R Control+Alt"
+  Control+Alt + b:6 + release
+
+## Back button
+"~/.config/xbindkeys/mouse-bindings.sh Back"
+  b:8 + release
+"~/.config/xbindkeys/mouse-bindings.sh Back Shift"
+  Shift + b:8 + release
+"~/.config/xbindkeys/mouse-bindings.sh Back Control"
+  Control + b:8 + release
+"~/.config/xbindkeys/mouse-bindings.sh Back Alt"
+  Alt + b:8 + release
+"~/.config/xbindkeys/mouse-bindings.sh Back Shift+Control"
+  Shift+Control + b:8 + release
+"~/.config/xbindkeys/mouse-bindings.sh Back Shift+Alt"
+  Shift+Alt + b:8 + release
+"~/.config/xbindkeys/mouse-bindings.sh Back Control+Alt"
+  Control+Alt + b:8 + release
+"~/.config/xbindkeys/mouse-bindings.sh Back Shift+Control+Alt"
+  Shift+Control+Alt + b:8 + release
+
+## Forward button
+"~/.config/xbindkeys/mouse-bindings.sh Forward"
+  b:9 + release
+"~/.config/xbindkeys/mouse-bindings.sh Forward Shift"
+  Shift + b:9 + release
+"~/.config/xbindkeys/mouse-bindings.sh Forward Control"
+  Control + b:9 + release
+"~/.config/xbindkeys/mouse-bindings.sh Forward Alt"
+  Alt + b:9 + release
+"~/.config/xbindkeys/mouse-bindings.sh Forward Shift+Control"
+  Shift+Control + b:9 + release
+"~/.config/xbindkeys/mouse-bindings.sh Forward Shift+Alt"
+  Shift+Alt + b:9 + release
+"~/.config/xbindkeys/mouse-bindings.sh Forward Control+Alt"
+  Control+Alt + b:9 + release
+"~/.config/xbindkeys/mouse-bindings.sh Forward Shift+Control+Alt"
+  Shift+Control+Alt + b:9 + release

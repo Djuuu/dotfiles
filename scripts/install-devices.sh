@@ -12,22 +12,23 @@ DEVICE_BINDINGS["Logitech MX Master 3"]="MX-Master-3.xbindkeysrc"
 DEVICE_BINDINGS["Logitech M705"]="M705.xbindkeysrc"
 
 
-echo "Building ~/.xbindkeysrc"
+echo "Building ${XDG_CONFIG_HOME}/xbindkeys/config"
 
 # Common .xbindkeysrc
-cat "${BASEDIR}/.xbindkeys/common.xbindkeysrc" > ~/.xbindkeysrc
+cat "${BASEDIR}/.config/xbindkeys/common.xbindkeysrc" > "${XDG_CONFIG_HOME}/xbindkeys/config"
 
 
 # Device-specific .xbindkeysrc
 
-CURRENT_MOUSE=${CURRENT_MOUSE:-Logitech MX Master 3}
+CURRENT_MOUSE="${CURRENT_MOUSE:-Logitech MX Master 3}"
 
-bindingFileName=${DEVICE_BINDINGS[$CURRENT_MOUSE]}
-bindingFilePath=${BASEDIR}/.xbindkeys/${bindingFileName}
+bindingFileName="${DEVICE_BINDINGS[$CURRENT_MOUSE]}"
+bindingFilePath="${BASEDIR}/.config/xbindkeys/${bindingFileName}"
 
 if [ -n "$bindingFileName" ] && [ -f "$bindingFilePath" ]; then
     echo "  Adding $CURRENT_MOUSE bindings"
-    cat "$bindingFilePath" >> ~/.xbindkeysrc
+    echo                   >> "${XDG_CONFIG_HOME}/xbindkeys/config"
+    cat "$bindingFilePath" >> "${XDG_CONFIG_HOME}/xbindkeys/config"
 fi
 
 
@@ -38,4 +39,4 @@ if pgrep xbindkeys > /dev/null; then
 else
     echo "  Starting xbindkeys"
 fi
-xbindkeys
+xbindkeys -f "${XDG_CONFIG_HOME}/xbindkeys/config"
