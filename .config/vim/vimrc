@@ -6,6 +6,39 @@
 set nocompatible                " use Vim defaults instead of 100% vi compatibility
 "set verbose=9                  " increase verbosity to see everything vim is doing.
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" XDG Base Directory support
+" https://jorenar.com/blog/vim-xdg
+
+if empty($MYVIMRC) | let $MYVIMRC = expand('<sfile>:p') | endif
+
+if empty($XDG_CACHE_HOME)  | let $XDG_CACHE_HOME  = $HOME."/.cache"       | endif
+if empty($XDG_CONFIG_HOME) | let $XDG_CONFIG_HOME = $HOME."/.config"      | endif
+if empty($XDG_DATA_HOME)   | let $XDG_DATA_HOME   = $HOME."/.local/share" | endif
+if empty($XDG_STATE_HOME)  | let $XDG_STATE_HOME  = $HOME."/.local/state" | endif
+
+if !has('nvim')
+  set runtimepath^=$XDG_CONFIG_HOME/vim
+  set runtimepath+=$XDG_DATA_HOME/vim
+  set runtimepath+=$XDG_CONFIG_HOME/vim/after
+
+  set packpath^=$XDG_DATA_HOME/vim,$XDG_CONFIG_HOME/vim
+  set packpath+=$XDG_CONFIG_HOME/vim/after,$XDG_DATA_HOME/vim/after
+
+  set backupdir=$XDG_STATE_HOME/vim/backup | call mkdir(&backupdir, 'p', 0700)
+  set directory=$XDG_STATE_HOME/vim/swap   | call mkdir(&directory, 'p', 0700)
+  set viewdir=$XDG_STATE_HOME/vim/view     | call mkdir(&viewdir,   'p', 0700)
+  set undodir=$XDG_STATE_HOME/vim/undo     | call mkdir(&undodir,   'p', 0700)
+  set viminfofile=$XDG_STATE_HOME/vim/viminfo
+endif
+
+let g:netrw_home = $XDG_DATA_HOME."/vim"
+call mkdir($XDG_DATA_HOME."/vim/spell", 'p', 0700)
+call mkdir($XDG_STATE_HOME."/vim", 'p', 0700)
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General settings
+
 set nobackup                    " do not keep backup files
 set nowritebackup               " do not keep backup files
 "set autowrite                  " automatically save before commands like :next and :make
@@ -34,6 +67,10 @@ set autoindent                  " always set autoindenting on
 set linebreak                   " don't wrap words by default
 set textwidth=0                 " don't wrap lines by default
 "set textwidth=79               " wrap at 80 chars
+
+" Show line numbers
+"set number                      " show line numbers
+"set numberwidth=4               " show line numbers with 4 spaces
 
 " Set status line  -  https://vimhelp.org/options.txt.html#'statusline'
 set statusline=

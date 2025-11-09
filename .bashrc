@@ -78,3 +78,8 @@ LG_CONFIG_FILE="${LG_CONFIG_FILE},$(home_path ".dotfiles/.config/lazygit/config.
 [ -f "$(home_path ".dotfiles/.config/lazygit/config.local.yml")" ] &&
     LG_CONFIG_FILE="${LG_CONFIG_FILE},$(home_path ".dotfiles/.config/lazygit/config.local.yml")"
 export LG_CONFIG_FILE
+
+# Vim
+export VIMINIT="source ${XDG_CONFIG_HOME}/vim/vimrc"
+#export VIMINIT="if has('nvim') | source ${XDG_CONFIG_HOME}/nvim/init.vim
+#                else           | source ${XDG_CONFIG_HOME}/vim/vimrc | endif"
