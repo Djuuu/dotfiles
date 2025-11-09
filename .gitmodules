@@ -1,21 +1,18 @@
-[submodule "dotbot"]
-	path = dotbot
+[submodule "lib/dotbot"]
+	path = lib/dotbot
 	url = https://github.com/anishathalye/dotbot.git
 
-[submodule "dotbot-plugins/dotbot-apt"]
-	path = dotbot-plugins/dotbot-apt
+[submodule "lib/dotbot-apt"]
+	path = lib/dotbot-apt
 	url = https://github.com/bryant1410/dotbot-apt
-
-[submodule "dotbot-plugins/dotbot-go"]
-	path = dotbot-plugins/dotbot-go
+[submodule "lib/dotbot-go"]
+	path = lib/dotbot-go
 	url = https://github.com/TakashiAihara/dotbot-go
-
-[submodule "dotbot-plugins/dotbot-pip"]
-	path = dotbot-plugins/dotbot-pip
+[submodule "lib/dotbot-pip"]
+	path = lib/dotbot-pip
 	url = https://github.com/sobolevn/dotbot-pip
-
-[submodule "dotbot-plugins/dotbot-sudo"]
-	path = dotbot-plugins/dotbot-sudo
+[submodule "lib/dotbot-sudo"]
+	path = lib/dotbot-sudo
 	url = https://github.com/mskyaxl/dotbot-sudo.git
 
 [submodule ".config/AutoHotkey"]
@@ -25,27 +22,23 @@
 [submodule ".config/tmux/plugins/catppuccin-tmux"]
 	path = .config/tmux/plugins/catppuccin-tmux
 	url = https://github.com/catppuccin/tmux.git
-
+[submodule ".config/tmux/plugins/tmux-git-status"]
+	path = .config/tmux/plugins/tmux-git-status
+	url = https://github.com/Djuuu/tmux-git-status.git
 [submodule ".config/tmux/plugins/tpm"]
 	path = .config/tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
 
-[submodule ".config/tmux/plugins/tmux-git-status"]
-	path = .config/tmux/plugins/tmux-git-status
-	url = https://github.com/Djuuu/tmux-git-status.git
-
-[submodule "dockerize-clis"]
-	path = dockerize-clis
-	url = https://github.com/Djuuu/dockerize-clis.git
-
-[submodule "git-context-graph"]
-	path = git-context-graph
-	url = https://github.com/Djuuu/git-context-graph.git
-
-[submodule "git-mr"]
-	path = git-mr
-	url = https://github.com/Djuuu/git-mr.git
-
-[submodule "mu-repo"]
-	path = mu-repo
+[submodule "lib/mu-repo"]
+	path = lib/mu-repo
 	url = https://github.com/fabioz/mu-repo.git
+
+[submodule "lib/dockerize-clis"]
+	path = lib/dockerize-clis
+	url = https://github.com/Djuuu/dockerize-clis.git
+[submodule "lib/git-context-graph"]
+	path = lib/git-context-graph
+	url = https://github.com/Djuuu/git-context-graph.git
+[submodule "lib/git-mr"]
+	path = lib/git-mr
+	url = https://github.com/Djuuu/git-mr.git

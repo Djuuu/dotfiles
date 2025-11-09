@@ -195,5 +195,5 @@ complete -F _tmac_complete tmac
 ################################################################################
 # Docker
 
-# shellcheck source=dockerize-clis/dockerize-clis.sh
-. ~/.dotfiles/dockerize-clis/dockerize-clis.sh
+# shellcheck source=lib/dockerize-clis/dockerize-clis.sh
+. ~/.dotfiles/lib/dockerize-clis/dockerize-clis.sh

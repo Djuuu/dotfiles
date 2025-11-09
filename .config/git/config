@@ -156,7 +156,7 @@
 	fpushall   = "!f() { for remote in `git remote`; do git force-push $remote "$@"; done }; f"
 
 	# git-mr
-	mr = "!~/.dotfiles/git-mr/git-mr" # Git-Fork + WSLGit compat.
+	mr = "!~/.local/bin/git-mr" # Git-Fork + WSLGit compat.
 
 	# maintenance
 
@@ -193,7 +193,7 @@
 
 	# external commands
 	k  = "!gitk --all"
-	mu = "!python ~/.dotfiles/mu-repo/mu"
+	mu = "!python ~/.dotfiles/lib/mu-repo/mu"
 
 [include]
 	path = ~/.config/git/config.local

@@ -1,9 +1,9 @@
 
 - plugins:
-  - dotbot-plugins/dotbot-sudo/
-  - dotbot-plugins/dotbot-apt/
-  - dotbot-plugins/dotbot-go/
-  - dotbot-plugins/dotbot-pip/
+  - lib/dotbot-apt/
+  - lib/dotbot-go/
+  - lib/dotbot-pip/
+  - lib/dotbot-sudo/
 
 - sudo:
 

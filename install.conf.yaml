@@ -25,8 +25,8 @@
     ${XDG_CONFIG_HOME}/tmux:        .config/tmux
     ${XDG_CONFIG_HOME}/vim:         .config/vim
 
-    ${XDG_BIN_HOME}/git-context-graph: git-context-graph/git-context-graph
-    ${XDG_BIN_HOME}/git-mr:            git-mr/git-mr
+    ${XDG_BIN_HOME}/git-context-graph: lib/git-context-graph/git-context-graph
+    ${XDG_BIN_HOME}/git-mr:            lib/git-mr/git-mr
 
     ${XDG_BIN_HOME}/git-aliases:       git-scripts/git-aliases
     ${XDG_BIN_HOME}/git-continue:      git-scripts/git-continue
@@ -38,8 +38,8 @@
 
     ${XDG_BIN_HOME}/termcolors:        scripts/print256colours.sh
 
-    ${XDG_DATA_HOME}/bash-completion/completions/git-context-graph.bash: git-context-graph/git-context-graph-completion.bash
-    ${XDG_DATA_HOME}/bash-completion/completions/git-mr.bash:            git-mr/git-mr-completion.bash
+    ${XDG_DATA_HOME}/bash-completion/completions/git-context-graph.bash: lib/git-context-graph/git-context-graph-completion.bash
+    ${XDG_DATA_HOME}/bash-completion/completions/git-mr.bash:            lib/git-mr/git-mr-completion.bash
     ${XDG_DATA_HOME}/bash-completion/completions/git-mu.bash:            git-scripts/git-mu-completion.bash
 
     # Windows desktop
