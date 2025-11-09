@@ -1,7 +1,7 @@
 !#######################################################################################################################
 !# Save a version of current mapping:
 !#
-!#      xmodmap -pke > ~/xmodmap.original
+!#      xmodmap -pke > ~/.config/xmodmap/xmodmap.original
 !#
 !# Each keysym column in the table corresponds to a particular combination of modifier keys:
 !#
@@ -31,8 +31,8 @@
 !#
 !#          [Desktop Entry]
 !#          Name[en_US]=Xmodmap
-!#          Comment[en_US]=xmodmap ~/.Xmodmap
-!#          Exec=/usr/bin/xmodmap .Xmodmap
+!#          Comment[en_US]=xmodmap ~/.config/xmodmap/xmodmaprc
+!#          Exec=/usr/bin/xmodmap .config/xmodmap/xmodmaprc
 !#          Icon=application-default-icon
 !#          X-GNOME-Autostart-enabled=true
 !#          Type=Application
@@ -64,4 +64,3 @@ add mod4 = Super_L Super_R
 keycode  49 = grave asciitilde grave asciitilde leftdoublequotemark rightdoublequotemark
 
 !#######################################################################################################################
-
