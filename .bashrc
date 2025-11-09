@@ -4,6 +4,15 @@
 # shellcheck source=.bashrc.env.local
 [ -f ~/.dotfiles/.bashrc.env.local ] && . ~/.dotfiles/.bashrc.env.local
 
+# Set XDG defaults
+# https://specifications.freedesktop.org/basedir/latest/
+# https://wiki.archlinux.org/title/XDG_Base_Directory
+export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}   # user-specific data files
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}    # user-specific configuration files
+export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state} # user-specific state files
+export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}       # user-specific non-essential data files
+export XDG_BIN_HOME=${XDG_BIN_HOME:-$HOME/.local/bin}       # user-specific executable files (non-standard var)
+
 # If not running interactively, don't do anything more
 [[ "$-" != *i* ]] && return
 

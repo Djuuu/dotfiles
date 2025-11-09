@@ -8,7 +8,6 @@
 
 # Set PATH so it includes user's bin/ directories
 [ -d "${HOME}/go/bin" ]     && PATH="${HOME}/go/bin:${PATH}"
-[ -d "${HOME}/bin" ]        && PATH="${HOME}/bin:${PATH}"
 [ -d "${HOME}/.local/bin" ] && PATH="${HOME}/.local/bin:${PATH}"
 
 # Set MANPATH so it includes users' private man if it exists
