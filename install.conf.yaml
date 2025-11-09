@@ -1,57 +1,62 @@
 
 - defaults:
+    create: { mode: 0755 }
     link: { create: true, relink: true, relative: true, canonicalize: false }
     shell: { stdout: true, stderr: true }
 
-- clean: ['~', '~/.local/bin', '~/.local/share/bash-completion/completions']
+- create: ['${XDG_CONFIG_HOME}', '${XDG_DATA_HOME}', '${XDG_BIN_HOME}']
+
+- clean: ['~', '${XDG_CONFIG_HOME}', '${XDG_BIN_HOME}', '${XDG_DATA_HOME}/bash-completion/completions']
 
 - link:
     ~/.dotfiles: { path: '', if: "[ ! -d ~/.dotfiles ]" }
 
-    ~/.bash_logout:        .bash_logout
     ~/.bash_profile:       .bash_profile
     ~/.bashrc:             .bashrc
-    ~/.config/bat/config:  .config/bat/config
-    ~/.config/fastfetch:   .config/fastfetch
-    ~/.config/tmux:        .config/tmux
-    ~/.gitconfig:          .gitconfig
-    ~/.gitmux.conf:        .gitmux.conf
-    ~/.minttyrc:           .minttyrc
-    ~/.vimrc:              .vimrc
+    ~/.bash_logout:        .bash_logout
 
-    ~/.config/lazydocker/config.yml:
+    ${XDG_CONFIG_HOME}/bat:         .config/bat
+    ${XDG_CONFIG_HOME}/fastfetch:   .config/fastfetch
+    ${XDG_CONFIG_HOME}/git:         .config/git
+    ${XDG_CONFIG_HOME}/gitmux:      .config/gitmux
+    ${XDG_CONFIG_HOME}/lazydocker/config.yml:
       path: .config/lazydocker/config.local.yml
       if: "[ -f .config/lazydocker/config.local.yml ]"
+    ${XDG_CONFIG_HOME}/tmux:        .config/tmux
+    ${XDG_CONFIG_HOME}/vim:         .config/vim
 
-    ~/.local/bin/git-context-graph: git-context-graph/git-context-graph
-    ~/.local/bin/git-mr:            git-mr/git-mr
+    ${XDG_BIN_HOME}/git-context-graph: git-context-graph/git-context-graph
+    ${XDG_BIN_HOME}/git-mr:            git-mr/git-mr
 
-    ~/.local/bin/git-aliases:       git-scripts/git-aliases
-    ~/.local/bin/git-continue:      git-scripts/git-continue
-    ~/.local/bin/git-fast-forward:  git-scripts/git-fast-forward
-    ~/.local/bin/git-force-push:    git-scripts/git-force-push
-    ~/.local/bin/git-is-clean:      git-scripts/git-is-clean
-    ~/.local/bin/git-separator:     git-scripts/git-separator
-    ~/.local/bin/git-update:        git-scripts/git-update
+    ${XDG_BIN_HOME}/git-aliases:       git-scripts/git-aliases
+    ${XDG_BIN_HOME}/git-continue:      git-scripts/git-continue
+    ${XDG_BIN_HOME}/git-fast-forward:  git-scripts/git-fast-forward
+    ${XDG_BIN_HOME}/git-force-push:    git-scripts/git-force-push
+    ${XDG_BIN_HOME}/git-is-clean:      git-scripts/git-is-clean
+    ${XDG_BIN_HOME}/git-separator:     git-scripts/git-separator
+    ${XDG_BIN_HOME}/git-update:        git-scripts/git-update
 
-    ~/.local/bin/termcolors: scripts/print256colours.sh
+    ${XDG_BIN_HOME}/termcolors:        scripts/print256colours.sh
 
-    ~/.local/share/bash-completion/completions/git-context-graph.bash: git-context-graph/git-context-graph-completion.bash
-    ~/.local/share/bash-completion/completions/git-mr.bash:            git-mr/git-mr-completion.bash
-    ~/.local/share/bash-completion/completions/git-mu.bash:            git-scripts/git-mu-completion.bash
+    ${XDG_DATA_HOME}/bash-completion/completions/git-context-graph.bash: git-context-graph/git-context-graph-completion.bash
+    ${XDG_DATA_HOME}/bash-completion/completions/git-mr.bash:            git-mr/git-mr-completion.bash
+    ${XDG_DATA_HOME}/bash-completion/completions/git-mu.bash:            git-scripts/git-mu-completion.bash
 
     # Windows desktop
-    ~/AutoHotkey: { path: autohotkey, if: '[ -f /git-bash.exe ]' }
+    ~/AutoHotkey: { path: autohotkey,              if: '[ -f /git-bash.exe ]' }
+    ~/.minttyrc:  { path: .config/mintty/minttyrc, if: '[ -f /git-bash.exe ]' }
 
     # Linux desktop
-    ~/.config/autokey/data/Phrases: { path: autokey/Phrases, if: "[ -d ~/.config/autokey ]" }
-    ~/.config/autokey/data/Scripts: { path: autokey/Scripts, if: "[ -d ~/.config/autokey ]" }
-    ~/.xbindkeys:                   { path: .xbindkeys,      if: "command -v xbindkeys" }
-    ~/.Xmodmap:                     { path: .Xmodmap,        if: "command -v xmodmap" }
+    ${XDG_CONFIG_HOME}/autokey/data/: { path: .config/autokey/data/*, glob: true, if: "[ -d ${XDG_CONFIG_HOME}/autokey ]" }
+    ${XDG_CONFIG_HOME}/xbindkeys:     { path: .config/xbindkeys,      if: "command -v xbindkeys" }
+    ${XDG_CONFIG_HOME}/xmodmap:       { path: .config/xmodmap,        if: "command -v xmodmap" }
 
     # Mac desktop
-    ~/.config/karabiner/assets/complex_modifications/: { path: "karabiner/*", glob: true, if: "[ -d ~/.config/karabiner ]" }
+    ${XDG_CONFIG_HOME}/karabiner/assets/complex_modifications/:
+      path: .config/karabiner/assets/complex_modifications/*
+      glob: true
+      if: "[ -d ${XDG_CONFIG_HOME}/karabiner ]"
 
 - shell:
-  - [bash ~/.dotfiles/scripts/install-local.sh,   Initializing local files]
-  - [bash ~/.dotfiles/scripts/install-devices.sh, Configuring devices]
+    - [ bash ~/.dotfiles/scripts/install-local.sh,   Initializing local files ]
+    - [ bash ~/.dotfiles/scripts/install-devices.sh, Configuring devices ]
