@@ -25,5 +25,6 @@
 #--map-syntax "*.ino:C++"
 #--map-syntax ".ignore:Git Ignore"
 --map-syntax ".gitconfig.*:Git Config"
+--map-syntax "**/.config/git/config.*:Git Config"
 --map-syntax ".gitignore.*:Git Ignore"
 --map-syntax ".bashrc.*:Bourne Again Shell (bash)"

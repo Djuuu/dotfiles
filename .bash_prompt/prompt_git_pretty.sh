@@ -42,10 +42,12 @@ prompt_git_dyn_graph_width() {
     git_dyn_graph_t_value="${git_dyn_graph_t_value//__uw__/${user_columns}}"
     git_dyn_graph_t_value="${git_dyn_graph_t_value//__tw__/${time_columns}}"
 
+    local configDir="${XDG_CONFIG_HOME:-${HOME}/.config}/git"
     local configFile
-    if   [[ -f "${HOME}/.dotfiles/.gitconfig.local" ]]; then configFile="${HOME}/.dotfiles/.gitconfig.local"
-    elif [[ -f "${HOME}/.gitconfig.local"           ]]; then configFile="${HOME}/.gitconfig.local"
-    else                                                     configFile="${HOME}/.gitconfig"; fi
+    if   [[ -f "${configDir}/config.local" ]]; then configFile="${configDir}/config.local"
+    elif [[ -f "${configDir}/config"       ]]; then configFile="${configDir}/config"
+    elif [[ -f "${HOME}/.gitconfig.local"  ]]; then configFile="${HOME}/.gitconfig.local"
+    else                                            configFile="${HOME}/.gitconfig"; fi
 
     if [[ ${git_dyn_graph_value} != "$(git config -f "$configFile" pretty.graph-dyn)" ]]; then
         git config -f "$configFile" pretty.graph-dyn "${git_dyn_graph_value}"

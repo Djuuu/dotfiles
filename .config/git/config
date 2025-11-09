@@ -9,7 +9,7 @@
 
 	fscache = true
 	editor = vim
-	excludesfile = ~/.dotfiles/.gitignore.global
+	# excludesfile = ~/.config/git/ignore # (default)
 
 ################################################################################
 
@@ -196,4 +196,4 @@
 	mu = "!python ~/.dotfiles/mu-repo/mu"
 
 [include]
-	path = ~/.dotfiles/.gitconfig.local
+	path = ~/.config/git/config.local
