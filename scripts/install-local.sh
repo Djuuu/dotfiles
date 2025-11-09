@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BASEDIR="${BASEDIR%/scripts}"
+
 
 lightblue='\e[94m'
 lightpurple='\e[95m'
@@ -22,8 +24,9 @@ do
 
 done < <(find "$BASEDIR/" -iname "*.local.example" -print0)
 
+
 # Init Git-Fork custom commands link (for easier editing comparing to .example)
-[[ -x $(command -v powershell.exe) ]] && {
+if [[ -x $(command -v powershell.exe) ]]; then
     winUser=$(powershell.exe '$env:UserName' | tr -d '\r\n')
     case "$(uname -s)" in
         CYGWIN*|MINGW*) c="/c"     ;;
@@ -36,9 +39,16 @@ done < <(find "$BASEDIR/" -iname "*.local.example" -print0)
     srcName=${src/#"${c}/Users/${winUser}/AppData/Local"/'%localappdata%'}
     dstName=${dst/#${HOME}/'~'}
 
-    [[ -f "$src" ]] && {
-        echo -e "${lightblue}  Linking ${dstName} -> ${srcName}${reset}"
-        ln -sf "$src" "$dst"
-
-    } || echo -e "  ${lightpurple}${srcName} not found${reset}"
-} || echo -e "  ${lightpurple}powershell.exe not executable${reset}"
+    if [[ ! -f "${dst}" ]]; then
+        if [[ -f "$src" ]]; then
+            echo -e "${lightblue}  Linking ${dstName} -> ${srcName}${reset}"
+            ln -sf "$src" "$dst"
+        else
+            echo -e "${lightpurple}  ${srcName} not found${reset}"
+        fi
+    else
+        echo -e "${lightblue}  Link exists ${dstName} -> ${srcName}${reset}"
+    fi
+else
+    echo -e "  ${lightpurple}powershell.exe not found or not executable${reset}"
+fi

@@ -2,6 +2,14 @@
 
 set -e
 
+# ------------------------------------------------------------------------------
+# Global variables
+
+DOTBOT_DIR="dotbot"
+DOTBOT_BIN="bin/dotbot"
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# ------------------------------------------------------------------------------
 # Determine configurations to apply
 
 DEFAULT_CONFIG="install.conf.yaml"
@@ -20,11 +28,8 @@ set -- "${ARGS[@]}"
 
 [[ ${#CONFIGS[@]} -eq 0 ]] && CONFIGS+=("$DEFAULT_CONFIG")
 
+# ------------------------------------------------------------------------------
 # Init
-
-DOTBOT_DIR="dotbot"
-DOTBOT_BIN="bin/dotbot"
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 cd "${BASEDIR}"
 

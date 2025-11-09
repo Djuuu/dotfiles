@@ -4,7 +4,7 @@
 [ ! "$(command -v xbindkeys)" ] && exit 0;
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
+BASEDIR="${BASEDIR%/scripts}"
 
 # Available device bindings
 declare -A DEVICE_BINDINGS
