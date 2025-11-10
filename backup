@@ -6,53 +6,100 @@ DOTFILES_BACKUP_DELETE_LOCAL=0
 
 DOTFILES_BACKUP_DIR=".dotfiles.bak.$(date +'%Y%m%d-%H%M')"
 
-dotfiles_backup () {
+# Backup original files that might be overwritten
+dotfiles_backup() {
     local file_name
     for file_name in \
-        ".bash_aliases"               \
-        ".bash_functions"             \
-        ".bash_logout"                \
-        ".bash_profile"               \
-        ".bashrc"                     \
-        ".dotfiles/.bashrc.env.local" \
-        ".dotfiles/.bashrc.local"     \
-        ".gitconfig"                  \
-        ".dotfiles/.gitconfig.local"  \
-        ".gitignore.global"           \
-        ".minttyrc"                   \
-        ".vimrc"                      \
-        ".xbindkeysrc"                \
-        ".Xmodmap"
+        ".bash_profile"   \
+        ".bashrc"         \
+        ".bash_aliases"   \
+        ".bash_functions" \
+        ".bash_logout"    \
+        \
+        ".config/git/config"              \
+        ".config/git/config.local"        \
+        ".config/git/ignore"              \
+        ".config/lazydocker/config.yml"   \
+        ".config/tmux/local"              \
+        ".config/tmux/tmux.conf"          \
+        ".config/tmux/tmux.conf.local"    \
+        ".config/tmux/tmux.plugins.local" \
+        \
+        ".config/AutoHotkey/config.local.ahk" \
+        ".minttyrc"                    \
+        \
+        ".config/autokey/data" \
+        ".config/xbindkeys"    \
+        ".config/xmodmap"      \
+        \
+        ".config/karabiner"
     do
-        if [ -f "${HOME}/${file_name}" ] && [ ! -L "${HOME}/${file_name}" ]; then
-            dotfile_backup "${file_name}"
-        fi
+        dotfile_backup "${file_name}"
     done
 }
 
-dotfile_backup () {
+dotfile_backup() {
+    if [[ ! -f "${HOME}/${file_name}" && ! -d "${HOME}/${file_name}" ]]; then
+        return
+    fi
 
-    if [ -z "$DOTFILES_BACKUP_DIR" ]; then
+    if [[ -z "$DOTFILES_BACKUP_DIR" ]]; then
         echo "Undefined backup directory"
         exit 1
     fi
 
-    if [ ! -d "${HOME}/${DOTFILES_BACKUP_DIR}" ]; then
+    local file_name=$1
+
+    if [[ ! -d "${HOME}/${DOTFILES_BACKUP_DIR}" ]]; then
         mkdir -p "${HOME}/${DOTFILES_BACKUP_DIR}"
     fi
 
-    local file_name=$*
-
-    if [ -f "${HOME}/${file_name}" ] && [ ! -L "${HOME}/${file_name}" ]; then
-        local dest_file_name
-        dest_file_name=$(basename "$file_name")
-        echo "Backing up ~/${DOTFILES_BACKUP_DIR}/${file_name}"
-        cp "${HOME}/${file_name}" "${HOME}/${DOTFILES_BACKUP_DIR}/${dest_file_name}"
+    local dir_name; dir_name=$(dirname "$file_name")
+    if [[ $dir_name != "." ]]; then
+        mkdir -p "${HOME}/${DOTFILES_BACKUP_DIR}/${dir_name}"
     fi
 
-    if [ -f "${HOME}/${DOTFILES_BACKUP_DIR}/${file_name}" ] && [ "$DOTFILES_BACKUP_DELETE_LOCAL" = "1" ]; then
-        rm "${HOME}/${file_name}"
-    fi
+    echo -e "\e[1;32mBacking up ~/${file_name}\e[0m"
+    cp -RL "${HOME}/${file_name}" "${HOME}/${DOTFILES_BACKUP_DIR}/${file_name}"
+}
+
+# Delete original files that should be linked
+dotfile_delete_default() {
+    local file_name file_path
+    for file_name in \
+        ".bash_profile"   \
+        ".bashrc"         \
+        ".bash_aliases"   \
+        ".bash_functions" \
+        ".bash_logout"    \
+        \
+        ".config/bat"                   \
+        ".config/fastfetch"             \
+        ".config/git"                   \
+        ".config/gitmux"                \
+        ".config/lazydocker/config.yml" \
+        ".config/tmux"                  \
+        ".config/vim"                   \
+        \
+        "AutoHotkey"       \
+        "Documents/Dygma"  \
+        ".minttyrc"        \
+        \
+        ".config/autokey/data/Phrases" \
+        ".config/autokey/data/Scripts" \
+        ".config/xbindkeys"            \
+        ".config/xmodmap"
+    do
+        file_path="${HOME}/${file_name}"
+        if [[ ! -f "$file_path" && ! -d "$file_path" ]]; then
+            continue # not found
+        fi
+        if [[ -L "$file_path" ]]; then
+            continue # symlink
+        fi
+        echo -e "\e[1;31mDeleting $file_path\e[0m"
+        rm -rf --preserve-root "$file_path"
+    done
 }
 
 # Read command options
@@ -66,3 +113,7 @@ done
 
 # Run
 dotfiles_backup
+
+if [[ "$DOTFILES_BACKUP_DELETE_LOCAL" -eq 1 ]]; then
+    dotfile_delete_default
+fi
