@@ -114,5 +114,5 @@ prompt_set_color() {
     promptUserColor=$(pColor "${1:-$pt_userBlGr}")
 
     # shellcheck source=prompt.sh
-    . ~/.dotfiles/.bash_prompt/prompt.sh
+    . ~/.dotfiles/bash_prompt/prompt.sh
 }

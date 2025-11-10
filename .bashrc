@@ -50,8 +50,8 @@ export CLICOLOR=1 # Mac
 [[ -f ~/.dotfiles/.bash_functions ]] && . ~/.dotfiles/.bash_functions
 
 # Prompt
-# shellcheck source=.bash_prompt/prompt.sh
-[[ -f ~/.dotfiles/.bash_prompt/prompt.sh ]] && . ~/.dotfiles/.bash_prompt/prompt.sh
+# shellcheck source=bash_prompt/prompt.sh
+[[ -f ~/.dotfiles/bash_prompt/prompt.sh ]] && . ~/.dotfiles/bash_prompt/prompt.sh
 
 # Local config
 # shellcheck source=.bashrc.local

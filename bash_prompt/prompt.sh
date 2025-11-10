@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 # shellcheck source=colors.sh
-. ~/.dotfiles/.bash_prompt/colors.sh
+. ~/.dotfiles/bash_prompt/colors.sh
 # shellcheck source=prompt_git.sh
-. ~/.dotfiles/.bash_prompt/prompt_git.sh
+. ~/.dotfiles/bash_prompt/prompt_git.sh
 # shellcheck source=prompt_git_pretty.sh
-. ~/.dotfiles/.bash_prompt/prompt_git_pretty.sh
+. ~/.dotfiles/bash_prompt/prompt_git_pretty.sh
 # shellcheck source=prompt_utils.sh
-. ~/.dotfiles/.bash_prompt/prompt_utils.sh
+. ~/.dotfiles/bash_prompt/prompt_utils.sh
 
 
 promptUserColor=${promptUserColor:-${pt_userBlGr:-"\[\e[38;2;0;190;135m\]"}}
