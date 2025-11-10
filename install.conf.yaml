@@ -15,15 +15,15 @@
     ~/.bashrc:             .bashrc
     ~/.bash_logout:        .bash_logout
 
-    ${XDG_CONFIG_HOME}/bat:         .config/bat
-    ${XDG_CONFIG_HOME}/fastfetch:   .config/fastfetch
-    ${XDG_CONFIG_HOME}/git:         .config/git
-    ${XDG_CONFIG_HOME}/gitmux:      .config/gitmux
+    ${XDG_CONFIG_HOME}/bat:         config/bat
+    ${XDG_CONFIG_HOME}/fastfetch:   config/fastfetch
+    ${XDG_CONFIG_HOME}/git:         config/git
+    ${XDG_CONFIG_HOME}/gitmux:      config/gitmux
     ${XDG_CONFIG_HOME}/lazydocker/config.yml:
-      path: .config/lazydocker/config.local.yml
-      if: "[ -f .config/lazydocker/config.local.yml ]"
-    ${XDG_CONFIG_HOME}/tmux:        .config/tmux
-    ${XDG_CONFIG_HOME}/vim:         .config/vim
+      path: config/lazydocker/config.local.yml
+      if: "[ -f config/lazydocker/config.local.yml ]"
+    ${XDG_CONFIG_HOME}/tmux:        config/tmux
+    ${XDG_CONFIG_HOME}/vim:         config/vim
 
     ${XDG_BIN_HOME}/git-context-graph: lib/git-context-graph/git-context-graph
     ${XDG_BIN_HOME}/git-mr:            lib/git-mr/git-mr
@@ -42,18 +42,18 @@
     ${XDG_DATA_HOME}/bash-completion/completions/git-mu.bash:            lib/git-mu-completion.bash
 
     # Windows desktop
-    ~/AutoHotkey:      { path: .config/AutoHotkey,      if: '[ -f /git-bash.exe ]' }
-    ~/Documents/Dygma: { path: .config/Dygma,           if: '[ -f /git-bash.exe ]' }
-    ~/.minttyrc:       { path: .config/mintty/minttyrc, if: '[ -f /git-bash.exe ]' }
+    ~/AutoHotkey:      { path: config/AutoHotkey,      if: '[ -f /git-bash.exe ]' }
+    ~/Documents/Dygma: { path: config/Dygma,           if: '[ -f /git-bash.exe ]' }
+    ~/.minttyrc:       { path: config/mintty/minttyrc, if: '[ -f /git-bash.exe ]' }
 
     # Linux desktop
-    ${XDG_CONFIG_HOME}/autokey/data/: { path: .config/autokey/data/*, glob: true, if: "[ -d ${XDG_CONFIG_HOME}/autokey ]" }
-    ${XDG_CONFIG_HOME}/xbindkeys:     { path: .config/xbindkeys,      if: "command -v xbindkeys" }
-    ${XDG_CONFIG_HOME}/xmodmap:       { path: .config/xmodmap,        if: "command -v xmodmap" }
+    ${XDG_CONFIG_HOME}/autokey/data/: { path: config/autokey/data/*, glob: true, if: "[ -d ${XDG_CONFIG_HOME}/autokey ]" }
+    ${XDG_CONFIG_HOME}/xbindkeys:     { path: config/xbindkeys,      if: "command -v xbindkeys" }
+    ${XDG_CONFIG_HOME}/xmodmap:       { path: config/xmodmap,        if: "command -v xmodmap" }
 
     # Mac desktop
     ${XDG_CONFIG_HOME}/karabiner/assets/complex_modifications/:
-      path: .config/karabiner/assets/complex_modifications/*
+      path: config/karabiner/assets/complex_modifications/*
       glob: true
       if: "[ -d ${XDG_CONFIG_HOME}/karabiner ]"
 

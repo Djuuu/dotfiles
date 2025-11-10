@@ -34,7 +34,7 @@ if [[ -x $(command -v powershell.exe) ]]; then
     esac
 
     src="${c}/Users/${winUser}/AppData/Local/Fork/custom-commands.json"
-    dst="${HOME}/.dotfiles/.config/Fork/custom-commands.json"
+    dst="${HOME}/.dotfiles/config/Fork/custom-commands.json"
 
     srcName=${src/#"${c}/Users/${winUser}/AppData/Local"/'%localappdata%'}
     dstName=${dst/#${HOME}/'~'}

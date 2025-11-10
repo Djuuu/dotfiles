@@ -15,7 +15,7 @@ DEVICE_BINDINGS["Logitech M705"]="M705.xbindkeysrc"
 echo "Building ${XDG_CONFIG_HOME}/xbindkeys/config"
 
 # Common .xbindkeysrc
-cat "${BASEDIR}/.config/xbindkeys/common.xbindkeysrc" > "${XDG_CONFIG_HOME}/xbindkeys/config"
+cat "${BASEDIR}/config/xbindkeys/common.xbindkeysrc" > "${XDG_CONFIG_HOME}/xbindkeys/config"
 
 
 # Device-specific .xbindkeysrc
@@ -23,7 +23,7 @@ cat "${BASEDIR}/.config/xbindkeys/common.xbindkeysrc" > "${XDG_CONFIG_HOME}/xbin
 CURRENT_MOUSE="${CURRENT_MOUSE:-Logitech MX Master 3}"
 
 bindingFileName="${DEVICE_BINDINGS[$CURRENT_MOUSE]}"
-bindingFilePath="${BASEDIR}/.config/xbindkeys/${bindingFileName}"
+bindingFilePath="${BASEDIR}/config/xbindkeys/${bindingFileName}"
 
 if [ -n "$bindingFileName" ] && [ -f "$bindingFilePath" ]; then
     echo "  Adding $CURRENT_MOUSE bindings"

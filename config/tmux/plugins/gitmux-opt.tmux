@@ -11,7 +11,7 @@ gitmux_if_repo() {
         return
     fi
 
-    echo -n " "; gitmux -cfg "${HOME}/.config/gitmux/gitmux.conf" "${ppath}"
+    echo -n " "; gitmux -cfg "${XDG_CONFIG_HOME:-$HOME/.config}/gitmux/gitmux.conf" "${ppath}"
 }
 
 catppuccin_gitmux_if_repo() {
@@ -22,7 +22,7 @@ catppuccin_gitmux_if_repo() {
     fi
 
     catppuccin_module_header "gitmux"
-    echo -n " "; gitmux -cfg "${HOME}/.config/gitmux/gitmux.conf" "${ppath}"
+    echo -n " "; gitmux -cfg "${XDG_CONFIG_HOME:-$HOME/.config}/gitmux/gitmux.conf" "${ppath}"
     catppuccin_module_footer
 }
 

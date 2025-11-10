@@ -75,10 +75,10 @@ export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
 export GOPATH="${XDG_DATA_HOME}/go"
 
 # LazyGit - https://github.com/jesseduffield/lazygit
-LG_CONFIG_FILE="$(home_path ".dotfiles/.config/lazygit/config.yml")"
-LG_CONFIG_FILE="${LG_CONFIG_FILE},$(home_path ".dotfiles/.config/lazygit/config.keybinding.yml")"
-[ -f "$(home_path ".dotfiles/.config/lazygit/config.local.yml")" ] &&
-    LG_CONFIG_FILE="${LG_CONFIG_FILE},$(home_path ".dotfiles/.config/lazygit/config.local.yml")"
+LG_CONFIG_FILE="$(home_path ".dotfiles/config/lazygit/config.yml")"
+LG_CONFIG_FILE="${LG_CONFIG_FILE},$(home_path ".dotfiles/config/lazygit/config.keybinding.yml")"
+[ -f "$(home_path ".dotfiles/config/lazygit/config.local.yml")" ] &&
+    LG_CONFIG_FILE="${LG_CONFIG_FILE},$(home_path ".dotfiles/config/lazygit/config.local.yml")"
 export LG_CONFIG_FILE
 
 # Vim

@@ -14,7 +14,7 @@
 #	helper = cache --timeout 7201
 
 #[include]
-#	path = ~/.dotfiles/.config/git/config.delta
+#	path = ~/.config/git/config.delta
 
 #[url "git@github.com:"]
 #	pushInsteadOf = "https://github.com/"
