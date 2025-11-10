@@ -43,7 +43,7 @@
     ${XDG_DATA_HOME}/bash-completion/completions/git-mu.bash:            git-scripts/git-mu-completion.bash
 
     # Windows desktop
-    ~/AutoHotkey:      { path: autohotkey,              if: '[ -f /git-bash.exe ]' }
+    ~/AutoHotkey:      { path: .config/AutoHotkey,      if: '[ -f /git-bash.exe ]' }
     ~/Documents/Dygma: { path: .config/Dygma,           if: '[ -f /git-bash.exe ]' }
     ~/.minttyrc:       { path: .config/mintty/minttyrc, if: '[ -f /git-bash.exe ]' }
 

@@ -18,6 +18,9 @@
 	path = dotbot-plugins/dotbot-sudo
 	url = https://github.com/mskyaxl/dotbot-sudo.git
 
+[submodule ".config/AutoHotkey"]
+	path = .config/AutoHotkey
+	url = https://github.com/Djuuu/AutoHotkey.git
 
 [submodule ".config/tmux/plugins/catppuccin-tmux"]
 	path = .config/tmux/plugins/catppuccin-tmux
@@ -30,11 +33,6 @@
 [submodule ".config/tmux/plugins/tmux-git-status"]
 	path = .config/tmux/plugins/tmux-git-status
 	url = https://github.com/Djuuu/tmux-git-status.git
-
-
-[submodule "autohotkey"]
-	path = autohotkey
-	url = https://github.com/Djuuu/AutoHotkey.git
 
 [submodule "dockerize-clis"]
 	path = dockerize-clis
