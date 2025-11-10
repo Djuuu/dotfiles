@@ -28,19 +28,18 @@
     ${XDG_BIN_HOME}/git-context-graph: lib/git-context-graph/git-context-graph
     ${XDG_BIN_HOME}/git-mr:            lib/git-mr/git-mr
 
-    ${XDG_BIN_HOME}/git-aliases:       git-scripts/git-aliases
-    ${XDG_BIN_HOME}/git-continue:      git-scripts/git-continue
-    ${XDG_BIN_HOME}/git-fast-forward:  git-scripts/git-fast-forward
-    ${XDG_BIN_HOME}/git-force-push:    git-scripts/git-force-push
-    ${XDG_BIN_HOME}/git-is-clean:      git-scripts/git-is-clean
-    ${XDG_BIN_HOME}/git-separator:     git-scripts/git-separator
-    ${XDG_BIN_HOME}/git-update:        git-scripts/git-update
-
+    ${XDG_BIN_HOME}/git-aliases:       scripts/git-aliases
+    ${XDG_BIN_HOME}/git-continue:      scripts/git-continue
+    ${XDG_BIN_HOME}/git-fast-forward:  scripts/git-fast-forward
+    ${XDG_BIN_HOME}/git-force-push:    scripts/git-force-push
+    ${XDG_BIN_HOME}/git-is-clean:      scripts/git-is-clean
+    ${XDG_BIN_HOME}/git-separator:     scripts/git-separator
+    ${XDG_BIN_HOME}/git-update:        scripts/git-update
     ${XDG_BIN_HOME}/termcolors:        scripts/print256colours.sh
 
     ${XDG_DATA_HOME}/bash-completion/completions/git-context-graph.bash: lib/git-context-graph/git-context-graph-completion.bash
     ${XDG_DATA_HOME}/bash-completion/completions/git-mr.bash:            lib/git-mr/git-mr-completion.bash
-    ${XDG_DATA_HOME}/bash-completion/completions/git-mu.bash:            git-scripts/git-mu-completion.bash
+    ${XDG_DATA_HOME}/bash-completion/completions/git-mu.bash:            lib/git-mu-completion.bash
 
     # Windows desktop
     ~/AutoHotkey:      { path: .config/AutoHotkey,      if: '[ -f /git-bash.exe ]' }

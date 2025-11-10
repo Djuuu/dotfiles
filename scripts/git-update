@@ -2,7 +2,7 @@
 
 git fetch --all --prune
 
-# -> git-scripts/git-fast-forward
+# -> scripts/git-fast-forward
 git fast-forward
 
 git submodule update --init --recursive
