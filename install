@@ -9,6 +9,13 @@ DOTBOT_DIR="lib/dotbot"
 DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# Ensure XDG_ env vars are set
+export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}   # user-specific data files
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}    # user-specific configuration files
+export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state} # user-specific state files
+export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}       # user-specific non-essential data files
+export XDG_BIN_HOME=${XDG_BIN_HOME:-$HOME/.local/bin}       # user-specific executable files (non-standard var)
+
 # ------------------------------------------------------------------------------
 # Determine configurations to apply
 
