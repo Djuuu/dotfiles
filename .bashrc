@@ -23,7 +23,7 @@ export XDG_BIN_HOME=${XDG_BIN_HOME:-$HOME/.local/bin}       # user-specific exec
 # History Options
 HISTFILE="${XDG_STATE_HOME}/bash/history"
 HISTCONTROL=ignoreboth # Don't put duplicate lines or lines starting with space in the history.
-HISTIGNORE=$'[ \t]*:&:[bf]g:clear:exit:history:h:ls:ls *:l:pwd' # Ignore patterns ('&': suppress duplicate entries)
+HISTIGNORE=$'[ \t]*:&:[bf]g:clear:exit:history:h:ls:l:pwd' # Ignore patterns ('&': suppress duplicate entries)
 shopt -s histappend # Append to the history file, don't overwrite it
 HISTSIZE=2000
 HISTFILESIZE=6000
