@@ -13,6 +13,8 @@
 #fi
 #unset SSH_PAGEANT
 
+# keychain - use XDG Base Directory
+#alias keychain="keychain --absolute --dir '${XDG_RUNTIME_DIR}/keychain'"
 # keychain - start or reuse agent
 #eval $(keychain --quiet --eval --agents ssh id_rsa)
 # keychain - reuse agent

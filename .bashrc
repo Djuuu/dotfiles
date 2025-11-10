@@ -21,21 +21,12 @@ export XDG_BIN_HOME=${XDG_BIN_HOME:-$HOME/.local/bin}       # user-specific exec
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 # History Options
-
-# Don't put duplicate lines or lines starting with space in the history.
-HISTCONTROL=ignoreboth
-
-# Ignore some controlling instructions
-# HISTIGNORE is a colon-delimited list of patterns which should be excluded.
-# The '&' is a special pattern which suppresses duplicate entries.
-HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls'
-
-# Append to the history file, don't overwrite it
-shopt -s histappend
-
-# For setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTFILE="${XDG_STATE_HOME}/bash/history"
+HISTCONTROL=ignoreboth # Don't put duplicate lines or lines starting with space in the history.
+HISTIGNORE=$'[ \t]*:&:[bf]g:clear:exit:history:h:ls:ls *:l:pwd' # Ignore patterns ('&': suppress duplicate entries)
+shopt -s histappend # Append to the history file, don't overwrite it
+HISTSIZE=2000
+HISTFILESIZE=6000
 
 # Check the window size after each command and, if necessary, update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -71,6 +62,17 @@ for f in ~/.local/share/bash-completion/completions/*; do
     # shellcheck disable=SC1090
     [[ -f "$f" ]] && . "$f"
 done; unset f
+
+# Ansible
+export ANSIBLE_HOME="${XDG_DATA_HOME}/ansible"
+#export ANSIBLE_CONFIG="${XDG_CONFIG_HOME}/ansible.cfg"
+export ANSIBLE_GALAXY_CACHE_DIR="${XDG_CACHE_HOME}/ansible/galaxy_cache"
+
+# Gnupg
+export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
+
+# Go
+export GOPATH="${XDG_DATA_HOME}/go"
 
 # LazyGit - https://github.com/jesseduffield/lazygit
 LG_CONFIG_FILE="$(home_path ".dotfiles/.config/lazygit/config.yml")"

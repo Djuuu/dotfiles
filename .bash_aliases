@@ -31,6 +31,8 @@ alias sshagentstart='eval `ssh-agent -s` && ssh-add'
 alias fastfetch='echo; fastfetch; echo'
 alias ff='fastfetch'
 
+alias wget='wget --hsts-file=${XDG_DATA_HOME:-$HOME/.local/share}/wget-hsts'
+
 # Git
 alias gg='git-context-graph-page --pretty=graph-dyn-t'
 alias ggs='git-graph-status-page --pretty=graph-dyn-t'

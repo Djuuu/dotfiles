@@ -7,8 +7,9 @@
 [ -d "/usr/local/go/bin" ] && PATH="$PATH:/usr/local/go/bin"
 
 # Set PATH so it includes user's bin/ directories
-[ -d "${HOME}/go/bin" ]     && PATH="${HOME}/go/bin:${PATH}"
-[ -d "${HOME}/.local/bin" ] && PATH="${HOME}/.local/bin:${PATH}"
+[ -d          "${HOME}/go/bin" ] &&          PATH="${HOME}/go/bin:${PATH}"
+[ -d "${XDG_DATA_HOME}/go/bin" ] && PATH="${XDG_DATA_HOME}/go/bin:${PATH}"
+[ -d "${XDG_BIN_HOME}" ]         && PATH="${XDG_BIN_HOME}:${PATH}"
 
 # Set MANPATH so it includes users' private man if it exists
 [ -d "${HOME}/man" ] && MANPATH="${HOME}/man:${MANPATH}"
