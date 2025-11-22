@@ -4,7 +4,7 @@
     link: { create: true, relink: true, relative: true, canonicalize: false }
     shell: { stdout: true, stderr: true }
 
-- create: ['${XDG_CONFIG_HOME}', '${XDG_DATA_HOME}', '${XDG_BIN_HOME}']
+- create: ['${XDG_CONFIG_HOME}', '${XDG_DATA_HOME}', '${XDG_BIN_HOME}', '${XDG_STATE_HOME}/bash']
 
 - clean: ['~', '${XDG_CONFIG_HOME}', '${XDG_BIN_HOME}', '${XDG_DATA_HOME}/bash-completion/completions']
 
