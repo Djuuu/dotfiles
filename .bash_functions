@@ -197,3 +197,28 @@ complete -F _tmac_complete tmac
 
 # shellcheck source=lib/dockerize-clis/dockerize-clis.sh
 . ~/.dotfiles/lib/dockerize-clis/dockerize-clis.sh
+
+## Run `docker compose ps` for all projects (`dc ls`)
+dcpsall() {
+    local ConfigFiles
+
+    eval "$(
+        echo 'ConfigFiles=('
+        dc ls --format json | jq '.[].ConfigFiles'
+        echo ')'
+    )"
+
+    for file in "${ConfigFiles[@]}"; do
+        dir=$(dirname "$file")
+
+        pushd "$dir" > /dev/null || return
+
+        echo "-------------------------------------------------------------------------------"
+        echo "${dir}"
+        echo "-------------------------------------------------------------------------------"
+        dc ps
+        echo
+
+        popd > /dev/null || return
+    done
+}
