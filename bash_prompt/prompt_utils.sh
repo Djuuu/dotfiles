@@ -22,7 +22,7 @@ prompt_separator() {
     local promptFillSize=$COLUMNS
 
     # Ensure new line
-    local start; start="$(printf "%$((COLUMNS - 1))s\r")"
+    local start; start="$(printf "%$((COLUMNS))s\r")"
 
     local tunnel
     if [[ -n $promptSshTunnels ]]; then
