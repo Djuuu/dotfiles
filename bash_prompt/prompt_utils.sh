@@ -19,6 +19,9 @@ prompt_separator() {
     local fillStock="${sep}${sep}${sep}${sep}" # 400 chars
     local end="─┤"
 
+    # Disable separator in JetBrains terminal
+    [[ $TERMINAL_EMULATOR == "JetBrains"* ]] && return
+
     local promptFillSize=$COLUMNS
 
     # Ensure new line
