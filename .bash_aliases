@@ -54,7 +54,8 @@ alias gmgs='git mu group switch'
 
 # Tmux
 alias t=tmac
-complete -F _tmac_complete t
+command -v complete >/dev/null 2>&1 &&
+    complete -F _tmac_complete t
 
 # Docker
 alias dc='docker compose'

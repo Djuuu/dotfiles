@@ -190,7 +190,8 @@ _tmac_complete() {
     COMPREPLY=( $(compgen -W "$sessions" -- "$word") )
 }
 
-complete -F _tmac_complete tmac
+command -v complete >/dev/null 2>&1 &&
+    complete -F _tmac_complete tmac
 
 ################################################################################
 # Docker
