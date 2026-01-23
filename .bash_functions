@@ -223,3 +223,49 @@ dcpsall() {
         popd > /dev/null || return
     done
 }
+
+# Horizontal separator (inspired by https://github.com/LuRsT/hr)
+hr() {
+    # Setup
+
+    local hrColorUser=${HR_COLOR_USER:-"\\e[38;5;160m"} # x160_Red3
+    local hrColorRoot=${HR_COLOR_ROOT:-"\\e[38;2;0;190;135m"} # userBlGr
+    local reset="\e[0m"
+
+    local hrColor
+    [[ "$(id -u)" -eq 0 ]] && hrColor="$hrColorUser" || hrColor="$hrColorRoot"
+
+    local count=1
+    if [[ "$1" =~ ^[0-9]+$ ]]; then
+        count=$1
+        shift
+    fi
+
+    local cols=${COLUMNS:-80}
+
+    local words=()
+    if [[ $# -gt 0 ]]; then
+        words=("$@") # arguments were supplied
+    else
+        if [[ "$(declare -p HR_DEFAULT 2>/dev/null)" =~ "declare -a" ]]; then
+            words=("${HR_DEFAULT[@]}") # default is an array (multiple lines)
+        else
+            words=("${HR_DEFAULT:-#}") # default is a string (single line, default to #)
+        fi
+    fi
+
+    # Output
+
+    echo -en $hrColor
+
+    local i word;
+    for ((i=1; i<=count; i++)); do
+        for word in "${words[@]}"; do
+            printf '%*s' "$cols" ' ' |
+                sed "s/ /$word/g" |
+                command grep -o "^.\{$cols\}"
+        done
+    done
+
+    echo -en $reset
+}

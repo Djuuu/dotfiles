@@ -28,16 +28,11 @@ shopt -s histappend # Append to the history file, don't overwrite it
 HISTSIZE=2000
 HISTFILESIZE=6000
 
-# Check the window size after each command and, if necessary, update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
 # Enable color support of ls
 if command -v dircolors > /dev/null 2>&1; then
     if [[ -r ~/.dircolors ]]
         then eval "$(dircolors -b ~/.dircolors)"
-        else eval "$(dircolors -b)"
-    fi
-fi
+        else eval "$(dircolors -b)"; fi fi
 
 export CLICOLOR=1 # Mac
 
@@ -58,8 +53,7 @@ export CLICOLOR=1 # Mac
 [[ -f ~/.dotfiles/.bashrc.local ]] && . ~/.dotfiles/.bashrc.local
 
 # Custom completions
-for f in ~/.local/share/bash-completion/completions/*; do
-    # shellcheck disable=SC1090
+for f in "${XDG_DATA_HOME}/bash-completion/completions/"*; do # shellcheck disable=SC1090
     [[ -f "$f" ]] && . "$f"
 done; unset f
 

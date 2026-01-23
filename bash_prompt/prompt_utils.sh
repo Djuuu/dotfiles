@@ -19,8 +19,9 @@ prompt_separator() {
     local fillStock="${sep}${sep}${sep}${sep}" # 400 chars
     local end="─┤"
 
-    # Disable separator in JetBrains terminal
+    # Disable separator in IDE terminals
     [[ $TERMINAL_EMULATOR == "JetBrains"* ]] && return
+    [[ $TERM_PROGRAM      == "vscode"*    ]] && return
 
     local promptFillSize=$COLUMNS
 

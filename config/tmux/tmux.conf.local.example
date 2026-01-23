@@ -3,6 +3,11 @@
 # source -F "#{d:current_file}/local/example.catppuccin.conf"
 
 
+## "Screen saver"
+#set -g lock-after-time 600
+#set -g lock-command "/usr/bin/cmatrix -asu 5"
+
+
 ## Reset status-left
 # set -g status-left ""
 

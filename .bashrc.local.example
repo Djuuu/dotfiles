@@ -1,7 +1,6 @@
 
-# Umask
-# /etc/profile sets 022, removing write perms to group + others.
-#umask 002
+# Default tmux session name when using t/tmac alias
+#TMUX_DEFAULT_SESSION=$(hostname -s)
 
 # ssh-pageant (Cygwin)
 #eval $(/usr/bin/ssh-pageant -r -a "/tmp/.ssh-pageant-$USERNAME")
@@ -14,7 +13,7 @@
 #unset SSH_PAGEANT
 
 # keychain - use XDG Base Directory
-#alias keychain="keychain --absolute --dir '${XDG_RUNTIME_DIR}/keychain'"
+#alias keychain='keychain --absolute --dir "${XDG_RUNTIME_DIR}/keychain"'
 # keychain - start or reuse agent
 #eval $(keychain --quiet --eval --agents ssh id_rsa)
 # keychain - reuse agent

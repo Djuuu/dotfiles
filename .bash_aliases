@@ -1,13 +1,17 @@
 
-# Interactive operation...
-# alias rm='rm -i'
-# alias cp='cp -i'
-# alias mv='mv -i'
-
 # ls aliases
 alias ls='ls --color=auto'
 alias  l='ls -lhA'
 alias ll='ls -lh'
+
+# Navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+
+mkcd() {  mkdir -p "$1" && cd "$1"; } # Create a directory and cd into it
 
 # Default to human-readable figures
 alias df='df -h'
@@ -21,22 +25,23 @@ alias fgrep='fgrep --color=auto'  # show differences in colour
 alias rsynca='rsync -avzP'
 alias h='history'
 
+hgrep() { history | grep "$@"; } # Search command history
+
 alias please='sudo $(fc -nl -1)'
 
 alias bat="batcat"
 alias rat="batcat --paging=never"
 
 alias sshagentstart='eval `ssh-agent -s` && ssh-add'
+alias sshs="sshs -e"
 
 alias ff='fastfetch'
 
 alias wget='wget --hsts-file=${XDG_DATA_HOME:-$HOME/.local/share}/wget-hsts'
 
 # Git
-alias gg='git-context-graph-page --pretty=graph-dyn-t'
-alias ggs='git-graph-status-page --pretty=graph-dyn-t'
-
-alias ggg='git context-graph --first-parent --pretty=graph-dyn-t'
+alias g='git-graph-status-page --pretty=graph-dyn-t'
+alias gg='git context-graph --first-parent --pretty=graph-dyn-t'
 alias gga='git context-graph --first-parent --pretty=graph-dyn-t --all'
 alias ggv='git context-graph --pretty=graph-dyn-t'
 alias ggva='git context-graph --pretty=graph-dyn-t --all'
