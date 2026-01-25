@@ -1,0 +1,257 @@
+<keymap version="1" name="Windows Custom" parent="$default">
+
+  <!-- Main Menu - Code - Ask AI... -->
+  <action id="AIAssistant.Editor.AskAiAssistantInEditor">
+    <keyboard-shortcut first-keystroke="ctrl back_slash" />
+    <keyboard-shortcut first-keystroke="shift ctrl less" />
+  </action>
+
+  <!-- Tool Windows - Commit -->
+  <action id="ActivateCommitToolWindow" />
+
+  <!-- Tool Windows - Database -->
+  <action id="ActivateDatabaseToolWindow">
+    <keyboard-shortcut first-keystroke="alt 0" />
+  </action>
+
+  <action id="Arrangement.Alias.Rule.Match.Condition.Move.Down" />
+  <action id="Arrangement.Rule.Group.Condition.Move.Down" />
+  <action id="Arrangement.Rule.Group.Condition.Move.Up" />
+  <action id="Arrangement.Rule.Match.Condition.Move.Down" />
+  <action id="Arrangement.Rule.Match.Condition.Move.Up" />
+
+  <!-- Main Menu - Navigate - Back -->
+  <action id="Back">
+    <keyboard-shortcut first-keystroke="ctrl alt left" />
+    <mouse-shortcut keystroke="button4" />
+    <keyboard-shortcut first-keystroke="shift alt left" />
+  </action>
+
+  <!-- Main Menu - Code - Code Completion - Call Inline Completion -->
+  <action id="CallInlineCompletionAction">
+    <keyboard-shortcut first-keystroke="shift alt back_slash" />
+    <keyboard-shortcut first-keystroke="shift ctrl #10000b2" />
+    <keyboard-shortcut first-keystroke="ctrl less" />
+  </action>
+
+  <!-- Main Menu - Window - Editor Tabs - Editor Close Actions - Close All but Pinned -->
+  <action id="CloseAllUnpinnedEditors">
+    <keyboard-shortcut first-keystroke="shift ctrl w" />
+  </action>
+
+  <!-- Main Menu - Window - Editor Tabs - Editor Close Actions - Close Tab -->
+  <action id="CloseContent">
+    <keyboard-shortcut first-keystroke="ctrl f4" />
+    <keyboard-shortcut first-keystroke="ctrl w" />
+  </action>
+
+  <!-- Main Menu - File  - File Open Actions - Close project -->
+  <action id="CloseProject">
+    <keyboard-shortcut first-keystroke="shift ctrl alt q" />
+  </action>
+
+  <!-- Main Menu - Code - Folding - Collapse All -->
+  <action id="CollapseAllRegions">
+    <keyboard-shortcut first-keystroke="shift ctrl subtract" />
+    <keyboard-shortcut first-keystroke="shift ctrl minus" />
+    <keyboard-shortcut first-keystroke="shift ctrl right_parenthesis" />
+  </action>
+
+  <!-- Main Menu - Code - Folding - Collapse -->
+  <action id="CollapseRegion">
+    <keyboard-shortcut first-keystroke="ctrl subtract" />
+    <keyboard-shortcut first-keystroke="ctrl minus" />
+    <keyboard-shortcut first-keystroke="ctrl right_parenthesis" />
+  </action>
+
+  <!-- Main Menu - Code - Folding - Collapse Recursive -->
+  <action id="CollapseRegionRecursively">
+    <keyboard-shortcut first-keystroke="ctrl alt subtract" />
+    <keyboard-shortcut first-keystroke="ctrl alt minus" />
+    <keyboard-shortcut first-keystroke="ctrl alt right_parenthesis" />
+  </action>
+
+  <!-- Main Menu - Code - Comment Actions - Comment with Line Comment -->
+  <action id="CommentByLineComment">
+    <keyboard-shortcut first-keystroke="ctrl slash" />
+    <keyboard-shortcut first-keystroke="ctrl divide" />
+    <keyboard-shortcut first-keystroke="ctrl colon" />
+  </action>
+
+  <!-- Main Menu - Edit - Cut/Copy/Paste Actions - Copy Path/Reference - Path From Repository Root -->
+  <action id="CopyPathFromRepositoryRootProvider">
+    <keyboard-shortcut first-keystroke="shift ctrl c" />
+  </action>
+
+  <!-- Main Menu - Edit - Cut/Copy/Paste Actions - Copy Paths -->
+  <action id="CopyPaths" />
+
+  <!-- Version Control Systems - Diff & Merge - Accept Left Side -->
+  <action id="Diff.ApplyLeftSide" />
+
+  <!-- Version Control Systems - Diff & Merge - Select Opposite Diff Pane -->
+  <action id="Diff.FocusOppositePane" />
+
+  <!-- Version Control Systems - Diff & Merge - Compare Next File -->
+  <action id="Diff.NextChange" />
+
+  <!-- Version Control Systems - Diff & Merge - Compare Previous File -->
+  <action id="Diff.PrevChange" />
+
+  <!-- Editor Actions - Clone Caret Above -->
+  <action id="EditorCloneCaretAbove">
+    <keyboard-shortcut first-keystroke="shift alt up" />
+  </action>
+
+  <!-- Editor Actions - Clone Caret Below -->
+  <action id="EditorCloneCaretBelow">
+    <keyboard-shortcut first-keystroke="shift alt down" />
+  </action>
+
+  <!-- Editor Actions - Extend Selection -->
+  <!-- Main Menu - Edit - Editor Select Actions - Select Word Actions - Extend Selection -->
+  <action id="EditorSelectWord">
+    <keyboard-shortcut first-keystroke="alt up" />
+  </action>
+
+  <!-- Editor Actions - Sort Lines -->
+  <!-- Main Menu - Edit - Edit Code Actions - Sort Lines -->
+  <action id="EditorSortLines">
+    <keyboard-shortcut first-keystroke="shift ctrl alt o" />
+  </action>
+
+  <!-- Editor Actions - Shrink Selection -->
+  <!-- Main Menu - Edit - Editor Select Actions - Select Word Actions - Shrink Selection -->
+  <action id="EditorUnSelectWord">
+    <keyboard-shortcut first-keystroke="alt down" />
+  </action>
+
+  <!-- Main Menu - Edit - Find Usages - Find Usages -->
+  <!-- Database - Database Explorer - Find Usages -->
+  <action id="FindUsages">
+    <keyboard-shortcut first-keystroke="alt f7" />
+    <keyboard-shortcut first-keystroke="shift alt 7" />
+  </action>
+
+  <!-- Main Menu - Navigate - Forward -->
+  <action id="Forward">
+    <keyboard-shortcut first-keystroke="ctrl alt right" />
+    <mouse-shortcut keystroke="button5" />
+    <keyboard-shortcut first-keystroke="shift alt right" />
+  </action>
+
+  <!-- Main Menu - Git - Resolve Conflicts -->
+  <!-- Version Control Systems - Git - Resolve Conflicts -->
+  <action id="Git.ResolveConflicts">
+    <keyboard-shortcut first-keystroke="ctrl alt r" />
+  </action>
+
+  <!-- Plugins - JetBrains AI Assistant - Generate Code With AI Assistant -->
+  <action id="InlinePromptGenerateCodeAction">
+    <keyboard-shortcut first-keystroke="tab" />
+    <keyboard-shortcut first-keystroke="ctrl #10000b2" />
+  </action>
+
+  <!-- Main Menu - Navigate - Navigate in File -->
+  <action id="MethodDown" />
+  <action id="MethodUp" />
+
+  <!-- Main Menu - Code - Move Line Down -->
+  <action id="MoveLineDown" />
+  <!-- Main Menu - Code - Move Line Up -->
+  <action id="MoveLineUp" />
+
+  <action id="NextEditorTab" />
+
+  <!-- Main Menu - Window - Active Tool Window - Go to Next Splitter -->
+  <!-- Main Menu - Window - Editor Tabs        - Go to Next Splitter -->
+  <action id="NextSplitter">
+    <keyboard-shortcut first-keystroke="alt page_up" />
+  </action>
+
+  <!-- Main Menu - Window - Active Tool Window - Select Next Tab -->
+  <!-- Main Menu - Window - Editor Tabs        - Select Next Tab -->
+  <action id="NextTab">
+    <keyboard-shortcut first-keystroke="alt right" />
+    <keyboard-shortcut first-keystroke="ctrl tab" />
+  </action>
+
+  <!-- Other - Open In Associated Application -->
+  <action id="OpenInAssociatedApplication">
+    <keyboard-shortcut first-keystroke="shift ctrl b" />
+  </action>
+
+  <!-- Main Menu - Window - Active Tool Window - Pin Active Tool Window Tab -->
+  <!-- Main Menu - Window - Editor Tabs        - Pin Active Tab -->
+  <!-- Database - Query File Tab               - Pin Active Tab -->
+  <action id="PinActiveTab">
+    <keyboard-shortcut first-keystroke="shift alt p" />
+  </action>
+
+  <action id="PopupHector" />
+
+  <!-- Main Menu - Window - Active Tool Window - Go to Previous Splitter -->
+  <!-- Main Menu - Window - Editor Tabs        - Go to Previous Splitter -->
+  <action id="PrevSplitter">
+    <keyboard-shortcut first-keystroke="alt page_down" />
+  </action>
+
+  <action id="PreviousEditorTab" />
+
+  <!-- Main Menu - Window - Active Tool Window - Select Previous Tab -->
+  <!-- Main Menu - Window - Editor Tabs        - Select Previous Tab -->
+  <action id="PreviousTab">
+    <keyboard-shortcut first-keystroke="alt left" />
+    <keyboard-shortcut first-keystroke="shift ctrl tab" />
+  </action>
+
+  <action id="ShowContent" />
+  <action id="ShowSearchHistory" />
+  <action id="SmartSelect" />
+  <action id="SmartUnSelect" />
+
+  <!-- Main Menu - Edit - String Manipulation - Align... - Align Carets -->
+  <action id="StringManipulation.AlignCarets">
+    <keyboard-shortcut first-keystroke="alt l" />
+  </action>
+
+  <!-- Main Menu - Edit - String Manipulation - Switch Case - Switch Case -->
+  <action id="StringManipulation.SwitchStyleAction">
+    <keyboard-shortcut first-keystroke="shift alt u" />
+  </action>
+
+  <action id="Switcher" />
+  <action id="TableResult.GrowSelection" />
+  <action id="TableResult.ShrinkSelection" />
+  <action id="UsageFiltering.WriteAccess" />
+  <action id="UsageView.ShowRecentFindUsages" />
+
+  <!-- Main Menu - Git - VCS Group - Git - Show History -->
+  <!-- Version Control Systems - Git - Show History -->
+  <!-- Version Control Systems - Show History -->
+  <action id="Vcs.ShowTabbedFileHistory">
+    <keyboard-shortcut first-keystroke="shift ctrl alt h" />
+  </action>
+
+  <action id="XDebugger.MoveWatchDown" />
+  <action id="copilot.chat.show" />
+  <action id="copilot.cycleNextInlays">
+    <keyboard-shortcut first-keystroke="alt close_bracket" />
+    <keyboard-shortcut first-keystroke="ctrl period" />
+    <keyboard-shortcut first-keystroke="ctrl semicolon" />
+  </action>
+  <action id="copilot.openCopilot">
+    <keyboard-shortcut first-keystroke="ctrl alt colon" />
+  </action>
+  <action id="copilot.requestCompletions">
+    <keyboard-shortcut first-keystroke="alt back_slash" />
+    <keyboard-shortcut first-keystroke="alt colon" />
+  </action>
+
+  <!-- Other - Project Widget -->
+  <action id="main.toolbar.Project">
+    <keyboard-shortcut first-keystroke="shift ctrl g" />
+  </action>
+
+  <action id="uk.co.ben_gibson.git.link.ui.actions.menu.CopyAction" />
+</keymap>
