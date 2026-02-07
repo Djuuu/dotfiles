@@ -56,7 +56,12 @@
 #customCommands:
 #  - key: '<c-d>'
 #    context: 'files'
-#    command: 'git diff {{.SelectedFile.Name | quote}}'
+#    command: 'clear; git diff {{.SelectedFile.Name | quote}}'
+#    output: terminal # none | terminal | log | logWithPty | popup
+#
+#  - key: '<c-d>'
+#    context: 'commits'
+#    command: 'clear; git diff {{.SelectedCommitRange.From}}~ {{.SelectedCommitRange.To}}'
 #    output: terminal # none | terminal | log | logWithPty | popup
 #
 #  - key: '<c-a>'
