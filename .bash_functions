@@ -199,13 +199,18 @@ command -v complete >/dev/null 2>&1 &&
 # shellcheck source=lib/dockerize-clis/dockerize-clis.sh
 . ~/.dotfiles/lib/dockerize-clis/dockerize-clis.sh
 
-## Run `docker compose ps` for all projects (`dc ls`)
-dcpsall() {
+## Run `docker compose` command for all projects (`docker compose ls --all`)
+dcmu() {
     local ConfigFiles
+
+    if [[ $# -eq 0 ]]; then
+        dc ls --all
+        return
+    fi
 
     eval "$(
         echo 'ConfigFiles=('
-        dc ls --format json | jq '.[].ConfigFiles'
+        dc ls --all --format json | jq '.[].ConfigFiles'
         echo ')'
     )"
 
@@ -217,7 +222,7 @@ dcpsall() {
         echo "-------------------------------------------------------------------------------"
         echo "${dir}"
         echo "-------------------------------------------------------------------------------"
-        dc ps
+        dc $@
         echo
 
         popd > /dev/null || return
