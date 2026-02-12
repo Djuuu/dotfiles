@@ -16,6 +16,9 @@ export XDG_BIN_HOME=${XDG_BIN_HOME:-$HOME/.local/bin}       # user-specific exec
 # If not running interactively, don't do anything more
 [[ "$-" != *i* ]] && return
 
+# If running for WSLGit, don't do anything more (https://github.com/andy-5/wslgit#wslgit-1)
+[[ $WSLGIT == 1 ]] && return
+
 # Completion options
 [ -f /etc/bash_completion ]           && . /etc/bash_completion
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
