@@ -58,5 +58,6 @@
       if: "[ -d ${XDG_CONFIG_HOME}/karabiner ]"
 
 - shell:
+    - [ bash ~/.dotfiles/scripts/update-ssh-config.sh, Updating SSH config ]
     - [ bash ~/.dotfiles/scripts/install-local.sh,   Initializing local files ]
     - [ bash ~/.dotfiles/scripts/install-devices.sh, Configuring devices ]
