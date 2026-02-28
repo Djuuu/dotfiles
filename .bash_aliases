@@ -18,7 +18,7 @@ alias df='df -h'
 alias du='du -h'
 
 # Misc.
-alias less='less -R'              # RAW control characters
+alias less='less -R -X -F --mouse' # --RAW-CONTROL-CHARS --no-init --quit-if-one-screen
 alias grep='grep --color=auto'    # show differences in colour
 alias egrep='egrep --color=auto'  # show differences in colour
 alias fgrep='fgrep --color=auto'  # show differences in colour
