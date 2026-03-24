@@ -9,15 +9,15 @@ PROMPT_GIT_STATE_COUNTERS=${PROMPT_GIT_STATE_COUNTERS:-0}
 PROMPT_GIT_STATE_MODE=${PROMPT_GIT_STATE_MODE:-summary}
 PROMPT_GIT_DISABLE_IN_TMUX=${PROMPT_GIT_DISABLE_IN_TMUX:-0}
 
-# Set the $promptGit variable
-# Call in PROMPT_COMMAND and use $promptGit in PS1
+# Set the $pt_git variable
+# Call in PROMPT_COMMAND and use $pt_git in PS1
 prompt_git() {
     # Global variables, usable in PS1
-    promptGit=""
-    promptGitRemote=""
-    promptGitBranchInfo=""
-    promptGitAction=""
-    promptGitState=""
+    pt_git=""
+    pt_gitRemoteSt=""
+    pt_gitBranchInfo=""
+    pt_gitAction=""
+    pt_gitState=""
 
     [[ -n $TMUX ]] && [[ $PROMPT_GIT_DISABLE_IN_TMUX -eq 1 ]] && return
 
@@ -31,7 +31,7 @@ prompt_git() {
     local branch ahead=0 behind=0 detached=0
     __prompt_git_extract_branch_remote "$branchLine"
 
-    # __prompt_git_set_remote_icon $ahead $behind
+    __prompt_git_set_remote_status_icon $ahead $behind
 
     __prompt_git_set_branch_info "$branch" $ahead $behind $detached
 
@@ -41,7 +41,7 @@ prompt_git() {
 
     # __prompt_git_debug
 
-    promptGit="${promptGitBranchInfo}${promptGitAction}${promptGitState}${pt_reset}"
+    pt_git="${pt_gitBranchInfo}${pt_gitAction}${pt_gitState}${pt_reset}"
 }
 
 ##
@@ -144,31 +144,30 @@ __prompt_git_extract_branch_remote() {
 }
 
 # Set the following variable depending on ahead/behind status:
-#  - $promptGitRemote
-__prompt_git_set_remote_icon() {
+#  - $pt_gitRemoteSt
+__prompt_git_set_remote_status_icon() {
     local ahead=${1:-0}
     local behind=${2:-0}
 
     # External affected vars
-    promptGitRemote=""
+    pt_gitRemoteSt=""
 
     if [[ $ahead -gt 0 && $behind -eq 0 ]]; then
-        promptGitRemote="${promptGitRemote}${pt_greenBold}" # nf-fa-arrow_up
+        pt_gitRemoteSt="${pt_gitRemoteSt}${pt_greenBold}" # nf-fa-arrow_up
 
     elif [[ $ahead -eq 0 && $behind -gt 0 ]]; then
-        promptGitRemote="${promptGitRemote}${pt_yellowBold}" # nf-fa-arrow_down
+        pt_gitRemoteSt="${pt_gitRemoteSt}${pt_yellowBold}" # nf-fa-arrow_down
 
     elif [[ $ahead -gt 0 && $behind -gt 0 ]]; then
-        promptGitRemote="${promptGitRemote}${pt_yellowBold}" # nf-fa-arrows_up_down
-
+        pt_gitRemoteSt="${pt_gitRemoteSt}${pt_yellowBold}" # nf-fa-arrows_up_down
     fi
 
-    [[ -n $promptGitRemote ]] &&
-        promptGitRemote=" ${promptGitRemote}${pt_reset}"
+    [[ -n $pt_gitRemoteSt ]] &&
+        pt_gitRemoteSt=" ${pt_gitRemoteSt}${pt_reset}"
 }
 
 # Set the following variable:
-#  - $promptGitBranchInfo
+#  - $pt_gitBranchInfo
 __prompt_git_set_branch_info() {
     local branch=$1
     local ahead=$2
@@ -176,10 +175,10 @@ __prompt_git_set_branch_info() {
     local detached=$4
 
     # External affected vars
-    promptGitBranchInfo=
+    pt_gitBranchInfo=
 
     if [[ $detached -eq 1 ]]; then
-        promptGitBranchInfo="${pt_purple}(  ${branch}) " # nf-fa-code_commit
+        pt_gitBranchInfo="${pt_purple}(  ${branch}) " # nf-fa-code_commit
         return
     fi
 
@@ -199,7 +198,11 @@ __prompt_git_set_branch_info() {
         branchIcon="" # nf-dev-git_branch
     fi
 
-    promptGitBranchInfo="${pt_purple}(${branchIcon} ${branch}"
+    pt_gitBranchInfo="${pt_purple}(${branchIcon} ${branch}"
+
+    ## single icon remote status
+    #pt_gitBranchInfo="${pt_gitBranchInfo}${pt_gitRemoteSt}${pt_purple}) "
+    #return
 
     local remoteStatus remoteStatusA=()
 
@@ -220,7 +223,7 @@ __prompt_git_set_branch_info() {
 
     [[ -n $remoteStatus ]] && remoteStatus=" $remoteStatus" # Add leading space
 
-    promptGitBranchInfo="${promptGitBranchInfo}${remoteStatus}${pt_purple}) "
+    pt_gitBranchInfo="${pt_gitBranchInfo}${remoteStatus}${pt_purple}) "
 }
 
 # Extract the following variables:
@@ -273,10 +276,10 @@ __prompt_git_extract_action_info() {
     fi
 }
 
-# Set the $promptGitAction variable
+# Set the $pt_gitAction variable
 __prompt_git_set_action() {
     # External affected vars
-    promptGitAction=
+    pt_gitAction=
 
     local gitAction="" rebaseStep="" rebaseTotal="" rebaseHeadName="" rebaseOnto="" rebaseOntoBranch=""
 
@@ -292,25 +295,25 @@ __prompt_git_set_action() {
             rebaseProgress="${pt_white}(${doneColor}${rebaseStep}${pt_white}/${rebaseTotal})"
             rebaseTarget="${pt_blackBold}[${pt_yellow}${rebaseHeadName}${pt_blackBold} ↷ ${pt_cyan}${rebaseOntoBranch}${pt_blackBold}]"
 
-            promptGitAction="\n${pt_redBold}☈ ${rebaseTarget} ${rebaseProgress} "
+            pt_gitAction="\n${pt_redBold}☈ ${rebaseTarget} ${rebaseProgress} "
             ;;
-        merge)       promptGitAction="${pt_red} "     ;; # nf-oct-git_merge
-        cherry-pick) promptGitAction="${pt_red} "     ;; # nf-fae-cherry
-        revert)      promptGitAction="${pt_red}  "    ;; # nf-fa-rotate_left
-        bisect)      promptGitAction="${pt_yellow}? " ;; # nf-fa-arrows_up_down
-        *)           promptGitAction="" ;;
+        merge)       pt_gitAction="${pt_red} "     ;; # nf-oct-git_merge
+        cherry-pick) pt_gitAction="${pt_red} "     ;; # nf-fae-cherry
+        revert)      pt_gitAction="${pt_red}  "    ;; # nf-fa-rotate_left
+        bisect)      pt_gitAction="${pt_yellow}? " ;; # nf-fa-arrows_up_down
+        *)           pt_gitAction="" ;;
     esac
 }
 
-# Set the $promptGitState variable
+# Set the $pt_gitState variable
 __prompt_git_set_state() {
     # External affected vars
-    promptGitState=
+    pt_gitState=
 
     local promptGitStateA=()
 
     if [[ $untracked -eq 0 && $changed -eq 0 && $deleted -eq 0 && $staged -eq 0 && $conflicts -eq 0 ]]; then
-        promptGitState="${promptUserColor:-} " # nf-cod-sparkle
+        pt_gitState="${promptUserColor:-${pt_color}} " # nf-cod-sparkle
         return
     fi
 
@@ -345,12 +348,12 @@ __prompt_git_set_state() {
     esac
 
     if [[ $PROMPT_GIT_STATE_COUNTERS -eq 1 ]]; then
-        promptGitState=${promptGitStateA[*]} # Join with spaces
+        pt_gitState=${promptGitStateA[*]} # Join with spaces
     else
-        promptGitState=$(IFS=; echo "${promptGitStateA[*]}") # Join without spaces
+        pt_gitState=$(IFS=; echo "${promptGitStateA[*]}") # Join without spaces
     fi
 
-    [[ -n $promptGitState ]] && promptGitState="${promptGitState% } "
+    [[ -n $pt_gitState ]] && pt_gitState="${pt_gitState% } "
 }
 
 ##
