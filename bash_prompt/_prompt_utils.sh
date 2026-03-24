@@ -4,8 +4,8 @@
 # https://github.com/emilis/emilis-config/blob/master/.bash_ps1
 
 prompt_ssh_tunnels() {
-  promptSshTunnels="${SSH_TUNNELS}"
-  [[ $promptCheckTunnels = true ]] && promptSshTunnels="${SSH_TUNNELS:-$(ssh-list-tunnel-ports)}"
+  pt_sshTunnels="${SSH_TUNNELS}"
+  [[ $promptCheckTunnels = true ]] && pt_sshTunnels="${SSH_TUNNELS:-$(ssh-list-tunnel-ports)}"
 }
 
 # Prompt separator
@@ -29,12 +29,12 @@ prompt_separator() {
     local start; start="$(printf "%$((COLUMNS))s\r")"
 
     local tunnel
-    if [[ -n $promptSshTunnels ]]; then
+    if [[ -n $pt_sshTunnels ]]; then
         if [[ -n $SSH_TUNNELS ]]; then
-            tunnel="[🚇 ${promptSshTunnels}]"
+            tunnel="[🚇 ${pt_sshTunnels}]"
             (( promptFillSize -= 1 ))
         else
-            tunnel="[🕳️ ${promptSshTunnels}]"
+            tunnel="[🕳️ ${pt_sshTunnels}]"
         fi
         (( promptFillSize -= ${#tunnel} ))
     fi
@@ -51,7 +51,7 @@ prompt_separator() {
 
     # bashsupport disable=BP2001
     # shellcheck disable=SC2154,SC2034
-    promptSeparator="${start}${style}${fill}${tunnel}${end}${exitIcon} \t\n${reset}"
+    pt_separator="${start}${style}${fill}${tunnel}${end}${exitIcon} \t\n${reset}"
 }
 
 ###################################################################################################
@@ -60,7 +60,7 @@ prompt_separator() {
 # shellcheck disable=SC2034
 prompt_window_title() {
   local defaultTitle="${DEFAULT_WINDOW_TITLE:-\h · \W}"
-  promptTitle="\[\e]0;${FORCED_WINDOW_TITLE:-${defaultTitle}}\a\]"
+  pt_title="\[\e]0;${FORCED_WINDOW_TITLE:-${defaultTitle}}\a\]"
 }
 
 ###################################################################################################
@@ -68,12 +68,12 @@ prompt_window_title() {
 # bashsupport disable=BP2001
 # shellcheck disable=SC2034
 prompt_newline() {
-  promptNewline=
+  pt_newline=
 
   [[ $COLUMNS -ge ${PROMPT_COLUMN_LIMIT:-120} ]] && return
-  [[ -n "$promptGit" ]] && [[ "$promptGit" =~ "☈" ]] && return # Git rebase status already go multiline
+  [[ -n "$pt_git" ]] && [[ "$pt_git" =~ "☈" ]] && return # Git rebase status already go multiline
 
-  promptNewline=$'\n'
+  pt_newline=$'\n'
 }
 
 ###################################################################################################
@@ -93,7 +93,7 @@ prompt_color_index=${prompt_color_index:-0}
 
 prompt_cycle_color() {
     local color_names=(
-        "$pt_userBlGr"      # (blue green - 00BE87)
+        "$c_userBlGr"       # (blue green - 00BE87)
         "x038_DeepSkyBlue2" # (light blue)
         "x032_DeepSkyBlue3" # (blue)
         "x134_MediumOrchid" # (purple)
@@ -115,7 +115,7 @@ prompt_cycle_color() {
 }
 
 prompt_set_color() {
-    promptUserColor=$(pColor "${1:-$pt_userBlGr}")
+    promptUserColor=$(pColor "${1:-$c_userBlGr}")
 
     # shellcheck source=prompt.sh
     . ~/.dotfiles/bash_prompt/prompt.sh
