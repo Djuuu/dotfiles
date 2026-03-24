@@ -308,9 +308,8 @@
       }
     },
     {
-      "keyCode": 49988,
-      "label": "M",
-      "extraLabel": "OS/"
+      "keyCode": 51,
+      "label": "M"
     },
     {
       "keyCode": 52,
