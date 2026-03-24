@@ -1,13 +1,45 @@
 #!/usr/bin/env bash
 
-## References:
-# https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
-# https://github.com/magicmonty/bash-git-prompt
+###############################################################################
+# Git prompt functions
+#
+# References:
+# - https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh
+# - https://github.com/magicmonty/bash-git-prompt
+#
 
+# Configuration
 PROMPT_GIT_REMOTE_COUNTERS=${PROMPT_GIT_REMOTE_COUNTERS:-1}
 PROMPT_GIT_STATE_COUNTERS=${PROMPT_GIT_STATE_COUNTERS:-0}
 PROMPT_GIT_STATE_MODE=${PROMPT_GIT_STATE_MODE:-summary}
 PROMPT_GIT_DISABLE_IN_TMUX=${PROMPT_GIT_DISABLE_IN_TMUX:-0}
+
+# Icons
+_g_ico_github=''     # nf-dev-github             \ue709
+_g_ico_gitlab=''     # nf-seti-gitlab            \ue65c
+_g_ico_bitbucket=''  # nf-dev-bitbucket          \ue703
+_g_ico_forgejo=''    # nf-linux-forgejo          \uf335
+
+_g_ico_branch=''     # nf-dev-git_branch         \ue725
+_g_ico_commit=' '    # nf-fa-code_commit         \uf172
+
+_g_ico_down=''       # nf-fa-arrow_down          \uf063
+_g_ico_up=''         # nf-fa-arrow_up            \uf062
+_g_ico_updown=''     # nf-fa-arrows_up_down      \uf07d
+
+_g_ico_merge=''      # nf-oct-git_merge          \uf419
+_g_ico_revert=' '    # nf-fa-rotate_left         \uf2ea
+_g_ico_cherry=''     # nf-fae-cherry             \ue29b
+_g_ico_rebase='☈'     #                           \u2608
+_g_ico_onto='↷'       #                           \u21b7
+_g_ico_bisect='?'    # nf-fa-arrows_up_down      \uf07d ?
+
+_g_ico_plus=''       # nf-oct-plus               \uf44d
+_g_ico_minus='󰍴'      # nf-md-minus               \udb80\udf74
+_g_ico_chng=' '      # nf-cod-request_changes    \ueb43
+_g_ico_lr=' '        # nf-fa-arrows_left_right   \uf07e
+_g_ico_clean=' '     # nf-cod-sparkle            \uec10
+
 
 # Set the $pt_git variable
 # Call in PROMPT_COMMAND and use $pt_git in PS1
@@ -153,13 +185,13 @@ __prompt_git_set_remote_status_icon() {
     pt_gitRemoteSt=""
 
     if [[ $ahead -gt 0 && $behind -eq 0 ]]; then
-        pt_gitRemoteSt="${pt_gitRemoteSt}${pt_greenBold}" # nf-fa-arrow_up
+        pt_gitRemoteSt="${pt_gitRemoteSt}${pt_greenBold}${_g_ico_up}"
 
     elif [[ $ahead -eq 0 && $behind -gt 0 ]]; then
-        pt_gitRemoteSt="${pt_gitRemoteSt}${pt_yellowBold}" # nf-fa-arrow_down
+        pt_gitRemoteSt="${pt_gitRemoteSt}${pt_yellowBold}${_g_ico_down}"
 
     elif [[ $ahead -gt 0 && $behind -gt 0 ]]; then
-        pt_gitRemoteSt="${pt_gitRemoteSt}${pt_yellowBold}" # nf-fa-arrows_up_down
+        pt_gitRemoteSt="${pt_gitRemoteSt}${pt_yellowBold}${_g_ico_updown}"
     fi
 
     [[ -n $pt_gitRemoteSt ]] &&
@@ -178,7 +210,7 @@ __prompt_git_set_branch_info() {
     pt_gitBranchInfo=
 
     if [[ $detached -eq 1 ]]; then
-        pt_gitBranchInfo="${pt_purple}(  ${branch}) " # nf-fa-code_commit
+        pt_gitBranchInfo="${pt_purple}(${_g_ico_commit} ${branch}) "
         return
     fi
 
@@ -188,14 +220,14 @@ __prompt_git_set_branch_info() {
     local remoteUrl remoteIcon="" branchIcon=""
     if [[ -n $branchRemote ]]; then
         remoteUrl=$(git remote get-url "$branchRemote")
-        if   [[ $remoteUrl == *"github.com"*    ]]; then remoteIcon="" # nf-dev-github
-        elif [[ $remoteUrl == *"gitlab.com"*    ]]; then remoteIcon="" # nf-seti-gitlab
-        elif [[ $remoteUrl == *"bitbucket.org"* ]]; then remoteIcon="" # nf-dev-bitbucket
-        else                                             remoteIcon="" # nf-linux-forgejo
+        if   [[ $remoteUrl == *"github.com"*    ]]; then remoteIcon="${_g_ico_github}"
+        elif [[ $remoteUrl == *"gitlab.com"*    ]]; then remoteIcon="${_g_ico_gitlab}"
+        elif [[ $remoteUrl == *"bitbucket.org"* ]]; then remoteIcon="${_g_ico_bitbucket}"
+        else                                             remoteIcon="${_g_ico_forgejo}"
         fi
         branchIcon=${remoteIcon}
     else
-        branchIcon="" # nf-dev-git_branch
+        branchIcon="${_g_ico_branch}"
     fi
 
     pt_gitBranchInfo="${pt_purple}(${branchIcon} ${branch}"
@@ -293,14 +325,14 @@ __prompt_git_set_action() {
             [[ $conflicts -gt 0 ]] && doneColor=${pt_red}
 
             rebaseProgress="${pt_white}(${doneColor}${rebaseStep}${pt_white}/${rebaseTotal})"
-            rebaseTarget="${pt_blackBold}[${pt_yellow}${rebaseHeadName}${pt_blackBold} ↷ ${pt_cyan}${rebaseOntoBranch}${pt_blackBold}]"
+            rebaseTarget="${pt_blackBold}[${pt_yellow}${rebaseHeadName}${pt_blackBold} ${_g_ico_onto} ${pt_cyan}${rebaseOntoBranch}${pt_blackBold}]"
 
-            pt_gitAction="\n${pt_redBold}☈ ${rebaseTarget} ${rebaseProgress} "
+            pt_gitAction="\n${pt_redBold}${_g_ico_rebase} ${rebaseTarget} ${rebaseProgress} "
             ;;
-        merge)       pt_gitAction="${pt_red} "     ;; # nf-oct-git_merge
-        cherry-pick) pt_gitAction="${pt_red} "     ;; # nf-fae-cherry
-        revert)      pt_gitAction="${pt_red}  "    ;; # nf-fa-rotate_left
-        bisect)      pt_gitAction="${pt_yellow}? " ;; # nf-fa-arrows_up_down
+        merge)       pt_gitAction="${pt_red}${_g_ico_merge} " ;;
+        cherry-pick) pt_gitAction="${pt_red}${_g_ico_cherry} " ;;
+        revert)      pt_gitAction="${pt_red}${_g_ico_revert} " ;;
+        bisect)      pt_gitAction="${pt_yellow}${_g_ico_bisect} " ;;
         *)           pt_gitAction="" ;;
     esac
 }
@@ -313,7 +345,7 @@ __prompt_git_set_state() {
     local promptGitStateA=()
 
     if [[ $untracked -eq 0 && $changed -eq 0 && $deleted -eq 0 && $staged -eq 0 && $conflicts -eq 0 ]]; then
-        pt_gitState="${promptUserColor:-${pt_color}} " # nf-cod-sparkle
+        pt_gitState="${promptUserColor:-${pt_color}}${_g_ico_clean}"
         return
     fi
 
@@ -329,21 +361,21 @@ __prompt_git_set_state() {
 
     case "${PROMPT_GIT_STATE_MODE}" in
         detail*)
-            [[ $changed   -gt 0 ]] && promptGitStateA+=("${pt_yellow} ${ch}") # nf-cod-request_changes
-            [[ $deleted   -gt 0 ]] && promptGitStateA+=("${pt_red}󰍴${dl}") # nf-md-minus
-            [[ $untracked -gt 0 ]] && promptGitStateA+=("${pt_green}${ut}") # nf-oct-plus
-            [[ $staged    -gt 0 ]] && promptGitStateA+=("${pt_green} ${st}") # nf-cod-request_changes
-            [[ $conflicts -gt 0 ]] && promptGitStateA+=("${pt_red} ${cf}") # nf-fa-arrows_left_right
+            [[ $changed   -gt 0 ]] && promptGitStateA+=("${pt_yellow}${_g_ico_chng}${ch}")
+            [[ $deleted   -gt 0 ]] && promptGitStateA+=("${pt_red}${_g_ico_minus}${dl}")
+            [[ $untracked -gt 0 ]] && promptGitStateA+=("${pt_green}${_g_ico_plus}${ut}")
+            [[ $staged    -gt 0 ]] && promptGitStateA+=("${pt_green}${_g_ico_chng}${st}")
+            [[ $conflicts -gt 0 ]] && promptGitStateA+=("${pt_red}${_g_ico_lr}${cf}")
             ;;
         summary)
             if [[ $changed -gt 0 || $deleted -gt 0 ]]; then # Misc. changes
-                promptGitStateA+=("${pt_yellow} ${md}") # nf-cod-request_changes
+                promptGitStateA+=("${pt_yellow}${_g_ico_chng}${md}")
             elif [[ $untracked -gt 0 ]] && [[ $changed -eq 0 || $deleted -eq 0 ]]; then # Only untracked
                 [[ -z $ut ]] && ut=" "
-                promptGitStateA+=("${pt_green}${ut}") # nf-oct-plus
+                promptGitStateA+=("${pt_green}${_g_ico_plus}${ut}")
             fi
-            [[ $staged    -gt 0 ]] && promptGitStateA+=("${pt_green} ${st}") # nf-cod-request_changes
-            [[ $conflicts -gt 0 ]] && promptGitStateA+=("${pt_red} ${cf}") # nf-fa-arrows_left_right
+            [[ $staged    -gt 0 ]] && promptGitStateA+=("${pt_green}${_g_ico_chng}${st}")
+            [[ $conflicts -gt 0 ]] && promptGitStateA+=("${pt_red}${_g_ico_lr}${cf}")
             ;;
     esac
 
@@ -400,27 +432,3 @@ __prompt_git_debug() {
     echo "conflicts: $conflicts"
     echo
 }
-
-## Nerd font icon reference:
-
-# nf-dev-github             \ue709        
-# nf-seti-gitlab            \ue65c        
-# nf-dev-bitbucket          \ue703        
-# nf-linux-forgejo          \uf335        
-
-# nf-dev-git_branch         \ue725        
-# nf-fa-code_commit         \uf172        
-
-# nf-fa-arrow_down          \uf063        
-# nf-fa-arrow_up            \uf062        
-# nf-fa-arrows_up_down      \uf07d        
-
-# nf-oct-git_merge          \uf419        
-# nf-fa-rotate_left         \uf2ea        
-# nf-fae-cherry             \ue29b        
-
-# nf-oct-plus               \uf44d        
-# nf-md-minus               \udb80\udf74  󰍴
-# nf-cod-request_changes    \ueb43        
-# nf-fa-arrows_left_right   \uf07e        
-# nf-cod-sparkle            \uec10        
