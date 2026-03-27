@@ -151,7 +151,8 @@
 	force-push = "!~/.local/bin/git-force-push" # Git-Fork + WSLGit compat.
 	fp         = "force-push"
 
-	fpu        = "!f() { git force-push && git mr update; }; f"
+	fpu        = "!f() { git force-push && git mr update ${@}; }; f"
+	fpuf       = "!f() { git force-push && git mr update -y ${@}; }; f"
 	pushall    = "!f() { for remote in `git remote`; do git push       $remote "$@"; done }; f"
 	fpushall   = "!f() { for remote in `git remote`; do git force-push $remote "$@"; done }; f"
 
@@ -175,10 +176,13 @@
 	# merged / non-merged branches
 	mb  = "!f() { git branch -a --merged    ${1:-master} | grep -v '>\\|*' | perl -pe s/^..//; }; f"
 	nmb = "!f() { git branch -a --no-merged ${1:-master} | grep -v '>\\|*' | perl -pe s/^..//; }; f"
+	nmt = "!f() { git tag       --no-merged ${1:-master}; }; f"
 
 	# stale merged/non-merged branches
+	ld = "!f() { echo -e `git show --pretty=format:'%Cgreen%ci %Cblue%cr%Creset' $1 | head -n 1`\\\\t$1; }; f"
 	stmb  = "!f() { for k in `git mb $1`;  do git ld $k; done | sort -r; }; f"
 	stnmb = "!f() { for k in `git nmb $1`; do git ld $k; done | sort -r; }; f"
+	stnmt = "!f() { for k in `git nmt $1`; do git ld $k; done | sort -r; }; f"
 
 	# remote non-origin branches
 	rnob = "!git branch -a | grep remotes/ | grep -v remotes/origin | sed -e 's/remotes\\///'"
