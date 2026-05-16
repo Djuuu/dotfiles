@@ -32,6 +32,8 @@ alias please='sudo $(fc -nl -1)'
 alias bat="batcat"
 alias rat="batcat --paging=never"
 
+alias nowrap='cut -c 1-$COLUMNS'
+
 alias sshagentstart='eval `ssh-agent -s` && ssh-add'
 alias sshs="sshs -e"
 
