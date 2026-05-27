@@ -1,34 +1,28 @@
-# Keybindings
+# Keybindings.
+# Each binding can be a single key or a list of keys; see
+# https://github.com/jesseduffield/lazygit/blob/master/docs/keybindings/Custom_Keybindings.md
+# for the syntax.
 keybinding:
 
   universal:
-#    quit: q
-#    quit-alt1: <c-c>
-#    suspendApp: <c-z>
+#    quit: [q, <ctrl+c>]
+#    suspendApp: <ctrl+z>
 #    return: <esc>
 #    quitWithoutChangingDirectory: Q
 #    togglePanel: <tab>
-#    prevItem: <up>
-#    nextItem: <down>
-#    prevItem-alt: k
-#    nextItem-alt: j
-#    prevPage: ',' # go to previous page in list
+#    prevItem: [<up>, k]
+#    nextItem: [<down>, j]
+#    prevPage: ','
     nextPage: ';' # '.' go to next page in list
 #    scrollLeft: H
 #    scrollRight: L
-#    gotoTop: <
-#    gotoBottom: '>'
-    gotoTop-alt: <disabled> # default: <home>
-    gotoBottom-alt: <disabled> # default: <end>
+    gotoTop:    '<' # default: [<, <home>]
+    gotoBottom: '>' # default: ['>', <end>]
 #    toggleRangeSelect: v
-#    rangeSelectDown: <s-down>
-#    rangeSelectUp: <s-up>
-#    prevBlock: <left>
-#    nextBlock: <right>
-#    prevBlock-alt: h
-#    nextBlock-alt: l
-#    nextBlock-alt2: <tab>
-#    prevBlock-alt2: <backtab>
+#    rangeSelectDown: <shift+down>
+#    rangeSelectUp: <shift+up>
+#    prevBlock: [<left>, h, <backtab>]
+#    nextBlock: [<right>, l, <tab>]
 #    jumpToBlock:
 #      - "1"
 #      - "2"
@@ -39,25 +33,33 @@ keybinding:
 #    nextMatch: "n"
 #    prevMatch: "N"
 #    startSearch: /
-#    optionMenu: <disabled>
-#    optionMenu-alt1: '?'
+#
+#    # <alt+left> on Mac
+#    moveWordLeft: <ctrl+left>
+#
+#    # <alt+right> on Mac
+#    moveWordRight: <ctrl+right>
+#
+#    # <alt+backspace> on Mac
+#    backspaceWord: <ctrl+backspace>
+#
+#    # <alt+delete> on Mac
+#    forwardDeleteWord: <ctrl+delete>
+#    optionMenu: '?'
 #    select: <space>
 #    goInto: <enter>
 #    confirm: <enter>
 #    confirmMenu: <enter>
 #    confirmSuggestion: <enter>
-#    confirmInEditor: <a-enter>
-#    confirmInEditor-alt: <c-s>
+#
+#    # <meta+enter> on Mac
+#    confirmInEditor: [<ctrl+enter>, <ctrl+s>]
 #    remove: d
 #    new: "n"
 #    edit: e
 #    openFile: o
-#    scrollUpMain: <pgup>
-#    scrollDownMain: <pgdown>
-#    scrollUpMain-alt1: K
-#    scrollDownMain-alt1: J
-#    scrollUpMain-alt2: <c-u>
-#    scrollDownMain-alt2: <c-d>
+#    scrollUpMain: [<pgup>, K, <ctrl+u>]
+#    scrollDownMain: [<pgdown>, J, <ctrl+d>]
 #    executeShellCommand: ':'
 #    createRebaseOptionsMenu: m
 #
@@ -66,28 +68,27 @@ keybinding:
 #
 #    # 'Files' appended for legacy reasons
 #    pullFiles: p
-    refresh: '<f5>' # default: 'R'
-#    createPatchOptionsMenu: <c-p>
-    nextTab: '<end>' # default: ']'
-    prevTab: '<home>' # default: '['
-    nextScreenMode: ']' # default: '+'  alternative: '='
-    prevScreenMode: '[' # default: '_'  alternative: '-'
+    refresh: <f5> # default: 'R'
+#    createPatchOptionsMenu: <ctrl+p>
+    nextTab: <end> # default: ']'
+    prevTab: <home> # default: '['
+    nextScreenMode: ']' # default: '+'
+    prevScreenMode: '[' # default: '_'
 #    cyclePagers: '|'
 #    undo: z
 #    redo: Z
-#    filteringMenu: <c-s>
-#    diffingMenu: W
-#    diffingMenu-alt: <c-e>
-#    copyToClipboard: <c-o>
-#    openRecentRepos: <c-r>
+#    filteringMenu: <ctrl+s>
+#    diffingMenu: [W, <ctrl+e>]
+#    copyToClipboard: <ctrl+o>
+#    openRecentRepos: <ctrl+r>
 #    submitEditorText: <enter>
 #    extrasMenu: '@'
-#    toggleWhitespaceInDiffView: <c-w>
+#    toggleWhitespaceInDiffView: <ctrl+w>
 #    increaseContextInDiffView: '}'
 #    decreaseContextInDiffView: '{'
 #    increaseRenameSimilarityThreshold: )
 #    decreaseRenameSimilarityThreshold: (
-#    openDiffTool: <c-t>
+#    openDiffTool: <ctrl+t>
 
 #  status:
 #    checkForUpdate: u
@@ -100,7 +101,7 @@ keybinding:
 #    commitChangesWithoutHook: w
 #    amendLastCommit: A
 #    commitChangesWithEditor: C
-#    findBaseCommitForFixup: <c-f>
+#    findBaseCommitForFixup: <ctrl+f>
 #    confirmDiscard: x
 #    ignoreFile: i
 #    refreshFiles: r
@@ -109,9 +110,9 @@ keybinding:
 #    toggleStagedAll: a
 #    viewResetOptions: D
 #    fetch: f
-    toggleTreeView: 't' # default: '`'
+    toggleTreeView: t # default: '`'
 #    openMergeOptions: M
-#    openStatusFilter: <c-b>
+#    openStatusFilter: <ctrl+b>
 #    copyFileInfoToClipboard: "y"
 #    collapseAll: '-'
 #    expandAll: =
@@ -120,7 +121,7 @@ keybinding:
 #    createPullRequest: o
 #    viewPullRequestOptions: O
 #    openPullRequestInBrowser: G
-#    copyPullRequestURL: <c-y>
+#    copyPullRequestURL: <ctrl+y>
 #    checkoutBranchByName: c
 #    forceCheckoutBranch: F
 #    checkoutPreviousBranch: '-'
@@ -149,8 +150,8 @@ keybinding:
 #    setFixupMessage: c
 #    createFixupCommit: F
 #    squashAboveCommits: S
-#    moveDownCommit: <c-j>
-#    moveUpCommit: <c-k>
+#    moveDownCommit: [<ctrl+j>, <alt-down>]
+#    moveUpCommit: [<ctrl+k>, <alt-up>]
 #    amendToCommit: A
 #    resetCommitAuthor: a
 #    pickCommit: p
@@ -160,9 +161,9 @@ keybinding:
 #    markCommitAsBaseForRebase: B
 #    tagCommit: T
 #    checkoutCommit: <space>
-#    resetCherryPick: <c-R>
+#    resetCherryPick: <ctrl+r>
 #    copyCommitAttributeToClipboard: "y"
-#    openLogMenu: <c-l>
+#    openLogMenu: <ctrl+l>
 #    openInBrowser: o
 #    openPullRequestInBrowser: G
 #    viewBisectOptions: b
@@ -182,6 +183,8 @@ keybinding:
 #    checkoutCommitFile: c
 
 #  main:
+#    prevHunk: [<left>, h]
+#    nextHunk: [<right>, l]
 #    toggleSelectHunk: a
 #    pickBothHunks: b
 #    editSelectHunk: E
@@ -192,4 +195,4 @@ keybinding:
 #    bulkMenu: b
 
 #  commitMessage:
-#    commitMenu: <c-o>
+#    commitMenu: <ctrl+o>
