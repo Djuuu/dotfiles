@@ -59,6 +59,12 @@
 # https://github.com/jesseduffield/lazygit/blob/master/docs/keybindings/Custom_Keybindings.md
 
 #customCommands:
+#  - key: '<U>'
+#    context: 'global'
+#    command: "git update"
+#    description: 'Fetch remote and fast-forward main branch'
+#    output: logWithPty # none | terminal | log | logWithPty | popup
+
 #  - key: '<c-d>'
 #    context: 'files'
 #    command: 'clear; git diff {{.SelectedFile.Name | quote}}'
