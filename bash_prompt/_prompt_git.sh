@@ -51,7 +51,8 @@ prompt_git() {
     pt_gitAction=""
     pt_gitState=""
 
-    [[ -n $TMUX ]] && [[ $PROMPT_GIT_DISABLE_IN_TMUX -eq 1 ]] && return
+    [[ -n $NO_PROMPT_GIT ]] && return
+    [[ -n $TMUX && $PROMPT_GIT_DISABLE_IN_TMUX -eq 1 ]] && return
 
     local gitDir
     gitDir="$(git rev-parse --git-dir 2>/dev/null)" || return # Not a git repository
