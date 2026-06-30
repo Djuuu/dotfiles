@@ -19,6 +19,7 @@
 #  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md for more information.
 #  pagers:
 #    - pager: delta --paging=never --features='common'
+#    - pager: delta --paging=never --features='common' --side-by-side
 #    - pager: delta --paging=never --features='common simplecolors'
 #    - useExternalDiffGitConfig: true
 
