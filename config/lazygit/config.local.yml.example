@@ -19,6 +19,7 @@
 #  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md for more information.
 #  pagers:
 #    - pager: delta --paging=never --features='common'
+#    - pager: delta --paging=never --features='common' --side-by-side
 #    - pager: delta --paging=never --features='common simplecolors'
 #    - useExternalDiffGitConfig: true
 
@@ -88,6 +89,17 @@
 #          options:
 #              - { value: 'pushall', name: 'push', description: 'Push {{ .SelectedLocalBranch.Name }} to all remotes' }
 #              - { value: 'fpushall', name: 'force', description: 'Force-push {{ .SelectedLocalBranch.Name }} to all remotes' }
+#
+#  - key: '<alt+c>'
+#    context: 'localBranches'
+#    command: "git context-graph --config-add {{ .SelectedLocalBranch.Name }}"
+#    description: "Add selected branch to current branch context"
+#    output: log
+#  - key: '<ctrl+alt+c>'
+#    context: 'localBranches'
+#    command: "git context-graph --config-clear {{ .SelectedLocalBranch.Name }}"
+#    description: "Remove selected branch from current branch context"
+#    output: log
 #
 #  - key: '<c-g>'
 #    description: "git-mr"

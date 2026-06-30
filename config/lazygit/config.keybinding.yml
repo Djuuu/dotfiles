@@ -70,8 +70,8 @@ keybinding:
 #    pullFiles: p
     refresh: <f5> # default: 'R'
 #    createPatchOptionsMenu: <ctrl+p>
-    nextTab: <end> # default: ']'
-    prevTab: <home> # default: '['
+    nextTab: ['<end>', '<shift+right>' ] # default: ']'
+    prevTab: ['<home>', '<shift+left>' ] # default: '['
     nextScreenMode: ']' # default: '+'
     prevScreenMode: '[' # default: '_'
 #    cyclePagers: '|'

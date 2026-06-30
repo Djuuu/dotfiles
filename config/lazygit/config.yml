@@ -1,4 +1,5 @@
 
+# Config relating to the Lazygit UI
 gui:
   # The number of lines you scroll by when scrolling the main window
   scrollHeight: 16 # default: 2
@@ -23,7 +24,15 @@ gui:
   # Uses Go's time format syntax: https://pkg.go.dev/time#Time.Format
   shortTimeFormat: 15:04 # default: '3:04PM'
 
-  # If true, add a "/" root item in the file tree representing the root of the repository. It is only added when necessary, i.e. when there is more than one item at top level.
+  # Config relating to colors and styles.
+  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#color-attributes
+  theme:
+    activeBorderColor:   ['#00BE87', bold] # Border color of focused window
+    inactiveBorderColor: ['#BBBBBB']       # Border color of non-focused windows
+
+  # If true, add a "/" root item in the file tree representing the root of the
+  # repository. It is only added when necessary, i.e. when there is more than one
+  # item at top level.
   showRootItemInFileTree: false
 
   # If true, show the number of lines changed per file in the Files view
@@ -42,11 +51,14 @@ gui:
   # One of 'dashboard' (default) | 'allBranchesLog'
   statusPanelView: allBranchesLog
 
-  # If true, when using the panel jump keys (default 1 through 5) and target panel is already active, go to next tab instead
+  # If true, when using the panel jump keys (default 1 through 5) and target panel
+  # is already active, go to next tab instead
   switchTabsWithPanelJumpKeys: true # default: false
 
+# Config relating to git
 git:
-  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md for more information.
+  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md
+  # for more information.
   pagers:
     # If true, Lazygit will use git's `diff.external` config for paging.
     # The advantage over `externalDiffCommand` is that this can be
@@ -66,7 +78,8 @@ git:
   #   default: git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --
   branchLogCmd: git context-graph --pretty=graph-dyn-lg --first-parent {{branchName}} --
 
-  # Commands used to display git log of all branches in the main window, they will be cycled in order of appearance (array of strings)
+  # Commands used to display git log of all branches in the main window, they will
+  # be cycled in order of appearance (array of strings)
   allBranchesLogCmds: # []
     ## default
     #- git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium
@@ -74,6 +87,6 @@ git:
     - git context-graph --pretty=graph-dyn-lg --all --first-parent --
     - git context-graph --pretty=graph-dyn-lg --all --
 
-  # When copying commit hashes to the clipboard, truncate them to this
-  # length. Set to 40 to disable truncation.
+  # When copying commit hashes to the clipboard, truncate them to this length. Set
+  # to 40 to disable truncation.
   truncateCopiedCommitHashesTo: 40 # default: 12
