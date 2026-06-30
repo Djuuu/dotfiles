@@ -15,6 +15,12 @@
 
 #[include]
 #	path = ~/.config/git/config.delta
+#[delta "common"]
+#	#plus-style = syntax "#003C00"
+#	plus-style = syntax "#004500" # brighter color on shitty screens
+#[delta "interactive"]
+#	#plus-style = syntax "#004200"
+#	plus-style = syntax "#005500" # brighter color on shitty screens
 
 #[url "git@github.com:"]
 #	pushInsteadOf = "https://github.com/"

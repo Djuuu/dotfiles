@@ -12,34 +12,44 @@
 	features = common cli
 
 [delta "common"]
-	commit-decoration-style = blue ol
-	file-style = omit
-	hunk-header-decoration-style = dimgray box ul
-	hunk-header-file-style = silver
+	true-color                    = always
+	file-style                    = omit
+	commit-decoration-style       = blue ol
+	hunk-header-decoration-style  = dimgray box ul
+	hunk-header-file-style        = silver
 	hunk-header-line-number-style = skyblue
-	hunk-header-style = file line-number syntax
+	hunk-header-style             = file line-number syntax
+	plus-style                    = syntax "#003C00"
+	#syntax-theme = 1337
+	syntax-theme = Dracula
+	#syntax-theme = Coldark-Dark
+	#syntax-theme = DarkNeon
+	#syntax-theme = Monokai Extended
+	#syntax-theme = Monokai Extended Bright
+	#syntax-theme = Monokai Extended Origin
+	#syntax-theme = Nord
+	#syntax-theme = OneHalfDark
+	#syntax-theme = OneHalfLight
+	#syntax-theme = Sublime Snazzy
+	#syntax-theme = TwoDark
+	#syntax-theme = Visual Studio Dark+
+	#syntax-theme = gruvbox-dark
+	#syntax-theme = zenburn
 
 [delta "cli"]
-	true-color = always
-	pager = less -R --mouse --wheel-lines=3
-	side-by-side = true
-
-	hyperlinks = true
+	pager                       = less -R --mouse --wheel-lines=3
+	side-by-side                = true
+	hyperlinks                  = true
 	hyperlinks-file-link-format = "phpstorm://open?file={path}&line={line}"
 
 [delta "interactive"]
-	true-color = always
-	keep-plus-minus-markers = false
-
-[delta "lazygit"]
-	paging = never
-	dark = true
-	# true-color = never
-	# syntax-theme = Nord
-	syntax-theme = Dracula
-	# zero-style = syntax
-	zero-style = dim syntax
 	keep-plus-minus-markers = true
+	zero-style              = dim syntax
+	plus-style              = syntax "#004200"
+
+[delta "simplecolors"]
+	hunk-header-style             = file line-number dim
+	zero-style                    = dim syntax
 	plus-style                    =      "#33CC00"
 	plus-emph-style               = bold "#50FF00" "#005500"
 	plus-empty-line-marker-style  = bold "#50FF00" "#005500"
@@ -49,4 +59,3 @@
 	minus-empty-line-marker-style = bold "#FF6666" "#440000"
 	minus-non-emph-style          =      "#BB0000"
 	whitespace-error-style        = bold "#660066" "#DD33DD"
-	hunk-header-style = file line-number purple
