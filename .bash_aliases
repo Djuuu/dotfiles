@@ -67,3 +67,6 @@ command -v complete >/dev/null 2>&1 &&
 # Docker
 alias dc='docker compose'
 alias lzd='lazydocker'
+alias zd='lazydocker'
+alias ctop='docker run --rm -it --name=ctop -v /var/run/docker.sock:/var/run/docker.sock:ro quay.io/vektorlab/ctop:latest'
+alias dockly='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock:ro lirantal/dockly'
