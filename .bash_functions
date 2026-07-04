@@ -65,29 +65,32 @@ dotfiles-update() {
 dotfiles-diff-local() {
     BASEDIR=~/.dotfiles
 
-    while IFS= read -r -d '' srcFilePath
-    do
-        dstFilePath="${srcFilePath%.example}"
-        [[ -f "${dstFilePath}" ]] || dstFilePath=/dev/null
+    {
+        while IFS= read -r -d '' srcFilePath
+        do
+            dstFilePath="${srcFilePath%.example}"
+            [[ -f "${dstFilePath}" ]] || dstFilePath=/dev/null
 
-        git diff --no-index "${srcFilePath}" "${dstFilePath}"
+            git diff --no-index "${srcFilePath}" "${dstFilePath}" | delta --paging=never --width=$COLUMNS
+            has_diff=${PIPESTATUS[0]}
 
-        has_diff=$?
-        echo
-        [[ $has_diff -eq 0 ]] && {
-            local silver="\e[38;5;7m"
-            local grey="\e[38;5;8m"
-            local reset="\e[0m"
-            local dstSize=${#dstFilePath}
+            echo
+            [[ $has_diff -eq 0 ]] && {
+                local silver="\e[38;5;7m"
+                local grey="\e[38;5;8m"
+                local reset="\e[0m"
+                local dstSize=${#dstFilePath}
 
-            echo -en "${grey}"; for ((i=1; i<=((dstSize + 2)); i++)); do echo -n '─'; done; echo "┐"
-            echo -e "${silver}${dstFilePath}: ${grey}│"
-            for ((i=1; i<=((dstSize + 2)); i++)); do echo -n '─'; done
-            echo -n "┴"
-            for ((i=1; i<=((COLUMNS - dstSize - 3)); i++)); do echo -n '─'; done; echo
-            echo -e "\n      ${silver}\e[3munchanged${reset}\n"
-        }
-    done < <(find "$BASEDIR" -iname "*.local.example" -print0)
+                echo -en "${grey}"; for ((i=1; i<=((dstSize + 2)); i++)); do echo -n '─'; done; echo "┐"
+                echo -e "${silver}${dstFilePath}: ${grey}│"
+                echo -en "${grey}"
+                for ((i=1; i<=((dstSize + 2)); i++)); do echo -n '─'; done
+                echo -en "┴"
+                for ((i=1; i<=((COLUMNS - dstSize - 3)); i++)); do echo -n '─'; done; echo
+                echo -e "\n      ${silver}\e[3munchanged${reset}\n"
+            }
+        done < <(find "$BASEDIR" -iname "*.local.example" -print0)
+    } | less -R -X -F --mouse
 }
 
 ################################################################################
