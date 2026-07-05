@@ -18,10 +18,10 @@
 #git:
 #  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md for more information.
 #  pagers:
-#    - pager: delta --paging=never --features='common'
-#    - pager: delta --paging=never --features='common' --side-by-side
-#    - pager: delta --paging=never --features='common simplecolors'
-#    - useExternalDiffGitConfig: true
+#    - { pager: delta --paging=never --features='common',                name: 'delta' }
+#    - { pager: delta --paging=never --features='common' --side-by-side, name: 'delta (s/s)' }
+#    - { pager: delta --paging=never --features='common simplecolors',   name: 'delta (simple)' }
+#    - { useExternalDiffGitConfig: true, name: 'git ext.' }
 
 ## Custom pull request URLs
 #services:
@@ -29,8 +29,14 @@
 #  #'gitlab.com':  'gitlab:gitlab.com'
 #  #'github.com':  'github:github.com'
 
+## Background refreshes
+#refresher:
+#  # Interval in seconds at which lazygit polls for external ref changes (commits,
+#  # branch updates, checkouts made outside lazygit).
+#  # Detection can be disabled via option 'git.autoDetectExternalChanges'.
+#  externalChangeCheckInterval: 2
 
-# Config relating to things outside of Lazygit like how files are opened, copying to clipboard, etc
+## Config relating to things outside of Lazygit like how files are opened, copying to clipboard, etc
 #os:
 #  # CopyToClipboardCmd is the command for copying to clipboard.
 #  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#custom-command-for-copying-to-and-pasting-from-clipboard

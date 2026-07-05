@@ -13,6 +13,27 @@ gui:
   # If true, increase the height of the focused side window; creating an accordion effect.
   expandFocusedSidePanel: true # default: false
 
+  # If true, don't give a side panel more height than it needs to show its
+  # content; when all panels fit, the leftover height is shared among them so that
+  # they still fill the screen.
+  shrinkSidePanelsToContent: true
+
+  # The side panels, in the order they appear from top to bottom.
+  # Each entry is a list of one or more names that share a single panel as tabs
+  # (cycle through them with the next-tab/previous-tab keys).
+  # Omit a name to hide it; give a name its own one-element list to promote a tab
+  # to a top-level panel.
+  # Valid names are: 'status', 'files', 'worktrees', 'submodules', 'branches',
+  # 'remotes', 'tags', 'commits', 'reflog', 'stash'. 'files', 'branches', and
+  # 'commits' must always be included; they can't be hidden.
+  sidePanels:
+    - [status]
+    - [files, submodules, worktrees]
+    #- [branches, remotes, tags]
+    - [branches, remotes, tags, stash]
+    - [commits, reflog]
+    #- [stash]
+
   # One of 'auto' (default) | 'en' | 'zh-CN' | 'zh-TW' | 'pl' | 'nl' | 'ja' | 'ko' | 'ru'
   language: en
 
@@ -86,6 +107,7 @@ git:
     ## custom
     - git context-graph --pretty=graph-dyn-lg --all --first-parent --
     - git context-graph --pretty=graph-dyn-lg --all --
+    - git context-graph --pretty=graph-dyn-lg --first-parent --reflog --
 
   # When copying commit hashes to the clipboard, truncate them to this length. Set
   # to 40 to disable truncation.
