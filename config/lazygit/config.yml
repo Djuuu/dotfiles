@@ -112,3 +112,156 @@ git:
   # When copying commit hashes to the clipboard, truncate them to this length. Set
   # to 40 to disable truncation.
   truncateCopiedCommitHashesTo: 40 # default: 12
+
+########################################################################################################################
+# https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Command_Keybindings.md
+# https://github.com/jesseduffield/lazygit/blob/master/docs/keybindings/Custom_Keybindings.md
+
+customCommands:
+
+  - key: '<U>'
+    context: 'global'
+    command: "git update"
+    description: 'Fetch remote and fast-forward main branch'
+    output: logWithPty # none | terminal | log | logWithPty | popup
+
+  - key: '<ctrl+d>'
+    context: 'files'
+    command: 'clear; git diff {{.SelectedFile.Name | quote}}'
+    description: 'Open diff'
+    output: terminal # none | terminal | log | logWithPty | popup
+  - key: '<ctrl+d>'
+    context: 'commitFiles'
+    command: 'clear; git diff {{.SelectedCommit.Hash | quote}}~ -- {{.SelectedCommitFile.Name | quote}}'
+    description: 'Open diff'
+    output: terminal # none | terminal | log | logWithPty | popup
+  - key: '<ctrl+d>'
+    context: 'commits,subCommits,reflogCommits'
+    command: 'clear; git diff {{.SelectedCommitRange.From}}~ {{.SelectedCommitRange.To}}'
+    description: 'Open diff'
+    output: terminal # none | terminal | log | logWithPty | popup
+
+  - key: '<alt+c>'
+    context: 'localBranches'
+    command: "git context-graph {{ .SelectedLocalBranch.Name }} --config-toggle {{ .Form.Branch }}"
+    description: "Toggle branch in current context"
+    output: log # none | terminal | log | logWithPty | popup
+    prompts:
+      - type: 'menuFromCommand' # input | confirm | menu | menuFromCommand
+        title: "Toggle branch in context of {{ .SelectedLocalBranch.Name }}"
+        key: 'Branch'
+        command: 'git context-graph {{ .SelectedLocalBranch.Name }} --list-status'
+        filter: '(?P<status>.*)\t(?P<branch>.*)'
+        valueFormat: '{{ .branch }}'
+        labelFormat: >-
+          {{ if eq .status " * " }}{{ .status | green | bold }} {{ .branch | underline }}{{ end }}
+          {{ if eq .status "[*]" }}{{ .status | green | bold }} {{ .branch | bold      }}{{ end }}
+          {{ if eq .status "[ ]" }}{{ .status | white        }} {{ .branch             }}{{ end }}
+
+  - key: '<ctrl+alt+c>'
+    context: 'localBranches'
+    command: "git context-graph {{ .SelectedLocalBranch.Name }} --config-toggle {{ .Form.Branch }} --sync"
+    description: "Toggle branch in current context preset (sync)"
+    output: log # none | terminal | log | logWithPty | popup
+    prompts:
+      - type: 'menuFromCommand' # input | confirm | menu | menuFromCommand
+        title: "Toggle branch in current context preset (sync)\n\n"
+        key: 'Branch'
+        command: 'git context-graph {{ .SelectedLocalBranch.Name }} --list-status'
+        filter: '(?P<status>.*)\t(?P<branch>.*)'
+        valueFormat: '{{ .branch }}'
+        labelFormat: >-
+          {{ if eq .status " * " }}{{ .status | green | bold }} {{ .branch | underline }}{{ end }}
+          {{ if eq .status "[*]" }}{{ .status | green | bold }} {{ .branch | bold      }}{{ end }}
+          {{ if eq .status "[ ]" }}{{ .status | white        }} {{ .branch             }}{{ end }}
+
+  - key: '<ctrl+a>'
+    context: 'localBranches'
+    command: "git {{.Form.action}} {{ .SelectedLocalBranch.Name }}"
+    description: "git [f]pushall"
+    loadingText: "Pushing to all remotes..."
+    output: popup
+    prompts:
+      - type: 'menu' # input | confirm | menu | menuFromCommand
+        title: 'Push to all remotes'
+        key: 'action'
+        options:
+          - { value: 'pushall', name: 'push', description: 'Push {{ .SelectedLocalBranch.Name }} to all remotes' }
+          - { value: 'fpushall', name: 'force', description: 'Force-push {{ .SelectedLocalBranch.Name }} to all remotes' }
+
+  - key: '<ctrl+g>'
+    description: "git-mr"
+    commandMenu:
+
+      - key: s
+        context: 'status,files,remotes,tags,commits'
+        command: 'git mr status'
+        description: 'git mr status'
+        output: popup
+      - key: s
+        context: 'localBranches'
+        command: 'git mr status {{.SelectedLocalBranch.Name}}'
+        description: 'git mr status                 {{ branch }}'
+        output: popup
+      - key: s
+        context: 'remoteBranches'
+        command: 'git mr status {{.SelectedRemoteBranch.Name}}'
+        description: 'git mr status                 {{ branch }}'
+        output: popup
+
+      - key: m
+        context: 'status,files,remotes,tags,commits'
+        command: 'git mr menu status'
+        description: 'git mr menu status'
+        output: popup
+      - key: m
+        context: 'localBranches'
+        command: 'git mr menu $(git mr code {{.SelectedLocalBranch.Name}})'
+        description: 'git mr menu status            {{ code }}'
+        output: popup
+      - key: m
+        context: 'remoteBranches'
+        command: 'git mr menu $(git mr code {{.SelectedRemoteBranch.Name}})'
+        description: 'git mr menu status            {{ code }}'
+        output: popup
+
+      - key: n
+        context: 'status,files,remotes,tags,commits'
+        command: 'git mr menu status --no-links'
+        description: 'git mr menu status --no-links'
+        output: terminal
+      - key: n
+        context: 'localBranches'
+        command: 'git mr menu status --no-links $(git mr code {{.SelectedLocalBranch.Name}})'
+        description: 'git mr menu status --no-links {{ branch code }}'
+        output: terminal
+      - key: n
+        context: 'remoteBranches'
+        command: 'git mr menu status --no-links $(git mr code {{.SelectedRemoteBranch.Name}})'
+        description: 'git mr menu status --no-links {{ branch code }}'
+        output: terminal
+
+      - key: o
+        context: 'status,files,remotes,tags,commits'
+        command: 'git mr open'
+        description: 'git mr open'
+        output: none
+        loadingText: 'Opening merge request'
+      - key: o
+        context: 'localBranches'
+        command: 'git mr open {{.SelectedLocalBranch.Name}}'
+        description: 'git mr open                   {{ branch }}'
+        output: none
+        loadingText: 'Opening merge request'
+      - key: o
+        context: 'remoteBranches'
+        command: 'git mr open {{.SelectedRemoteBranch.Name}}'
+        description: 'git mr open                   {{ branch }}'
+        output: none
+        loadingText: 'Opening merge request'
+
+      - key: u
+        context: 'status,files,remotes,tags,commits'
+        command: 'git mr update'
+        description: 'git mr update'
+        output: terminal
