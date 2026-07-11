@@ -1,69 +1,79 @@
-# local LazyGit config file
+# Local LazyGit config file
 
 ## Config relating to the Lazygit UI
 #gui:
-#
-#  ## Custom Author Color
-#  #authorColors:
-#  #  'John Smith':   'red'
-#  #  'Alan Smithee': '#00ff00'
-#  #  'Djuuu':        '#00FFBE'
-#
-#  ## Custom Branch Color
-#  #branchColorPatterns:
-#  #  '^docs/': '#11aaff' # use a light blue for branches beginning with 'docs/'
-#  #  'ISSUE-\d+': '#ff5733' # use a bright orange for branches containing 'ISSUE-<some-number>'
+  ## Custom Author Color
+  #authorColors:
+    #'Djuuu':        '#00FFBE'
+
+  ## Custom Branch Color
+  #branchColorPatterns:
+    #'^([Mm]ain|[Mm]aster)$':    '#EA72FF' # bright purple
+    #'^[Dd][Oo][Cc][s]?/':       '#72E5E5' # light cyan
+    #'^[Dd][Ee][Vv]/.*':         '#00AFAF' # blue gray
+    #'^[Dd][Ee][Bb][Uu][Gg]/.*': '#00AFAF' # blue gray
+    #'^[Tt][Mm][Pp]/.*':         '#BDC1C0' # grey
+    #'^[Pp][Oo][Cc]/.*':         '#FFB266' # light orange
+    #'^[Ww][Ii][Pp]/.*':         '#FFB266' # light orange
+    #'^[Tt]ask/JT-\d+.*':        '#DAFF00' # yellow-green
+    #'^[Tt]ask/.*':              '#B8CC28' # yellow-green
+    #'^[Ff]eature/JT-\d+.*':     '#40FF40' # bright green
+    #'^[Ff]eature/.*':           '#71E271' # green
+    #'^[Ff]ix/JT-\d+.*':         '#DD0000' # red
+    #'^[Ff]ix/.*':               '#E54444' # red
+    #'^[Hh]otfix/.*':            '#EE0000' # bright red
+    #'^[Ee]pic/.*':              '#C62DE5' # purple
 
 ## Config relating to git
 #git:
-#  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md for more information.
-#  pagers:
-#    - { pager: delta --paging=never --features='common',                name: 'delta' }
-#    - { pager: delta --paging=never --features='common' --side-by-side, name: 'delta (s/s)' }
-#    - { pager: delta --paging=never --features='common simplecolors',   name: 'delta (simple)' }
-#    - { useExternalDiffGitConfig: true, name: 'git ext.' }
+  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md for more information.
+  #pagers:
+    #- { pager: delta --paging=never --features='common',                name: 'delta' }
+    #- { pager: delta --paging=never --features='common' --side-by-side, name: 'delta (s/s)' }
+    #- { pager: delta --paging=never --features='common simplecolors',   name: 'delta (simple)' }
+    #- { useExternalDiffGitConfig: true, name: 'git ext.' }
 
 ## Custom pull request URLs
 #services:
-#  #'<gitDomain>': '<provider>:<webDomain>'
-#  #'gitlab.com':  'gitlab:gitlab.com'
-#  #'github.com':  'github:github.com'
+  #'<gitDomain>': '<provider>:<webDomain>'
+  #'gitlab.com':  'gitlab:gitlab.com'
+  #'github.com':  'github:github.com'
 
 ## Background refreshes
 #refresher:
-#  # Interval in seconds at which lazygit polls for external ref changes (commits,
-#  # branch updates, checkouts made outside lazygit).
-#  # Detection can be disabled via option 'git.autoDetectExternalChanges'.
-#  externalChangeCheckInterval: 2
+  # Interval in seconds at which lazygit polls for external ref changes (commits,
+  # branch updates, checkouts made outside lazygit).
+  # Detection can be disabled via option 'git.autoDetectExternalChanges'.
+  #externalChangeCheckInterval: 2
 
 ## Config relating to things outside of Lazygit like how files are opened, copying to clipboard, etc
 #os:
-#  # CopyToClipboardCmd is the command for copying to clipboard.
-#  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#custom-command-for-copying-to-and-pasting-from-clipboard
-#  copyToClipboardCmd: >
-#      if [[ "$TERM" =~ ^(screen|tmux) ]]; then
-#        printf "\033Ptmux;\033\033]52;c;$(printf {{text}} | base64 -w 0)\a\033\\" > /dev/tty
-#      else
-#        printf "\033]52;c;$(printf {{text}} | base64 -w 0)\a" > /dev/tty
-#      fi
+  # CopyToClipboardCmd is the command for copying to clipboard.
+  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#custom-command-for-copying-to-and-pasting-from-clipboard
+  #copyToClipboardCmd: >
+  #    if [[ "$TERM" =~ ^(screen|tmux) ]]; then
+  #      printf "\033Ptmux;\033\033]52;c;$(printf {{text}} | base64 -w 0)\a\033\\" > /dev/tty
+  #    else
+  #      printf "\033]52;c;$(printf {{text}} | base64 -w 0)\a" > /dev/tty
+  #    fi
 
-#  # Command for opening a file, as if the file is double-clicked. Should
-#  # contain "{{filename}}", but doesn't support "{{line}}".
-#  #open: "powershell.exe start explorer.exe {{filename}} >/dev/null"
-#  #open: "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe start explorer.exe {{filename}} >/dev/null"
-#  #open: "/mnt/c/Windows/explorer.exe {{filename}} || true"
-#  #open: "xdg-open {{filename}} >/dev/null"
-#  open: cmd.exe /c start phpstorm://open?file=//wsl$/Ubuntu/$(echo {{filename}})
-#
-#  # Command for opening a link. Should contain "{{link}}".
-#  #openLink: "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe start {{link}} >/dev/null"
-#  #openLink: "/mnt/c/Windows/explorer.exe {{link}} || true"
-#  #openLink: "xdg-open {{link}} >/dev/null"
-#  openLink:  cmd.exe /c start {{link}}
+  # Command for opening a file, as if the file is double-clicked. Should
+  # contain "{{filename}}", but doesn't support "{{line}}".
+  #open: "powershell.exe start explorer.exe {{filename}} >/dev/null"
+  #open: "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe start explorer.exe {{filename}} >/dev/null"
+  #open: "/mnt/c/Windows/explorer.exe {{filename}} || true"
+  #open: "xdg-open {{filename}} >/dev/null"
+  #open: cmd.exe /c start phpstorm://open?file=//wsl$/Ubuntu/$(echo {{filename}})
+
+  # Command for opening a link. Should contain "{{link}}".
+  #openLink: "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe start {{link}} >/dev/null"
+  #openLink: "/mnt/c/Windows/explorer.exe {{link}} || true"
+  #openLink: "xdg-open {{link}} >/dev/null"
+  #openLink:  cmd.exe /c start {{link}}
 
 ########################################################################################################################
 # https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Command_Keybindings.md
 # https://github.com/jesseduffield/lazygit/blob/master/docs/keybindings/Custom_Keybindings.md
 
 #customCommands:
-#  - key: ...
+  #- key: ...
