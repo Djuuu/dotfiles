@@ -97,7 +97,7 @@ git:
 
   # Command used when displaying the current branch git log in the main window
   #   default: git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --
-  branchLogCmd: git context-graph --pretty=graph-dyn-lg --first-parent {{branchName}} --
+  branchLogCmd: git context-graph --pretty=graph-dyn-lg {{branchName}} --
 
   # Commands used to display git log of all branches in the main window, they will
   # be cycled in order of appearance (array of strings)
@@ -105,8 +105,7 @@ git:
     ## default
     #- git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium
     ## custom
-    - git context-graph --pretty=graph-dyn-lg --all --first-parent --
-    - git context-graph --pretty=graph-dyn-lg --all --
+    - git context-graph --pretty=graph-dyn-lg --first-parent --all    --
     - git context-graph --pretty=graph-dyn-lg --first-parent --reflog --
 
   # When copying commit hashes to the clipboard, truncate them to this length. Set
@@ -141,6 +140,12 @@ customCommands:
     description: 'Open diff'
     output: terminal # none | terminal | log | logWithPty | popup
 
+  - key: '<a>'
+    context: 'localBranches,remoteBranches'
+    command: 'git context-graph --fold-toggle'
+    description: 'Toggle folding in branch graph log'
+    output: none # none | terminal | log | logWithPty | popup
+
   - key: '<alt+c>'
     context: 'localBranches'
     command: "git context-graph {{ .SelectedLocalBranch.Name }} --config-toggle {{ .Form.Branch }}"
@@ -161,11 +166,11 @@ customCommands:
   - key: '<ctrl+alt+c>'
     context: 'localBranches'
     command: "git context-graph {{ .SelectedLocalBranch.Name }} --config-toggle {{ .Form.Branch }} --sync"
-    description: "Toggle branch in current context preset (sync)"
+    description: "Toggle branch in current context preset (+sync)"
     output: log # none | terminal | log | logWithPty | popup
     prompts:
       - type: 'menuFromCommand' # input | confirm | menu | menuFromCommand
-        title: "Toggle branch in current context preset (sync)\n\n"
+        title: "Toggle branch in current context preset (+sync)"
         key: 'Branch'
         command: 'git context-graph {{ .SelectedLocalBranch.Name }} --list-status'
         filter: '(?P<status>.*)\t(?P<branch>.*)'

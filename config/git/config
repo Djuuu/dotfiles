@@ -82,6 +82,10 @@
 	graph-dyn-t = %C(auto)%h%d %<|(90,mtrunc)%s %C(green)(%<(13,trunc)%ar) %C(bold blue)<%aN>
 	graph-dyn-lg = %C(auto)%h%d %<|(70)%s %C(green)(%<(13,trunc)%ar) %C(bold blue)<%aN>
 
+[context-graph]
+	# Git context-graph (https://github.com/Djuuu/git-context-graph)
+	first-parent = true # Fold graph by default
+
 [gui]
 	encoding = utf-8
 	tabsize = 4

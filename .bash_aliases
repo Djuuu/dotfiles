@@ -43,10 +43,10 @@ alias wget='wget --hsts-file=${XDG_DATA_HOME:-$HOME/.local/share}/wget-hsts'
 
 # Git
 alias g='git-graph-status-page --pretty=graph-dyn-t'
-alias gg='git context-graph --first-parent --pretty=graph-dyn-t'
-alias gga='git context-graph --first-parent --pretty=graph-dyn-t --all'
-alias ggv='git context-graph --pretty=graph-dyn-t'
-alias ggva='git context-graph --pretty=graph-dyn-t --all'
+alias gg='git context-graph --pretty=graph-dyn-t --first-parent '
+alias gga='git context-graph --pretty=graph-dyn-t --first-parent --all'
+alias ggv='git context-graph --pretty=graph-dyn-t --no-first-parent '
+alias ggva='git context-graph --pretty=graph-dyn-t --no-first-parent --all'
 
 alias lg='lazygit'
 alias zg='lazygit'
