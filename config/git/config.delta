@@ -21,21 +21,15 @@
 	hunk-header-style             = file line-number syntax
 	plus-style                    = syntax "#003C00"
 	minus-style                   = syntax "#550000"
-	#syntax-theme = 1337
 	syntax-theme = Dracula
-	#syntax-theme = Coldark-Dark
-	#syntax-theme = DarkNeon
-	#syntax-theme = Monokai Extended
-	#syntax-theme = Monokai Extended Bright
-	#syntax-theme = Monokai Extended Origin
-	#syntax-theme = Nord
 	#syntax-theme = OneHalfDark
-	#syntax-theme = OneHalfLight
-	#syntax-theme = Sublime Snazzy
-	#syntax-theme = TwoDark
+	#syntax-theme = DarkNeon
+	#syntax-theme = 1337
+	#syntax-theme = Monokai Extended
 	#syntax-theme = Visual Studio Dark+
 	#syntax-theme = gruvbox-dark
 	#syntax-theme = zenburn
+	#syntax-theme = Catppuccin Mocha
 
 [delta "cli"]
 	pager                       = less -R --mouse --wheel-lines=3
