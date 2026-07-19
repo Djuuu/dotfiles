@@ -65,6 +65,9 @@ export ANSIBLE_HOME="${XDG_DATA_HOME}/ansible"
 #export ANSIBLE_CONFIG="${XDG_CONFIG_HOME}/ansible.cfg"
 export ANSIBLE_GALAXY_CACHE_DIR="${XDG_CACHE_HOME}/ansible/galaxy_cache"
 
+# bat-extras - https://github.com/eth-p/bat-extras
+[[ -x "$(command -v batman)"  ]] && eval "$(batman --export-env)"
+
 # Gnupg
 export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
 

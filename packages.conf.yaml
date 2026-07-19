@@ -55,3 +55,13 @@
     # quiet: true
     stdout: true
     stderr: true
+
+  - description: Install bat-extras # https://github.com/eth-p/bat-extras
+    command: |
+      [[ -d "./lib/bat-extras" ]] || {
+        git clone https://github.com/eth-p/bat-extras.git ./lib/bat-extras
+        ./lib/bat-extras/build.sh --minify=none --install --prefix "$HOME/.local"
+      }
+    # quiet: true
+    stdout: true
+    stderr: true
