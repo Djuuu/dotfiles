@@ -70,17 +70,18 @@
 	excludeDecoration = refs/remotes/*/HEAD
 
 [pretty]
-	mingraph = %C(auto)%h%d %s
-
-#	graph = %C(auto)%h%d %<|(80)%s %C(green)%<(12)(%ar) %C(bold blue)<%aN>
-	graph = %C(auto)%h%d %<|(80)%s %C(bold blue) ✏ %<(12,trunc)%aN %Creset%C(green)⏱  %<(12,trunc)%ar
-
-#	graph-t = %C(auto)%h%d %<|(80,mtrunc)%s %C(green)(%ar) %C(bold blue)<%aN>
-	graph-t = %C(auto)%h%d %<|(80,mtrunc)%s %C(bold blue) ✏ %<(12,trunc)%aN %Creset%C(green)⏱  %<(12,trunc)%ar
-
-	graph-dyn = %C(auto)%h%d %<|(90)%s %C(green)(%<(13,trunc)%ar) %C(bold blue)<%aN>
-	graph-dyn-t = %C(auto)%h%d %<|(90,mtrunc)%s %C(green)(%<(13,trunc)%ar) %C(bold blue)<%aN>
-	graph-dyn-lg = %C(auto)%h%d %<|(70)%s %C(green)(%<(13,trunc)%ar) %C(bold blue)<%aN>
+	# %h  : abbrev. commit hash
+	# %d  : ref names
+	# %s  : subject
+	# %ar : author date, relative
+	# %an : author name
+	mingraph     = %C(auto)%h%d %s
+	graph        = %C(auto)%h%d %<|(80      )%s %C(bold blue)✏ %<(12,trunc)%aN %C(reset)%C(green)⏱  %<(12,trunc)%ar%C(reset)
+	graph-t      = %C(auto)%h%d %<|(80,trunc)%s %C(bold blue)✏ %<(12,trunc)%aN %C(reset)%C(green)⏱  %<(12,trunc)%ar%C(reset)
+	# see prompt_git_dyn_graph_width() @ bash_prompt/_prompt_git_pretty.sh
+	graph-dyn    = %C(auto)%h%d %<|(86      )%s %C(bold blue)✏ %<(12,trunc)%aN %C(reset)%C(green)⏱  %<(12,trunc)%ar%C(reset)
+	graph-dyn-t  = %C(auto)%h%d %<|(86,trunc)%s %C(bold blue)✏ %<(12,trunc)%aN %C(reset)%C(green)⏱  %<(12,trunc)%ar%C(reset)
+	graph-dyn-lg = %C(auto)%h%d %<|(45,trunc)%s %C(bold blue)✏ %<(12,trunc)%aN %C(reset)%C(green)⏱  %<(12,trunc)%ar%C(reset)
 
 [context-graph]
 	# Git context-graph (https://github.com/Djuuu/git-context-graph)
