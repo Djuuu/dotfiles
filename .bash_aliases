@@ -29,8 +29,14 @@ hgrep() { history | grep "$@"; } # Search command history
 
 alias please='sudo $(fc -nl -1)'
 
-alias bat="batcat"
-alias rat="batcat --paging=never"
+if ! command -v bat > /dev/null && command -v batcat > /dev/null; then
+    alias bat="batcat"
+fi
+if command -v bat > /dev/null 2>&1; then
+    alias rat="bat --paging=never"
+else
+    alias rat="cat"
+fi
 
 alias nowrap='cut -c 1-$COLUMNS'
 

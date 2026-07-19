@@ -8,7 +8,6 @@
 - sudo:
 
   - apt:
-    - bat
     - htop
     - jq
     - keychain
@@ -24,6 +23,9 @@
     - description: Install .deb packages from GitHub releases
       command: |
         . scripts/apt-helpers.sh
+
+        # https://github.com/sharkdp/bat/releases
+        [[ -x "$(command -v bat)" ]] || apt_install_github_release 'sharkdp/bat' "bat_.*_{ARCH}.deb\$"
 
         # https://github.com/dandavison/delta/releases
         [[ -x "$(command -v delta)" ]] || apt_install_github_release 'dandavison/delta' "git-delta_.*{ARCH}.deb\$"
