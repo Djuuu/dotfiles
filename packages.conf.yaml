@@ -35,6 +35,18 @@
 
         # https://github.com/fastfetch-cli/fastfetch/releases
         [[ -x "$(command -v fastfetch)" ]] || apt_install_github_release 'fastfetch-cli/fastfetch' "fastfetch-linux-{ARCH}.deb\$"
+
+        # https://github.com/junegunn/fzf
+        [[ -x "$(command -v fzf)" ]] || apt_install_github_release 'junegunn/fzf' "fzf_0.74.1_{ARCH}.deb\$"
+
+        # https://github.com/rtk-ai/rtk
+        [[ -x "$(command -v rtk)" ]] || apt_install_github_release 'rtk-ai/rtk' "rtk_0.43.0-1_{ARCH}.deb\$"
+
+        # https://github.com/burntsushi/ripgrep
+        [[ -x "$(command -v rg)" ]] || apt_install_github_release 'burntsushi/ripgrep' "ripgrep_15.2.0-1_{ARCH}.deb\$"
+
+        # https://github.com/sharkdp/fd
+        [[ -x "$(command -v fd)" ]] || apt_install_github_release 'sharkdp/fd' "fd_10.4.2_{ARCH}.deb\$"
       # quiet: true
 
 - go:
