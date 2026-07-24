@@ -40,6 +40,9 @@ set -- "${ARGS[@]}"
 
 cd "${BASEDIR}"
 
+# Don't recursively fetch submodules when not necessary
+git config fetch.recurseSubmodules on-demand
+
 # Update Git submodules
 git submodule sync --quiet --recursive
 git submodule update --init --recursive
