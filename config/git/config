@@ -52,6 +52,8 @@
 ################################################################################
 
 [diff]
+	# Generate diffs with <n> lines of context (default: 3)
+	context = 5
 	# Use better, descriptive initials : (i)ndex, (w)ork tree, (c)ommit, (o)bject instead of a/b.
 	mnemonicPrefix = true
 	# Lists the commits in the range like git-submodule[1] summary does
