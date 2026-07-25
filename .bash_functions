@@ -18,10 +18,7 @@ unset_window_title() {
 # System utils
 
 is_win() {
-    case "$(uname -s)" in
-        CYGWIN*|MINGW*) return 0 ;;
-        *)              return 1 ;;
-    esac
+    [[ $(uname -s) =~ (CYGWIN|MINGW) ]]
 }
 
 home_path() {

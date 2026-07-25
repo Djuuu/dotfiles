@@ -1,0 +1,23 @@
+- defaults:
+    shell: { quiet: true, stdout: true, stderr: true }
+
+- shell:
+
+  # https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#pipx-install
+  - description: Install ansible
+    command: |
+      [[ -x "$(command -v ansible)" ]] && exit 0
+
+      pipx install --include-deps ansible
+      pipx inject ansible \
+        jmespath \
+        xmltodict
+      pipx inject --include-apps ansible ansible-lint
+
+  # https://github.com/eth-p/bat-extras
+  - description: Install bat-extras
+    command: |
+      [[ -d "./lib/bat-extras" ]] && exit 0
+
+      git clone https://github.com/eth-p/bat-extras.git ./lib/bat-extras
+      ./lib/bat-extras/build.sh --minify=none --install --prefix "$HOME/.local"

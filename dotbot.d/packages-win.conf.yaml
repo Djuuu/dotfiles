@@ -1,0 +1,48 @@
+- plugins:
+  - lib/dotbot-winget/
+
+# Windows packages
+- winget:
+
+  # Base tools & customization utilities
+  - AltSnap.AltSnap
+  - AutoHotkey.AutoHotkey
+  - Greenshot.Greenshot
+  - Microsoft.PowerToys
+  - winaero.tweaker
+
+  # Languages
+  - GoLang.Go
+  - OpenJS.NodeJS
+
+  # Dev Tools & Utilities
+  - Git.Git
+  - Microsoft.WSL
+  - Microsoft.WindowsTerminal
+  - WinMerge.WinMerge
+  - WiresharkFoundation.Wireshark
+
+  # Other Utilities & Programs
+  - 7zip.7zip
+  #- Fork.Fork # ℹ prefer self-updates
+  - Foxit.FoxitReader.Inno
+  - IrfanSkiljan.IrfanView
+  - IZArc.IZArc
+  - KeePassXCTeam.KeePassXC
+  - Notepad++.Notepad++
+  - dotPDN.PaintDotNet
+  - JAMSoftware.TreeSize.Free
+  - VideoLAN.VLC
+
+  # Peripherals
+  #- DygmaLabs.Bazecor # ℹ prefer self-updates
+  - Elgato.StreamDeck
+  - Logitech.OptionsPlus
+
+  # Hardware & Monitoring
+  - CPUID.CPU-Z
+  - CPUID.HWMonitor
+  - CrystalDewWorld.CrystalDiskInfo
+  - CrystalDewWorld.CrystalDiskMark
+  - REALiX.HWiNFO
+  - Rem0o.FanControl

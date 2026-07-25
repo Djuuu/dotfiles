@@ -19,16 +19,63 @@ export XDG_BIN_HOME=${XDG_BIN_HOME:-$HOME/.local/bin}       # user-specific exec
 # ------------------------------------------------------------------------------
 # Determine configurations to apply
 
-DEFAULT_CONFIG="install.conf.yaml"
+DEFAULT_CONFIG="dotbot.d/install.conf.yaml"
+
+os=$(uname -s)
+[[ ${os,,} =~ (linux)        ]] && is_linux=1
+[[ ${os,,} =~ (cygwin|mingw) ]] && is_windows=1
+[[ -x $(command -v apt) ]]      && has_apt=1
+
+_conf_pkg_apt() {
+    if [[ $is_linux -eq 1 && $has_apt -eq 1 ]]; then
+        CONFIGS+=("dotbot.d/packages-apt.conf.yaml")
+    fi
+}
+_conf_pkg_github() {
+    if [[ $is_linux -eq 1 && $has_apt -eq 1 ]]; then
+        CONFIGS+=("dotbot.d/packages-github.conf.yaml")
+    fi
+}
+_conf_pkg_go() {
+    CONFIGS+=("dotbot.d/packages-go.conf.yaml")
+}
+_conf_pkg_user() {
+    if [[ $is_linux -eq 1 ]]; then
+        CONFIGS+=("dotbot.d/packages-user.conf.yaml")
+    fi
+}
+_conf_pkg_win() {
+    if [[ $is_windows -eq 1 ]]; then
+        CONFIGS+=("dotbot.d/packages-win.conf.yaml")
+    fi
+}
+_conf_pkg_all() {
+    _conf_pkg_win
+    _conf_pkg_apt
+    _conf_pkg_github
+    _conf_pkg_go
+    _conf_pkg_user
+}
 
 CONFIGS=()
 ARGS=()
 for arg in "$@"; do
     case $arg in
-        conf*)    CONFIGS+=("install.conf.yaml") ;;
-        package*) CONFIGS+=("packages.conf.yaml") ;;
-        all)      CONFIGS=("install.conf.yaml" "packages.conf.yaml") ;;
-        *)        ARGS+=("$arg") ;;
+        conf|config)  CONFIGS+=("$DEFAULT_CONFIG") ;;
+
+        packages)  _conf_pkg_all    ;;
+          apt)     _conf_pkg_apt    ;;
+          github)  _conf_pkg_github ;;
+          go)      _conf_pkg_go     ;;
+          user)    _conf_pkg_user   ;;
+          win)     _conf_pkg_win    ;;
+
+        all)
+            CONFIGS+=("$DEFAULT_CONFIG")
+            _conf_pkg_all
+            ;;
+
+        *)  ARGS+=("$arg") ;;
     esac
 done
 set -- "${ARGS[@]}"

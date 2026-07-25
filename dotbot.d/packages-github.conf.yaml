@@ -1,0 +1,21 @@
+- plugins:
+  - lib/dotbot-sudo/
+
+- defaults:
+    shell: { quiet: true, stdout: true, stderr: true }
+
+- sudo:
+  - shell:
+    - description: Install .deb packages from GitHub releases
+      command: |
+        [[ -f .bashrc.env.local ]] && . .bashrc.env.local
+        . scripts/apt-helpers.sh
+
+        apt-install-github  sharkdp/bat              -V --verbose # --force
+        apt-install-github  dandavison/delta         -V --verbose # --force
+        apt-install-github  quantumsheep/sshs        -V --verbose # --force
+        apt-install-github  fastfetch-cli/fastfetch  -V --verbose # --force
+        apt-install-github  junegunn/fzf             -V --verbose # --force
+        apt-install-github  rtk-ai/rtk               -V --verbose # --force
+        apt-install-github  burntsushi/ripgrep       -V --verbose # --force
+        apt-install-github  sharkdp/fd               -V --verbose # --force

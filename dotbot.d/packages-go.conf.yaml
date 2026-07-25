@@ -1,0 +1,7 @@
+- defaults:
+    shell: { stdout: true, stderr: true }
+
+# Go packages
+- shell:
+  - [ go install github.com/jesseduffield/lazygit@latest,    Installing lazygit@latest ]
+  - [ go install github.com/jesseduffield/lazydocker@latest, Installing lazydocker@latest ]

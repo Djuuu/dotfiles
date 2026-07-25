@@ -5,15 +5,14 @@
 [submodule "lib/dotbot-apt"]
 	path = lib/dotbot-apt
 	url = https://github.com/bryant1410/dotbot-apt
-[submodule "lib/dotbot-go"]
-	path = lib/dotbot-go
-	url = https://github.com/TakashiAihara/dotbot-go
-[submodule "lib/dotbot-pip"]
-	path = lib/dotbot-pip
-	url = https://github.com/sobolevn/dotbot-pip
 [submodule "lib/dotbot-sudo"]
 	path = lib/dotbot-sudo
-	url = https://github.com/mskyaxl/dotbot-sudo.git
+	#url = https://github.com/DrDynamic/dotbot-sudo.git   # upstream
+	url = https://github.com/mskyaxl/dotbot-sudo.git      # mskyaxl
+	#url = https://github.com/johnlettman/dotbot-sudo.git # johnlettman
+[submodule "lib/dotbot-winget"]
+	path = lib/dotbot-winget
+	url = https://github.com/zknx/dotbot-winget.git
 
 [submodule "config/AutoHotkey"]
 	path = config/AutoHotkey
