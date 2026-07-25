@@ -12,8 +12,6 @@ dotfiles_backup() {
     for file_name in \
         ".bash_profile"   \
         ".bashrc"         \
-        ".bash_aliases"   \
-        ".bash_functions" \
         ".bash_logout"    \
         \
         ".config/git/config"              \
@@ -25,8 +23,8 @@ dotfiles_backup() {
         ".config/tmux/tmux.conf.local"    \
         ".config/tmux/tmux.plugins.local" \
         \
-        ".config/AutoHotkey/config.local.ahk" \
-        ".minttyrc"                    \
+        "AutoHotkey/config.local.ahk" \
+        ".minttyrc"                   \
         \
         ".config/autokey/data" \
         ".config/xbindkeys"    \
@@ -39,6 +37,8 @@ dotfiles_backup() {
 }
 
 dotfile_backup() {
+    local file_name=$1
+
     if [[ ! -f "${HOME}/${file_name}" && ! -d "${HOME}/${file_name}" ]]; then
         return
     fi
@@ -47,8 +47,6 @@ dotfile_backup() {
         echo "Undefined backup directory"
         exit 1
     fi
-
-    local file_name=$1
 
     if [[ ! -d "${HOME}/${DOTFILES_BACKUP_DIR}" ]]; then
         mkdir -p "${HOME}/${DOTFILES_BACKUP_DIR}"
@@ -69,8 +67,6 @@ dotfile_delete_default() {
     for file_name in \
         ".bash_profile"   \
         ".bashrc"         \
-        ".bash_aliases"   \
-        ".bash_functions" \
         ".bash_logout"    \
         \
         ".config/bat"                   \
@@ -88,7 +84,9 @@ dotfile_delete_default() {
         ".config/autokey/data/Phrases" \
         ".config/autokey/data/Scripts" \
         ".config/xbindkeys"            \
-        ".config/xmodmap"
+        ".config/xmodmap"              \
+        \
+        ".config/karabiner"
     do
         file_path="${HOME}/${file_name}"
         if [[ ! -f "$file_path" && ! -d "$file_path" ]]; then
