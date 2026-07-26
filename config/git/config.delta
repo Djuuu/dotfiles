@@ -5,16 +5,17 @@
 	pager = delta
 
 [interactive]
-	diffFilter = delta --color-only --features=interactive
+	diffFilter = delta --color-only --features="common highlight"
 
 
 [delta]
+	navigate = true
 	features = common cli
 
 [delta "common"]
 	true-color                    = always
 	file-style                    = omit
-	commit-decoration-style       = blue ol
+	commit-decoration-style       = "#00BE87" ol ul
 	hunk-header-decoration-style  = dimgray box ul
 	hunk-header-file-style        = silver
 	hunk-header-line-number-style = skyblue
@@ -37,8 +38,7 @@
 	hyperlinks                  = true
 	hyperlinks-file-link-format = "phpstorm://open?file={path}&line={line}"
 
-[delta "interactive"]
-	keep-plus-minus-markers = true
+[delta "highlight"]
 	zero-style              = dim syntax
 	plus-style              = syntax "#004200"
 	minus-style             = syntax "#550000"

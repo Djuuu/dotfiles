@@ -68,8 +68,13 @@ dotfiles-diff-local() {
             dstFilePath="${srcFilePath%.example}"
             [[ -f "${dstFilePath}" ]] || dstFilePath=/dev/null
 
-            git diff --no-index "${srcFilePath}" "${dstFilePath}" | delta --paging=never --width=$COLUMNS
-            has_diff=${PIPESTATUS[0]}
+            if command -v delta > /dev/null; then
+                git diff --no-index "${srcFilePath}" "${dstFilePath}" | delta --paging=never --width=$COLUMNS
+                has_diff=${PIPESTATUS[0]}
+            else
+                git diff --no-index "${srcFilePath}" "${dstFilePath}" --color=always
+                has_diff=$?
+            fi
 
             echo
             [[ $has_diff -eq 0 ]] && {
