@@ -34,6 +34,9 @@ if ! command -v bat > /dev/null && command -v batcat > /dev/null; then
 fi
 if command -v bat > /dev/null 2>&1; then
     alias rat="bat --paging=never"
+    if command -v fzf > /dev/null 2>&1; then
+        alias batz="fzf --style full --preview 'bat --color=always {}' --bind 'focus:transform-header:file --brief {}' --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+    fi
 else
     alias bat="cat"
     alias rat="cat"
