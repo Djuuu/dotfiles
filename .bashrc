@@ -1,17 +1,8 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
-# Load local environment variables
-# shellcheck source=.bashrc.env.local
-[ -f ~/.dotfiles/.bashrc.env.local ] && . ~/.dotfiles/.bashrc.env.local
-
-# Set XDG defaults
-# https://specifications.freedesktop.org/basedir/latest/
-# https://wiki.archlinux.org/title/XDG_Base_Directory
-export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}   # user-specific data files
-export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}    # user-specific configuration files
-export XDG_STATE_HOME=${XDG_STATE_HOME:-$HOME/.local/state} # user-specific state files
-export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}       # user-specific non-essential data files
-export XDG_BIN_HOME=${XDG_BIN_HOME:-$HOME/.local/bin}       # user-specific executable files (non-standard var)
+# Environment - common to all shell types
+# shellcheck source=.bashrc.env
+. ~/.dotfiles/.bashrc.env
 
 # If not running interactively, don't do anything more
 [[ "$-" != *i* ]] && return
@@ -22,6 +13,10 @@ export XDG_BIN_HOME=${XDG_BIN_HOME:-$HOME/.local/bin}       # user-specific exec
 # Completion options
 [ -f /etc/bash_completion ]           && . /etc/bash_completion
 [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+# Custom completions
+for f in "${XDG_DATA_HOME}/bash-completion/completions/"*; do # shellcheck disable=SC1090
+    [[ -f "$f" ]] && . "$f"
+done; unset f
 
 # History Options
 HISTFILE="${XDG_STATE_HOME}/bash/history"
@@ -51,37 +46,13 @@ export CLICOLOR=1 # Mac
 # shellcheck source=bash_prompt/prompt.sh
 [[ -f ~/.dotfiles/bash_prompt/prompt.sh ]] && . ~/.dotfiles/bash_prompt/prompt.sh
 
-# Local config
-# shellcheck source=.bashrc.local
-[[ -f ~/.dotfiles/.bashrc.local ]] && . ~/.dotfiles/.bashrc.local
-
-# Custom completions
-for f in "${XDG_DATA_HOME}/bash-completion/completions/"*; do # shellcheck disable=SC1090
-    [[ -f "$f" ]] && . "$f"
-done; unset f
-
-# Ansible
-export ANSIBLE_HOME="${XDG_DATA_HOME}/ansible"
-#export ANSIBLE_CONFIG="${XDG_CONFIG_HOME}/ansible.cfg"
-export ANSIBLE_GALAXY_CACHE_DIR="${XDG_CACHE_HOME}/ansible/galaxy_cache"
-
 # bat-extras - https://github.com/eth-p/bat-extras
 [[ -x "$(command -v batman)"  ]] && eval "$(batman --export-env)"
 
 # Set up fzf key bindings and fuzzy completion
 if command -v fzf > /dev/null 2>&1; then
-    export FZF_DEFAULT_OPTS="--style full"
-    export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}'"
-    export FZF_CTRL_R_OPTS="--layout=reverse"
-
     eval "$(fzf --bash)"
 fi
-
-# Gnupg
-export GNUPGHOME="${XDG_DATA_HOME}/gnupg"
-
-# Go
-export GOPATH="${XDG_DATA_HOME}/go"
 
 # LazyGit - https://github.com/jesseduffield/lazygit
 LG_CONFIG_FILE="$(home_path ".dotfiles/config/lazygit/config.yml")"
@@ -90,7 +61,6 @@ LG_CONFIG_FILE="${LG_CONFIG_FILE},$(home_path ".dotfiles/config/lazygit/config.k
     LG_CONFIG_FILE="${LG_CONFIG_FILE},$(home_path ".dotfiles/config/lazygit/config.local.yml")"
 export LG_CONFIG_FILE
 
-# Vim
-export VIMINIT="source ${XDG_CONFIG_HOME}/vim/vimrc"
-#export VIMINIT="if has('nvim') | source ${XDG_CONFIG_HOME}/nvim/init.vim
-#                else           | source ${XDG_CONFIG_HOME}/vim/vimrc | endif"
+# Local overrides
+# shellcheck source=.bashrc.local
+[[ -f ~/.dotfiles/.bashrc.local ]] && . ~/.dotfiles/.bashrc.local
