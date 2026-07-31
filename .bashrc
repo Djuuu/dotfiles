@@ -11,11 +11,11 @@
 [[ $WSLGIT == 1 ]] && return
 
 # Completion options
-[ -f /etc/bash_completion ]           && . /etc/bash_completion
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+source_if /etc/bash_completion
+source_if /usr/local/etc/bash_completion
 # Custom completions
 for f in "${XDG_DATA_HOME}/bash-completion/completions/"*; do # shellcheck disable=SC1090
-    [[ -f "$f" ]] && . "$f"
+    source_if "$f"
 done; unset f
 
 # History Options
@@ -36,15 +36,15 @@ export CLICOLOR=1 # Mac
 
 # Aliases
 # shellcheck source=.bash_aliases
-[[ -f ~/.dotfiles/.bash_aliases ]] && . ~/.dotfiles/.bash_aliases
+source_if ~/.dotfiles/.bash_aliases
 
 # Functions
 # shellcheck source=.bash_functions
-[[ -f ~/.dotfiles/.bash_functions ]] && . ~/.dotfiles/.bash_functions
+source_if ~/.dotfiles/.bash_functions
 
 # Prompt
 # shellcheck source=bash_prompt/prompt.sh
-[[ -f ~/.dotfiles/bash_prompt/prompt.sh ]] && . ~/.dotfiles/bash_prompt/prompt.sh
+source_if ~/.dotfiles/bash_prompt/prompt.sh
 
 # bat-extras - https://github.com/eth-p/bat-extras
 [[ -x "$(command -v batman)"  ]] && eval "$(batman --export-env)"
@@ -67,4 +67,4 @@ export LG_CONFIG_FILE
 
 # Local overrides
 # shellcheck source=.bashrc.local
-[[ -f ~/.dotfiles/.bashrc.local ]] && . ~/.dotfiles/.bashrc.local
+source_if ~/.dotfiles/.bashrc.local
