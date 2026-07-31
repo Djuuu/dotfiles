@@ -35,6 +35,9 @@
 [submodule "lib/dockerize-clis"]
 	path = lib/dockerize-clis
 	url = https://github.com/Djuuu/dockerize-clis.git
+[submodule "lib/forgit"]
+	path = lib/forgit
+	url = https://github.com/Djuuu/forgit.git
 [submodule "lib/git-context-graph"]
 	path = lib/git-context-graph
 	url = https://github.com/Djuuu/git-context-graph.git

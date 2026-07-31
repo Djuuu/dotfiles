@@ -54,6 +54,10 @@ if command -v fzf > /dev/null 2>&1; then
     eval "$(fzf --bash)"
 fi
 
+# forgit - https://github.com/wfxr/forgit
+# shellcheck source=config/forgit/forgit.sh
+. ~/.dotfiles/config/forgit/forgit.sh
+
 # LazyGit - https://github.com/jesseduffield/lazygit
 LG_CONFIG_FILE="$(home_path ".dotfiles/config/lazygit/config.yml")"
 LG_CONFIG_FILE="${LG_CONFIG_FILE},$(home_path ".dotfiles/config/lazygit/config.keybinding.yml")"

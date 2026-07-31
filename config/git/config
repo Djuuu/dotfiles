@@ -122,11 +122,11 @@
 	context-graph = "!~/.local/bin/git-context-graph"  # "context-graph" (branch, default & remote)
 	cg            = "context-graph --pretty=graph-dyn" # "context-graph" with dynamic columns
 
-	logz = "!f() { git log --oneline --decorate --color=always | \
-			fzf --ansi --layout=reverse-list --no-sort \
-				--preview-window 'right,55%,wrap,wrap-word,~1' \
-				--preview 'git show --color=always {1}'; \
-		}; f"
+	# forgit
+	forgit  = "!~/.dotfiles/lib/forgit/bin/git-forgit"
+	fg      = "forgit"
+	logz    = "forgit log"
+	reflogz = "forgit reflog"
 
 	# diff
 	diff-base = "!f() { git diff $(git mr base); }; f"

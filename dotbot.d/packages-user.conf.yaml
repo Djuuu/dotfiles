@@ -21,3 +21,10 @@
 
       git clone https://github.com/eth-p/bat-extras.git ./lib/bat-extras
       ./lib/bat-extras/build.sh --minify=none --install --prefix "$HOME/.local"
+
+  ## https://github.com/wfxr/forgit
+  #- description: Install forgit
+  #  command: |
+  #    [[ -d "./lib/forgit" ]] && exit 0
+  #
+  #    git clone https://github.com/Djuuu/forgit.git ./lib/forgit

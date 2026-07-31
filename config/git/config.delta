@@ -55,11 +55,3 @@
 	minus-empty-line-marker-style = bold "#FF6666" "#440000"
 	minus-non-emph-style          =      "#BB0000"
 	whitespace-error-style        = bold "#660066" "#DD33DD"
-
-[alias]
-	logz = "!f() { git log --oneline --decorate --color=always | \
-			fzf --ansi --layout=reverse-list --no-sort \
-				--preview-window 'right,55%,wrap,wrap-word,~3' \
-				--preview 'git show --color=always {1} | \
-			delta --paging=never --features=\"common highlight\"'; \
-		}; f"
