@@ -35,6 +35,7 @@
     ${XDG_BIN_HOME}/git-separator:     scripts/git-separator
     ${XDG_BIN_HOME}/git-update:        scripts/git-update
     ${XDG_BIN_HOME}/termcolors:        scripts/print256colours.sh
+    ${XDG_BIN_HOME}/rfv:               scripts/rfv
 
     ${XDG_DATA_HOME}/bash-completion/completions/git-context-graph.bash: lib/git-context-graph/git-context-graph-completion.bash
     ${XDG_DATA_HOME}/bash-completion/completions/git-mr.bash:            lib/git-mr/git-mr-completion.bash
