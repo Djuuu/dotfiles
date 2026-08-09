@@ -78,14 +78,12 @@ gui:
 
 # Config relating to git
 git:
-  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md
+  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_DiffRenderers.md
   # for more information.
-  pagers:
-    # If true, Lazygit will use git's `diff.external` config for paging.
-    # The advantage over `externalDiffCommand` is that this can be
-    # configured per file type in .gitattributes; see
-    # https://git-scm.com/docs/gitattributes#_defining_an_external_diff_driver.
-    - useExternalDiffGitConfig: true
+  diffRenderers:
+    # Uses git's `diff.external` config for paging. You can configure it per file type in .gitattributes.
+    # See https://git-scm.com/docs/gitattributes#_defining_an_external_diff_driver.
+    - type: extDiff
 
   # Config relating to merging
   merging:

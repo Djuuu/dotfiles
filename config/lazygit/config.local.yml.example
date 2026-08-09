@@ -26,12 +26,12 @@
 
 ## Config relating to git
 #git:
-  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_Pagers.md for more information.
-  #pagers:
-    #- { pager: delta --paging=never --features='common',                name: 'delta' }
-    #- { pager: delta --paging=never --features='common' --side-by-side, name: 'delta (s/s)' }
-    #- { pager: delta --paging=never --features='common simplecolors',   name: 'delta (simple)' }
-    #- { useExternalDiffGitConfig: true, name: 'git ext.' }
+  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Custom_DiffRenderers.md for more information.
+  #diffRenderers:
+    #- { command: delta --paging=never --features='common',                name: 'delta' }
+    #- { command: delta --paging=never --features='common' --side-by-side, name: 'delta (s/s)' }
+    #- { command: delta --paging=never --features='common simplecolors',   name: 'delta (simple)' }
+    #- { type: extDiff, name: 'git ext.' }
 
 ## Custom pull request URLs
 #services:

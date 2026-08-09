@@ -75,8 +75,8 @@ keybinding:
     prevTab: ['<home>', '<shift+left>', '<alt+left>' ] # default: '['
     nextScreenMode: ']' # default: '+'
     prevScreenMode: '[' # default: '_'
-#    cyclePagers: '|'
-#    cyclePagersReverse: \
+#    cycleDiffRenderers: '|'
+#    cycleDiffRenderersReverse: \
 #    undo: z
 #    redo: Z
 #    filteringMenu: <ctrl+s>
