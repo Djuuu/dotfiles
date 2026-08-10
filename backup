@@ -72,7 +72,6 @@ dotfile_delete_default() {
         ".config/bat"                   \
         ".config/fastfetch"             \
         ".config/git"                   \
-        ".config/gitmux"                \
         ".config/lazydocker/config.yml" \
         ".config/tmux"                  \
         ".config/vim"                   \

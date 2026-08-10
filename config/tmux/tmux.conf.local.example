@@ -1,3 +1,4 @@
+# Tmux - local configuration file
 
 ## Catppuccin - User Defined Status Line Modules
 # source -F "#{d:current_file}/local/example.catppuccin.conf"
@@ -11,7 +12,7 @@
 ## Reset status-left
 # set -g status-left ""
 
-# set -ag status-left "#[fg=red,bg=black] Custom stuff..."
+# set -ag status-left "#[fg=green,bg=#{@thm_surface_0}] Custom stuff..."
 
 # set -ag status-left "#[fg=#{@thm_crust},bg=#{@thm_sapphire}]#[reverse]#[noreverse]#[fg=#004ACC] "
 # set -ag status-left "#[fg=#{@thm_fg},bg=#{E:@catppuccin_status_module_text_bg}] "
@@ -37,4 +38,4 @@
 ## Reset status-right
 # set -g status-right ""
 
-# set -ag status-right "#[fg=red,bg=black] Custom stuff..."
+# set -ag status-right "#[fg=red,bg=#{@thm_surface_0}] Custom stuff..."

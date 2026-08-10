@@ -1,3 +1,5 @@
+# Tmux - local plugins configuration
+
 ## Local tpm plugins
 # set -g @plugin 'example/plugin'
 
