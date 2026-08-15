@@ -95,7 +95,7 @@ git:
 
   # Command used when displaying the current branch git log in the main window
   #   default: git log --graph --color=always --abbrev-commit --decorate --date=relative --pretty=medium {{branchName}} --
-  branchLogCmd: git context-graph --pretty=graph-dyn-lg {{branchName}} --
+  branchLogCmd: sh -c 'git context-graph --pretty=graph-dyn-lg {{branchName}} -- | sed -e s/\\*// -e s/\\|/│/'
 
   # Commands used to display git log of all branches in the main window, they will
   # be cycled in order of appearance (array of strings)
@@ -103,8 +103,8 @@ git:
     ## default
     #- git log --graph --all --color=always --abbrev-commit --decorate --date=relative  --pretty=medium
     ## custom
-    - git context-graph --pretty=graph-dyn-lg --first-parent --all    --
-    - git context-graph --pretty=graph-dyn-lg --first-parent --reflog --
+    - sh -c 'git context-graph --pretty=graph-dyn-lg --first-parent --all    -- | sed -e s/\\*// -e s/\\|/│/'
+    - sh -c 'git context-graph --pretty=graph-dyn-lg --first-parent --reflog -- | sed -e s/\\*// -e s/\\|/│/'
 
   # When copying commit hashes to the clipboard, truncate them to this length. Set
   # to 40 to disable truncation.

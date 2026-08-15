@@ -128,10 +128,16 @@ ssh-list-tunnel-ports() {
 ################################################################################
 # Git
 
+# Inspired by:
+# https://github.com/jesseduffield/lazygit/issues/5024#issuecomment-3507626241
+git-graph-prettify() {
+    sed -e s/\*// -e s/\|/│/ | less -R -X -F --mouse
+}
+
 git-context-graph-page() {
     local margin=8
     local lines=$((LINES - margin))
-    git context-graph --first-parent "-n${lines}" "$@" | head -n $lines
+    git context-graph --first-parent "-n${lines}" "$@" | head -n $lines | git-graph-prettify
 }
 
 # shellcheck disable=SC2086
@@ -157,7 +163,7 @@ git-graph-status-page() {
     # clear -x
     #echo -e "$separator"
     echo
-    git context-graph --first-parent "-n${lines}" "$@" | head -n ${lines}
+    git context-graph --first-parent "-n${lines}" "$@" | head -n ${lines} | git-graph-prettify
     echo
     echo -e "$separator"
     echo
