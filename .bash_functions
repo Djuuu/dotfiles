@@ -131,7 +131,8 @@ ssh-list-tunnel-ports() {
 # Inspired by:
 # https://github.com/jesseduffield/lazygit/issues/5024#issuecomment-3507626241
 git-graph-prettify() {
-    sed -e s/\*// -e s/\|/│/ | less -R -X -F --mouse
+    sed -e s/\*// -e s/\|/│/ |
+        LESSUTFCHARDEF="e000-f8ff:p,f0001-fffff:p" less -R -X -F --mouse
 }
 
 git-context-graph-page() {
