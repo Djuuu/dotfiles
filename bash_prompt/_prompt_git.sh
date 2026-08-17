@@ -46,7 +46,6 @@ _g_ico_clean=' '     # nf-cod-sparkle            \uec10
 prompt_git() {
     # Global variables, usable in PS1
     pt_git=""
-    pt_gitRemoteSt=""
     pt_gitBranchInfo=""
     pt_gitAction=""
     pt_gitState=""
@@ -58,15 +57,14 @@ prompt_git() {
     gitDir="$(git rev-parse --git-dir 2>/dev/null)" || return # Not a git repository
 
     local branchLine
+    # shellcheck disable=SC2034
     local untracked=0 changed=0 deleted=0 staged=0 conflicts=0
     __prompt_git_extract_statuses
 
     local branch ahead=0 behind=0 detached=0
     __prompt_git_extract_branch_remote "$branchLine"
 
-    __prompt_git_set_remote_status_icon $ahead $behind
-
-    __prompt_git_set_branch_info "$branch" $ahead $behind $detached
+    __prompt_git_set_branch_info "$branch" "$ahead" "$behind" "$detached"
 
     __prompt_git_set_action
 
@@ -90,6 +88,8 @@ prompt_git() {
 #  - $conflicts
 __prompt_git_extract_statuses() {
     # External affected vars
+    # shellcheck disable=SC2034
+    # bashsupport disable=BP2001
     branchLine=; untracked=; changed=; deleted=; staged=; conflicts=;
 
     local statusLine status
@@ -97,6 +97,7 @@ __prompt_git_extract_statuses() {
     while IFS='' read -r statusLine || [[ -n "${statusLine}" ]]; do
         status="${statusLine:0:2}"
         while [[ -n ${status} ]]; do
+            # shellcheck disable=SC2034
             case "${status}" in
                 \#\#) branchLine="${statusLine/\.\.\./^}"; break ;;
 
@@ -176,29 +177,6 @@ __prompt_git_extract_branch_remote() {
     fi
 }
 
-# Set the following variable depending on ahead/behind status:
-#  - $pt_gitRemoteSt
-__prompt_git_set_remote_status_icon() {
-    local ahead=${1:-0}
-    local behind=${2:-0}
-
-    # External affected vars
-    pt_gitRemoteSt=""
-
-    if [[ $ahead -gt 0 && $behind -eq 0 ]]; then
-        pt_gitRemoteSt="${pt_gitRemoteSt}${pt_greenBold}${_g_ico_up}"
-
-    elif [[ $ahead -eq 0 && $behind -gt 0 ]]; then
-        pt_gitRemoteSt="${pt_gitRemoteSt}${pt_yellowBold}${_g_ico_down}"
-
-    elif [[ $ahead -gt 0 && $behind -gt 0 ]]; then
-        pt_gitRemoteSt="${pt_gitRemoteSt}${pt_yellowBold}${_g_ico_updown}"
-    fi
-
-    [[ -n $pt_gitRemoteSt ]] &&
-        pt_gitRemoteSt=" ${pt_gitRemoteSt}${pt_reset}"
-}
-
 # Set the following variable:
 #  - $pt_gitBranchInfo
 __prompt_git_set_branch_info() {
@@ -233,10 +211,6 @@ __prompt_git_set_branch_info() {
 
     pt_gitBranchInfo="${pt_purple}(${branchIcon} ${branch}"
 
-    ## single icon remote status
-    #pt_gitBranchInfo="${pt_gitBranchInfo}${pt_gitRemoteSt}${pt_purple}) "
-    #return
-
     local remoteStatus remoteStatusA=()
 
     local a b
@@ -268,9 +242,12 @@ __prompt_git_set_branch_info() {
 #  - $rebaseOntoBranch
 __prompt_git_extract_action_info() {
     # External affected vars
+    # shellcheck disable=SC2034
+    # bashsupport disable=BP2001
     gitAction=; rebaseStep=; rebaseTotal=; rebaseHeadName=; rebaseOnto=; rebaseOntoBranch=;
 
     if [[ -d "${gitDir}/rebase-merge" ]]; then
+        # shellcheck disable=SC2034
         gitAction="rebase"
 
         __git_prompt_readval "${gitDir}/rebase-merge/msgnum"    rebaseStep
@@ -289,6 +266,7 @@ __prompt_git_extract_action_info() {
         __git_prompt_readval "${gitDir}/rebase-apply/last" rebaseTotal
 
         if [[ -f "${gitDir}/rebase-apply/rebasing" ]]; then
+            # shellcheck disable=SC2034
             gitAction="rebase"
             __git_prompt_readval "${gitDir}/rebase-apply/head-name" rebaseHeadName
             __git_prompt_readval "${gitDir}/rebase-apply/onto"      rebaseOnto # TODO: check
@@ -302,6 +280,7 @@ __prompt_git_extract_action_info() {
         return
     fi
 
+    # shellcheck disable=SC2034
     if   [[ -f "${gitDir}/MERGE_HEAD"       ]]; then gitAction="merge"
     elif [[ -f "${gitDir}/CHERRY_PICK_HEAD" ]]; then gitAction="cherry-pick"
     elif [[ -f "${gitDir}/REVERT_HEAD"      ]]; then gitAction="revert"
@@ -314,6 +293,7 @@ __prompt_git_set_action() {
     # External affected vars
     pt_gitAction=
 
+    # shellcheck disable=SC2034
     local gitAction="" rebaseStep="" rebaseTotal="" rebaseHeadName="" rebaseOnto="" rebaseOntoBranch=""
 
     __prompt_git_extract_action_info

@@ -36,24 +36,27 @@ prompt_separator() {
             tunnel="[🚇 ${pt_sshTunnels}]"
             (( promptFillSize -= 1 ))
         else
-            tunnel="[🕳️ ${pt_sshTunnels}]"
+            tunnel="[🕳  ${pt_sshTunnels}]"
         fi
         (( promptFillSize -= ${#tunnel} ))
     fi
 
     local exitIcon
     if [[ $EXIT -eq 0 ]]
-        then exitIcon="✅"
-        else exitIcon="❌"
-        # else exitIcon="${EXIT}·❌"
+        #then exitIcon=""
+        #then exitIcon="✅ "
+        then exitIcon="${pt_green}○${style}·"; (( promptFillSize += 34 ))
+        #else exitIcon="❌ "
+        else exitIcon="${pt_red}×${style}·"; (( promptFillSize += 34 ))
     fi
-    (( promptFillSize -= ${#exitIcon} + 1 ))
+    [[ ${#exitIcon} -gt 0 ]] &&
+        (( promptFillSize -= ${#exitIcon} + 1 ))
 
-    local fill="${fillStock:0:$((promptFillSize - 11))}"
+    local fill="${fillStock:0:$((promptFillSize - 10))}"
 
     # bashsupport disable=BP2001
     # shellcheck disable=SC2154,SC2034
-    pt_separator="${start}${style}${fill}${tunnel}${end}${exitIcon} \t\n${reset}"
+    pt_separator="${start}${style}${fill}${tunnel}${end}${exitIcon}\t\n${reset}"
 }
 
 ###################################################################################################
@@ -68,12 +71,15 @@ prompt_window_title() {
 ###################################################################################################
 # Send prompt sign to new line when available columns are below $PROMPT_COLUMN_LIMIT
 # bashsupport disable=BP2001
-# shellcheck disable=SC2034
+# shellcheck disable=SC2034,SC2076
 prompt_newline() {
   pt_newline=
 
-  [[ $COLUMNS -ge ${PROMPT_COLUMN_LIMIT:-120} ]] && return
-  [[ -n "$pt_git" ]] && [[ "$pt_git" =~ "☈" ]] && return # Git rebase status already go multiline
+  [[ $COLUMNS -ge ${PROMPT_COLUMN_LIMIT:-120} ]] &&
+      return # window is large enough
+
+  [[ $pt_git == *'\n'* ]] &&
+      return # Git prompt is already multiline
 
   pt_newline=$'\n'
 }
@@ -95,7 +101,7 @@ prompt_color_index=${prompt_color_index:-0}
 
 prompt_cycle_color() {
     local color_names=(
-        "$c_userBlGr"       # (blue green - 00BE87)
+        "${c_userBlGr}"     # (blue green - 00BE87)
         "x038_DeepSkyBlue2" # (light blue)
         "x032_DeepSkyBlue3" # (blue)
         "x134_MediumOrchid" # (purple)
