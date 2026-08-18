@@ -61,6 +61,7 @@ dotfiles-update() {
 
 dotfiles-diff-local() {
     BASEDIR=~/.dotfiles
+    basedirRegex=$(echo "${BASEDIR}/" | sed -e 's/[]\/$*.^?[]/\\&/g')
 
     {
         while IFS= read -r -d '' srcFilePath
@@ -69,7 +70,9 @@ dotfiles-diff-local() {
             [[ -f "${dstFilePath}" ]] || dstFilePath=/dev/null
 
             if command -v delta > /dev/null; then
-                git diff --no-index "${srcFilePath}" "${dstFilePath}" | delta --paging=never --width=$COLUMNS
+                git diff --no-index "${srcFilePath}" "${dstFilePath}" |
+                    sed -e "s/^+++ 2${basedirRegex}/+++ /g" | # fix displayed file name & hyperlinks
+                    delta --paging=never --width=$COLUMNS     # delta without paging to get full diff
                 has_diff=${PIPESTATUS[0]}
             else
                 git diff --no-index "${srcFilePath}" "${dstFilePath}" --color=always
