@@ -45,7 +45,7 @@ fi
 alias nowrap='cut -c 1-$COLUMNS'
 
 alias sshagentstart='eval `ssh-agent -s` && ssh-add'
-alias sshs="sshs -e"
+alias sshs="sshs --color emerald --sort-fancy --exit"
 
 alias ff='fastfetch'
 
