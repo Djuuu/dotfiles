@@ -55,3 +55,30 @@
 	minus-empty-line-marker-style = bold "#FF6666" "#440000"
 	minus-non-emph-style          =      "#BB0000"
 	whitespace-error-style        = bold "#660066" "#DD33DD"
+
+[delta "agents"]
+	side-by-side = false
+	hyperlinks   = false
+	line-numbers = true
+	syntax-theme = none
+	true-color   = never
+	plus-style                    = ""
+	plus-emph-style               = ""
+	plus-empty-line-marker-style  = ""
+	plus-non-emph-style           = ""
+	minus-style                   = ""
+	minus-emph-style              = ""
+	minus-empty-line-marker-style = ""
+	minus-non-emph-style          = ""
+	zero-style                    = ""
+	hunk-header-style             = "file line-number"
+	hunk-header-decoration-style  = ""
+	hunk-header-file-style        = ""
+	hunk-header-line-number-style = ""
+	commit-decoration-style       = ""
+	file-decoration-style         = ""
+	line-numbers-left-style       = ""
+	line-numbers-right-style      = ""
+	line-numbers-minus-style      = ""
+	line-numbers-plus-style       = ""
+	line-numbers-zero-style       = ""
