@@ -30,6 +30,7 @@ keybinding:
 #      - "4"
 #      - "5"
 #    focusMainView: "0"
+#    jumpToFile: <ctrl+g>
 #    nextMatch: "n"
 #    prevMatch: "N"
 #    startSearch: /
@@ -185,6 +186,8 @@ keybinding:
 #  main:
 #    prevHunk: [<left>, h]
 #    nextHunk: [<right>, l]
+#    prevFile: "N"
+#    nextFile: "n"
 #    toggleSelectHunk: a
 #    pickBothHunks: b
 #    editSelectHunk: E

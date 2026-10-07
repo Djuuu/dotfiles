@@ -3,10 +3,12 @@
 ## Config relating to the Lazygit UI
 #gui:
   ## Custom Author Color
+  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#custom-author-color
   #authorColors:
     #'Djuuu':        '#00FFBE'
 
   ## Custom Branch Color
+  # See https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#custom-branch-color
   #branchColorPatterns:
     #'^([Mm]ain|[Mm]aster)$':    '#EA72FF' # bright purple
     #'^[Dd][Oo][Cc][s]?/':       '#72E5E5' # light cyan
@@ -32,6 +34,15 @@
     #- { command: delta --paging=never --features='common' --side-by-side, name: 'delta (s/s)' }
     #- { command: delta --paging=never --features='common simplecolors',   name: 'delta (simple)' }
     #- { type: extDiff, name: 'git ext.' }
+
+  # If not "none", lazygit will automatically fast-forward local branches to match
+  # their upstream after fetching. Applies to branches that are not the currently
+  # checked out branch, and only to those that are strictly behind their upstream
+  # (as opposed to diverged). A branch that is checked out in another worktree is
+  # fast-forwarded there, unless that worktree has changes to tracked files or is
+  # in the middle of a rebase or bisect.
+  # Possible values: 'none' | 'onlyMainBranches' | 'allBranches'
+  #autoForwardBranches: allBranches
 
 ## Custom pull request URLs
 #services:
