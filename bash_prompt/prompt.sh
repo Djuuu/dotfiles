@@ -47,7 +47,9 @@ PS0='\e]133;C\a'                                                     # output st
 # Mark command end (OSC 133) - only after an actual command, not on startup or empty input
 prompt_mark_finished() {
     local cmdNum='\#'; cmdNum=${cmdNum@P}
+    pt_cmdRan=
     if [[ $cmdNum != "${pt_lastCmdNum:-0}" ]]; then
+        pt_cmdRan=true
         printf '\e]133;D;%s\a' "$EXIT"
     fi
     pt_lastCmdNum=$cmdNum
