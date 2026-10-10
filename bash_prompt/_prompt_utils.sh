@@ -42,7 +42,9 @@ prompt_separator() {
     fi
 
     local exitIcon
-    if [[ $EXIT -eq 0 ]]
+    if [[ -z $pt_cmdRan ]] # set by prompt_mark_finished
+        then exitIcon="${style}○·"; (( promptFillSize += 22 ))
+    elif [[ $EXIT -eq 0 ]]
         #then exitIcon=""
         #then exitIcon="✅ "
         then exitIcon="${pt_green}○${style}·"; (( promptFillSize += 34 ))
