@@ -18,6 +18,13 @@
     pt_x160_Red3="\[\e[38;5;160m\]" #D70000
 }
 
+## Simple prompt flag
+[[ -n $PROMPT_SIMPLE ]] && {
+    NO_PROMPT_SEPARATOR=1
+    NO_PROMPT_GIT=1
+    PROMPT_COLUMN_LIMIT=0
+}
+
 ## Includes
 # shellcheck source=_prompt_utils.sh
 . ~/.dotfiles/bash_prompt/_prompt_utils.sh
