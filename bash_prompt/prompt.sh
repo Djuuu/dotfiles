@@ -38,6 +38,21 @@ pt_base="${pt_color}\u@${PROMPT_HOSTNAME:-\h}${pt_reset}:${pt_blueBold}\w${pt_re
 #pt_end="${pt_color}❯${pt_reset} " # heavy right-pointing angle quotation mark ornament
 pt_end="${pt_color}${pt_reset} " # \uf054 nf-fa-chevron_circle_down (nerd font)
 
+# Semantic prompt marks (OSC 133) - prompt start, input start, output start
+# https://gitlab.freedesktop.org/Per_Bothner/specifications/blob/master/proposals/semantic-prompts.md
+pt_markPrompt='\[\e]133;A\a\]'; pt_base="${pt_markPrompt}${pt_base}" # prompt start
+pt_markInput='\[\e]133;B\a\]';  pt_end="${pt_end}${pt_markInput}"    # input start
+PS0='\e]133;C\a'                                                     # output start
+
+# Mark command end (OSC 133) - only after an actual command, not on startup or empty input
+prompt_mark_finished() {
+    local cmdNum='\#'; cmdNum=${cmdNum@P}
+    if [[ $cmdNum != "${pt_lastCmdNum:-0}" ]]; then
+        printf '\e]133;D;%s\a' "$EXIT"
+    fi
+    pt_lastCmdNum=$cmdNum
+}
+
 # Prompt base
 PS1="${pt_base} ${pt_end}"
 
@@ -45,6 +60,7 @@ PS1="${pt_base} ${pt_end}"
 # shellcheck disable=SC2016
 PROMPT_COMMAND=(
   'EXIT=$?'
+  prompt_mark_finished       # OSC 133 command end
   prompt_window_title        # ${pt_title}
   prompt_ssh_tunnels         # ${pt_sshTunnels}
   prompt_separator           # ${pt_separator}
