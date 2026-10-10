@@ -9,7 +9,7 @@
     "padding": {"top": 1, "left": 1, "right": 4},
     "printRemaining": true,
     "preserveAspectRatio": false,
-    "recache": false,
+    // "cache": true, // 2.69.0
     "position": "left",
     "chafa": {"fgOnly": false, "symbols": "block+border+space-wide-inverted"}
   },
