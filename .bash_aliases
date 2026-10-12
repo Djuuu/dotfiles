@@ -42,6 +42,11 @@ else
     alias rat="cat"
 fi
 
+alias bell='printf "\a"'
+if command -v powershell.exe >/dev/null; then
+    alias alert='notify "$([[ $? == 0 ]] && echo ✔ || echo ✘) $(history 1 | sed -E "s/^\s*[0-9]+\s*//;s/[;&|]\s*alert$//")"'
+fi
+
 alias nowrap='cut -c 1-$COLUMNS'
 
 alias sshagentstart='eval `ssh-agent -s` && ssh-add'

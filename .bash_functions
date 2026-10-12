@@ -27,6 +27,19 @@ home_path() {
         echo "$HOME/$1"
 }
 
+# Windows toast notification
+# (requires the BurntToast PowerShell module - install with `Install-Module BurntToast`)
+if command -v powershell.exe >/dev/null; then
+    # notify <title> [message]
+    notify() {
+        local title=${1:-Notification} message=${2:-}
+        local text="'${title//\'/\'\'}'"
+        [[ -n $message ]] && text+=",'${message//\'/\'\'}'"
+        (powershell.exe -NoProfile -NonInteractive -Command \
+            "New-BurntToastNotification -Text $text" >/dev/null 2>&1 &)
+    }
+fi
+
 ## Launch a program and monitor it
 # https://stackoverflow.com/a/40576129
 #   %cpu
