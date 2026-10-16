@@ -28,15 +28,26 @@ home_path() {
 }
 
 # Windows toast notification
-# (requires the BurntToast PowerShell module - install with `Install-Module BurntToast`)
+# (inline WinRT call: no module, so it works under an AllSigned execution policy)
 if command -v powershell.exe >/dev/null; then
     # notify <title> [message]
     notify() {
         local title=${1:-Notification} message=${2:-}
-        local text="'${title//\'/\'\'}'"
-        [[ -n $message ]] && text+=",'${message//\'/\'\'}'"
-        (powershell.exe -NoProfile -NonInteractive -Command \
-            "New-BurntToastNotification -Text $text" >/dev/null 2>&1 &)
+        local ps="\$title='${title//\'/\'\'}'; \$message='${message//\'/\'\'}';"
+        # Get-StartApps | ? Name -match 'Terminal|PowerShell'
+        local defaultAppId
+        defaultAppId='{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\WindowsPowerShell\v1.0\powershell.exe' # Windows PowerShell
+        #defaultAppId='Microsoft.WindowsTerminal_8wekyb3d8bbwe!App'                                 # Terminal
+        ps+='
+            $null = [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime]
+            $null = [Windows.Data.Xml.Dom.XmlDocument, Windows.Data.Xml.Dom.XmlDocument, ContentType = WindowsRuntime]
+            $esc = [System.Security.SecurityElement]
+            $xml = New-Object Windows.Data.Xml.Dom.XmlDocument
+            $xml.LoadXml("<toast><visual><binding template=""ToastGeneric""><text>$($esc::Escape($title))</text><text>$($esc::Escape($message))</text></binding></visual></toast>")
+            $appId = "'"${WSL_NOTIFY_APP_ID:-${defaultAppId}}"'"
+            [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier($appId).Show([Windows.UI.Notifications.ToastNotification]::new($xml))
+        '
+        powershell.exe -NoProfile -NonInteractive -Command "$ps"
     }
 fi
 
