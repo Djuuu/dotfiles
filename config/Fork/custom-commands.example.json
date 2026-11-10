@@ -42,7 +42,7 @@
   },
   {
     "action" : {
-      "args" : "mr open --no-color --no-links ${ref:short}",
+      "args" : "mr open --silent ${ref:short}",
       "path" : "${git}",
       "showOutput" : false,
       "type" : "process",
