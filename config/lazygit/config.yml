@@ -246,19 +246,19 @@ customCommands:
 
       - key: o
         context: 'status,files,remotes,tags,commits'
-        command: 'git mr open'
+        command: 'git mr open --silent'
         description: 'git mr open'
         output: none
         loadingText: 'Opening merge request'
       - key: o
         context: 'localBranches'
-        command: 'git mr open {{.SelectedLocalBranch.Name}}'
+        command: 'git mr open --silent {{.SelectedLocalBranch.Name}}'
         description: 'git mr open                   {{ branch }}'
         output: none
         loadingText: 'Opening merge request'
       - key: o
         context: 'remoteBranches'
-        command: 'git mr open {{.SelectedRemoteBranch.Name}}'
+        command: 'git mr open --silent {{.SelectedRemoteBranch.Name}}'
         description: 'git mr open                   {{ branch }}'
         output: none
         loadingText: 'Opening merge request'
