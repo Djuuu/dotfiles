@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# Wrapper: pin 'lazygit' pretty format to this terminal's width for the lifetime of lazygit,
+# so other panes updating config/git/config.local don't alter its graph columns.
+# Keep in sync with prompt_git_dyn_graph_width() @ bash_prompt/_prompt_git_pretty.sh
+
+# Pretty format template (__sw__, __uw__, __tw__ are replaced below with column widths):
+#   %C(auto)%h%d                              : abbreviated hash + ref names, default git colors
+#   %<|(__sw__,trunc)%s                       : subject, padded/truncated to absolute column __sw__ (s = subject)
+#   %C(bold blue)✏ %<(__uw__,trunc)%aN        : author name, padded/truncated to __uw__ columns (u = user)
+#   %C(reset)%C(green)⏱  %<(__tw__,trunc)%ar  : relative author date, __tw__ columns (t = time)
+#   %C(reset)                                 : reset colors at the end of the line
+GIT_DYN_GRAPH_TPL_T=${GIT_DYN_GRAPH_TPL_T:-'%C(auto)%h%d %<|(__sw__,trunc)%s %C(bold blue)✏ %<(__uw__,trunc)%aN %C(reset)%C(green)⏱  %<(__tw__,trunc)%ar%C(reset)'}
+
+GIT_MSG_COLUMN_MARGIN=${GIT_MSG_COLUMN_MARGIN:-34}
+GIT_LG_COLUMN_MARGIN=${GIT_LG_COLUMN_MARGIN:-12}
+
+columns=${COLUMNS:-$(tput cols 2>/dev/null)}
+
+if [[ -n $columns ]]; then
+    lg_columns=$(( (columns - GIT_MSG_COLUMN_MARGIN) * 2 / 3 - GIT_LG_COLUMN_MARGIN ))
+
+    format=${GIT_DYN_GRAPH_TPL_T//__sw__/${lg_columns}}
+    format=${format//__uw__/12} # user_columns
+    format=${format//__tw__/12} # time_columns
+
+    # Set Git config through environment - see https://git-scm.com/docs/git-config.html#ENVIRONMENT
+    n=${GIT_CONFIG_COUNT:-0}
+    export "GIT_CONFIG_KEY_${n}=pretty.lazygit"
+    export "GIT_CONFIG_VALUE_${n}=${format}"
+    export GIT_CONFIG_COUNT=$((n + 1))
+fi
+
+# Find available lazygit commands, ignore current wrapper and run original binary
+while IFS= read -r lazygit_bin; do
+    [[ $lazygit_bin -ef "${BASH_SOURCE[0]}" ]] && continue
+    # shellcheck disable=SC2093
+    exec "$lazygit_bin" "$@"
+done < <(type -aP lazygit)
+
+echo "lazygit: real binary not found in PATH" >&2
+exit 127

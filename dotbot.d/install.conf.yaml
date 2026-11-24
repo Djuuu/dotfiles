@@ -33,6 +33,7 @@
     ${XDG_BIN_HOME}/git-is-clean:      scripts/git-is-clean
     ${XDG_BIN_HOME}/git-separator:     scripts/git-separator
     ${XDG_BIN_HOME}/git-update:        scripts/git-update
+    ${XDG_BIN_HOME}/lazygit:           scripts/lazygit
     ${XDG_BIN_HOME}/termcolors:        scripts/print256colours.sh
     ${XDG_BIN_HOME}/rfv:               scripts/rfv
 
