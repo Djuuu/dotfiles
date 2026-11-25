@@ -124,17 +124,33 @@ customCommands:
 
   - key: '<ctrl+d>'
     context: 'files'
-    command: 'clear; git diff {{.SelectedFile.Name | quote}}'
+    command: 'DELTA_FEATURES="common cli highlight fpage" git diff {{.SelectedFile.Name | quote}}; clear'
     description: 'Open diff'
     output: terminal # none | terminal | log | logWithPty | popup
   - key: '<ctrl+d>'
     context: 'commitFiles'
-    command: 'clear; git diff {{.SelectedCommit.Hash | quote}}~ -- {{.SelectedCommitFile.Name | quote}}'
+    command: 'DELTA_FEATURES="common cli highlight fpage" git diff {{.SelectedCommit.Hash | quote}}~ -- {{.SelectedCommitFile.Name | quote}}; clear'
     description: 'Open diff'
     output: terminal # none | terminal | log | logWithPty | popup
   - key: '<ctrl+d>'
     context: 'commits,subCommits,reflogCommits'
-    command: 'clear; git diff {{.SelectedCommitRange.From}}~ {{.SelectedCommitRange.To}}'
+    command: 'DELTA_FEATURES="common cli highlight fpage" git diff {{.SelectedCommitRange.From}}~ {{.SelectedCommitRange.To}}; clear'
+    description: 'Open diff'
+    output: terminal # none | terminal | log | logWithPty | popup
+
+  - key: '<ctrl+alt+d>'
+    context: 'files'
+    command: 'DELTA_FEATURES="common cli fpage" git diff {{.SelectedFile.Name | quote}}; clear'
+    description: 'Open diff'
+    output: terminal # none | terminal | log | logWithPty | popup
+  - key: '<ctrl+alt+d>'
+    context: 'commitFiles'
+    command: 'DELTA_FEATURES="common cli fpage" git diff {{.SelectedCommit.Hash | quote}}~ -- {{.SelectedCommitFile.Name | quote}}; clear'
+    description: 'Open diff'
+    output: terminal # none | terminal | log | logWithPty | popup
+  - key: '<ctrl+alt+d>'
+    context: 'commits,subCommits,reflogCommits'
+    command: 'DELTA_FEATURES="common cli fpage" git diff {{.SelectedCommitRange.From}}~ {{.SelectedCommitRange.To}}; clear'
     description: 'Open diff'
     output: terminal # none | terminal | log | logWithPty | popup
 

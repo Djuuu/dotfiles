@@ -38,6 +38,9 @@
 	hyperlinks                  = true
 	hyperlinks-file-link-format = "phpstorm://open?file={path}&line={line}"
 
+[delta "fpage"]
+	pager = less -R --mouse --wheel-lines=3 -+F -+X
+
 [delta "highlight"]
 	zero-style              = dim syntax
 	plus-style              = syntax "#004200"
